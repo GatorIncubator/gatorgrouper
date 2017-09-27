@@ -10,6 +10,7 @@ DEFAULT_TEAM_SIZE = 2
 GATORGROUPER_HOME = "GATORGROUPER_HOME"
 SLASH = "/"
 
+
 def parse_gatorgrader_arguments(args):
     """ Parses the arguments provided on the command-line """
     gg_parser = argparse.ArgumentParser(
