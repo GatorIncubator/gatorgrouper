@@ -7,7 +7,6 @@ import argparse
 DEFALT_STUDENT_FILE = "students.txt"
 DEFAULT_TEAM_SIZE = 2
 GATORGROUPER_HOME = "GATORGROUPER_HOME"
-SLASH = "/"
 
 
 def parse_gatorgrader_arguments(args):
