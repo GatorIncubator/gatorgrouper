@@ -1,6 +1,5 @@
 """ GatorGrouper randomly assigns a list of students to a group """
 
-import os
 import sys
 
 import argparse
