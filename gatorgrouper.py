@@ -29,7 +29,7 @@ def parse_gatorgrader_arguments(args):
         required=False)
 
     gg_parser.add_argument(
-        "--student-file",
+        "--students-file",
         help="File containing last name of students",
         type=str,
         default=DEFALT_STUDENT_FILE,
@@ -37,6 +37,20 @@ def parse_gatorgrader_arguments(args):
 
     gg_arguments_finished = gg_parser.parse_args(args)
     return gg_arguments_finished
+
+
+def read_student_file(students_file_name):
+    """ Reads the student identifies from the specific file,
+        returning the identifiers in a list"""
+    with open(students_file_name, 'r') as students_file:
+        student_identifers = [line.strip() for line in students_file]
+    return student_identifers
+
+
+def display_student_identifiers(student_identifers):
+    """ Display the student identifiers """
+    for student in student_identifers:
+        print(student)
 
 
 def display_welcome_message():
@@ -56,4 +70,11 @@ if __name__ == '__main__':
     if gg_arguments.verbose is True:
         print("Configuration of GatorGrouper:")
         print(gg_arguments)
+        print()
+    # read in the student identifiers from the specified file
+    student_identifers = read_student_file(gg_arguments.students_file)
+    if gg_arguments.verbose is True:
+        print("GatorGrouper will group these students:")
+        print()
+        display_student_identifiers(student_identifers)
         print()
