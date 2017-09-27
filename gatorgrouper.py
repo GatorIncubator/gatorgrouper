@@ -1,8 +1,8 @@
 """ GatorGrouper randomly assigns a list of students to a group """
 
-import sys
-
+from random import shuffle
 import argparse
+import sys
 
 DEFALT_STUDENT_FILE = "students.txt"
 DEFAULT_TEAM_SIZE = 2
@@ -51,6 +51,13 @@ def display_student_identifiers(student_identifers):
         print(student)
 
 
+def shuffle_students(student_identifers):
+    """ Shuffle the student identifiers """
+    shuffled_student_identifers = student_identifers[:]
+    shuffle(shuffled_student_identifers)
+    return shuffled_student_identifers
+
+
 def display_welcome_message():
     """ Display a welcome message """
     print()
@@ -73,4 +80,11 @@ if __name__ == '__main__':
         print("GatorGrouper will group these students:")
         print()
         display_student_identifiers(student_identifers)
+        print()
+    # shuffle the student identifiers
+    shuffled_student_identifers = shuffle_students(student_identifers)
+    if gg_arguments.verbose is True:
+        print("GatorGrouper randomly ordered the students:")
+        print()
+        display_student_identifiers(shuffled_student_identifers)
         print()
