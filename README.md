@@ -1,10 +1,10 @@
 # GatorGrouper
 
-GatorGrouper is a Python 3 program that assigns a list of students to teams of a
-specified size. The output of this program could then be communicated to the
+GatorGrouper is a Python 3 program that assigns a list of students to groups of
+a specified size. The output of this program could then be communicated to the
 students in a specific class. Then, if a course instructor is using [GitHub
 Classroom](https://classroom.github.com/), you can ask the students in your
-class to create and join their assigned team.
+class to create and join their assigned group.
 
 ## Installing GatorGrouper
 
