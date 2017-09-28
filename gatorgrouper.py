@@ -62,7 +62,17 @@ def shuffle_students(student_identifers):
 def group_students(student_identifers, group_size):
     """ Group the student identifiers """
     iterable = iter(student_identifers)
-    return list(iter(lambda: list(itertools.islice(iterable, group_size)), []))
+    # use itertools to chunk the students into groups
+    student_list_of_lists = list(
+        iter(lambda: list(itertools.islice(iterable, group_size)), []))
+    last_group_index = len(student_list_of_lists) - 1
+    print(student_list_of_lists)
+    if len(student_list_of_lists[last_group_index]) == 1:
+        receiving_group = student_list_of_lists[last_group_index - 1]
+        too_small_group = student_list_of_lists[last_group_index]
+        receiving_group.append(*too_small_group)
+        student_list_of_lists.remove(too_small_group)
+    return student_list_of_lists
 
 
 def display_welcome_message():
