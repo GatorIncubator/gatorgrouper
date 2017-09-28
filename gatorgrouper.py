@@ -63,16 +63,16 @@ def group_students(student_identifers, group_size):
     """ Group the student identifiers """
     iterable = iter(student_identifers)
     # use itertools to chunk the students into groups
-    student_list_of_lists = list(
+    student_groups = list(
         iter(lambda: list(itertools.islice(iterable, group_size)), []))
-    last_group_index = len(student_list_of_lists) - 1
-    print(student_list_of_lists)
-    if len(student_list_of_lists[last_group_index]) == 1:
-        receiving_group = student_list_of_lists[last_group_index - 1]
-        too_small_group = student_list_of_lists[last_group_index]
+    last_group_index = len(student_groups) - 1
+    print(student_groups)
+    if len(student_groups[last_group_index]) == 1:
+        receiving_group = student_groups[last_group_index - 1]
+        too_small_group = student_groups[last_group_index]
         receiving_group.append(*too_small_group)
-        student_list_of_lists.remove(too_small_group)
-    return student_list_of_lists
+        student_groups.remove(too_small_group)
+    return student_groups
 
 
 def display_welcome_message():
