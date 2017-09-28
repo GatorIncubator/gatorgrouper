@@ -6,8 +6,10 @@ import itertools
 import sys
 
 DEFALT_STUDENT_FILE = "students.txt"
-DEFAULT_TEAM_SIZE = 2
 GATORGROUPER_HOME = "GATORGROUPER_HOME"
+
+DEFAULT_TEAM_SIZE = 2
+SINGLETON_GROUP = 1
 
 
 def parse_gatorgrader_arguments(args):
@@ -67,7 +69,7 @@ def group_students(student_identifers, group_size):
         iter(lambda: list(itertools.islice(iterable, group_size)), []))
     last_group_index = len(student_groups) - 1
     print(student_groups)
-    if len(student_groups[last_group_index]) == 1:
+    if len(student_groups[last_group_index]) == SINGLETON_GROUP:
         receiving_group = student_groups[last_group_index - 1]
         too_small_group = student_groups[last_group_index]
         receiving_group.append(*too_small_group)
