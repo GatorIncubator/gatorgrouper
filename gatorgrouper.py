@@ -42,16 +42,34 @@ def parse_gatorgrader_arguments(args):
 
 def read_student_file(students_file_name):
     """ Reads the student identifies from the specific file,
-        returning the identifiers in a list"""
+        returning the identifiers in a list """
     with open(students_file_name, 'r') as students_file:
         student_identifers = [line.strip() for line in students_file]
     return student_identifers
+
+
+def display_diagnostics(student_identifers, student_groups):
+    """ Display information about what was generated """
+    print("Successfully placed",
+          len(student_identifers), "students into",
+          len(student_groups), "groups")
+    print()
 
 
 def display_student_identifiers(student_identifers):
     """ Display the student identifiers """
     for student in student_identifers:
         print(student)
+
+
+def display_student_groups(student_groups):
+    """ Display the student groups with labels """
+    group_counter = 1
+    for student_group in student_groups:
+        print("Group", group_counter)
+        print(*student_group)
+        print()
+        group_counter = group_counter + 1
 
 
 def shuffle_students(student_identifers):
@@ -67,8 +85,8 @@ def group_students(student_identifers, group_size):
     # use itertools to chunk the students into groups
     student_groups = list(
         iter(lambda: list(itertools.islice(iterable, group_size)), []))
+    # merge a single student into the previous group
     last_group_index = len(student_groups) - 1
-    print(student_groups)
     if len(student_groups[last_group_index]) == SINGLETON_GROUP:
         receiving_group = student_groups[last_group_index - 1]
         too_small_group = student_groups[last_group_index]
@@ -110,4 +128,6 @@ if __name__ == '__main__':
     # generate the groups and display them
     grouped_student_identifiers = group_students(shuffled_student_identifers,
                                                  gg_arguments.group_size)
-    print(grouped_student_identifiers)
+    display_diagnostics(shuffled_student_identifers,
+                        grouped_student_identifiers)
+    display_student_groups(grouped_student_identifiers)
