@@ -65,24 +65,6 @@ def group_students_itertools(student_identifers, group_size):
     return list(iter(lambda: list(itertools.islice(iterable, group_size)), []))
 
 
-def group_students(student_identifers, group_size):
-    """ Group the student identifiers """
-    student_groups = []
-    students_total = len(student_identifers)
-    current_student_index = 0
-    while current_student_index < students_total:
-        current_group_list = []
-        current_group_countdown = group_size
-        while current_group_countdown > 0:
-            current_student = student_identifers[current_student_index]
-            print("Current student:", current_student)
-            current_group_list.append(current_student)
-            current_group_countdown = current_group_countdown - 1
-            current_student_index = current_student_index + 1
-        student_groups.append(current_group_list)
-    return student_groups
-
-
 def display_welcome_message():
     """ Display a welcome message """
     print()
