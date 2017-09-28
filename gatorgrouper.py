@@ -2,6 +2,7 @@
 
 from random import shuffle
 import argparse
+import itertools
 import sys
 
 DEFALT_STUDENT_FILE = "students.txt"
@@ -58,16 +59,23 @@ def shuffle_students(student_identifers):
     return shuffled_student_identifers
 
 
+def group_students_itertools(student_identifers, group_size):
+    """ Group the student identifiers """
+    iterable = iter(student_identifers)
+    return list(iter(lambda: list(itertools.islice(iterable, group_size)), []))
+
+
 def group_students(student_identifers, group_size):
     """ Group the student identifiers """
     student_groups = []
     students_total = len(student_identifers)
     current_student_index = 0
-    while current_student_index < students_total - 1:
+    while current_student_index < students_total:
         current_group_list = []
         current_group_countdown = group_size
         while current_group_countdown > 0:
             current_student = student_identifers[current_student_index]
+            print("Current student:", current_student)
             current_group_list.append(current_student)
             current_group_countdown = current_group_countdown - 1
             current_student_index = current_student_index + 1
@@ -106,6 +114,6 @@ if __name__ == '__main__':
         display_student_identifiers(shuffled_student_identifers)
         print()
     # generate the groups and display them
-    grouped_student_identifiers = group_students(shuffled_student_identifers,
+    grouped_student_identifiers = group_students_itertools(shuffled_student_identifers,
                                                  gg_arguments.group_size)
     print(grouped_student_identifiers)
