@@ -59,7 +59,7 @@ def shuffle_students(student_identifers):
     return shuffled_student_identifers
 
 
-def group_students_itertools(student_identifers, group_size):
+def group_students(student_identifers, group_size):
     """ Group the student identifiers """
     iterable = iter(student_identifers)
     return list(iter(lambda: list(itertools.islice(iterable, group_size)), []))
@@ -96,6 +96,6 @@ if __name__ == '__main__':
         display_student_identifiers(shuffled_student_identifers)
         print()
     # generate the groups and display them
-    grouped_student_identifiers = group_students_itertools(shuffled_student_identifers,
+    grouped_student_identifiers = group_students(shuffled_student_identifers,
                                                  gg_arguments.group_size)
     print(grouped_student_identifiers)
