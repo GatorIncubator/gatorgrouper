@@ -1,4 +1,4 @@
-""" GatorGrouper randomly assigns a list of students to a group """
+""" GatorGrouper randomly assigns a list of students to groups """
 
 from random import shuffle
 import argparse
@@ -58,6 +58,25 @@ def shuffle_students(student_identifers):
     return shuffled_student_identifers
 
 
+def group_students(student_identifers, group_size):
+    """ Group the student identifiers """
+    student_groups = []
+    students_total = len(student_identifers)
+    current_student_index = 0
+    print("Total:", students_total)
+    while current_student_index < students_total - 1:
+        current_group_list = []
+        current_group_countdown = group_size
+        while current_group_countdown > 0:
+            current_student = student_identifers[current_student_index]
+            print("Current student:", current_student)
+            current_group_list.append(current_student)
+            current_group_countdown = current_group_countdown - 1
+            current_student_index = current_student_index + 1
+        student_groups.append(current_group_list)
+    return student_groups
+
+
 def display_welcome_message():
     """ Display a welcome message """
     print()
@@ -88,3 +107,7 @@ if __name__ == '__main__':
         print()
         display_student_identifiers(shuffled_student_identifers)
         print()
+    # generate the groups and display them
+    grouped_student_identifiers = group_students(shuffled_student_identifers,
+                                                 gg_arguments.group_size)
+    print(grouped_student_identifiers)
