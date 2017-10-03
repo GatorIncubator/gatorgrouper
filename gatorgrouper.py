@@ -11,15 +11,8 @@ from display_diagnostics import display_diagnostics
 from display_student_identifiers import display_student_identifiers
 from display_student_groups import display_student_groups
 from shuffle_students import shuffle_students
-from group_students import group_students
+from group_students import *
 from display_welcome_message import display_welcome_message
-
-
-DEFALT_STUDENT_FILE = "students.txt"
-GATORGROUPER_HOME = "GATORGROUPER_HOME"
-
-DEFAULT_TEAM_SIZE = 2
-SINGLETON_GROUP = 1
 
 
 if __name__ == '__main__':
