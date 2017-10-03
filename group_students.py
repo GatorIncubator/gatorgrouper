@@ -4,8 +4,8 @@ from random import shuffle
 import argparse
 import itertools
 import sys
-
-SINGLETON_GROUP = 1
+#default values
+from defaults import *
 
 
 def group_students(student_identifers, group_size):
