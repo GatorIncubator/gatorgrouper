@@ -5,12 +5,6 @@ import argparse
 import itertools
 import sys
 
-DEFALT_STUDENT_FILE = "students.txt"
-GATORGROUPER_HOME = "GATORGROUPER_HOME"
-
-DEFAULT_TEAM_SIZE = 2
-SINGLETON_GROUP = 1
-
 
 def read_student_file(students_file_name):
     """ Reads the student identifies from the specific file,
