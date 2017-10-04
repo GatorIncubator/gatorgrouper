@@ -1,4 +1,5 @@
 """ GatorGrouper randomly assigns a list of students to groups """
+""" Issue #4 """
 
 from random import shuffle
 import argparse
@@ -12,4 +13,3 @@ def display_diagnostics(student_identifers, student_groups):
           len(student_identifers), "students into",
           len(student_groups), "groups")
     print()
-
