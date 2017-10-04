@@ -1,10 +1,11 @@
 """ GatorGrouper randomly assigns a list of students to groups """
+"""Issue #2"""
 
 from random import shuffle
 import argparse
 import itertools
 import sys
-#default values 
+#default values
 from defaults import *
 
 
@@ -34,4 +35,3 @@ def parse_gatorgrader_arguments(args):
 
     gg_arguments_finished = gg_parser.parse_args(args)
     return gg_arguments_finished
-
