@@ -30,7 +30,7 @@ def parse_gatorgrader_arguments(args):
         "--students-file",
         help="File containing last name of students",
         type=str,
-        default=DEFALT_STUDENT_FILE,
+        default=DEFAULT_STUDENT_FILE,
         required=False)
 
     gg_arguments_finished = gg_parser.parse_args(args)
