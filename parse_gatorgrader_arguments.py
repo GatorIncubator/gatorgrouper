@@ -1,10 +1,8 @@
 """ Parses the arguments provided on the command-line """
 
-from random import shuffle
 import argparse
-import itertools
-import sys
-#default values 
+
+#default values
 from defaults import *
 
 

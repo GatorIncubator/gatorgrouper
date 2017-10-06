@@ -1,10 +1,5 @@
 """ Display the student groups with labels """
 
-from random import shuffle
-import argparse
-import itertools
-import sys
-
 
 def display_student_groups(student_groups):   
     group_counter = 1

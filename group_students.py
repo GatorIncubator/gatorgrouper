@@ -1,10 +1,7 @@
 """ Group the student identifiers """
 
-from random import shuffle
-import argparse
 import itertools
-import sys
-#default values
+
 from defaults import *
 
 
