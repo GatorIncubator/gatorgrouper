@@ -33,5 +33,13 @@ def parse_gatorgrader_arguments(args):
         default=DEFAULT_STUDENT_FILE,
         required=False)
 
+    # Arguments for number of groups if needed
+    #gg_parser.add_argument(
+    #    "--number-of-group",
+    #    help="Number of groups",
+    #    type=int,
+    #    required=False)
+
     gg_arguments_finished = gg_parser.parse_args(args)
+
     return gg_arguments_finished
