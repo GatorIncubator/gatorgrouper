@@ -25,6 +25,10 @@ if __name__ == '__main__':
         print()
     # read in the student identifiers from the specified file
     student_identifers = read_student_file(gg_arguments.students_file)
+    if len(student_identifers) > 1 and gg_arguments.group_size < (len(student_identifers)/2):
+        print("Invalid arguments")
+        quit()
+
     if gg_arguments.verbose is True:
         print("GatorGrouper will group these students:")
         print()
@@ -43,4 +47,3 @@ if __name__ == '__main__':
     display_diagnostics(shuffled_student_identifers,
                         grouped_student_identifiers)
     display_student_groups(grouped_student_identifiers)
-    
