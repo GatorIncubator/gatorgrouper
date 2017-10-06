@@ -1,3 +1,4 @@
+""" Default Constants """
 DEFALT_STUDENT_FILE = "students.txt"
 GATORGROUPER_HOME = "GATORGROUPER_HOME"
 
