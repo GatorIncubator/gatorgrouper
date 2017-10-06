@@ -1,10 +1,7 @@
 """ GatorGrouper randomly assigns a list of students to groups """
 
-from random import shuffle
-import argparse
 import itertools
-import sys
-#default values
+
 from defaults import *
 
 
