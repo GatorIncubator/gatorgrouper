@@ -4,11 +4,11 @@ from random import shuffle
 import argparse
 import itertools
 import sys
-#default values 
+#default values
 from defaults import *
 
 
-def parse_gatorgrader_arguments(args):
+def parse_gatorgrouper_arguments(args):
     """ Parses the arguments provided on the command-line """
     gg_parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -34,4 +34,3 @@ def parse_gatorgrader_arguments(args):
 
     gg_arguments_finished = gg_parser.parse_args(args)
     return gg_arguments_finished
-
