@@ -25,6 +25,9 @@ def parse_gatorgrader_arguments(args):
         type=int,
         default=DEFAULT_TEAM_SIZE,
         required=False)
+        if len(student_identifers) > 1 and gg_arguments.group_size < (len(student_identifers)/2):
+            print("Invalid arguments")
+            quit()
 
     gg_parser.add_argument(
         "--students-file",
