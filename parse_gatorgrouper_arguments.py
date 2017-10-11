@@ -8,7 +8,6 @@ import logging
 # default values
 from defaults import *
 
-
 def parse_gatorgrouper_arguments(args):
     """ Parses the arguments provided on the command-line """
     gg_parser = argparse.ArgumentParser(
@@ -42,6 +41,6 @@ def parse_gatorgrouper_arguments(args):
 
     gg_arguments_finished = gg_parser.parse_args(args)
 
-    logging.basicConfig(level=gg_arguments_finished.logging_level)
+    logging.basicConfig(format="%(levelname)s:%(pathname)s: %(message)s", level=gg_arguments_finished.logging_level)
 
     return gg_arguments_finished
