@@ -4,7 +4,8 @@ from random import shuffle
 import argparse
 import itertools
 import sys
-#default values
+import logging
+# default values
 from defaults import *
 
 
@@ -14,9 +15,16 @@ def parse_gatorgrouper_arguments(args):
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     gg_parser.add_argument(
-        "--verbose",
-        help="Display verbose diagnostic information",
-        action="store_true")
+        "-d", "--debug",
+        help="Display diagnostic information",
+        action="store_const", dest="logging_level", const=logging.DEBUG, default=logging.ERROR
+    )
+
+    gg_parser.add_argument(
+        "-v", "--verbose",
+        help="Display confirmation information",
+        action="store_const", dest="logging_level", const=logging.INFO
+    )
 
     gg_parser.add_argument(
         "--group-size",
@@ -33,4 +41,7 @@ def parse_gatorgrouper_arguments(args):
         required=False)
 
     gg_arguments_finished = gg_parser.parse_args(args)
+
+    logging.basicConfig(level=gg_arguments_finished.logging_level)
+
     return gg_arguments_finished
