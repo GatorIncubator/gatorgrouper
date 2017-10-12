@@ -7,7 +7,7 @@ import itertools
 import sys
 #default values
 from defaults import *
-
+from read_student_file import student_list_length
 
 def parse_gatorgrader_arguments(args):
     """ Parses the arguments provided on the command-line """
@@ -25,7 +25,8 @@ def parse_gatorgrader_arguments(args):
         type=int,
         default=DEFAULT_TEAM_SIZE,
         required=False)
-        if len(student_identifers) > 1 and gg_arguments.group_size < (len(student_identifers)/2):
+        list_size = student_list_length()
+        if (list_size > 1 and gg_arguments.group_size < (list_size/2)):
             print("Invalid arguments")
             quit()
 
@@ -35,13 +36,6 @@ def parse_gatorgrader_arguments(args):
         type=str,
         default=DEFAULT_STUDENT_FILE,
         required=False)
-
-    # Arguments for number of groups if needed
-    #gg_parser.add_argument(
-    #    "--number-of-group",
-    #    help="Number of groups",
-    #    type=int,
-    #    required=False)
 
     gg_arguments_finished = gg_parser.parse_args(args)
 
