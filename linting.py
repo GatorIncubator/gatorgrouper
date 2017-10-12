@@ -8,7 +8,7 @@ import pytest
 import glob
 from flake8.api import legacy as flake8
 
-def test_1():
+def test_flake8():
     filenames = glob.glob('gatorgrouper/*.py')
     style_guide = flake8.get_style_guide(ignore=['E24', 'W503'])
     report = style_guide.check_files(filenames)
