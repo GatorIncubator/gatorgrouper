@@ -13,6 +13,7 @@ from display_student_groups import display_student_groups
 from shuffle_students import shuffle_students
 from group_students import *
 from display_welcome_message import display_welcome_message
+from group_students_categories import group_students_categories
 
 
 if __name__ == '__main__':
@@ -38,7 +39,7 @@ if __name__ == '__main__':
         display_student_identifiers(shuffled_student_identifers)
         print()
     # generate the groups and display them
-    grouped_student_identifiers = group_students(shuffled_student_identifers,
+    grouped_student_identifiers = group_students_categories(shuffled_student_identifers,
                                                  gg_arguments.group_size)
     display_diagnostics(shuffled_student_identifers,
                         grouped_student_identifiers)
