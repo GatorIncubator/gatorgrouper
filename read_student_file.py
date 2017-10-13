@@ -16,6 +16,6 @@ def read_student_file(students_file_name):
     return student_identifers
 
 def student_list_length():
-    """ Returns the number of students in the 
+    """ Returns the number of students in the
         list of student_identifiers """
     return size
