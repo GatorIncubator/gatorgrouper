@@ -25,7 +25,7 @@ if __name__ == '__main__':
         print()
     # read in the student identifiers from the specified file
     student_identifers = read_student_file(gg_arguments.students_file)
-        if (list_size > 1 and gg_arguments.group_size < (list_size/2)):
+    if (list_size > 1 and gg_arguments.group_size < (list_size/2)):
         print("Invalid arguments")
         quit()
 
