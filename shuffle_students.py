@@ -6,8 +6,8 @@ import itertools
 import sys
 
 
-def shuffle_students(student_identifers):
-    shuffled_student_identifers = student_identifers[:]
-    shuffle(shuffled_student_identifers)
-    return shuffled_student_identifers
+def shuffle_students(student_identifiers):
+    shuffled_student_identifiers = student_identifiers[:]
+    shuffle(shuffled_student_identifiers)
+    return shuffled_student_identifiers
 
