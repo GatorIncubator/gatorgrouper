@@ -1,5 +1,4 @@
-""" GatorGrouper randomly assigns a list of students to groups """
-"""Issue #2"""
+    """ Parses the arguments provided on the command-line """
 
 from random import shuffle
 import argparse
@@ -7,10 +6,9 @@ import itertools
 import sys
 #default values
 from defaults import *
-from read_student_file import student_list_length
 
 def parse_gatorgrader_arguments(args):
-    """ Parses the arguments provided on the command-line """
+
     gg_parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
@@ -25,7 +23,6 @@ def parse_gatorgrader_arguments(args):
         type=int,
         default=DEFAULT_TEAM_SIZE,
         required=False)
-    list_size = student_list_length()
 
     gg_parser.add_argument(
         "--students-file",
