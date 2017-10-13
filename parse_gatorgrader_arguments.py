@@ -1,4 +1,4 @@
-    """ Parses the arguments provided on the command-line """
+""" Parses the arguments provided on the command-line """
 
 from random import shuffle
 import argparse
