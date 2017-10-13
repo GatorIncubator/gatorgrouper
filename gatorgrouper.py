@@ -24,23 +24,23 @@ if __name__ == '__main__':
         print(gg_arguments)
         print()
     # read in the student identifiers from the specified file
-    student_identifers = read_student_file(gg_arguments.students_file)
+    student_identifiers = read_student_file(gg_arguments.students_file)
     if gg_arguments.verbose is True:
         print("GatorGrouper will group these students:")
         print()
-        display_student_identifiers(student_identifers)
+        display_student_identifiers(student_identifiers)
         print()
     # shuffle the student identifiers
-    shuffled_student_identifers = shuffle_students(student_identifers)
+    shuffled_student_identifiers = shuffle_students(student_identifiers)
     if gg_arguments.verbose is True:
         print("GatorGrouper randomly ordered the students:")
         print()
-        display_student_identifiers(shuffled_student_identifers)
+        display_student_identifiers(shuffled_student_identifiers)
         print()
     # generate the groups and display them
-    grouped_student_identifiers = group_students(shuffled_student_identifers,
+    grouped_student_identifiers = group_students(shuffled_student_identifiers,
                                                  gg_arguments.group_size)
-    display_diagnostics(shuffled_student_identifers,
+    display_diagnostics(shuffled_student_identifiers,
                         grouped_student_identifiers)
     display_student_groups(grouped_student_identifiers)
     
