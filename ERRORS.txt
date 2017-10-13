@@ -45,3 +45,6 @@ OSError: [Errno 13] Permission denied: '/usr/local/lib/python2.7/dist-packages/u
 eltmanm@aldenv153:~/CS280/cs280F2017/gatorgrouper$ sudo pip install gspread
 [sudo] password for eltmanm:
 eltmanm is not in the sudoers file.  This incident will be reported.
+
+## RESOLVED BY
+python3 -m pip install --user gspread oauth2client

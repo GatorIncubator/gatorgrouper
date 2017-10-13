@@ -14,3 +14,5 @@ sheet = client.open("Compsci280 Lab4 Survey Results").sheet1
 # Extract and print all of the values
 list_of_hashes = sheet.get_all_records()
 print(list_of_hashes)
+sheet.export(format='csv')
+#https://gspread.readthedocs.io/en/latest/ for figuring out how to make csv.
