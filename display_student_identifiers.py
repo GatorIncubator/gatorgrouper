@@ -6,7 +6,7 @@ import itertools
 import sys
 
 
-def display_student_identifiers(student_identifers):
-    for student in student_identifers:
+def display_student_identifiers(student_identifiers):
+    for student in student_identifiers:
         print(student)
 
