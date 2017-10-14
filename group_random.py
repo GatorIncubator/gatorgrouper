@@ -1,14 +1,14 @@
-""" Group the student identifiers """
+""" group using randomization approach """
 
 from random import shuffle
-import argparse
 import itertools
-import sys
 import logging
-#default values
 from defaults import *
 
-def group_students(student_identifers, group_size):
+
+def group_random(student_identifers, group_size):
+    """ group responses using randomization approach """
+
     iterable = iter(student_identifers)
     # use itertools to chunk the students into groups
     student_groups = list(
@@ -22,7 +22,6 @@ def group_students(student_identifers, group_size):
         receiving_group.append(*too_small_group)
         student_groups.remove(too_small_group)
     return student_groups
-
 
 
 def shuffle_students(student_identifers):
