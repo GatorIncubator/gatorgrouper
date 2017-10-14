@@ -1,8 +1,7 @@
 """ group using sudoku approach """
 
-from random import shuffle
 import logging
-from defaults import *
+from random import shuffle
 
 
 def group_sudoku(responses, grpsize):
