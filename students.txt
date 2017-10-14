@@ -1,8 +1,8 @@
-gkapfham0,1,1
-gkapfham1,0,0
-gkapfham3,1,1
-gkapfham4,0,0
-gkapfham5,1,1
-gkapfham6,0,0
-gkapfham7,1,1
-gkapfham8,0,0
+gkapfham0,0,0,0
+gkapfham1,1,1,0
+gkapfham1,1,1,0
+gkapfham3,1,1,0
+gkapfham4,1,1,0
+gkapfham5,1,1,0
+gkapfham6,1,1,0
+gkapfham7,1,1,1

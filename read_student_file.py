@@ -16,8 +16,8 @@ def read_student_file(filepath):
         temp.append(record[0]) # handle identifiers separately
         for value in record[1:]: # handle string conversions
             if value == "1":
-                temp.append(True)
+                temp.append("True")
             elif value == "0":
-                temp.append(False)
+                temp.append("False")
         responses.append(temp)
     return responses

@@ -5,6 +5,7 @@ import itertools
 import logging
 from defaults import *
 
+from group_scoring import *
 
 def group_random(student_identifers, group_size):
     """ group responses using randomization approach """
@@ -21,7 +22,7 @@ def group_random(student_identifers, group_size):
         too_small_group = student_groups[last_group_index]
         receiving_group.append(*too_small_group)
         student_groups.remove(too_small_group)
-    return student_groups
+    score_groups(student_groups, group_size)
 
 
 def shuffle_students(student_identifers):

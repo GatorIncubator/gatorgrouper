@@ -10,7 +10,8 @@ import parse_arguments
 from read_student_file import read_student_file
 from group_random import *
 from display import *
-from group_rrobin import group_students_categories
+from group_rrobin import group_rrobin
+from group_scoring import *
 
 
 if __name__ == '__main__':
@@ -31,7 +32,7 @@ if __name__ == '__main__':
     logging.info("\n" + create_escaped_string_from_list(shuffled_student_identifers))
 
     # generate the groups and display them
-    grouped_student_identifiers = group_students_categories(shuffled_student_identifers,
+    grouped_student_identifiers = group_random(shuffled_student_identifers,
                                                  gg_arguments.group_size)
     logging.info("Successfully placed " + str(len(shuffled_student_identifers)) + " students into " + str(len(grouped_student_identifiers)) + " groups")
 
