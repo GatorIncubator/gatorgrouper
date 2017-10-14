@@ -1,4 +1,4 @@
-""" GatorGrouper randomly assigns a list of students to groups """
+""" Group the student identifiers """
 
 from random import shuffle
 import argparse
@@ -9,7 +9,6 @@ import logging
 from defaults import *
 
 def group_students(student_identifers, group_size):
-    """ Group the student identifiers """
     iterable = iter(student_identifers)
     # use itertools to chunk the students into groups
     student_groups = list(
