@@ -45,6 +45,8 @@ will run GatorGrouper with this command:
 python3 gatorgrouper.py
 ```
 
+### Group Size
+
 To specify the size of the groups, use the flag `---groupsize`.
 
 Example:
