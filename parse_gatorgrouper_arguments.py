@@ -68,8 +68,6 @@ def parse_gatorgrouper_arguments(args):
 
     gg_arguments_finished = gg_parser.parse_args(args)
 
-    print("absentees: " + str(gg_arguments_finished.absentees))
-
     logging.basicConfig(format="%(levelname)s:%(pathname)s: %(message)s", level=gg_arguments_finished.logging_level)
 
     if check_valid_group_size(gg_arguments_finished.group_size, gg_arguments_finished.students_file) == False:
