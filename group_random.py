@@ -1,32 +1,35 @@
 """ group using randomization approach """
 
-from random import shuffle
-import itertools
+import copy
 import logging
-from defaults import *
+import itertools
+from random import shuffle
 
 
-def group_random(student_identifers, group_size):
+def group_random(responses, grpsize):
     """ group responses using randomization approach """
-
-    iterable = iter(student_identifers)
     # use itertools to chunk the students into groups
-    student_groups = list(
-        iter(lambda: list(itertools.islice(iterable, group_size)), []))
-    # merge a single student into the previous group
-    last_group_index = len(student_groups) - 1
-    if len(student_groups[last_group_index]) == SINGLETON_GROUP:
-        logging.info("Removing last group with only one member and placing member into previous group.")
-        receiving_group = student_groups[last_group_index - 1]
-        too_small_group = student_groups[last_group_index]
-        receiving_group.append(*too_small_group)
-        student_groups.remove(too_small_group)
-    return student_groups
+    iterable = iter(responses)
+    groups = list(iter(lambda: list(itertools.islice(iterable, grpsize)), []))
+    # deal with the last, potentially partial group
+    last_group_index = len(groups) - 1
+    if len(groups[last_group_index]) < grpsize:
+        # distribute them throughout the other groups
+        logging.info("Partial group identified; distributing across other groups.")
+        lastgroup = groups[last_group_index]
+        outliers = copy.deepcopy(lastgroup)
+        groups.remove(lastgroup)
+        for group in groups:
+            if outliers:
+                group.append(outliers[0])
+                outliers = outliers[1:]
+            else:
+                break
+    return groups
 
 
-def shuffle_students(student_identifers):
-    """ Shuffle the student identifiers """
-    shuffled_student_identifers = student_identifers[:]
-    shuffle(shuffled_student_identifers)
-    return shuffled_student_identifers
-
+def shuffle_students(responses):
+    """ Shuffle the responses """
+    shuffled_responses = responses[:]
+    shuffle(shuffled_responses)
+    return shuffled_responses
