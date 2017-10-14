@@ -70,17 +70,16 @@ def parse_gatorgrouper_arguments(args):
 
     logging.basicConfig(format="%(levelname)s:%(pathname)s: %(message)s", level=gg_arguments_finished.logging_level)
 
-    if check_valid_group_size(gg_arguments_finished.group_size, gg_arguments_finished.students_file) == False:
+    if check_valid_group_size(gg_arguments_finished.group_size, read_student_file(gg_arguments_finished.students_file)) == False:
         quit()
 
     return gg_arguments_finished
 
-def check_valid_group_size(group_size, students_file_name):
-    student_list = read_student_file(students_file_name)
-    student_list_length = len(student_list)
-    if (group_size <= 1 or group_size > student_list_length / 2): # indicates invalid group size
-        logging.error("Group size: " + str(group_size) + "\nNumber of students: " + str(student_list_length) + "\nGroup size must be greater than 1 and less than or equal to half of the number of students.")
+def check_valid_group_size(group_size, students_list):
+    students_list_length = len(students_list)
+    if (group_size <= 1 or group_size > students_list_length / 2): # indicates invalid group size
+        logging.error("Group size: " + str(group_size) + "\nNumber of students: " + str(students_list_length) + "\nGroup size must be greater than 1 and less than or equal to half of the number of students.")
         return False
     else:
-        logging.info("Group size: " + str(group_size) + "\nNumber of students: " + str(student_list_length) + "\nValid group size.")
+        logging.info("Group size: " + str(group_size) + "\nNumber of students: " + str(students_list_length) + "\nValid group size.")
         return True
