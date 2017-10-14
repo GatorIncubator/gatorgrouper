@@ -1,4 +1,6 @@
-""" GatorGrouper randomly assigns a list of students to groups """
+""" Reads the student identifies from the specific file,
+        returning the identifiers in a list """
+
 from random import shuffle
 import argparse
 import itertools
