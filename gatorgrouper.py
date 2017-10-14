@@ -8,12 +8,9 @@ import logging
 # function files
 import parse_arguments
 from read_student_file import read_student_file
-from create_escaped_string_from_list import create_escaped_string_from_list
-from display_student_groups import display_student_groups
-from shuffle_students import shuffle_students
-from group_students import *
-from display_welcome_message import display_welcome_message
-from group_students_categories import group_students_categories
+from group_random import *
+from display import *
+from group_rrobin import group_students_categories
 
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 import itertools
 #default values
 from defaults import *
-from shuffle_students import shuffle_students
+from group_random import shuffle_students
 
 def group_students_categories(student_identifers, group_size):
     students_categories = []

@@ -24,5 +24,5 @@ def create_escaped_string_from_list(student_identifers):
     """ Return a string that lists the student identifiers """
     student_list = ""
     for student in student_identifers:
-        student_list = student_list + student + "\n"
+        student_list = student_list + str(student) + "\n"
     return student_list
