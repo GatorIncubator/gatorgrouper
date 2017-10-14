@@ -5,6 +5,8 @@ import argparse
 import itertools
 import sys
 import logging
+import grouping_method
+
 #default values
 from defaults import *
 from read_student_file import read_student_file
@@ -40,7 +42,33 @@ def parse_gatorgrouper_arguments(args):
         default=DEFAULT_STUDENT_FILE,
         required=False)
 
+    gg_parser.add_argument(
+        "--random",
+        help="Use random grouping method",
+        action="store_const", dest="grouping_method", const=grouping_method.RANDOM, default=grouping_method.RANDOM
+    )
+
+    gg_parser.add_argument(
+        "--sudoku",
+        help="Use sudoku grouping method",
+        action="store_const", dest="grouping_method", const=grouping_method.SUDOKU
+    )
+
+    gg_parser.add_argument(
+        "--round-robin",
+        help="Use round-robin grouping method",
+        action="store_const", dest="grouping_method", const=grouping_method.ROUND_ROBIN
+    )
+
+    gg_parser.add_argument(
+        "--absentees",
+        nargs="+",
+        type=str
+    )
+
     gg_arguments_finished = gg_parser.parse_args(args)
+
+    print("absentees: " + str(gg_arguments_finished.absentees))
 
     logging.basicConfig(format="%(levelname)s:%(pathname)s: %(message)s", level=gg_arguments_finished.logging_level)
 
