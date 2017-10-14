@@ -22,3 +22,12 @@ def group_students(student_identifers, group_size):
         receiving_group.append(*too_small_group)
         student_groups.remove(too_small_group)
     return student_groups
+
+
+
+def shuffle_students(student_identifers):
+    """ Shuffle the student identifiers """
+    shuffled_student_identifers = student_identifers[:]
+    shuffle(shuffled_student_identifers)
+    return shuffled_student_identifers
+
