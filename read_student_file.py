@@ -13,11 +13,11 @@ def read_student_file(filepath):
     responses = list()
     for record in csvdata:
         temp = list()
-        temp.append(record[0]) # handle identifiers separately
-        for value in record[1:]: # handle string conversions
-            if value == "1":
+        temp.append(record[0].replace('"', ''))
+        for value in record[1:]:
+            if value == "\"True\"":
                 temp.append(True)
-            elif value == "0":
+            elif value == "\"False\"":
                 temp.append(False)
         responses.append(temp)
     return responses
