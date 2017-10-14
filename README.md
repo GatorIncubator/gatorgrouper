@@ -45,6 +45,59 @@ will run GatorGrouper with this command:
 python3 gatorgrouper.py
 ```
 
+To specify the size of the groups, use the flag `---groupsize`.
+
+Example:
+
+### Grouping Methods
+
+To randomly group the students, use the flag `--random`.
+
+Example:
+
+To group students using the sudoku method, use the flag `--sudoku`.
+
+Example:
+
+To group students using the round-robin method, use the flag `--round-robin`.
+
+Example:
+
+If none of these flags are used, the groups will be generated randomly.
+
+### Absentees
+
+To indicate which students are absent so they are not grouped, use the
+flag `--absetees`.
+
+Example:
+
+If no absentees are indicated with this flag, then the program will assume that
+there are no students absent.
+
+### Specify File Containing List of Students
+
+To specify a different file other than the default `students.txt`, use the
+flag `--students-file`.
+
+Example:
+
+### Monitoring GatorGrouper
+
+To see detailed general output to monitor progress, use the flag `-v` or
+`--verbose`.
+
+Example:
+
+To see detailed technical output to diagnose problems, use the flag `-d` or
+`--debug`.
+
+Example:
+
+If none of these flags are used, logging will only be shown if an error occurs.
+
+### Sample Use of GatorGrouper
+
 Each of the previous commands were run on an Ubuntu 16.04 workstation running
 Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
 operating systems that support Python version 3.
