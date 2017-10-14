@@ -5,11 +5,11 @@ import argparse
 import itertools
 import sys
 import logging
-#default values
 from defaults import *
 
-def group_students(student_identifers, group_size):
-    iterable = iter(student_identifers)
+
+def group_students(student_identifiers, group_size):
+    iterable = iter(student_identifiers)
     # use itertools to chunk the students into groups
     student_groups = list(
         iter(lambda: list(itertools.islice(iterable, group_size)), []))

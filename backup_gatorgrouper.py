@@ -41,24 +41,24 @@ def parse_gatorgrader_arguments(args):
 
 
 def read_student_file(students_file_name):
-    """ Reads the student identifies from the specific file,
+    """ Reads the student identifiers from the specific file,
         returning the identifiers in a list """
     with open(students_file_name, 'r') as students_file:
-        student_identifers = [line.strip() for line in students_file]
-    return student_identifers
+        student_identifiers = [line.strip() for line in students_file]
+    return student_identifiers
 
 
-def display_diagnostics(student_identifers, student_groups):
+def display_diagnostics(student_identifiers, student_groups):
     """ Display information about what was generated """
     print("Successfully placed",
-          len(student_identifers), "students into",
+          len(student_identifiers), "students into",
           len(student_groups), "groups")
     print()
 
 
-def display_student_identifiers(student_identifers):
+def display_student_identifiers(student_identifiers):
     """ Display the student identifiers """
-    for student in student_identifers:
+    for student in student_identifiers:
         print(student)
 
 
@@ -72,16 +72,16 @@ def display_student_groups(student_groups):
         group_counter = group_counter + 1
 
 
-def shuffle_students(student_identifers):
+def shuffle_students(student_identifiers):
     """ Shuffle the student identifiers """
-    shuffled_student_identifers = student_identifers[:]
-    shuffle(shuffled_student_identifers)
-    return shuffled_student_identifers
+    shuffled_student_identifiers = student_identifiers[:]
+    shuffle(shuffled_student_identifiers)
+    return shuffled_student_identifiers
 
 
-def group_students(student_identifers, group_size):
+def group_students(student_identifiers, group_size):
     """ Group the student identifiers """
-    iterable = iter(student_identifers)
+    iterable = iter(student_identifiers)
     # use itertools to chunk the students into groups
     student_groups = list(
         iter(lambda: list(itertools.islice(iterable, group_size)), []))
@@ -112,22 +112,22 @@ if __name__ == '__main__':
         print(gg_arguments)
         print()
     # read in the student identifiers from the specified file
-    student_identifers = read_student_file(gg_arguments.students_file)
+    student_identifiers = read_student_file(gg_arguments.students_file)
     if gg_arguments.verbose is True:
         print("GatorGrouper will group these students:")
         print()
-        display_student_identifiers(student_identifers)
+        display_student_identifiers(student_identifiers)
         print()
     # shuffle the student identifiers
-    shuffled_student_identifers = shuffle_students(student_identifers)
+    shuffled_student_identifiers = shuffle_students(student_identifiers)
     if gg_arguments.verbose is True:
         print("GatorGrouper randomly ordered the students:")
         print()
-        display_student_identifiers(shuffled_student_identifers)
+        display_student_identifiers(shuffled_student_identifiers)
         print()
     # generate the groups and display them
-    grouped_student_identifiers = group_students(shuffled_student_identifers,
+    grouped_student_identifiers = group_students(shuffled_student_identifiers,
                                                  gg_arguments.group_size)
-    display_diagnostics(shuffled_student_identifers,
+    display_diagnostics(shuffled_student_identifiers,
                         grouped_student_identifiers)
     display_student_groups(grouped_student_identifiers)
