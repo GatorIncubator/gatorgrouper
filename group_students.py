@@ -4,7 +4,7 @@ from random import shuffle
 import argparse
 import itertools
 import sys
-#default values
+import logging
 from defaults import *
 
 
@@ -16,9 +16,9 @@ def group_students(student_identifiers, group_size):
     # merge a single student into the previous group
     last_group_index = len(student_groups) - 1
     if len(student_groups[last_group_index]) == SINGLETON_GROUP:
+        logging.info("Removing last group with only one member and placing member into previous group.")
         receiving_group = student_groups[last_group_index - 1]
         too_small_group = student_groups[last_group_index]
         receiving_group.append(*too_small_group)
         student_groups.remove(too_small_group)
     return student_groups
-
