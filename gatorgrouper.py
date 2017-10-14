@@ -6,7 +6,7 @@ import itertools
 import sys
 import logging
 # function files
-from parse_gatorgrouper_arguments import parse_gatorgrouper_arguments
+import parse_gatorgrouper_arguments
 from read_student_file import read_student_file
 from create_escaped_string_from_list import create_escaped_string_from_list
 from display_student_groups import display_student_groups
@@ -17,7 +17,7 @@ from display_welcome_message import display_welcome_message
 
 if __name__ == '__main__':
     # parse the arguments and display welcome message
-    gg_arguments = parse_gatorgrouper_arguments(sys.argv[1:])
+    gg_arguments = parse_gatorgrouper_arguments.parse_gatorgrouper_arguments(sys.argv[1:])
     display_welcome_message()
     logging.info("Configuration of GatorGrouper:")
     logging.debug(gg_arguments)

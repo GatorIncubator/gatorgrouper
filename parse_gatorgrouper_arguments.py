@@ -9,7 +9,7 @@ import logging
 from defaults import *
 from read_student_file import read_student_file
 
-def parse_gatorgrader_arguments(args):
+def parse_gatorgrouper_arguments(args):
 
     gg_parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -52,7 +52,7 @@ def check_valid_group_size(group_size, students_file_name):
     student_list = read_student_file(students_file_name)
     student_list_length = len(student_list)
     if (group_size <= 1 or group_size > student_list_length / 2): # indicates invalid group size
-        logging.error("Group size: " + group_size + "\nNumber of students: " + student_list_length + "Group size must be greater than 1 and less than or equal to half of the number of students.")
+        logging.error("Group size: " + str(group_size) + "\nNumber of students: " + str(student_list_length) + "\nGroup size must be greater than 1 and less than or equal to half of the number of students.")
         quit()
     else:
-        logging.info("Group size: " + group_size + "\nNumber of students: " + student_list_length + "Valid group size.")
+        logging.info("Group size: " + str(group_size) + "\nNumber of students: " + str(student_list_length) + "\nValid group size.")
