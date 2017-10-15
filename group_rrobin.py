@@ -1,9 +1,41 @@
 """ group using round robin approach"""
 
-from defaults import *
-from group_random import shuffle_students
+import logging
+from random import shuffle
+from itertools import cycle
+
 
 def group_rrobin(responses, grpsize):
     """ group responses using round robin approach """
-    groups = list()
+
+    # setup target groups
+    groups = list() # // integer div
+    numgrps = len(responses) // grpsize
+    logging.info("target groups: " + numgrps)
+    for _ in range(numgrps):
+        groups.append(list())
+
+    # setup cyclical group target
+    indices = list(range(0, numgrps))
+    target_group = cycle(indices)
+
+    # randomize the order in which the columns will be drained
+    columns = list()
+    for col in range(1, len(responses[0])):
+        columns.append(col)
+    shuffle(columns)
+    logging.info("column priority: " + columns)
+
+    # iterate through the response columns
+    for col in columns:
+        for response in responses:
+            if response[col] is True:
+                groups[target_group.__next__()].append(response)
+                responses.remove(response)
+
+    # disperse anyone not already grouped
+    while responses:
+        groups[target_group.__next__()].append(responses[0])
+        responses.remove(responses[0])
+
     return groups
