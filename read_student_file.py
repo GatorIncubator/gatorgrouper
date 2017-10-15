@@ -15,9 +15,9 @@ def read_student_file(filepath):
         temp = list()
         temp.append(record[0].replace('"', ''))
         for value in record[1:]:
-            if value == "\"True\"":
+            if value == "True":
                 temp.append(True)
-            elif value == "\"False\"":
+            elif value == "False":
                 temp.append(False)
         responses.append(temp)
     return responses

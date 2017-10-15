@@ -7,7 +7,7 @@ def display_student_groups(student_groups):
     for student_group in student_groups:
         print("Group", group_counter)
         for student in student_group:
-            print(student)
+            print(student[0])
         print()
         group_counter = group_counter + 1
 
