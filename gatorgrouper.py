@@ -33,9 +33,15 @@ if __name__ == '__main__':
     logging.info("\n" + create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
 
     # generate the groups and display them
-    # FIXME >> needs to call different grouping functions depending on arguments
-    GROUPED_STUDENT_IDENTIFIERS = group_random(
-        SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
+    if GG_ARGUMENTS.grouping_method == "rrobin":
+        GROUPED_STUDENT_IDENTIFIERS = group_rrobin(
+            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
+    elif GG_ARGUMENTS.grouping_method == "sudoku":
+        GROUPED_STUDENT_IDENTIFIERS = group_sudoku(
+            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
+    else: # default to random method
+        GROUPED_STUDENT_IDENTIFIERS = group_random(
+            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
 
     # report grouping results
     COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)

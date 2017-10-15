@@ -2,7 +2,6 @@
 
 import argparse
 import logging
-import grouping_method
 
 from defaults import DEFAULT_CSVFILE
 from defaults import DEFAULT_GRPSIZE
@@ -44,20 +43,19 @@ def parse_arguments(args):
     gg_parser.add_argument(
         "--random",
         help="Use random grouping method",
-        action="store_const", dest="grouping_method",
-        const=grouping_method.RANDOM, default=grouping_method.RANDOM
+        action="store_const", dest="grouping_method", const="random"
     )
 
     gg_parser.add_argument(
         "--sudoku",
         help="Use sudoku grouping method",
-        action="store_const", dest="grouping_method", const=grouping_method.SUDOKU
+        action="store_const", dest="grouping_method", const="sudoku"
     )
 
     gg_parser.add_argument(
         "--round-robin",
         help="Use round-robin grouping method",
-        action="store_const", dest="grouping_method", const=grouping_method.ROUND_ROBIN
+        action="store_const", dest="grouping_method", const="rrobin"
     )
 
     gg_parser.add_argument(
