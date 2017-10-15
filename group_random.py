@@ -27,7 +27,11 @@ def group_random(responses, grpsize):
                 outliers = outliers[1:]
             else:
                 break
-    score_groups(groups, grpsize)
+    scores = []
+    ave = 0
+    scores, ave = score_groups(groups)
+    print(scores)
+    print(ave)
     return groups
 
 
