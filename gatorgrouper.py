@@ -5,6 +5,12 @@ import logging
 
 import parse_arguments
 from read_student_file import read_student_file
+<<<<<<< HEAD
+from group_random import *
+from display import *
+from group_rrobin import group_rrobin
+from group_scoring import *
+=======
 from display import display_welcome_message
 from display import display_student_groups
 from display import create_escaped_string_from_list
@@ -12,6 +18,7 @@ from group_random import shuffle_students
 from group_random import group_random
 from group_rrobin import group_rrobin
 from group_sudoku import group_sudoku
+>>>>>>> 14b5b68371245192438b3de0f7aa19e67f14609e
 
 
 if __name__ == '__main__':
@@ -33,6 +40,11 @@ if __name__ == '__main__':
     logging.info("\n" + create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
 
     # generate the groups and display them
+<<<<<<< HEAD
+    grouped_student_identifiers = group_random(shuffled_student_identifers,
+                                                 gg_arguments.group_size)
+    logging.info("Successfully placed " + str(len(shuffled_student_identifers)) + " students into " + str(len(grouped_student_identifiers)) + " groups")
+=======
     # FIXME >> needs to call different grouping functions depending on arguments
     GROUPED_STUDENT_IDENTIFIERS = group_random(
         SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
@@ -42,6 +54,7 @@ if __name__ == '__main__':
     COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
     logging.info("Successfully placed " + str(COUNT_STUDENTS) +
                  " students into " +str(COUNT_GROUPS) + " groups")
+>>>>>>> 14b5b68371245192438b3de0f7aa19e67f14609e
 
     # report generated groups
     display_student_groups(GROUPED_STUDENT_IDENTIFIERS)

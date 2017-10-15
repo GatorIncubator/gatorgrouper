@@ -1,44 +1,34 @@
 """ score groups by approximate level of diversity """
 
-import itertools
-from defaults import *
-from shuffle_students import shuffle_students
+from group_random import *
 
 def score_group(student_identifers, group_size):
     """ score single group """
-
-    students_categories = []
+    score = 0
     for student in student_identifers:
-        students_categories.append(student.split(',')[1:])
-    #print(students_categories)
-
-    iterable = iter(student_identifers)
-    student_groups = list(
-        iter(lambda: list(itertools.islice(iterable, group_size)), []))
-    last_group_index = len(student_groups) - 1
-    if len(student_groups[last_group_index]) == SINGLETON_GROUP:
-        receiving_group = student_groups[last_group_index - 1]
-        too_small_group = student_groups[last_group_index]
-        receiving_group.append(*too_small_group)
-        student_groups.remove(too_small_group)
-
-    good = 0
-    for group in student_groups:
-        score = 0
-        for student in group:
-            score += int(student.split(',')[1])
-        print(score)
+        for category in range(len(str(student).split(',')[1:])):
+            print(student[category+1])
+            if("True" in student[category+1]):
+                score += 1
         print()
-        if score == 0:
-            group_students_categories(shuffle_students(student_identifers), group_size)
-        if score >= group_size/2:
-            good += 1
-    print(good)
-    print(student_groups)
-    print()
-    if good < (len(student_groups) * .5):
-        group_students_categories(shuffle_students(student_identifers), group_size)
-    return student_groups
+    print(score)
+    return score
 
-def score_groups():
+def score_groups(student_groups, group_size):
     """ score multiple groups """
+    scores = []
+    for group in student_groups:
+        scores.append(score_group(group, group_size))
+    if(0 in scores):
+        print("Students not well distributed")
+        print(scores.index(max(scores)))
+        temp = max(student_groups[scores.index(max(scores))])
+        lowest = min(student_groups[scores.index(min(scores))])
+		
+        student_groups[scores.index(max(scores))].insert(scores.index(max(scores)), lowest)
+        student_groups[scores.index(max(scores))].remove(temp)
+		
+        student_groups[scores.index(min(scores))].insert(scores.index(min(scores)), temp)
+        student_groups[scores.index(min(scores))].remove(lowest)
+        score_groups(student_groups, group_size)
+	

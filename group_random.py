@@ -5,6 +5,7 @@ import logging
 import itertools
 from random import shuffle
 
+from group_scoring import *
 
 def group_random(responses, grpsize):
     """ group responses using randomization approach """
@@ -25,6 +26,7 @@ def group_random(responses, grpsize):
                 outliers = outliers[1:]
             else:
                 break
+    score_groups(groups, grpsize)
     return groups
 
 
