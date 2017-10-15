@@ -7,6 +7,7 @@ from random import shuffle
 
 from group_scoring import score_groups
 
+
 def group_random(responses, grpsize):
     """ group responses using randomization approach """
     # use itertools to chunk the students into groups
