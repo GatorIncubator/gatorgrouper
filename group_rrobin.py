@@ -11,7 +11,7 @@ def group_rrobin(responses, grpsize):
     # setup target groups
     groups = list() # // integer div
     numgrps = len(responses) // grpsize
-    logging.info("target groups: " + numgrps)
+    logging.info("target groups: " + str(numgrps))
     for _ in range(numgrps):
         groups.append(list())
 
@@ -24,7 +24,7 @@ def group_rrobin(responses, grpsize):
     for col in range(1, len(responses[0])):
         columns.append(col)
     shuffle(columns)
-    logging.info("column priority: " + columns)
+    logging.info("column priority: " + str(columns))
 
     # iterate through the response columns
     for col in columns:
