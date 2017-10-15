@@ -21,12 +21,13 @@ def group_random(responses, grpsize):
         lastgroup = groups[last_group_index]
         outliers = copy.deepcopy(lastgroup)
         groups.remove(lastgroup)
-        for group in groups:
-            if outliers:
-                group.append(outliers[0])
-                outliers = outliers[1:]
-            else:
-                break
+        while outliers:
+            for group in groups:
+                if outliers:
+                    group.append(outliers[0])
+                    outliers = outliers[1:]
+                else:
+                    break
     # score_groups(groups, grpsize)
     return groups
 
