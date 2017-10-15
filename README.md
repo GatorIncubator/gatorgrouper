@@ -49,8 +49,11 @@ python3 gatorgrouper.py
 
 To specify the size of the groups, use the flag `---groupsize`.
 
-Example: $ python3 gatorgrouper.py --group-size 3 
-indicates that groups should each contain 3 members. 
+Example:
+```
+$ python3 gatorgrouper.py --group-size 3
+```
+This indicates that groups should each contain 3 members. 
 
 The group size should be greater than 1 and equal to or less than 
 half the total number of students. If the --group-size is not 
@@ -60,8 +63,11 @@ specified, the default group size is 2.
 
 To randomly group the students, use the flag `--random`.
 
-Example: $ python3 gatorgrouper.py --random 
-will randomly group the list of students you have provided.
+Example:
+```
+$ python3 gatorgrouper.py --random
+```
+This will randomly group the list of students you have provided.
 
 To group students using the sudoku method, use the flag `--sudoku`.
 
@@ -79,12 +85,14 @@ To indicate which students are absent so they are not grouped, use the
 flag `--absetees`.
 
 Example: The list can be written in the following ways:
+```
 $ python3 gatorgrouper.py --absentees student1, student2
 $ python3 gatorgrouper.py --absentees 'student1', 'student2'
 $ python3 gatorgrouper.py --absentees "student1", "student2"
 $ python3 gatorgrouper.py --absentees student1 student2
 $ python3 gatorgrouper.py --absentees 'student1' 'student2'
 $ python3 gatorgrouper.py --absentees "student1" "student2"
+```
 
 If no absentees are indicated with this flag, then the program will assume that
 there are no students absent.
