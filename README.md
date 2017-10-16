@@ -158,10 +158,17 @@ To see detailed general output to monitor progress, use the flag `-v` or
 
 Example:
 
+```
+$ python3 gatorgrouper.py --verbose
+```
 To see detailed technical output to diagnose problems, use the flag `-d` or
 `--debug`.
 
 Example:
+
+```
+$ python3 gatorgrouper.py --debug
+```
 
 If none of these flags are used, logging will only be shown if an error occurs.
 
