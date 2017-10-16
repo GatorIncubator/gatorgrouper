@@ -10,12 +10,15 @@ from group_scoring import score_groups
 
 def group_random(responses, grpsize):
     """ group responses using randomization approach """
+
     # use itertools to chunk the students into groups
     iterable = iter(responses)
     groups = list(iter(lambda: list(itertools.islice(iterable, grpsize)), []))
+
     # deal with the last, potentially partial group
     last_group_index = len(groups) - 1
     if len(groups[last_group_index]) < grpsize:
+
         # distribute them throughout the other groups
         logging.info("Partial group identified; distributing across other groups.")
         lastgroup = groups[last_group_index]
@@ -28,6 +31,8 @@ def group_random(responses, grpsize):
                     outliers = outliers[1:]
                 else:
                     break
+
+    # scoring and return
     scores, ave = [], 0
     scores, ave = score_groups(groups)
     logging.info("scores: " + str(scores))

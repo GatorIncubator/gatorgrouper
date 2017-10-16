@@ -3,6 +3,7 @@
 import logging
 from random import shuffle
 from itertools import cycle
+from group_scoring import score_groups
 
 
 def group_rrobin(responses, grpsize):
@@ -38,4 +39,9 @@ def group_rrobin(responses, grpsize):
         groups[target_group.__next__()].append(responses[0])
         responses.remove(responses[0])
 
+    # scoring and return
+    scores, ave = [], 0
+    scores, ave = score_groups(groups)
+    logging.info("scores: " + str(scores))
+    logging.info("average: " + str(ave))
     return groups
