@@ -1,1 +1,6 @@
-{}
+{
+  "JC_Test.py::test_parse_gatorgrouper_arguments1": true,
+  "JC_Test.py::test_parse_gatorgrouper_arguments2": true,
+  "JC_Test.py::test_parse_gatorgrouper_arguments3": true,
+  "JC_Test.py::test_parse_gatorgrouper_arguments4": true
+}
