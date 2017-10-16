@@ -56,7 +56,7 @@ Open the .json file in the GatorGrouper repository and find the "client-email".
 Copy the quoted text that looks like an email address.  Return to the Sheet and
 open the sharing options.  Paste the address and click send.  Alternatively, if
 you would like to create your own service account for confidentiality and
-security, follow the tutorial found at [article](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
+security, follow the tutorial found at [www.twolio.com](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 to create a personal service account.
 
 Within `spreadsheet.py`, find `sheet = client.open("Compsci280 Lab4 Survey
