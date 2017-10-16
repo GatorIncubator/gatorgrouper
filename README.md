@@ -13,8 +13,10 @@ As a Python 3 program, GatorGrouper relies on
 that all of the dependencies are installed correctly, please type
 the following commands before running GatorGrouper.
 
-- `pip install --upgrade pip`
-- `pip install -r requirements.txt`
+```
+$ pip install --upgrade pip
+$ pip install -r requirements.txt
+```
 
 Note that you may have Python 3 setup in different ways on your computer. For
 instance, you may prefer to install GatorGrouper's dependencies in a site-wide
