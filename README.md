@@ -63,6 +63,8 @@ specified, the default group size is 2.
 
 ### Grouping Methods
 
+#### Random Method
+
 To randomly group the students, use the flag `--random`.
 
 Example:
@@ -72,6 +74,8 @@ $ python3 gatorgrouper.py --random
 ```
 
 This will randomly group the list of students you have provided.
+
+#### Round-robin Method
 
 To group students using the round-robin method, use the flag `--round-robin`.
 
