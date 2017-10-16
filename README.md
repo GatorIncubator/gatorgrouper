@@ -40,7 +40,7 @@ Ensure that you have installed gspread and oauth2client installed in the root
 directory of the repository.  In the terminal use the command:
 
 ```
-python3 -m pip install --user gspread oauth2client
+$ python3 -m pip install --user gspread oauth2client
 ```
 
 Create a Google Sheets spreadsheet and a Google Form in Google Drive.  In the
@@ -71,7 +71,7 @@ file called `students.txt` and creating groups of two students means that you
 will run GatorGrouper with this command:
 
 ```
-python3 gatorgrouper.py
+$ python3 gatorgrouper.py
 ```
 
 ### Group Size
