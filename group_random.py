@@ -31,7 +31,7 @@ def group_random(responses, grpsize):
     scores, ave = [], 0
     scores, ave = score_groups(groups)
     logging.info("scores: " + str(scores))
-    loggin.info("average: " + str(ave))
+    logging.info("average: " + str(ave))
     return groups
 
 
