@@ -11,7 +11,6 @@ from display import create_escaped_string_from_list
 from group_random import shuffle_students
 from group_random import group_random
 from group_rrobin import group_rrobin
-from group_sudoku import group_sudoku
 
 
 if __name__ == '__main__':
@@ -35,9 +34,6 @@ if __name__ == '__main__':
     # generate the groups and display them
     if GG_ARGUMENTS.grouping_method == "rrobin":
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin(
-            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
-    elif GG_ARGUMENTS.grouping_method == "sudoku":
-        GROUPED_STUDENT_IDENTIFIERS = group_sudoku(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
     else: # default to random method
         GROUPED_STUDENT_IDENTIFIERS = group_random(

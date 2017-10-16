@@ -47,12 +47,6 @@ def parse_arguments(args):
     )
 
     gg_parser.add_argument(
-        "--sudoku",
-        help="Use sudoku grouping method",
-        action="store_const", dest="grouping_method", const="sudoku"
-    )
-
-    gg_parser.add_argument(
         "--round-robin",
         help="Use round-robin grouping method",
         action="store_const", dest="grouping_method", const="rrobin"
