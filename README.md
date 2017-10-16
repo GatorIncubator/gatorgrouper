@@ -73,10 +73,6 @@ $ python3 gatorgrouper.py --random
 
 This will randomly group the list of students you have provided.
 
-To group students using the sudoku method, use the flag `--sudoku`.
-
-Example:
-
 To group students using the round-robin method, use the flag `--round-robin`.
 
 Example:
