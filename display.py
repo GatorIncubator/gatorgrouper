@@ -11,7 +11,7 @@ def display_student_groups(student_groups):
         print("Group", group_counter)
         for student in student_group:
             place_counter += 1
-            print(student)
+            print(student[0])
         print()
         group_counter = group_counter + 1
     logging.info("Found " + str(place_counter) + " students")

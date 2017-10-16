@@ -5,29 +5,19 @@ def score_group(student_identifers):
     """ score single group """
     score = 0
     for student in student_identifers:
-        for category in range(len(str(student).split(',')[1:])):
-            print(student[category+1])
-            if "True" in student[category+1]:
+        for category in range(len(student[1:])):
+            if student[category+1] == True:
                 score += 1
-        print()
-    print(score)
     return score
 
 
-def score_groups(student_groups, group_size):
+def score_groups(student_groups):
     """ score multiple groups """
     scores = []
+    ave = 0
     for group in student_groups:
         scores.append(score_group(group))
-    if 0 in scores:
-        print("Students not well distributed")
-        print(scores.index(max(scores)))
-        temp = max(student_groups[scores.index(max(scores))])
-        lowest = min(student_groups[scores.index(min(scores))])
-
-        student_groups[scores.index(max(scores))].insert(scores.index(max(scores)), lowest)
-        student_groups[scores.index(max(scores))].remove(temp)
-
-        student_groups[scores.index(min(scores))].insert(scores.index(min(scores)), temp)
-        student_groups[scores.index(min(scores))].remove(lowest)
-        score_groups(student_groups, group_size)
+        ave += score_group(group)
+    ave = int(ave/len(student_groups))
+	#returns the scores of each group as well as the average score
+    return scores, ave
