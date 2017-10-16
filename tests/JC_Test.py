@@ -5,7 +5,7 @@ import grouping_method
 import defaults
 import gatorgrouper
 
-def test_parse_gatorgrouper_arguments1(args):
+def test_parse_gatorgrouper_arguments1():
     args = []
     parsed_args = parse_gatorgrouper_arguments(args)
     assert parsed_args.logging_level == logging.ERROR
@@ -14,20 +14,20 @@ def test_parse_gatorgrouper_arguments1(args):
     assert parsed_args.grouping_method == grouping_method.RANDOM
     assert parsed_args.absentees == No
 
-def test_parse_gatorgrouper_arguments2(args):
+def test_parse_gatorgrouper_arguments2():
     args = ['--debug', '--students-file', 'students.csv', '--random']
     parsed_args = parse_gatorgrouper_arguments(args)
     assert parsed_args.logging_level == logging.DEBUG
     assert parsed_args.students_file == 'students.csv'
     assert parsed_args.grouping_method == grouping_method.RANDOM
 
-def test_parse_gatorgrouper_arguments3(args):
+def test_parse_gatorgrouper_arguments3():
     args = ['--verbose', '--sudoku']
     parsed_args = parse_gatorgrouper_arguments(args)
     assert parsed_args.logging_level == logging.INFO
     assert parsed_args.grouping_method == grouping_method.SUDOKU
 
-def test_parse_gatorgrouper_arguments4(args):
+def test_parse_gatorgrouper_arguments4():
     args = ['--absentees', 'maria', '--round-robin', '--group-size', '3']
     parsed_args = parse_gatorgrouper_arguments(args)
     assert parsed_args.group_size == 3
