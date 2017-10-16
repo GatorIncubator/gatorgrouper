@@ -1,3 +1,10 @@
+
+import pytest
+import logging
+import grouping_method
+import defaults
+import gatorgrouper
+
 def test_parse_gatorgrouper_arguments1(args):
     args = []
     parsed_args = parse_gatorgrouper_arguments(args)
@@ -27,8 +34,8 @@ def test_parse_gatorgrouper_arguments4(args):
     assert parsed_args.grouping_method == grouping_method.ROUND_ROBIN
     assert parsed_args.absentees == ['maria']
 
-def test_display_diagnostics(student_identifers, student_groups):
-    student_identifers = len(student_identifers)
-    student_groups = len(student_groups)
-    assert  student_identifers == len(student_identifers)
-    assert  student_groups == len(student_groups)
+# def test_display_diagnostics(student_identifers, student_groups):
+#     student_identifers = len(student_identifers)
+#     student_groups = len(student_groups)
+#     assert  student_identifers == len(student_identifers)
+#     assert  student_groups == len(student_groups)
