@@ -15,7 +15,6 @@ the following commands before running GatorGrouper.
 
 - `pip install --upgrade pip`
 - `pip install -r requirements.txt`
-- `pip install pytest-flake8`
 
 Note that you may have Python 3 setup in different ways on your computer. For
 instance, you may prefer to install GatorGrouper's dependencies in a site-wide
