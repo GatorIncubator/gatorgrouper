@@ -1,41 +1,52 @@
 """ GatorGrouper randomly assigns a list of students to groups """
 
-from random import shuffle
-import argparse
-import itertools
 import sys
 import logging
 
-import parse_gatorgrouper_arguments
+import parse_arguments
 from read_student_file import read_student_file
-from create_escaped_string_from_list import create_escaped_string_from_list
-from display_student_groups import display_student_groups
-from shuffle_students import shuffle_students
-from group_students import *
-from display_welcome_message import display_welcome_message
+from remove_absent_students import remove_absent_students
+from display import display_welcome_message
+from display import display_student_groups
+from display import create_escaped_string_from_list
+from group_random import shuffle_students
+from group_random import group_random
+from group_rrobin import group_rrobin
 
 
 if __name__ == '__main__':
+
     # parse the arguments and display welcome message
-    gg_arguments = parse_gatorgrouper_arguments.parse_gatorgrouper_arguments(sys.argv[1:])
+    GG_ARGUMENTS = parse_arguments.parse_arguments(sys.argv[1:])
     display_welcome_message()
     logging.info("Configuration of GatorGrouper:")
-    logging.debug(gg_arguments)
+    logging.debug(GG_ARGUMENTS)
 
     # read in the student identifiers from the specified file
-    student_identifiers = read_student_file(gg_arguments.students_file)
+    STUDENT_IDENTIFIERS = remove_absent_students(
+        GG_ARGUMENTS.absentees,
+        read_student_file(GG_ARGUMENTS.students_file))
     logging.info("GatorGrouper will group these students:")
-    logging.info("\n" + create_escaped_string_from_list(student_identifiers))
+    logging.info("\n" + create_escaped_string_from_list(STUDENT_IDENTIFIERS))
 
     # shuffle the student identifiers
-    shuffled_student_identifiers = shuffle_students(student_identifiers)
+    SHUFFLED_STUDENT_IDENTIFIERS = shuffle_students(STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
-    logging.info("\n" + create_escaped_string_from_list(shuffled_student_identifiers))
+    logging.info("\n" + create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
 
     # generate the groups and display them
-    grouped_student_identifiers = group_students(shuffled_student_identifiers,
-                                                 gg_arguments.group_size)
+    if GG_ARGUMENTS.grouping_method == "rrobin":
+        GROUPED_STUDENT_IDENTIFIERS = group_rrobin(
+            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
+    else: # default to random method
+        GROUPED_STUDENT_IDENTIFIERS = group_random(
+            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
 
-    logging.info("Successfully placed " + str(len(shuffled_student_identifiers)) + " students into " + str(len(grouped_student_identifiers)) + " groups")
+    # report grouping results
+    COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
+    COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
+    logging.info("Successfully placed " + str(COUNT_STUDENTS) +
+                 " students into " +str(COUNT_GROUPS) + " groups")
 
-    display_student_groups(grouped_student_identifiers)
+    # report generated groups
+    display_student_groups(GROUPED_STUDENT_IDENTIFIERS)
