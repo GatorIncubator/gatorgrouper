@@ -1,15 +1,20 @@
 """ Various display functions """
 
+import logging
+
 
 def display_student_groups(student_groups):
     """ Display the student groups with labels """
     group_counter = 1
+    place_counter = 0
     for student_group in student_groups:
         print("Group", group_counter)
         for student in student_group:
+            place_counter += 1
             print(student[0])
         print()
         group_counter = group_counter + 1
+    logging.info("Found " + str(place_counter) + " students")
 
 
 def display_welcome_message():
