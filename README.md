@@ -52,7 +52,7 @@ either create a new Sheet or link to a preexisting one.  If you need to change
 the destination, you can click on the three dot icon menu to the right of the
 green icon and select "Select response destination".
 
-Open the .json file in the GatorGrouper repository and find the "client-email".
+Open the `.json` file in the GatorGrouper repository and find the `"client-email"`.
 Copy the quoted text that looks like an email address.  Return to the Sheet and
 open the sharing options.  Paste the address and click send.  Alternatively, if
 you would like to create your own service account for confidentiality and
