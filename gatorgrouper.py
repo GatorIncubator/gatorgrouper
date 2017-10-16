@@ -5,6 +5,7 @@ import logging
 
 import parse_arguments
 from read_student_file import read_student_file
+from remove_absent_students import remove_absent_students
 from display import display_welcome_message
 from display import display_student_groups
 from display import create_escaped_string_from_list
@@ -22,12 +23,14 @@ if __name__ == '__main__':
     logging.debug(GG_ARGUMENTS)
 
     # read in the student identifiers from the specified file
-    STUDENT_IDENTIFERS = read_student_file(GG_ARGUMENTS.students_file)
+    STUDENT_IDENTIFIERS = remove_absent_students(
+        GG_ARGUMENTS.absentees,
+        read_student_file(GG_ARGUMENTS.students_file))
     logging.info("GatorGrouper will group these students:")
-    logging.info("\n" + create_escaped_string_from_list(STUDENT_IDENTIFERS))
+    logging.info("\n" + create_escaped_string_from_list(STUDENT_IDENTIFIERS))
 
     # shuffle the student identifiers
-    SHUFFLED_STUDENT_IDENTIFIERS = shuffle_students(STUDENT_IDENTIFERS)
+    SHUFFLED_STUDENT_IDENTIFIERS = shuffle_students(STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
     logging.info("\n" + create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
 

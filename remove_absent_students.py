@@ -1,9 +1,4 @@
 """Remove missing students from group assignment"""
-#from random import shuffle
-#import itertools
-#import argparse
-#import sys
-#function files
 
 def remove_absent_students(absentee_list, list_of_student_lists):
     """Remove missing students before group assignment"""
