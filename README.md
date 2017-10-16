@@ -56,3 +56,20 @@ create an issue associated with this Git repository using the "Issues" link at
 the top of this site. The contributors to GatorGrouper will do all that they can
 to resolve your issue and ensure that the entire tool works well in your
 teaching and development environment.
+
+## Specifying 
+The specification of the file indicates that the number of memebers in each 
+group should contain is greather than one, and equal to or less than half of
+the total number of students. If it is the case where the group size is not 
+specified, than it refers to the default group size of two. An example of this
+would be.. '$ python3 gatorgrouper.py --group-size 3', which would show that 
+each group should contain three members Likely, 
+'$ python3 gator grouper.py --group-size 10', would indicate ten members in 
+each group.
+
+## Round Robin 
+The round robin method is used when specified in the command lines. The user 
+will input '$ python3 gatorgrouper.py --round-robin' to group the students this
+way. The round robin method groups the students by going through each group and
+adding one student at a time until there are no more students left. For example,
+if there are 3 groups and 12 students, each group would contain 4 students.
