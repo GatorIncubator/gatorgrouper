@@ -6,7 +6,7 @@ import itertools
 import sys
 
 
-def display_student_groups(student_groups):   
+def display_student_groups(student_groups):
     group_counter = 1
     for student_group in student_groups:
         print("Group", group_counter)
