@@ -110,7 +110,9 @@ To group students using the round-robin method, use the flag `--round-robin`.
 
 Example:
 
-`$ python3 gatorgrouper.py --round-robin`
+```
+$ python3 gatorgrouper.py --round-robin
+```
 
 The round robin method groups the students by going through each group and
 adding one student at a time until there are no more students left. For example,
@@ -161,6 +163,7 @@ Example:
 ```
 $ python3 gatorgrouper.py --verbose
 ```
+
 To see detailed technical output to diagnose problems, use the flag `-d` or
 `--debug`.
 
