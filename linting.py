@@ -1,7 +1,7 @@
 """
 run with `pytest linting.py`
-This will get moved to the test suite when it is completed.
-Requires
+This will get moved to the test suite when that is completed.
+Requires `pip install pytest-flake8` in order to run.
 """
 
 import pytest
@@ -19,6 +19,6 @@ def test_flake8():
         pyFiles = glob.glob(root+"/*.py")
         filenames.extend(pyFiles)
 
-    style_guide = flake8.get_style_guide(ignore=['E24', 'W503'])
+    style_guide = flake8.get_style_guide(ignore=[])
     report = style_guide.check_files(filenames)
     assert report.get_statistics('E') == [], 'Flake8 found violations'
