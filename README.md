@@ -90,7 +90,7 @@ flag `--absetees`.
 
 Example:
 
-The list can be written in the following ways:
+The arguments can be entered in the following ways:
 
 ```
 $ python3 gatorgrouper.py --absentees student1, student2
