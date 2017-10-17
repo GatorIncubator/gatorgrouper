@@ -213,7 +213,6 @@ operating systems that support Python version 3.
 
 ## Testing Documentation
 
-
 ### Functions
 
 The test suite is designed to test the different functions of gatorgrouper.py.
@@ -231,7 +230,6 @@ Test suites for the gatorgrouper.py module
 run with `pytest test_gatorgrouper.py from the gatorgrouper/tests directory`
 Requires `pip3 install pytest-flake8` in order to run.
 
-
 `pip3 install pytest-flake8`
 
 Linting:
@@ -244,7 +242,12 @@ To run the tool, type the following into the main directory.
 
 `autopep8 --in-place --aggressive --aggressive *.py`
 
+If there are any linting issues that were not fixed by the tool, the error
+message from the test suite will direct you to where the issue is and tell you
+what it is in order for you to fix it.
+
 ## Tox Testing Tool
+
 The tox testing tool was not sucessfully implemented due to time contraints, so
 GatorGrouper is only confirmed to run in Python 3.5.
 
