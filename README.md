@@ -189,7 +189,7 @@ $ python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
 GatorGrouper: Automatically Assign Students to Groups
 https://github.com/gkapfham/gatorgrouper
 
-Successfully placed 7 students into 3 groups
+Successfully placed 9 students into 3 groups
 
 Group 1
 smithj
