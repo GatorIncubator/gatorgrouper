@@ -1,0 +1,27 @@
+language: python
+python:
+  - "3.5"
+
+cache:
+  directories:
+    - $HOME/.pip-cache/
+# install mdl for checking Markdown
+before_install:
+  - gem install mdl
+notifications:
+  email: never
+
+install:
+  - pip install --upgrade pip
+  - python3 -m pip install -r requirements.txt
+  - pip3 install pytest-flake8
+  - pip3 install pytest-cov
+script:
+  - pytest /tests
+  - mdl README.md
+  - coverage run --source tests -m py.test 
+  - coverage report 
+
+after_success:
+  coveralls
+
