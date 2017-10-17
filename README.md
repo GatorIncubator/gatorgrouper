@@ -13,8 +13,10 @@ As a Python 3 program, GatorGrouper relies on
 that all of the dependencies are installed correctly, please type
 the following commands before running GatorGrouper.
 
-- `pip install --upgrade pip`
-- `pip install -r requirements.txt`
+```
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
 Note that you may have Python 3 setup in different ways on your computer. For
 instance, you may prefer to install GatorGrouper's dependencies in a site-wide
@@ -34,6 +36,35 @@ Interested in learning more about the basics of virtual environments in Python
 [article](http://www.cs.allegheny.edu/sites/gkapfham/programming/research/idea/2017/07/14/Virtual-Environments/)
 to further develop your understanding of this topic.
 
+## Initial Setup of GatorGrouper
+
+Ensure that you have installed gspread and oauth2client installed in the root
+directory of the repository.  In the terminal use the command:
+
+```
+python3 -m pip install --user gspread oauth2client
+```
+
+Create a Google Sheets spreadsheet and a Google Form in Google Drive.  In the
+Form, create yes or no questions to measure the capabilities and skills of the
+students that you wish to group.  After you have at least one submission of the
+Form, you can go to the responses tab and click on the green icon with the white
+cross through it.  This will enable you to link the Sheet to the Form.  You can
+either create a new Sheet or link to a preexisting one.  If you need to change
+the destination, you can click on the three dot icon menu to the right of the
+green icon and select "Select response destination".
+
+Open the `.json` file in the `gatorgrouper` repository and find the `"client-email"`.
+Copy the quoted text that looks like an email address.  Return to the Sheet and
+open the sharing options.  Paste the address and click send.  Alternatively, if
+you would like to create your own service account for confidentiality and
+security, follow the tutorial found at [www.twolio.com](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
+to create a personal service account.
+
+Within `spreadsheet.py`, find `sheet = client.open("Compsci280 Lab4 Survey
+Results").sheet1` and change `"Compsci280 Lab4 Survey Results"` to the name of
+your Sheet.
+
 ## Running GatorGrouper
 
 GatorGrouper accepts command line arguments and then generates output in your
@@ -45,9 +76,156 @@ will run GatorGrouper with this command:
 python3 gatorgrouper.py
 ```
 
+### Group Size
+
+To specify the size of the groups, use the flag `---groupsize`.
+
+Example:
+
+```
+python3 gatorgrouper.py --group-size 3
+```
+
+This indicates that groups should each contain 3 members.
+
+The group size should be greater than 1 and equal to or less than
+half the total number of students. If the group size is not
+specified, the default group size is 2.
+
+### Grouping Methods
+
+#### Random Method
+
+To randomly group the students, use the flag `--random`.
+
+Example:
+
+```
+python3 gatorgrouper.py --random
+```
+
+This will randomly group the list of students you have provided.
+
+#### Round-robin Method
+
+To group students using the round-robin method, use the flag `--round-robin`.
+
+Example:
+
+```
+python3 gatorgrouper.py --round-robin
+```
+
+The round-robin method takes the responses from the Sheet into account when
+sorting students into groups.  The yes and no responses from the Sheet are
+represented as true and false.  Round-robin randomizes the categories and
+assigns a student, one at a time, to each group by using the first value
+indicated as true.  When all of the students with true values are assigned,
+it goes back and adds a student to each group until there are no students
+remaining.
+
+If none of these flags are used, the groups will be generated randomly.
+
+### Absentees
+
+To indicate which students are absent so they are not grouped, use the
+flag `--absentees`.
+
+Example:
+
+The arguments can be entered in the following ways:
+
+```
+python3 gatorgrouper.py --absentees student1, student2
+python3 gatorgrouper.py --absentees 'student1', 'student2'
+python3 gatorgrouper.py --absentees "student1", "student2"
+python3 gatorgrouper.py --absentees student1 student2
+python3 gatorgrouper.py --absentees 'student1' 'student2'
+python3 gatorgrouper.py --absentees "student1" "student2"
+```
+
+If no absentees are indicated with this flag, then the program will assume that
+there are no students absent.
+
+### Specify File Containing List of Students
+
+To specify a different file other than the default `students.txt`, use the
+flag `--students-file`.
+
+Example:
+
+```
+python3 gatorgrouper.py --students-file "students_list.txt"
+python3 gatorgrouper.py --students-file students_list.txt
+```
+
+### Monitoring GatorGrouper
+
+To see detailed general output to monitor progress, use the flag `-v` or
+`--verbose`.
+
+Example:
+
+```
+python3 gatorgrouper.py --verbose
+```
+
+To see detailed technical output to diagnose problems, use the flag `-d` or
+`--debug`.
+
+Example:
+
+```
+python3 gatorgrouper.py --debug
+```
+
+If none of these flags are used, logging will only be shown if an error occurs.
+
+### Sample Use of GatorGrouper
+
+```
+$ python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
+
+GatorGrouper: Automatically Assign Students to Groups
+https://github.com/gkapfham/gatorgrouper
+
+Successfully placed 9 students into 3 groups
+
+Group 1
+smithj
+robertss
+johnsont
+
+Group 2
+peggys
+stevensons
+ronp
+
+Group 3
+georgeh
+youngr
+harrisonf
+```
+
 Each of the previous commands were run on an Ubuntu 16.04 workstation running
 Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
 operating systems that support Python version 3.
+
+## Testing Documentation
+
+Test Suite:
+
+`pip3 install pytest-flake8`
+
+Linting:
+
+For any future issues with linting, you can install an autolinting tool with:
+
+`pip3 install autopep8`
+
+To run the tool, type the following into the main directory.
+
+`autopep8 --in-place --aggressive --aggressive \*.py`
 
 ## Tox Testing Tool
 The tox testing tool was not sucessfully implemented due to time contraints, so
