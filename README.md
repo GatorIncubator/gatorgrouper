@@ -261,6 +261,79 @@ what it is in order for you to fix it.
 The tox testing tool was not sucessfully implemented due to time contraints, so
 GatorGrouper is only confirmed to run in Python 3.5.
 
+## Installation of Pytest-Coverage
+
+run in the terminal:
+
+```
+pip install pytest-cov
+```
+
+## Usage
+
+to run pytest-coverage:
+
+```
+coverage run --source tests -m py.test
+coverage report
+```
+
+## Configuring Travis-Ci
+
+In order to activate travis-ci you must have admin rights.
+
+Make sure that you turned on the repo by seeing the green slide.
+
+Then in the root directory of your repo create a .travis.yml
+
+An example of a .travis.yml
+
+```
+language: python
+python:
+  - "3.5"
+
+cache:
+  directories:
+    - $HOME/.pip-cache/
+before_install:
+  - gem install mdl
+notifications:
+  email: never
+
+install:
+  - pip install --upgrade pip
+  - python3 -m pip install -r requirements.txt
+  - pip3 install pytest-flake8
+  - pip3 install pytest-cov
+  - pip3 install autopep8
+  - pip3 install gspread oauth2client
+  - pip3 install coveralls
+
+script:
+  - pytest tests
+  - mdl README.md
+  - coverage run --source tests -m py.test
+  - coverage report
+```
+
+## Activating Coveralls
+
+Go to <https://coveralls.io/sign-up>
+
+Click Github Sign Up
+
+Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
+
+You should now see it in your repos click on Gator Grouper.
+
+The now add to the end of your .travis.yml:
+
+```
+after_success:
+  coveralls
+```
+
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
@@ -268,3 +341,5 @@ create an issue associated with this Git repository using the "Issues" link at
 the top of this site. The contributors to GatorGrouper will do all that they can
 to resolve your issue and ensure that the entire tool works well in your
 teaching and development environment.
+
+[![Coverage Status](https://coveralls.io/repos/github/GatorGrouper/gatorgrouper/badge.svg?branch=master)](https://coveralls.io/github/GatorGrouper/gatorgrouper?branch=master)
