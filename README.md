@@ -14,8 +14,8 @@ that all of the dependencies are installed correctly, please type
 the following commands before running GatorGrouper.
 
 ```
-$ pip install --upgrade pip
-$ pip install -r requirements.txt
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
 Note that you may have Python 3 setup in different ways on your computer. For
@@ -42,7 +42,7 @@ Ensure that you have installed gspread and oauth2client installed in the root
 directory of the repository.  In the terminal use the command:
 
 ```
-$ python3 -m pip install --user gspread oauth2client
+python3 -m pip install --user gspread oauth2client
 ```
 
 Create a Google Sheets spreadsheet and a Google Form in Google Drive.  In the
@@ -73,7 +73,7 @@ file called `students.txt` and creating groups of two students means that you
 will run GatorGrouper with this command:
 
 ```
-$ python3 gatorgrouper.py
+python3 gatorgrouper.py
 ```
 
 ### Group Size
@@ -83,7 +83,7 @@ To specify the size of the groups, use the flag `---groupsize`.
 Example:
 
 ```
-$ python3 gatorgrouper.py --group-size 3
+python3 gatorgrouper.py --group-size 3
 ```
 
 This indicates that groups should each contain 3 members.
@@ -101,7 +101,7 @@ To randomly group the students, use the flag `--random`.
 Example:
 
 ```
-$ python3 gatorgrouper.py --random
+python3 gatorgrouper.py --random
 ```
 
 This will randomly group the list of students you have provided.
@@ -113,7 +113,7 @@ To group students using the round-robin method, use the flag `--round-robin`.
 Example:
 
 ```
-$ python3 gatorgrouper.py --round-robin
+python3 gatorgrouper.py --round-robin
 ```
 
 The round-robin method takes the responses from the Sheet into account when
@@ -129,19 +129,19 @@ If none of these flags are used, the groups will be generated randomly.
 ### Absentees
 
 To indicate which students are absent so they are not grouped, use the
-flag `--absetees`.
+flag `--absentees`.
 
 Example:
 
 The arguments can be entered in the following ways:
 
 ```
-$ python3 gatorgrouper.py --absentees student1, student2
-$ python3 gatorgrouper.py --absentees 'student1', 'student2'
-$ python3 gatorgrouper.py --absentees "student1", "student2"
-$ python3 gatorgrouper.py --absentees student1 student2
-$ python3 gatorgrouper.py --absentees 'student1' 'student2'
-$ python3 gatorgrouper.py --absentees "student1" "student2"
+python3 gatorgrouper.py --absentees student1, student2
+python3 gatorgrouper.py --absentees 'student1', 'student2'
+python3 gatorgrouper.py --absentees "student1", "student2"
+python3 gatorgrouper.py --absentees student1 student2
+python3 gatorgrouper.py --absentees 'student1' 'student2'
+python3 gatorgrouper.py --absentees "student1" "student2"
 ```
 
 If no absentees are indicated with this flag, then the program will assume that
@@ -155,8 +155,8 @@ flag `--students-file`.
 Example:
 
 ```
-$ python3 gatorgrouper.py --students-file "students_list.txt"
-$ python3 gatorgrouper.py --students-file students_list.txt
+python3 gatorgrouper.py --students-file "students_list.txt"
+python3 gatorgrouper.py --students-file students_list.txt
 ```
 
 ### Monitoring GatorGrouper
@@ -167,7 +167,7 @@ To see detailed general output to monitor progress, use the flag `-v` or
 Example:
 
 ```
-$ python3 gatorgrouper.py --verbose
+python3 gatorgrouper.py --verbose
 ```
 
 To see detailed technical output to diagnose problems, use the flag `-d` or
@@ -176,12 +176,36 @@ To see detailed technical output to diagnose problems, use the flag `-d` or
 Example:
 
 ```
-$ python3 gatorgrouper.py --debug
+python3 gatorgrouper.py --debug
 ```
 
 If none of these flags are used, logging will only be shown if an error occurs.
 
 ### Sample Use of GatorGrouper
+
+```
+python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
+
+GatorGrouper: Automatically Assign Students to Groups
+https://github.com/gkapfham/gatorgrouper
+
+Successfully placed 7 students into 3 groups
+
+Group 1
+smithj
+robertss
+johnsont
+
+Group 2
+peggys
+stevensons
+ronp
+
+Group 3
+georgeh
+youngr
+harrisonf
+```
 
 Each of the previous commands were run on an Ubuntu 16.04 workstation running
 Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
