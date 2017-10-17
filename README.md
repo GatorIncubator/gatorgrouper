@@ -227,6 +227,10 @@ To run the tool, type the following into the main directory.
 
 `autopep8 --in-place --aggressive --aggressive \*.py`
 
+## Tox Testing Tool
+The tox testing tool was not sucessfully implemented due to time contraints, so
+GatorGrouper is only confirmed to run in Python 3.5.
+
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
