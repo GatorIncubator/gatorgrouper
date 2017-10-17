@@ -50,6 +50,8 @@ Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
 operating systems that support Python version 3.
 
 ## Tox Testing Tool
+The tox testing tool was not sucessfully implemented due to time contraints, so
+GatorGrouper is only confirmed to run in Python 3.5.
 
 ## Problems or Praise
 
