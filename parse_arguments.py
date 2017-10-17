@@ -71,7 +71,7 @@ def parse_arguments(args):
             read_student_file(gg_arguments_finished.students_file)) is False:
         quit()
 
-    if (gg_arguments_finished.absentees == None):
+    if gg_arguments_finished.absentees is None:
         gg_arguments_finished.absentees = []
 
     return gg_arguments_finished
