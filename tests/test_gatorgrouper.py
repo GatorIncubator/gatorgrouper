@@ -1,0 +1,187 @@
+"""Test suites for the gatorgrouper.py module"""
+
+import pytest
+import itertools
+import gatorgrouper
+import logging
+import defaults
+import string
+import random
+import display_student_groups
+import sys
+import remove_absent_students
+import group_random
+import parse_arguments
+
+
+
+def test_create_escaped_string_from_list():
+    """Testing the create_escaped_string_from_list() function 
+        with a list of normal input size"""
+    list = ["Dan", "Nick", "Jeff", "Nikki", "Angie", "Austin"]
+    desired_output_string = "Dan\nNick\nJeff\nNikki\nAngie\nAustin\n"
+    actual_output_string = gatorgrouper.create_escaped_string_from_list(list)
+    assert len(list) == 6
+    assert ("Dan" in actual_output_string) is True
+    assert ("Austin" in actual_output_string) is True
+    assert (desired_output_string == actual_output_string) is True
+
+
+def test_create_escaped_string_from_list_with_empty_list():
+    """Testing the create_escaped_string_from_list() function
+        with an empty list as input"""
+    list = []
+    desired_output_string = ""
+    actual_output_string = gatorgrouper.create_escaped_string_from_list(list)
+    assert len(list) == 0
+    assert (desired_output_string == actual_output_string) is True
+
+
+def test_create_escaped_string_from_list_with_large_list():
+    """Testing the create_escaped_string_from_list() function 
+        with a list of large input size"""
+    list = []
+    extra_list = []
+    desired_output_string = ""
+    chars = string.ascii_uppercase + string.ascii_lowercase
+
+    # populate the list with 250 random strings 
+    for i in range(0, 250):
+        random_string = ''.join(random.choice(chars) for _ in range(5))
+        list.append(random_string)
+        extra_list.append(random_string + '\n')
+
+    # add the new line character at the end of each string in the list
+    desired_output_string = ''.join(extra_list)
+    # running the function with our large input list 
+    actual_output_string = gatorgrouper.create_escaped_string_from_list(list)
+
+    assert len(list) == 250
+    assert len(extra_list) == 250
+    assert (desired_output_string == actual_output_string) is True
+
+
+def test_remove_absent_students():
+    """Testing the remove_absent_students() function with
+        an input that includes one absent student"""
+    list_of_students = [["student1",0,1,0], ["student2",1,0,1], ["student3",1,1,0]]
+    list_of_absent_students = ["student2"]
+    desired_output = [["student1",0,1,0], ["student3",1,1,0]]
+    actual_output = remove_absent_students.remove_absent_students(list_of_absent_students, list_of_students)
+    assert len(list_of_students) == 3
+    assert (desired_output == actual_output) is True 
+
+
+def test_group_random():
+    """Testing that the group_random() function creates the 
+        appropriate number of groups with the appropriate number"""
+    list = ["Austin", "Dan", "Angie", "Cullen", "Chase", "Vinny", "Nick", "Jeff", "James", "Kelly", "Nikki", "Robert"]
+    list2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
+    group_size = 3
+    group_size2 = 2
+    actual_output = group_random.group_random(list, group_size)
+    actual_output2 = group_random.group_random(list2, group_size2)
+    assert len(actual_output) == 4
+    assert len(actual_output[0]) == 3
+    assert len(actual_output2) == 3
+    assert len(actual_output2[0]) == 2
+
+
+def test_check_valid_group_size_one():
+     """Checking the group size of one"""
+     group_size = 1
+     student_identifiers = ['maria', 'dan', 'simon', 'jesse', 'jon', 'michael', 'jacob', 'kapfhammer']
+     student_groups = parse_arguments.check_valid_group_size(group_size, student_identifiers)
+     assert student_groups == False
+
+
+def test_check_valid_group_size_quarter():
+    """Checking the group size of one"""
+    student_identifiers = ['maria', 'dan', 'simon', 'jesse', 'jon', 'michael', 'jacob', 'kapfhammer']
+    group_size = len(student_identifiers)/4
+    student_groups = parse_arguments.check_valid_group_size(group_size, student_identifiers)
+    assert student_groups == True
+
+
+def test_check_valid_group_size_half():
+    """Checking the group size of half of the list length"""
+    student_identifiers = ['maria', 'dan', 'simon', 'jesse', 'jon', 'michael', 'jacob', 'kapfhammer']
+    group_size = len(student_identifiers)/2
+    student_groups = parse_arguments.check_valid_group_size(group_size, student_identifiers)
+    assert student_groups == True
+
+
+def test_check_valid_group_size_over():
+    """Checking the group size of over the list length"""
+    student_identifiers = ['maria', 'dan', 'simon', 'jesse', 'jon', 'michael', 'jacob', 'kapfhammer']
+    group_size = 9
+    student_groups = parse_arguments.check_valid_group_size(group_size, student_identifiers)
+    assert student_groups == False
+
+
+def test_display_student_groups(capsys):
+    """Checking the display of the student_groups"""
+    student_groups = [['gkapfham3', 'gkapfham0'], ['gkapfham1', 'gkapfham4'], ['gkapfham5', 'gkapfham7', 'gkapfham6']]
+    group_check = display_student_groups.display_student_groups(student_groups)
+    out, err = capsys.readouterr()
+    assert out.startswith("Group 1")
+
+
+def test_remove_absent_students_one():
+    """Checking to see if absent one student is removed"""
+    absent_list = ['Nick']
+    list_of_student_of_lists = [['Nick', 0, 1, 0], ['Marvin', 0, 1, 1], ["Evin", 1, 1, 0]]
+    removed_list = remove_absent_students.remove_absent_students(absent_list, list_of_student_of_lists)
+    assert (absent_list in removed_list) is False
+    assert len(removed_list) == 2
+
+
+def test_remove_absent_students_two():
+    """Checking to see if absent two students is removed"""
+    absent_list = ['Nick', 'Marvin']
+    list_of_student_of_lists = [['Nick', 0, 1, 0], ['Marvin', 0, 1, 1], ["Evin", 1, 1, 0]]
+    removed_list = remove_absent_students.remove_absent_students(absent_list, list_of_student_of_lists)
+    assert (absent_list in removed_list) is False
+    assert len(removed_list) == 1
+
+
+def test_parse_arguments1():
+    args = []
+    parsed_args = parse_arguments.parse_arguments(args)
+    assert parsed_args.logging_level == logging.ERROR
+    assert parsed_args.group_size == defaults.DEFAULT_GRPSIZE
+    assert parsed_args.students_file == defaults.DEFAULT_CSVFILE
+    assert (parsed_args.grouping_method == group_random) is False
+    assert parsed_args.absentees == None
+
+
+def test_parse_arguments2():
+    args = ['--debug', '--students-file', 'students.csv', '--random']
+    parsed_args = parse_arguments.parse_arguments(args)
+    assert parsed_args.logging_level == logging.DEBUG
+    assert parsed_args.students_file == 'students.csv'
+    assert parsed_args.grouping_method == 'random'
+
+
+def test_parse_gatorgrouper_arguments3():
+    args = ['--verbose', '--round-robin']
+    parsed_args = parse_arguments.parse_arguments(args)
+    assert parsed_args.logging_level == logging.INFO
+    assert parsed_args.grouping_method == 'rrobin'
+
+
+def test_parse_arguments4():
+    args = ['--absentees', 'maria', '--round-robin', '--group-size', '3']
+    parsed_args = parse_arguments.parse_arguments(args)
+    assert parsed_args.group_size == 3
+    assert parsed_args.grouping_method == 'rrobin'
+    assert parsed_args.absentees == ['maria']
+
+
+def test_shuffle():
+    """Checking the shuffle_students method for appropriate ouput"""
+    student_identifiers = ["Dan", "Nikki", "Nick", "Jeff", "Austin", "Simon", "Jesse", "Maria"]
+    shuffled_students = gatorgrouper.shuffle_students(student_identifiers)
+    for i in range (0, len(shuffled_students)):
+        assert (student_identifiers[i] in shuffled_students) is True
+    assert (student_identifiers == shuffled_students) is False
