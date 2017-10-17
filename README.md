@@ -184,7 +184,7 @@ If none of these flags are used, logging will only be shown if an error occurs.
 ### Sample Use of GatorGrouper
 
 ```
-python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
+$ python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
 
 GatorGrouper: Automatically Assign Students to Groups
 https://github.com/gkapfham/gatorgrouper
