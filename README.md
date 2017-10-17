@@ -49,6 +49,8 @@ Each of the previous commands were run on an Ubuntu 16.04 workstation running
 Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
 operating systems that support Python version 3.
 
+## Tox Testing Tool
+
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
