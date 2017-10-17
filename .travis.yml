@@ -17,7 +17,7 @@ install:
   - pip3 install pytest-flake8
   - pip3 install pytest-cov
 script:
-  - pytest /tests/gatorgrouper.py
+  - pytest /tests/gator_grouper.py
   - mdl README.md
   - coverage run --source tests -m py.test 
   - coverage report 
