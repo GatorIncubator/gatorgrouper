@@ -3,10 +3,11 @@ import csv
 import logging
 from oauth2client.service_account import ServiceAccountCredentials
 
-
 def create_csv():
+
+    file_name = './students.csv'
     logging.info(
-        "The program is reading the data from the google sheet created by the google form.")
+        "Authenticating to Google Sheets to obtain Google Form data")
     # use creds to create a client to interact with the Google Drive API
     scope = ['https://spreadsheets.google.com/feeds']
     creds = ServiceAccountCredentials.from_json_keyfile_name(
@@ -19,19 +20,15 @@ def create_csv():
 
     # Extract and print all of the values
     list_of_hashes = sheet.get_all_records()
-    logging.debug("The program created a list of data from the google sheet")
 
     # Iterates through the list_of_hashes and creates a list of lists with the
     #format ['username', True, False, True]
 
-    logging.info("The program is formating the data")
+    logging.info("Creating a list of lists of students")
     formated_list = list()
     for entry in list_of_hashes:
-        logging.debug("The program is iterating through the list of data")
         formated_entry = list()
         for question, response in entry.items():
-            logging.debug(
-                "The program is iterating through the list of data and creating a list of lists with the properly formated data")
             if question == 'Email Address':
                 email = entry[question].partition('@')
                 username = email[0]
@@ -45,10 +42,9 @@ def create_csv():
                 formated_entry.index(username)))
         formated_list.append(formated_entry)
 
-    logging.info("The program is writing the formated data to the csv")
-    with open('./students.csv', 'w') as myfile:
+    logging.info("Writing formatted data to CSV file")
+    logging.debug("CSV file name: " + file_name)
+    with open(file_name, 'w') as myfile:
         wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         for item in formated_list:
-            logging.debug(
-                "The program is writing the formated data to the csv")
             wr.writerow(item)
