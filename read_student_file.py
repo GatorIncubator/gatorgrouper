@@ -4,7 +4,7 @@ import csv
 
 
 def read_student_file(filepath):
-    """ Reads the responses from the CSV file, returning them in a list of lists """
+    """ Read the responses from the CSV, returning them in a list of lists """
 
     # read the raw CSV data
     with open(filepath, 'rU') as csvfile:

@@ -1,7 +1,8 @@
-import gspread
 import csv
 import logging
+import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+
 
 def create_csv():
 
@@ -22,7 +23,7 @@ def create_csv():
     list_of_hashes = sheet.get_all_records()
 
     # Iterates through the list_of_hashes and creates a list of lists with the
-    #format ['username', True, False, True]
+    # format ['username', True, False, True]
 
     logging.info("Creating a list of lists of students")
     formated_list = list()
