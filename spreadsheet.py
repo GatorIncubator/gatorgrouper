@@ -10,7 +10,7 @@ def create_csv():
     # use creds to create a client to interact with the Google Drive API
     scope = ['https://spreadsheets.google.com/feeds']
     creds = ServiceAccountCredentials.from_json_keyfile_name(
-        'client_secret.json', scope)
+        'authorizationKey/keyFile.json', scope)
     client = gspread.authorize(creds)
 
     # Find a workbook by name and open the first sheet
@@ -46,7 +46,7 @@ def create_csv():
         formated_list.append(formated_entry)
 
     logging.info("The program is writing the formated data to the csv")
-    with open('./data.csv', 'w') as myfile:
+    with open('./students.csv', 'w') as myfile:
         wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         for item in formated_list:
             logging.debug(
