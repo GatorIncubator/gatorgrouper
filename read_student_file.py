@@ -2,6 +2,7 @@
 
 import csv
 
+
 def read_student_file(filepath):
     """ Reads the responses from the CSV file, returning them in a list of lists """
 

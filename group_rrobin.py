@@ -10,7 +10,7 @@ def group_rrobin(responses, grpsize):
     """ group responses using round robin approach """
 
     # setup target groups
-    groups = list() # // integer div
+    groups = list()  # // integer div
     numgrps = len(responses) // grpsize
     logging.info("target groups: " + str(numgrps))
     for _ in range(numgrps):

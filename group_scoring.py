@@ -6,7 +6,7 @@ def score_group(student_identifers):
     score = 0
     for student in student_identifers:
         for category in range(len(student[1:])):
-            if student[category+1] is True:
+            if student[category + 1] is True:
                 score += 1
     return score
 
@@ -18,6 +18,6 @@ def score_groups(student_groups):
     for group in student_groups:
         scores.append(score_group(group))
         ave += score_group(group)
-    ave = int(ave/len(student_groups))
+    ave = int(ave / len(student_groups))
     # returns the scores of each group as well as the average score
     return scores, ave
