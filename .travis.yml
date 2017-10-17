@@ -18,7 +18,7 @@ install:
   - pip3 install pytest-cov
   - pip3 install autopep8
 script:
-  - pytest gatorgrouper/tests/test_gatorgrouper.py
+  - pytest /tests/test_gatorgrouper.py
   - mdl README.md
   - coverage run --source tests -m py.test 
   - coverage report 
