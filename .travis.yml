@@ -17,7 +17,7 @@ install:
   - pip3 install pytest-flake8
   - pip3 install pytest-cov
   - pip3 install autopep8
-  - python3 -m pip install --user gspread oauth2client
+  - pip3 install --user gspread oauth2client
 script:
   - pytest /tests/test_gatorgrouper.py
   - mdl README.md
