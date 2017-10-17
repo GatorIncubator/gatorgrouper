@@ -6,7 +6,7 @@ def remove_absent_students(absentee_list, list_of_student_lists):
     logging.info("Removing absent students")
     list_of_student_lists_copy = list_of_student_lists[:]
     for name in absentee_list:
-        logging.debug("Removing" + name)
+        logging.debug("Removing " + name)
         for student_list in list_of_student_lists:
             if student_list[0] == name:
                 list_of_student_lists_copy.remove(student_list)
