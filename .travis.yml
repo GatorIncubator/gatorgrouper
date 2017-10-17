@@ -17,6 +17,9 @@ install:
   - pip3 install pytest-flake8
   - pip3 install pytest-cov
   - pip3 install autopep8
+  - pip3 install gspread oauth2client
+  - pip3 install coveralls
+  
 script:
   - pytest tests
   - mdl README.md
