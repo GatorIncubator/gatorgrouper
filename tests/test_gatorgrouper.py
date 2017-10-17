@@ -1,4 +1,8 @@
-"""Test suites for the gatorgrouper.py module"""
+"""Test suites for the gatorgrouper.py module
+
+run with `pytest test_gatorgrouper.py from the gatorgrouper/tests directory`
+Requires `pip3 install pytest-flake8` in order to run.
+"""
 
 import pytest
 import itertools
@@ -12,6 +16,9 @@ import sys
 import remove_absent_students
 import group_random
 import parse_arguments
+import glob
+import os
+from flake8.api import legacy as flake8
 
 
 
@@ -185,3 +192,19 @@ def test_shuffle():
     for i in range (0, len(shuffled_students)):
         assert (student_identifiers[i] in shuffled_students) is True
     assert (student_identifiers == shuffled_students) is False
+
+
+# Linting Tests
+def test_flake8():
+
+    # list of all file names to be checked for PEP8
+    filenames = list()
+
+    # fill list with all python files found in all subdirectories
+    for root, dirs, files in os.walk("gatorgrouper", topdown=False):
+        pyFiles = glob.glob(root+"/*.py")
+        filenames.extend(pyFiles)
+
+    style_guide = flake8.get_style_guide(ignore=["E265","E501"])
+    report = style_guide.check_files(filenames)
+    assert report.get_statistics('E') == [], 'Flake8 found violations'
