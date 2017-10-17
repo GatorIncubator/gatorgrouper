@@ -71,11 +71,14 @@ def parse_arguments(args):
             read_student_file(gg_arguments_finished.students_file)) is False:
         quit()
 
+    if (gg_arguments_finished.absentees == None):
+        gg_arguments_finished.absentees = []
+
     return gg_arguments_finished
 
 
 def check_valid_group_size(group_size, students_list):
-    """ checks if group size is reasonable """
+    """ Checks if group size is valid """
     students_list_length = len(students_list)
     if group_size <= 1 or group_size > students_list_length / 2:
         logging.error("Group size: " + str(group_size))
