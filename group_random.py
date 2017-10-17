@@ -20,7 +20,8 @@ def group_random(responses, grpsize):
     if len(groups[last_group_index]) < grpsize:
 
         # distribute them throughout the other groups
-        logging.info("Partial group identified; distributing across other groups.")
+        logging.info(
+            "Partial group identified; distributing across other groups.")
         lastgroup = groups[last_group_index]
         outliers = copy.deepcopy(lastgroup)
         groups.remove(lastgroup)

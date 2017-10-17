@@ -15,10 +15,13 @@ def parse_arguments(args):
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     gg_parser.add_argument(
-        "-d", "--debug",
+        "-d",
+        "--debug",
         help="Display diagnostic information",
-        action="store_const", dest="logging_level", const=logging.DEBUG, default=logging.ERROR
-    )
+        action="store_const",
+        dest="logging_level",
+        const=logging.DEBUG,
+        default=logging.ERROR)
 
     gg_parser.add_argument(
         "-v", "--verbose",

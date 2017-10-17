@@ -32,13 +32,15 @@ if __name__ == '__main__':
     # shuffle the student identifiers
     SHUFFLED_STUDENT_IDENTIFIERS = shuffle_students(STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
-    logging.info("\n" + create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
+    logging.info(
+        "\n" +
+        create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
 
     # generate the groups and display them
     if GG_ARGUMENTS.grouping_method == "rrobin":
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
-    else: # default to random method
+    else:  # default to random method
         GROUPED_STUDENT_IDENTIFIERS = group_random(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
 
@@ -46,7 +48,7 @@ if __name__ == '__main__':
     COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
     COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
     logging.info("Successfully placed " + str(COUNT_STUDENTS) +
-                 " students into " +str(COUNT_GROUPS) + " groups")
+                 " students into " + str(COUNT_GROUPS) + " groups")
 
     # report generated groups
     display_student_groups(GROUPED_STUDENT_IDENTIFIERS)

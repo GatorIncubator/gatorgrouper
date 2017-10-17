@@ -211,6 +211,22 @@ Each of the previous commands were run on an Ubuntu 16.04 workstation running
 Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
 operating systems that support Python version 3.
 
+## Testing Documentation
+
+Test Suite:
+
+`pip3 install pytest-flake8`
+
+Linting:
+
+For any future issues with linting, you can install an autolinting tool with:
+
+`pip3 install autopep8`
+
+To run the tool, type the following into the main directory.
+
+`autopep8 --in-place --aggressive --aggressive \*.py`
+
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please

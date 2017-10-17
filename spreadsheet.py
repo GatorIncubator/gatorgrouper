@@ -3,11 +3,14 @@ import csv
 import logging
 from oauth2client.service_account import ServiceAccountCredentials
 
+
 def create_csv():
-    logging.info("The program is reading the data from the google sheet created by the google form.")
+    logging.info(
+        "The program is reading the data from the google sheet created by the google form.")
     # use creds to create a client to interact with the Google Drive API
     scope = ['https://spreadsheets.google.com/feeds']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name(
+        'client_secret.json', scope)
     client = gspread.authorize(creds)
 
     # Find a workbook by name and open the first sheet
@@ -27,7 +30,8 @@ def create_csv():
         logging.debug("The program is iterating through the list of data")
         formated_entry = list()
         for question, response in entry.items():
-            logging.debug("The program is iterating through the list of data and creating a list of lists with the properly formated data")
+            logging.debug(
+                "The program is iterating through the list of data and creating a list of lists with the properly formated data")
             if question == 'Email Address':
                 email = entry[question].partition('@')
                 username = email[0]
@@ -36,12 +40,15 @@ def create_csv():
                 formated_entry.append(True)
             elif response == 'No':
                 formated_entry.append(False)
-        formated_entry.insert(0, formated_entry.pop(formated_entry.index(username)))
+        formated_entry.insert(
+            0, formated_entry.pop(
+                formated_entry.index(username)))
         formated_list.append(formated_entry)
 
     logging.info("The program is writing the formated data to the csv")
     with open('./data.csv', 'w') as myfile:
         wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         for item in formated_list:
-            logging.debug("The program is writing the formated data to the csv")
+            logging.debug(
+                "The program is writing the formated data to the csv")
             wr.writerow(item)
