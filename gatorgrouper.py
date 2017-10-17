@@ -17,13 +17,14 @@ from spreadsheet import create_csv
 
 if __name__ == '__main__':
 
-    # Create csv file from the data in the google sheet
-    create_csv()
     # parse the arguments and display welcome message
     GG_ARGUMENTS = parse_arguments.parse_arguments(sys.argv[1:])
     display_welcome_message()
     logging.info("Configuration of GatorGrouper:")
     logging.debug(GG_ARGUMENTS)
+
+    # create csv file from the data in the google sheet
+    create_csv()
 
     # read in the student identifiers from the specified file
     STUDENT_IDENTIFIERS = remove_absent_students(
