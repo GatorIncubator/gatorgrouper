@@ -12,10 +12,13 @@ from display import create_escaped_string_from_list
 from group_random import shuffle_students
 from group_random import group_random
 from group_rrobin import group_rrobin
+from spreadsheet import create_csv
 
 
 if __name__ == '__main__':
 
+    # Create csv file from the data in the google sheet
+    create_csv()
     # parse the arguments and display welcome message
     GG_ARGUMENTS = parse_arguments.parse_arguments(sys.argv[1:])
     display_welcome_message()
