@@ -1,5 +1,5 @@
-import logging
 """Remove missing students from group assignment"""
+import logging
 
 def remove_absent_students(absentee_list, list_of_student_lists):
     """Remove missing students before group assignment"""
