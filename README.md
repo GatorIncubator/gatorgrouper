@@ -252,21 +252,32 @@ The tox testing tool was not sucessfully implemented due to time contraints, so
 GatorGrouper is only confirmed to run in Python 3.5.
 
 ## Installation of Pytest-Coverage
-run in the terminal:<br/>
+
+run in the terminal:
+
 ```
 pip install pytest-cov
 ```
+
 ## Usage
-to run pytest-coverage:<br/>
+
+to run pytest-coverage:
+
 ```
 coverage run --source tests -m py.test
 coverage report
 ```
+
 ## Configuring Travis-Ci
-In order to activate travis-ci you must have admin rights.<br/>
-Make sure that you turned on the repo by seeing the green slide.<br/>
-Then in the root directory of your repo create a .travis.yml<br/>
+
+In order to activate travis-ci you must have admin rights.
+
+Make sure that you turned on the repo by seeing the green slide.
+
+Then in the root directory of your repo create a .travis.yml
+
 An example of a .travis.yml
+
 ```
 language: python
 python:
@@ -275,7 +286,6 @@ python:
 cache:
   directories:
     - $HOME/.pip-cache/
-# install mdl for checking Markdown
 before_install:
   - gem install mdl
 notifications:
@@ -289,24 +299,31 @@ install:
   - pip3 install autopep8
   - pip3 install gspread oauth2client
   - pip3 install coveralls
-  
+
 script:
   - pytest tests
   - mdl README.md
-  - coverage run --source tests -m py.test 
-  - coverage report 
+  - coverage run --source tests -m py.test
+  - coverage report
 ```
 
-##Activating Coveralls
-Go to https://coveralls.io/sign-up<br/>
-Click Github Sign Up<br/>
-Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)<br/>
-You should now see it in your repos click on Gator Grouper.<br/>
-The now add to the end of your .travis.yml:<br/>
+## Activating Coveralls
+
+Go to <https://coveralls.io/sign-up>
+
+Click Github Sign Up
+
+Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
+
+You should now see it in your repos click on Gator Grouper.
+
+The now add to the end of your .travis.yml:
+
 ```
 after_success:
   coveralls
 ```
+
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
