@@ -81,7 +81,7 @@ def test_remove_absent_students():
     assert (desired_output == actual_output) is True 
 
 
-def test_group_random():
+def test_group_random1():
     """Testing that the group_random() function creates the 
         appropriate number of groups with the appropriate number"""
     list = ["Austin", "Dan", "Angie", "Cullen", "Chase", "Vinny", "Nick", "Jeff", "James", "Kelly", "Nikki", "Robert"]
@@ -153,6 +153,30 @@ def test_remove_absent_students_two():
     assert (absent_list in removed_list) is False
     assert len(removed_list) == 1
 
+def test_remove_absent_students_all():
+    """Checking to see if absent all students are removed"""
+    absent_list = ['Nick', 'Marvin', 'Evin']
+    list_of_student_of_lists = [['Nick', 0, 1, 0], ['Marvin', 0, 1, 1], ["Evin", 1, 1, 0]]
+    correct = []
+    removed_list = remove_absent_students.remove_absent_students(absent_list, list_of_student_of_lists)
+    assert (absent_list in removed_list) is False
+    assert len(removed_list) == 0
+    assert correct == removed_list
+
+def test_group_random_extra():
+    """Testing the random type of grouping with a group of extra people not assigned to their own group"""
+    responses = [['Nick', True, False, True, False], ['Marvin', False, False, True, True], ['Evin', True, True, True, False], ['Nikki', True, True, False, False], ['Dan', False, True, False, True]]
+    grpsize = 2
+    returned_groups = group_random.group_random(responses, grpsize)
+    assert len(returned_groups) == 2
+    assert grpsize == 2
+
+def test_group_random():
+    """Testing the random type of grouping with everyone in an assigned group"""
+    responses = [['Nick', True, False, True, False], ['Marvin', False, False, True, True], ['Evin', True, True, True, False], ['Nikki', True, True, False, False], ['Dan', False, True, False, True], ['Michael', True, True, False, False]]
+    grpsize = 2
+    returned_groups = group_random.group_random(responses, grpsize)
+    assert len(returned_groups) == 3
 
 def test_parse_arguments1():
     args = []
