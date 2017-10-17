@@ -89,7 +89,7 @@ $ python3 gatorgrouper.py --group-size 3
 This indicates that groups should each contain 3 members.
 
 The group size should be greater than 1 and equal to or less than
-half the total number of students. If the --group-size is not
+half the total number of students. If the group size is not
 specified, the default group size is 2.
 
 ### Grouping Methods
@@ -116,9 +116,13 @@ Example:
 $ python3 gatorgrouper.py --round-robin
 ```
 
-The round robin method groups the students by going through each group and
-adding one student at a time until there are no more students left. For example,
-if there are 3 groups and 12 students, each group would contain 4 students.
+The round-robin method takes the responses from the Sheet into account when
+sorting students into groups.  The yes and no responses from the Sheet are
+represented as true and false.  Round-robin randomizes the categories and
+assigns a student, one at a time, to each group by using the first value
+indicated as true.  When all of the students with true values are assigned,
+it goes back and adds a student to each group until there are no students
+remaining.
 
 If none of these flags are used, the groups will be generated randomly.
 
