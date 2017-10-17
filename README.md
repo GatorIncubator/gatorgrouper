@@ -225,22 +225,32 @@ students are being correctly grouped based on category.
 
 ### Run
 
-Test suites for the gatorgrouper.py module
+Requires `pip3 install pytest-flake8` in order to run.  Use the command:
 
-run with `pytest test_gatorgrouper.py from the gatorgrouper/tests directory`
-Requires `pip3 install pytest-flake8` in order to run.
+```
+pip3 install --user pytest-flake8`
+```
 
-`pip3 install pytest-flake8`
+Test suites for the gatorgrouper.py module.  From `gatorgrouper/tests`,
+run the test suite using the command:
+
+```
+pytest test_gatorgrouper.py
+```
 
 Linting:
 
 For any future issues with linting, you can install an autolinting tool with:
 
-`pip3 install autopep8`
+```
+pip3 install --user autopep8
+```
 
 To run the tool, type the following into the main directory.
 
-`autopep8 --in-place --aggressive --aggressive *.py`
+```
+autopep8 --in-place --aggressive --aggressive *.py
+```
 
 If there are any linting issues that were not fixed by the tool, the error
 message from the test suite will direct you to where the issue is and tell you
