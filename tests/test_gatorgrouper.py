@@ -18,6 +18,8 @@ import group_random
 import parse_arguments
 import glob
 import os
+import group_rrobin
+import group_random
 from flake8.api import legacy as flake8
 
 
@@ -137,7 +139,7 @@ def test_display_student_groups(capsys):
 def test_remove_absent_students_one():
     """Checking to see if absent one student is removed"""
     absent_list = ['Nick']
-    list_of_student_of_lists = [['Nick', 0, 1, 0], ['Marvin', 0, 1, 1], ["Evin", 1, 1, 0]]
+    list_of_student_of_lists = [['Nick', False, True, False], ['Marvin', False, True, True], ["Evin", True, True, False]]
     removed_list = remove_absent_students.remove_absent_students(absent_list, list_of_student_of_lists)
     assert (absent_list in removed_list) is False
     assert len(removed_list) == 2
@@ -146,7 +148,7 @@ def test_remove_absent_students_one():
 def test_remove_absent_students_two():
     """Checking to see if absent two students is removed"""
     absent_list = ['Nick', 'Marvin']
-    list_of_student_of_lists = [['Nick', 0, 1, 0], ['Marvin', 0, 1, 1], ["Evin", 1, 1, 0]]
+    list_of_student_of_lists = [['Nick', False, True, False], ['Marvin', False, True, True], ["Evin", True, True, False]]
     removed_list = remove_absent_students.remove_absent_students(absent_list, list_of_student_of_lists)
     assert (absent_list in removed_list) is False
     assert len(removed_list) == 1
@@ -192,6 +194,52 @@ def test_shuffle():
     for i in range (0, len(shuffled_students)):
         assert (student_identifiers[i] in shuffled_students) is True
     assert (student_identifiers == shuffled_students) is False
+
+def test_round_robin():
+    """Testing the round robin function to assure proper output"""
+    list = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", True, True, True],
+        ["Nick", False, False, False],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False]
+        ]
+    group_size = 3
+    actual_output = group_rrobin.group_rrobin(list, group_size)
+    assert len(actual_output) == 4
+    assert len(actual_output[0]) == group_size
+    assert (["Dan", True, True, True] in actual_output[0]) is True
+    assert (["Jesse", True, True, True] in actual_output[2]) is True
+    assert (["Austin", True, True, True] in actual_output[1]) is True
+
+
+def test_random():
+    """Testing the random grouping function to assure proper output"""
+    list = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", True, True, True],
+        ["Nick", False, False, False],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False]
+        ]
+    group_size = 4
+    actual_output = group_random.group_random(list, group_size)
+    assert len(actual_output) == 3
+    assert len(actual_output[0]) == 4
 
 
 # Linting Tests
