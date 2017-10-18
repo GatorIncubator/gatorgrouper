@@ -13,7 +13,7 @@ As a Python 3 program, GatorGrouper relies on
 that all of the dependencies are installed correctly, please type
 the following commands before running GatorGrouper.
 
-```
+```shell
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
@@ -41,7 +41,7 @@ to further develop your understanding of this topic.
 Ensure that you have installed gspread and oauth2client installed in the root
 directory of the repository.  In the terminal use the command:
 
-```
+```shell
 python3 -m pip install --user gspread oauth2client
 ```
 
@@ -72,7 +72,7 @@ terminal window. Using the defaults of storing your student identifiers in the
 file called `students.txt` and creating groups of two students means that you
 will run GatorGrouper with this command:
 
-```
+```shell
 python3 gatorgrouper.py
 ```
 
@@ -82,15 +82,15 @@ To specify the size of the groups, use the flag `---groupsize`.
 
 Example:
 
-```
-python3 gatorgrouper.py --group-size 3
+```shell
+python3 gatorgrouper.py --group-size 4
 ```
 
-This indicates that groups should each contain 3 members.
+This indicates that groups should each contain 4 members.
 
 The group size should be greater than 1 and equal to or less than
 half the total number of students. If the group size is not
-specified, the default group size is 2.
+specified, the default group size is 3.
 
 ### Grouping Methods
 
@@ -100,7 +100,7 @@ To randomly group the students, use the flag `--random`.
 
 Example:
 
-```
+```shell
 python3 gatorgrouper.py --random
 ```
 
@@ -112,7 +112,7 @@ To group students using the round-robin method, use the flag `--round-robin`.
 
 Example:
 
-```
+```shell
 python3 gatorgrouper.py --round-robin
 ```
 
@@ -135,7 +135,7 @@ Example:
 
 The arguments can be entered in the following ways:
 
-```
+```shell
 python3 gatorgrouper.py --absentees student1, student2
 python3 gatorgrouper.py --absentees 'student1', 'student2'
 python3 gatorgrouper.py --absentees "student1", "student2"
@@ -154,7 +154,7 @@ flag `--students-file`.
 
 Example:
 
-```
+```shell
 python3 gatorgrouper.py --students-file "students_list.txt"
 python3 gatorgrouper.py --students-file students_list.txt
 ```
@@ -166,7 +166,7 @@ To see detailed general output to monitor progress, use the flag `-v` or
 
 Example:
 
-```
+```shell
 python3 gatorgrouper.py --verbose
 ```
 
@@ -175,7 +175,7 @@ To see detailed technical output to diagnose problems, use the flag `-d` or
 
 Example:
 
-```
+```shell
 python3 gatorgrouper.py --debug
 ```
 
@@ -183,7 +183,7 @@ If none of these flags are used, logging will only be shown if an error occurs.
 
 ### Sample Use of GatorGrouper
 
-```
+```shell
 $ python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
 
 GatorGrouper: Automatically Assign Students to Groups
@@ -227,14 +227,14 @@ students are being correctly grouped based on category.
 
 Requires `pip3 install pytest-flake8` in order to run.  Use the command:
 
-```
-pip3 install --user pytest-flake8`
+```shell
+pip3 install --user pytest-flake8
 ```
 
 Test suites for the gatorgrouper.py module.  From `gatorgrouper/tests`,
 run the test suite using the command:
 
-```
+```shell
 pytest test_gatorgrouper.py
 ```
 
@@ -242,14 +242,14 @@ Linting:
 
 For any future issues with linting, you can install an autolinting tool with:
 
-```
+```shell
 pip3 install --user autopep8
 ```
 
 To run the tool, type the following into the main directory.
 
-```
-autopep8 --in-place --aggressive --aggressive *.py
+```shell
+autopep8 --in-place --aggressive *.py
 ```
 
 If there are any linting issues that were not fixed by the tool, the error
@@ -265,7 +265,7 @@ GatorGrouper is only confirmed to run in Python 3.5.
 
 run in the terminal:
 
-```
+```shell
 pip install pytest-cov
 ```
 
@@ -273,7 +273,7 @@ pip install pytest-cov
 
 to run pytest-coverage:
 
-```
+```shell
 coverage run --source tests -m py.test
 coverage report
 ```
@@ -288,7 +288,7 @@ Then in the root directory of your repo create a .travis.yml
 
 An example of a .travis.yml
 
-```
+```yml
 language: python
 python:
   - "3.5"
@@ -329,7 +329,7 @@ You should now see it in your repos click on Gator Grouper.
 
 The now add to the end of your .travis.yml:
 
-```
+```yml
 after_success:
   coveralls
 ```
