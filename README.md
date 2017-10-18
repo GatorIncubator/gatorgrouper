@@ -61,9 +61,8 @@ you would like to create your own service account for confidentiality and
 security, follow the tutorial found at [www.twolio.com](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 to create a personal service account.
 
-Within `spreadsheet.py`, find `sheet = client.open("Compsci280 Lab4 Survey
-Results").sheet1` and change `"Compsci280 Lab4 Survey Results"` to the name of
-your Sheet.
+Within `defaults.py`, update the `DEFAULT_WORKBOOK` constant to the name of your
+Sheet.
 
 ---
 
