@@ -71,7 +71,7 @@ your Sheet.
 
 GatorGrouper accepts command line arguments and then generates output in your
 terminal window. Using the defaults of storing your student identifiers in the
-file called `students.txt` and creating groups of two students means that you
+file called `students.csv` and creating groups of two students means that you
 will run GatorGrouper with this command:
 
 ```shell
@@ -136,12 +136,12 @@ there are no students absent.
 
 ### Specify File Containing List of Students
 
-To specify a different file other than the default `students.txt`, use the
-flag `--students-file`.
+To bypass the Google Forms integration and instead supply a list of students
+directly to the program, use the `--students-file` flag.
 
 ```shell
-python3 gatorgrouper.py --students-file "students_list.txt"
-python3 gatorgrouper.py --students-file students_list.txt
+python3 gatorgrouper.py --students-file "students_list.csv"
+python3 gatorgrouper.py --students-file students_list.csv
 ```
 
 ### Monitoring GatorGrouper

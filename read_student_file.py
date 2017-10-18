@@ -1,10 +1,15 @@
 """ Reads CSV data file """
 
 import csv
+from pathlib import Path
 
 
 def read_student_file(filepath):
     """ Read the responses from the CSV, returning them in a list of lists """
+
+    # handle nonexistant files
+    if Path(filepath).is_file() is False:
+        return "filenotfound"
 
     # read the raw CSV data
     with open(filepath, 'rU') as csvfile:

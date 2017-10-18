@@ -79,6 +79,9 @@ def parse_arguments(args):
 
 def check_valid_group_size(group_size, students_list):
     """ Checks if group size is valid """
+    if students_list == "filenotfound":
+        logging.info("Skipping group size check; file must not exist.")
+        return True
     students_list_length = len(students_list)
     if group_size <= 1 or group_size > students_list_length / 2:
         logging.error("Group size: " + str(group_size))
