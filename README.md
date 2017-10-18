@@ -6,14 +6,14 @@ students in a specific class. Then, if a course instructor is using [GitHub
 Classroom](https://classroom.github.com/), you can ask the students in your
 class to create and join their assigned group.
 
-## Installing GatorGrouper
+## Installation
 
 As a Python 3 program, GatorGrouper relies on
 [pip](https://pip.pypa.io/en/stable/installing/) for installation. To ensure
 that all of the dependencies are installed correctly, please type
 the following commands before running GatorGrouper.
 
-```
+```shell
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
@@ -36,12 +36,12 @@ Interested in learning more about the basics of virtual environments in Python
 [article](http://www.cs.allegheny.edu/sites/gkapfham/programming/research/idea/2017/07/14/Virtual-Environments/)
 to further develop your understanding of this topic.
 
-## Initial Setup of GatorGrouper
+## Initial Setup
 
 Ensure that you have installed gspread and oauth2client installed in the root
 directory of the repository.  In the terminal use the command:
 
-```
+```shell
 python3 -m pip install --user gspread oauth2client
 ```
 
@@ -61,58 +61,50 @@ you would like to create your own service account for confidentiality and
 security, follow the tutorial found at [www.twolio.com](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 to create a personal service account.
 
-Within `spreadsheet.py`, find `sheet = client.open("Compsci280 Lab4 Survey
-Results").sheet1` and change `"Compsci280 Lab4 Survey Results"` to the name of
-your Sheet.
+Within `defaults.py`, update the `DEFAULT_WORKBOOK` constant to the name of your
+Sheet.
 
-## Running GatorGrouper
+---
+
+## Usage
 
 GatorGrouper accepts command line arguments and then generates output in your
 terminal window. Using the defaults of storing your student identifiers in the
-file called `students.txt` and creating groups of two students means that you
+file called `students.csv` and creating groups of two students means that you
 will run GatorGrouper with this command:
 
-```
+```shell
 python3 gatorgrouper.py
 ```
 
 ### Group Size
 
-To specify the size of the groups, use the flag `---groupsize`.
+To specify the size of the groups, use the flag `--group-size`.
 
-Example:
-
-```
-python3 gatorgrouper.py --group-size 3
+```shell
+python3 gatorgrouper.py --group-size 4
 ```
 
-This indicates that groups should each contain 3 members.
+This indicates that groups should each contain 4 members.  The provided group
+size should be greater than 1 and equal to or less than half the total number of
+students.  If the group size is not specified, the default group size is 3.
 
-The group size should be greater than 1 and equal to or less than
-half the total number of students. If the group size is not
-specified, the default group size is 2.
-
-### Grouping Methods
-
-#### Random Method
+### Random Grouping Method
 
 To randomly group the students, use the flag `--random`.
 
-Example:
-
-```
+```shell
 python3 gatorgrouper.py --random
 ```
 
-This will randomly group the list of students you have provided.
+This will randomly group the list of students you have provided, and is the
+default grouping method used when none is provided.
 
-#### Round-robin Method
+### Round-robin Grouping Method
 
 To group students using the round-robin method, use the flag `--round-robin`.
 
-Example:
-
-```
+```shell
 python3 gatorgrouper.py --round-robin
 ```
 
@@ -124,18 +116,12 @@ indicated as true.  When all of the students with true values are assigned,
 it goes back and adds a student to each group until there are no students
 remaining.
 
-If none of these flags are used, the groups will be generated randomly.
-
-### Absentees
+### Absent Students
 
 To indicate which students are absent so they are not grouped, use the
-flag `--absentees`.
+flag `--absentees`.  The arguments can be entered in the following ways:
 
-Example:
-
-The arguments can be entered in the following ways:
-
-```
+```shell
 python3 gatorgrouper.py --absentees student1, student2
 python3 gatorgrouper.py --absentees 'student1', 'student2'
 python3 gatorgrouper.py --absentees "student1", "student2"
@@ -149,14 +135,12 @@ there are no students absent.
 
 ### Specify File Containing List of Students
 
-To specify a different file other than the default `students.txt`, use the
-flag `--students-file`.
+To bypass the Google Forms integration and instead supply a list of students
+directly to the program, use the `--students-file` flag.
 
-Example:
-
-```
-python3 gatorgrouper.py --students-file "students_list.txt"
-python3 gatorgrouper.py --students-file students_list.txt
+```shell
+python3 gatorgrouper.py --students-file "students_list.csv"
+python3 gatorgrouper.py --students-file students_list.csv
 ```
 
 ### Monitoring GatorGrouper
@@ -164,26 +148,22 @@ python3 gatorgrouper.py --students-file students_list.txt
 To see detailed general output to monitor progress, use the flag `-v` or
 `--verbose`.
 
-Example:
-
-```
+```shell
 python3 gatorgrouper.py --verbose
 ```
 
 To see detailed technical output to diagnose problems, use the flag `-d` or
 `--debug`.
 
-Example:
-
-```
+```shell
 python3 gatorgrouper.py --debug
 ```
 
-If none of these flags are used, logging will only be shown if an error occurs.
+If neither of these flags are set, logging will only be shown if an error occurs.
 
-### Sample Use of GatorGrouper
+### Full Example
 
-```
+```shell
 $ python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
 
 GatorGrouper: Automatically Assign Students to Groups
@@ -211,11 +191,13 @@ Each of the previous commands were run on an Ubuntu 16.04 workstation running
 Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
 operating systems that support Python version 3.
 
-## Testing Documentation
+---
 
-### Functions
+## Testing
 
-The test suite is designed to test the different functions of gatorgrouper.py.
+### Functions Tested
+
+The test suite is designed to test the different functions of `gatorgrouper.py`.
 The first function the test suites test is to make sure that there are the
 correct amount of students in each group. The test suite also makes sure that
 the shuffle function is working correctly. There are also test cases to make
@@ -223,72 +205,58 @@ sure that the professor has the option to mark students absent, and these
 students will not get grouped. Lastly, the test suite test checks to see if
 students are being correctly grouped based on category.
 
-### Run
+### Running the Test Suite
 
-Requires `pip3 install pytest-flake8` in order to run.  Use the command:
+The test suite requires `pytest-flake8`, which can be installed with the
+following command:
 
+```shell
+pip3 install --user pytest-flake8
 ```
-pip3 install --user pytest-flake8`
-```
 
-Test suites for the gatorgrouper.py module.  From `gatorgrouper/tests`,
-run the test suite using the command:
+From `gatorgrouper/tests`, the test suite can be ran with the following command:
 
-```
+```shell
 pytest test_gatorgrouper.py
 ```
 
-Linting:
+### Automatic Linting
 
 For any future issues with linting, you can install an autolinting tool with:
 
-```
+```shell
 pip3 install --user autopep8
 ```
 
 To run the tool, type the following into the main directory.
 
-```
-autopep8 --in-place --aggressive --aggressive *.py
+```shell
+autopep8 --in-place --aggressive *.py
 ```
 
 If there are any linting issues that were not fixed by the tool, the error
 message from the test suite will direct you to where the issue is and tell you
 what it is in order for you to fix it.
 
-## Tox Testing Tool
+## Test Coverage
 
-The tox testing tool was not sucessfully implemented due to time contraints, so
-GatorGrouper is only confirmed to run in Python 3.5.
+Test coverage reporting is handled with `pytest-coverage`.  The following
+commands will install and run `pytest-coverage`.
 
-## Installation of Pytest-Coverage
-
-run in the terminal:
-
-```
+```shell
 pip install pytest-cov
-```
-
-## Usage
-
-to run pytest-coverage:
-
-```
 coverage run --source tests -m py.test
 coverage report
 ```
 
-## Configuring Travis-Ci
+## Activating Travis-Ci
 
-In order to activate travis-ci you must have admin rights.
+- In order to activate travis-ci you must have admin rights.
+- Make sure that you turned on the repo by seeing the green slide.
+- Then in the root directory of your repo create a .travis.yml
+- An example of a .travis.yml:
 
-Make sure that you turned on the repo by seeing the green slide.
-
-Then in the root directory of your repo create a .travis.yml
-
-An example of a .travis.yml
-
-```
+```yml
 language: python
 python:
   - "3.5"
@@ -319,17 +287,13 @@ script:
 
 ## Activating Coveralls
 
-Go to <https://coveralls.io/sign-up>
+- Go to <https://coveralls.io/sign-up>
+- Click Github Sign Up
+- Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
+- You should now see it in your repos click on Gator Grouper.
+- The now add to the end of your .travis.yml:
 
-Click Github Sign Up
-
-Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
-
-You should now see it in your repos click on Gator Grouper.
-
-The now add to the end of your .travis.yml:
-
-```
+```yml
 after_success:
   coveralls
 ```

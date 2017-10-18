@@ -13,6 +13,7 @@ from group_random import shuffle_students
 from group_random import group_random
 from group_rrobin import group_rrobin
 from spreadsheet import create_csv
+from defaults import DEFAULT_CSVFILE
 
 
 if __name__ == '__main__':
@@ -23,8 +24,12 @@ if __name__ == '__main__':
     logging.info("Configuration of GatorGrouper:")
     logging.debug(GG_ARGUMENTS)
 
-    # create csv file from the data in the google sheet
-    create_csv()
+    # skip pulling from Google Sheets if CSV is provided
+    if GG_ARGUMENTS.students_file == DEFAULT_CSVFILE:
+        logging.info("Pulling CSV file from Google Sheets.")
+        create_csv()
+    else:
+        logging.info("Using the CSV file provided")
 
     # read in the student identifiers from the specified file
     STUDENT_IDENTIFIERS = remove_absent_students(
