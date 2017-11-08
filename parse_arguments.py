@@ -5,6 +5,7 @@ import logging
 
 from defaults import DEFAULT_CSVFILE
 from defaults import DEFAULT_GRPSIZE
+from defaults import DEFAULT_NUMGRP
 from read_student_file import read_student_file
 
 
@@ -35,6 +36,14 @@ def parse_arguments(args):
         type=int,
         default=DEFAULT_GRPSIZE,
         required=False)
+
+    gg_parser.add_argument(
+        "--num-group",
+        help="Number of groups",
+        type=int,
+        default=DEFAULT_NUMGRP,
+        required=False
+    )
 
     gg_parser.add_argument(
         "--students-file",
