@@ -220,6 +220,12 @@ From `gatorgrouper/tests`, the test suite can be ran with the following command:
 pytest test_gatorgrouper.py
 ```
 
+If `pytest test_gatorgrouper.py` is not working, try this command from the root
+directory instead:
+```shell
+python3 -m pytest tests
+```
+
 ### Automatic Linting
 
 For any future issues with linting, you can install an autolinting tool with:
