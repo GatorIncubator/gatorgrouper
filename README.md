@@ -220,7 +220,7 @@ From `gatorgrouper/tests`, the test suite can be ran with the following command:
 pytest test_gatorgrouper.py
 ```
 
-If `pytest test_gatorgrouper.py` is not working try running the following
+If `pytest test_gatorgrouper.py` is not working, try running the following
 command from the root directory:
 
 ```shell
