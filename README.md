@@ -65,6 +65,20 @@ Within `defaults.py`, update the `DEFAULT_WORKBOOK` constant to the name of your
 Sheet.
 
 ---
+## EXECUTABLES!
+
+GatorGrouper is now equipped to handle execution from outside the terminal. With
+the implementation of the Graphical User Interface, we have managed to create a
+file that will run on double click, that can run right from your desktop. It
+does everything the main program does, only from a neat, clean dialog box. When
+getting this file to the desktop, however, you will need to find it in the
+GatorGrouper directory at ...gatorgrouper/dist/gatorgrouperGUI, under the file
+name gatorgrouperGUI. If this does not exist on your system, you can download
+the pyinstaller package using the command `pip3 install --user pyinstaller`, and
+create the package using the command `pyinstaller gatorgrouperGUI.py` from in
+the gatorgrouper file directory. The path to the executable will still be the
+same. At present, this executable has been tested and works with Ubuntu, testing
+for other systems is underway.
 
 ## Usage
 
