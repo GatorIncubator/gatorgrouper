@@ -212,10 +212,10 @@ following command:
 pip3 install --user pytest-flake8
 ```
 
-From `gatorgrouper/tests`, the test suite can be ran with the following command:
+From the root directory, the test suite can be ran with the following command:
 
 ```shell
-pytest test_gatorgrouper.py
+python3 -m pytest tests
 ```
 
 ### Automatic Linting
