@@ -122,9 +122,7 @@ To indicate which students are absent so they are not grouped, use the
 flag `--absentees`.  The arguments can be entered in the following ways:
 
 ```shell
-python3 gatorgrouper.py --absentees student1, student2
-python3 gatorgrouper.py --absentees 'student1', 'student2'
-python3 gatorgrouper.py --absentees "student1", "student2"
+
 python3 gatorgrouper.py --absentees student1 student2
 python3 gatorgrouper.py --absentees 'student1' 'student2'
 python3 gatorgrouper.py --absentees "student1" "student2"
@@ -139,8 +137,8 @@ To bypass the Google Forms integration and instead supply a list of students
 directly to the program, use the `--students-file` flag.
 
 ```shell
-python3 gatorgrouper.py --students-file "students_list.csv"
-python3 gatorgrouper.py --students-file students_list.csv
+python3 gatorgrouper.py --students-file "file_name.csv"
+python3 gatorgrouper.py --students-file file_name.csv
 ```
 
 ### Monitoring GatorGrouper
