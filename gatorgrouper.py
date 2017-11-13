@@ -10,10 +10,12 @@ from display import display_welcome_message
 from display import display_student_groups
 from display import create_escaped_string_from_list
 from group_random import shuffle_students
-from group_random import group_random
+from group_random import group_random_group_size
+from group_random import group_random_num_groups
 from group_rrobin import group_rrobin
 from spreadsheet import create_csv
 from defaults import DEFAULT_CSVFILE
+from defaults import DEFAULT_NUMGRP
 
 
 if __name__ == '__main__':
@@ -32,6 +34,7 @@ if __name__ == '__main__':
         logging.info("Using the CSV file provided")
 
     # read in the student identifiers from the specified file
+    print(GG_ARGUMENTS.students_file)
     STUDENT_IDENTIFIERS = remove_absent_students(
         GG_ARGUMENTS.absentees,
         read_student_file(GG_ARGUMENTS.students_file))
@@ -49,9 +52,12 @@ if __name__ == '__main__':
     if GG_ARGUMENTS.grouping_method == "rrobin":
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
-    else:  # default to random method
-        GROUPED_STUDENT_IDENTIFIERS = group_random(
+    elif GG_ARGUMENTS.num_group is DEFAULT_NUMGRP:  # default to random method
+        GROUPED_STUDENT_IDENTIFIERS = group_random_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
+    else:
+        GROUPED_STUDENT_IDENTIFIERS = group_random_num_groups(
+            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group)
 
     # report grouping results
     COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
