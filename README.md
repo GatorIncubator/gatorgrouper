@@ -134,6 +134,7 @@ python3 gatorgrouper.py --absentees student1 student2
 python3 gatorgrouper.py --absentees 'student1' 'student2'
 python3 gatorgrouper.py --absentees "student1" "student2"
 ```
+
 Note that the absent students' names must be separated by spaces, not quotes.
 The names can be surrounded by single or double quotes if desired.
 
