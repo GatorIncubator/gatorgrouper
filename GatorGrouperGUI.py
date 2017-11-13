@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import os
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -107,7 +108,7 @@ class Ui_GatorGrouperGUI(object):
         self.menuBar.addAction(self.menuSettings.menuAction())
 
         self.retranslateUi(GatorGrouperGUI)
-        QtCore.QObject.connect(self.generateButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.groupListViewer.doItemsLayout)
+        QtCore.QObject.connect(self.generateButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.runGG)
         QtCore.QObject.connect(self.trueRandButton, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.generateButton.setChecked)
         QtCore.QObject.connect(self.rrButton, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.generateButton.setChecked)
         QtCore.QMetaObject.connectSlotsByName(GatorGrouperGUI)
@@ -134,6 +135,8 @@ class Ui_GatorGrouperGUI(object):
         self.actionHelp.setText(_translate("GatorGrouperGUI", "Help", None))
         self.actionExit.setText(_translate("GatorGrouperGUI", "Exit", None))
 
+    def runGG(signal1):
+        os.system('python3 gatorgrouper.py')
 
 if __name__ == "__main__":
     import sys
