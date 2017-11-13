@@ -11,8 +11,9 @@ from display import display_student_groups
 from display import create_escaped_string_from_list
 from group_random import shuffle_students
 from group_random import group_random_group_size
-from group_random import group_random_num_groups
-from group_rrobin import group_rrobin
+from group_random import group_random_num_group
+from group_rrobin import group_rrobin_group_size
+from group_rrobin import group_rrobin_num_group
 from spreadsheet import create_csv
 from defaults import DEFAULT_CSVFILE
 from defaults import DEFAULT_NUMGRP
@@ -49,14 +50,17 @@ if __name__ == '__main__':
         create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
 
     # generate the groups and display them
-    if GG_ARGUMENTS.grouping_method == "rrobin":
-        GROUPED_STUDENT_IDENTIFIERS = group_rrobin(
+    if GG_ARGUMENTS.grouping_method == "rrobin" and GG_ARGUMENTS.num_group is DEFAULT_NUMGRP:
+        GROUPED_STUDENT_IDENTIFIERS = group_rrobin_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
+    elif GG_ARGUMENTS.grouping_method == "rrobin" and GG_ARGUMENTS.num_group is not DEFAULT_NUMGRP:
+        GROUPED_STUDENT_IDENTIFIERS = group_rrobin_num_group(
+            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group)
     elif GG_ARGUMENTS.num_group is DEFAULT_NUMGRP:  # default to random method
         GROUPED_STUDENT_IDENTIFIERS = group_random_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size)
     else:
-        GROUPED_STUDENT_IDENTIFIERS = group_random_num_groups(
+        GROUPED_STUDENT_IDENTIFIERS = group_random_num_group(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group)
 
     # report grouping results

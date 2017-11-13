@@ -79,7 +79,7 @@ def parse_arguments(args):
             gg_arguments_finished.group_size,
             read_student_file(gg_arguments_finished.students_file)) is False:
         quit()
-        
+
     if check_valid_num_group(
             gg_arguments_finished.num_group,
             read_student_file(gg_arguments_finished.students_file)) is False:
@@ -90,6 +90,7 @@ def parse_arguments(args):
 
     return gg_arguments_finished
 
+
 def check_valid_num_group(numgrp, students_list):
     if students_list == "filenotfound":
         logging.info("Skipping group size check; file must not exist.")
@@ -99,12 +100,13 @@ def check_valid_num_group(numgrp, students_list):
         logging.error("Number of groups: " + str(numgrp))
         logging.error("Number of students: " + str(students_list_length))
         logging.error("Number of groups must be less than or equal to " +
-                        "the number of students to be grouped.")
+                      "the number of students to be grouped.")
         return False
     logging.info("Number of groups: " + str(numgrp))
     logging.info("Number of students: " + str(students_list_length))
     logging.info("Valid number of groups.")
     return True
+
 
 def check_valid_group_size(group_size, students_list):
     """ Checks if group size is valid """

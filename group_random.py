@@ -39,8 +39,9 @@ def group_random_group_size(responses, grpsize):
     logging.info("scores: " + str(scores))
     logging.info("average: " + str(ave))
     return groups
-    
-def group_random_num_groups(responses, numgrp):
+
+
+def group_random_num_group(responses, numgrp):
     """ group responses using randomization approach """
     # number of students placed into a group
     stunum = 0
