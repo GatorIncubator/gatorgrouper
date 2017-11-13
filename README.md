@@ -77,6 +77,13 @@ will run GatorGrouper with this command:
 python3 gatorgrouper.py
 ```
 
+In order to see all the possible commands and their descriptions, enter
+the following command:
+
+```shell
+python3 gatorgrouper.py -h
+```
+
 ### Group Size
 
 To specify the size of the groups, use the flag `--group-size`.
