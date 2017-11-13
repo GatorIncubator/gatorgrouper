@@ -14,8 +14,8 @@ that all of the dependencies are installed correctly, please type
 the following commands before running GatorGrouper.
 
 ```shell
-pip install --upgrade pip
-pip install -r requirements.txt
+pip3 install --upgrade pip
+pip3 install -r requirements.txt
 ```
 
 Note that you may have Python 3 setup in different ways on your computer. For
@@ -77,6 +77,13 @@ will run GatorGrouper with this command:
 python3 gatorgrouper.py
 ```
 
+In order to see all the possible commands and their descriptions, enter
+the following command:
+
+```shell
+python3 gatorgrouper.py -h
+```
+
 ### Group Size
 
 To specify the size of the groups, use the flag `--group-size`.
@@ -122,13 +129,14 @@ To indicate which students are absent so they are not grouped, use the
 flag `--absentees`.  The arguments can be entered in the following ways:
 
 ```shell
-python3 gatorgrouper.py --absentees student1, student2
-python3 gatorgrouper.py --absentees 'student1', 'student2'
-python3 gatorgrouper.py --absentees "student1", "student2"
+
 python3 gatorgrouper.py --absentees student1 student2
 python3 gatorgrouper.py --absentees 'student1' 'student2'
 python3 gatorgrouper.py --absentees "student1" "student2"
 ```
+
+Note that the absent students' names must be separated by spaces, not quotes.
+The names can be surrounded by single or double quotes if desired.
 
 If no absentees are indicated with this flag, then the program will assume that
 there are no students absent.
@@ -139,8 +147,8 @@ To bypass the Google Forms integration and instead supply a list of students
 directly to the program, use the `--students-file` flag.
 
 ```shell
-python3 gatorgrouper.py --students-file "students_list.csv"
-python3 gatorgrouper.py --students-file students_list.csv
+python3 gatorgrouper.py --students-file "file_name.csv"
+python3 gatorgrouper.py --students-file file_name.csv
 ```
 
 ### Monitoring GatorGrouper
@@ -164,7 +172,7 @@ If neither of these flags are set, logging will only be shown if an error occurs
 ### Full Example
 
 ```shell
-$ python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
+$ python3 gatorgrouper.py --group-size 3 --absentees becky george --random
 
 GatorGrouper: Automatically Assign Students to Groups
 https://github.com/gkapfham/gatorgrouper
@@ -214,10 +222,10 @@ following command:
 pip3 install --user pytest-flake8
 ```
 
-From `gatorgrouper/tests`, the test suite can be ran with the following command:
+From the root directory, the test suite can be ran with the following command:
 
 ```shell
-pytest test_gatorgrouper.py
+python3 -m pytest tests
 ```
 
 ### Automatic Linting
