@@ -5,6 +5,7 @@ import logging
 
 from defaults import DEFAULT_CSVFILE
 from defaults import DEFAULT_GRPSIZE
+from defaults import DEFAULT_NUMGRP
 from read_student_file import read_student_file
 
 
@@ -35,6 +36,14 @@ def parse_arguments(args):
         type=int,
         default=DEFAULT_GRPSIZE,
         required=False)
+
+    gg_parser.add_argument(
+        "--num-group",
+        help="Number of groups",
+        type=int,
+        default=DEFAULT_NUMGRP,
+        required=False
+    )
 
     gg_parser.add_argument(
         "--students-file",
@@ -71,10 +80,32 @@ def parse_arguments(args):
             read_student_file(gg_arguments_finished.students_file)) is False:
         quit()
 
+    if check_valid_num_group(
+            gg_arguments_finished.num_group,
+            read_student_file(gg_arguments_finished.students_file)) is False:
+        quit()
+
     if gg_arguments_finished.absentees is None:
         gg_arguments_finished.absentees = []
 
     return gg_arguments_finished
+
+
+def check_valid_num_group(numgrp, students_list):
+    if students_list == "filenotfound":
+        logging.info("Skipping group size check; file must not exist.")
+        return True
+    students_list_length = len(students_list)
+    if numgrp > students_list_length:
+        logging.error("Number of groups: " + str(numgrp))
+        logging.error("Number of students: " + str(students_list_length))
+        logging.error("Number of groups must be less than or equal to " +
+                      "the number of students to be grouped.")
+        return False
+    logging.info("Number of groups: " + str(numgrp))
+    logging.info("Number of students: " + str(students_list_length))
+    logging.info("Valid number of groups.")
+    return True
 
 
 def check_valid_group_size(group_size, students_list):
