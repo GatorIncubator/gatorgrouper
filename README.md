@@ -14,8 +14,8 @@ that all of the dependencies are installed correctly, please type
 the following commands before running GatorGrouper.
 
 ```shell
-pip install --upgrade pip
-pip install -r requirements.txt
+pip3 install --upgrade pip
+pip3 install -r requirements.txt
 ```
 
 Note that you may have Python 3 setup in different ways on your computer. For
@@ -169,7 +169,7 @@ If neither of these flags are set, logging will only be shown if an error occurs
 ### Full Example
 
 ```shell
-$ python3 gatorgrouper.py --group-size 3 --absentees becky, george --random
+$ python3 gatorgrouper.py --group-size 3 --absentees becky george --random
 
 GatorGrouper: Automatically Assign Students to Groups
 https://github.com/gkapfham/gatorgrouper
