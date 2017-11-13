@@ -278,6 +278,10 @@ def test_parse_arguments4():
     assert parsed_args.grouping_method == 'rrobin'
     assert parsed_args.absentees == ['maria']
 
+def test_parse_arguments5():
+    args = ['--num-group', '3']
+    parsed_args = parse_arguments.parse_arguments(args)
+    assert parsed_args.num_group == 3
 
 def test_shuffle():
     """Checking the shuffle_students method for appropriate ouput"""
