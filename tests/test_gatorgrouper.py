@@ -342,7 +342,29 @@ def test_random():
     assert len(actual_output) == 3
     assert len(actual_output[0]) == 4
 
-
+def test_group_rrobin_num_group():
+    """Testing the round robin group number fucntion to assure proper output"""
+    list = [
+                ["Dan", True, True, True],
+                ["Jesse", True, True, True],
+                ["Austin", True, True, True],
+                ["Nick", False, False, False],
+                ["Nikki", False, False, False],
+                ["Maria", False, False, False],
+                ["Jeff", False, False, False],
+                ["Simon", False, False, False],
+                ["Jon", False, False, False],
+                ["Angie", False, False, False],
+                ["Izaak", False, False, False],
+                ["Jacob", False, False, False]
+    ]
+    group_size = 3
+    actual_output = group_rrobin_num_group.group_rrobin_num_group(list, group_size)
+    assert len(actual_output) == 4
+    assert len(actual_output[0]) == group_size
+    assert (["Dan", True, True, True] in actual_output[0]) is True
+    assert (["Jesse", True, True, True] in actual_output[2]) is True
+    assert (["Austin", True, True, True] in actual_output[1]) is True
 # Linting Tests
 def test_flake8():
 
