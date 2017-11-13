@@ -177,6 +177,7 @@ def test_display_student_groups(capsys):
     """Checking the display of the student_groups"""
     student_groups = [['gkapfham3', 'gkapfham0'], [
         'gkapfham1', 'gkapfham4'], ['gkapfham5', 'gkapfham7', 'gkapfham6']]
+    group_check = display.display_student_groups(student_groups)
     out, err = capsys.readouterr()
     assert out.startswith("Group 1")
 
