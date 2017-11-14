@@ -108,7 +108,7 @@ python3 gatorgrouper.py --num-groups 4
 This indicates that the students should be divided into 4 groups. The number of
 groups should be at minimum 1 and at maximum the number of students to be placed
 into groups. If the number of groups is not specified or is specified as '0' the
-flag is ignored. This flag can be used along side `--random` as well as
+flag is ignored. This flag can be used along side `--absentees`, `--random`, and
 `--round-robin`.
 
 ### Random Grouping Method
