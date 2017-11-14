@@ -45,7 +45,8 @@ def create_csv():
         formated_entry.insert(
             0, formated_entry.pop(
                 formated_entry.index(username)))
-        formated_list.append(formated_entry)
+        if not any(formated_entry[0] in entry[0] for entry in formated_list):
+            formated_list.append(formated_entry)
 
     logging.info("Writing formatted data to CSV file")
     logging.debug("CSV file name: " + file_name)
