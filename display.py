@@ -8,10 +8,11 @@ def display_student_groups(student_groups):
     group_counter = 1
     place_counter = 0
     for student_group in student_groups:
-        print('\033[0;32m' + '\033[1m' + '\033[4m')    # makes the group label bold, underlined, and green
-        print("Group", group_counter)
+        #print("Group", group_counter)
+        print('\033[0;32m' + '\033[1m' + '\033[4m' + "Group", group_counter)
         for student in student_group:
             place_counter += 1
+            #print(student[0])
             print('\033[0m' + student[0])   # converts the students back to original font
         print()
         group_counter = group_counter + 1
