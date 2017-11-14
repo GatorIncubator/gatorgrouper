@@ -179,7 +179,7 @@ def test_display_student_groups(capsys):
         'gkapfham1', 'gkapfham4'], ['gkapfham5', 'gkapfham7', 'gkapfham6']]
     group_check = display.display_student_groups(student_groups)
     out, err = capsys.readouterr()
-    assert out.startswith("Group 1")
+    assert out.startswith('\033[0;32m' + '\033[1m' + '\033[4m' + "Group 1")
 
 
 def test_remove_absent_students_one():
@@ -278,13 +278,13 @@ def test_parse_arguments4():
     assert parsed_args.grouping_method == 'rrobin'
     assert parsed_args.absentees == ['maria']
 
-    
+
 def test_parse_arguments5():
     args = ['--num-group', '3']
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.num_group == 3
 
-    
+
 def test_shuffle():
     """Checking the shuffle_students method for appropriate ouput"""
     student_identifiers = [
