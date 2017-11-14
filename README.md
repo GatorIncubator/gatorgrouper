@@ -96,6 +96,21 @@ This indicates that groups should each contain 4 members.  The provided group
 size should be greater than 1 and equal to or less than half the total number of
 students.  If the group size is not specified, the default group size is 3.
 
+### Number of groups
+
+To specify the number of groups the students should be placed in, use the flag
+'--num-groups'.
+
+```shell
+python3 gatorgrouper.py --num-groups 4
+```
+
+This indicates that the students should be divided into 4 groups. The number of
+groups should be at minimum 1 and at maximum the number of students to be placed
+into groups. If the number of groups is not specified or is specified as '0' the
+flag is ignored. This flag can be used along side `--random` as well as
+`--round-robin`.
+
 ### Random Grouping Method
 
 To randomly group the students, use the flag `--random`.
