@@ -97,8 +97,8 @@ def test_group_random1():
     list2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
     group_size = 3
     group_size2 = 2
-    actual_output = group_random.group_random(list, group_size)
-    actual_output2 = group_random.group_random(list2, group_size2)
+    actual_output = group_random.group_random_group_size(list, group_size)
+    actual_output2 = group_random.group_random_group_size(list2, group_size2)
     assert len(actual_output) == 4
     assert len(actual_output[0]) == 3
     assert len(actual_output2) == 3
@@ -227,7 +227,7 @@ def test_group_random_extra():
                     'Nikki', True, True, False, False], [
                         'Dan', False, True, False, True]]
     grpsize = 2
-    returned_groups = group_random.group_random(responses, grpsize)
+    returned_groups = group_random.group_random_group_size(responses, grpsize)
     assert len(returned_groups) == 2
     assert grpsize == 2
 
@@ -243,7 +243,7 @@ def test_group_random():
                         'Dan', False, True, False, True], [
                             'Michael', True, True, False, False]]
     grpsize = 2
-    returned_groups = group_random.group_random(responses, grpsize)
+    returned_groups = group_random.group_random_group_size(responses, grpsize)
     assert len(returned_groups) == 3
 
 
@@ -278,7 +278,13 @@ def test_parse_arguments4():
     assert parsed_args.grouping_method == 'rrobin'
     assert parsed_args.absentees == ['maria']
 
+    
+def test_parse_arguments5():
+    args = ['--num-group', '3']
+    parsed_args = parse_arguments.parse_arguments(args)
+    assert parsed_args.num_group == 3
 
+    
 def test_shuffle():
     """Checking the shuffle_students method for appropriate ouput"""
     student_identifiers = [
@@ -313,7 +319,7 @@ def test_round_robin():
         ["Jacob", False, False, False]
     ]
     group_size = 3
-    actual_output = group_rrobin.group_rrobin(list, group_size)
+    actual_output = group_rrobin.group_rrobin_group_size(list, group_size)
     assert len(actual_output) == 4
     assert len(actual_output[0]) == group_size
     assert (["Dan", True, True, True] in actual_output[0]) is True
@@ -338,7 +344,7 @@ def test_random():
         ["Jacob", False, False, False]
     ]
     group_size = 4
-    actual_output = group_random.group_random(list, group_size)
+    actual_output = group_random.group_random_group_size(list, group_size)
     assert len(actual_output) == 3
     assert len(actual_output[0]) == 4
 
