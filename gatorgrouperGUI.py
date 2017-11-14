@@ -24,7 +24,7 @@ class GatorGrouperGUI:
 
     def runGG(self, flag):
         print('python3 gatorgrouper.py ' + flag)
-        os.system('python3 gatorgrouper.py ' + flag)
+        os.system('python3 $HOME/gatorgrouper/gatorgrouper.py ' + flag)
 
 root = Tk()
 root.geometry("666x420")
