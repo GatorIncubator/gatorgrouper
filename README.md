@@ -99,7 +99,7 @@ students.  If the group size is not specified, the default group size is 3.
 ### Number of groups
 
 To specify the number of groups the students should be placed in, use the flag
-'--num-groups'.
+`--num-groups`.
 
 ```shell
 python3 gatorgrouper.py --num-groups 4
