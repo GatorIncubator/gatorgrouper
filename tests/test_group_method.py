@@ -18,7 +18,8 @@ def test_group_random1():
         "James",
         "Kelly",
         "Nikki",
-        "Robert"]
+        "Robert",
+    ]
     list2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
     group_size = 3
     group_size2 = 2
@@ -33,12 +34,12 @@ def test_group_random1():
 def test_group_random_extra():
     """Testing the random type of grouping with a group of extra people not assigned to their own group"""
     responses = [
-        [
-            'Nick', True, False, True, False], [
-            'Marvin', False, False, True, True], [
-                'Evin', True, True, True, False], [
-                    'Nikki', True, True, False, False], [
-                        'Dan', False, True, False, True]]
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Dan", False, True, False, True],
+    ]
     grpsize = 2
     returned_groups = group_random.group_random_group_size(responses, grpsize)
     assert len(returned_groups) == 2
@@ -48,13 +49,13 @@ def test_group_random_extra():
 def test_group_random():
     """Testing the random type of grouping with everyone in an assigned group"""
     responses = [
-        [
-            'Nick', True, False, True, False], [
-            'Marvin', False, False, True, True], [
-                'Evin', True, True, True, False], [
-                    'Nikki', True, True, False, False], [
-                        'Dan', False, True, False, True], [
-                            'Michael', True, True, False, False]]
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Dan", False, True, False, True],
+        ["Michael", True, True, False, False],
+    ]
     grpsize = 2
     returned_groups = group_random.group_random_group_size(responses, grpsize)
     assert len(returned_groups) == 3
@@ -70,7 +71,8 @@ def test_shuffle():
         "Austin",
         "Simon",
         "Jesse",
-        "Maria"]
+        "Maria",
+    ]
     shuffled_students = gatorgrouper.shuffle_students(student_identifiers)
     for i in range(0, len(shuffled_students)):
         assert (student_identifiers[i] in shuffled_students) is True
@@ -91,7 +93,7 @@ def test_round_robin():
         ["Jon", False, False, False],
         ["Angie", False, False, False],
         ["Izaak", False, False, False],
-        ["Jacob", False, False, False]
+        ["Jacob", False, False, False],
     ]
     group_size = 3
     actual_output = group_rrobin.group_rrobin_group_size(list, group_size)
@@ -116,7 +118,7 @@ def test_random():
         ["Jon", False, False, False],
         ["Angie", False, False, False],
         ["Izaak", False, False, False],
-        ["Jacob", False, False, False]
+        ["Jacob", False, False, False],
     ]
     group_size = 4
     actual_output = group_random.group_random_group_size(list, group_size)
