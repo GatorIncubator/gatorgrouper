@@ -36,7 +36,7 @@ Interested in learning more about the basics of virtual environments in Python
 [article](http://www.cs.allegheny.edu/sites/gkapfham/programming/research/idea/2017/07/14/Virtual-Environments/)
 to further develop your understanding of this topic.
 
-GatorGrouper requires user to use Python3. You can type `$ python --version` to check
+GatorGrouper requires user to use Python3. You can type `python --version` to check
 the current Python version on your devices. If you do not have the right Python version,
 or you can not download or upgrade Python on your devices, you can download
 [Pyenv](https://github.com/pyenv/pyenv) tool to set up the virtual environment of
@@ -46,7 +46,7 @@ To install Pyenv, you can use [Pyenv Installer](https://github.com/pyenv/pyenv-i
 By typing the command in terminal:
 
 ```shell
-$ curl https://pyenv.run | bash
+curl https://pyenv.run | bash
 ```
 
 You will successfully install Pyenv. Please make sure that you have the
@@ -63,7 +63,7 @@ Pyenv after restart your terminal window by typing `pyenv install 3.6.7`
 and `pyenv global 3.6.7` to install.
 
 After you finish this process, you should be able
-to type `$ python --version` and get `Python 3.6.7` in your terminal.
+to type `python --version` and get `Python 3.6.7` in your terminal.
 
 ## Initial Setup
 
