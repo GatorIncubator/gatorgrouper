@@ -1,4 +1,7 @@
 # GatorGrouper
+[![Build Status](https://api.travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
+[![codecov.io](http://codecov.io/github/GatorEducator/gatorgrouper/coverage.svg?branch=master)](http://codecov.io/github/GatorEducator/gatorgrouper?branch=master)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
 
 GatorGrouper is a Python 3 program that assigns a list of students to groups of
 a specified size. The output of this program could then be communicated to the
@@ -272,13 +275,50 @@ coverage run --source tests -m py.test
 coverage report
 ```
 
-## Activating Coveralls
+## Activating Travis-Ci
 
-- Go to <https://coveralls.io/sign-up>
-- Click Github Sign Up
+- In order to activate travis-ci you must have admin rights.
+- Make sure that you turned on the repo by seeing the green slide.
+- Then in the root directory of your repo create a .travis.yml
+- An example of a .travis.yml:
+
+```yml
+language: python
+python:
+  - "3.5"
+
+cache:
+  directories:
+    - $HOME/.pip-cache/
+before_install:
+  - gem install mdl
+notifications:
+  email: never
+
+install:
+  - pip install --upgrade pip
+  - python3 -m pip install -r requirements.txt
+  - pip3 install pytest-flake8
+  - pip3 install pytest-cov
+  - pip3 install autopep8
+  - pip3 install gspread oauth2client
+  - pip3 install coveralls
+
+script:
+  - pytest tests
+  - mdl README.md
+  - coverage run --source tests -m py.test
+  - coverage report
+```
+
+## Activating CodeCov
+
+- Go to <https://codecov.io>
+- Click Sign up in the top-right corner
+- Click Sign Up with Github
 - Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
 - You should now see it in your repos click on Gator Grouper.
-- The now add to the end of your .travis.yml:
+- Now add it to the end of your .travis.yml:
 
 ```yml
 after_success:
@@ -292,5 +332,3 @@ create an issue associated with this Git repository using the "Issues" link at
 the top of this site. The contributors to GatorGrouper will do all that they can
 to resolve your issue and ensure that the entire tool works well in your
 teaching and development environment.
-
-[![Coverage Status](https://coveralls.io/repos/github/GatorGrouper/gatorgrouper/badge.svg?branch=master)](https://coveralls.io/github/GatorGrouper/gatorgrouper?branch=master)
