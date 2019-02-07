@@ -50,7 +50,7 @@ curl https://pyenv.run | bash
 ```
 
 After the completion of this command, Pyenv should be installed. Please make sure that you have the
-following lines in your `~/.bashrc` or `~/.zshrc` file.
+following lines in your `~/.bashrc` or similar file types after following the installation instructions in [this](https://github.com/gkapfham/dotfiles) repository.
 
 ```shell
 export PATH="~/.pyenv/bin:$PATH"
