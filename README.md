@@ -49,8 +49,8 @@ by typing the command in terminal:
 curl https://pyenv.run | bash
 ```
 
-You will successfully install Pyenv. Please make sure that you have the
-following lines in your `~/.bashrc` file.
+After the completion of this command, Pyenv should be installed. Please make sure that you have the
+following lines in your `~/.bashrc` or `~/.zshrc` file.
 
 ```shell
 export PATH="~/.pyenv/bin:$PATH"
