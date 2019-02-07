@@ -273,42 +273,6 @@ coverage run --source tests -m py.test
 coverage report
 ```
 
-## Activating Travis-Ci
-
-- In order to activate travis-ci you must have admin rights.
-- Make sure that you turned on the repo by seeing the green slide.
-- Then in the root directory of your repo create a .travis.yml
-- An example of a .travis.yml:
-
-```yml
-language: python
-python:
-  - "3.5"
-
-cache:
-  directories:
-    - $HOME/.pip-cache/
-before_install:
-  - gem install mdl
-notifications:
-  email: never
-
-install:
-  - pip install --upgrade pip
-  - python3 -m pip install -r requirements.txt
-  - pip3 install pytest-flake8
-  - pip3 install pytest-cov
-  - pip3 install autopep8
-  - pip3 install gspread oauth2client
-  - pip3 install coveralls
-
-script:
-  - pytest tests
-  - mdl README.md
-  - coverage run --source tests -m py.test
-  - coverage report
-```
-
 ## Activating CodeCov
 
 - Go to <https://codecov.io>
