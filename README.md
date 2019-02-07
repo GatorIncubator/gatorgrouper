@@ -36,11 +36,11 @@ Interested in learning more about the basics of virtual environments in Python
 [article](http://www.cs.allegheny.edu/sites/gkapfham/programming/research/idea/2017/07/14/Virtual-Environments/)
 to further develop your understanding of this topic.
 
-GatorGrouper requires users to use Python 3. You can type `python --version` to check
-the current version of Python on your workstation. If you do not have the right Python
-version, or you can not download or upgrade Python on your workstation, you can
-download the [Pyenv](https://github.com/pyenv/pyenv) tool to set up a virtual
-environment for the newest Python version.
+GatorGrouper requires users to use Python 3. You can type `python --version` into the 
+terminal window to check the current version of Python on your workstation. If you
+do not have the right Python version, or you can not download or upgrade Python
+on your workstation, you can download the [Pyenv](https://github.com/pyenv/pyenv) tool
+to set up a virtual environment for the newest Python version.
 
 To install Pyenv, you can use [Pyenv Installer](https://github.com/pyenv/pyenv-installer)
 by typing the command in terminal:
