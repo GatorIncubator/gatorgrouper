@@ -63,7 +63,8 @@ for your Pyenv after restart your terminal window by typing `pyenv install 3.6.8
 and `pyenv global 3.6.8` to install.
 
 After you finish this process, you should be able
-to type `python --version` and get either `Python 3.6.8` or `Python 3.7.2` in your terminal.
+to type `python --version` and get either `Python 3.6.8` or `Python 3.7.2` in
+your terminal.
 
 ## Initial Setup
 
