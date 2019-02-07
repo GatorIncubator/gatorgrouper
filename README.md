@@ -37,10 +37,10 @@ Interested in learning more about the basics of virtual environments in Python
 to further develop your understanding of this topic.
 
 GatorGrouper requires users to use Python 3. You can type `python --version` to check
-the current Python version on your device. If you do not have the right Python version,
-or you can not download or upgrade Python on your devices, you can download the
-[Pyenv](https://github.com/pyenv/pyenv) tool to set up a virtual environment for
-the newest Python version.
+the current version of Python on your workstation. If you do not have the right Python
+version, or you can not download or upgrade Python on your workstation, you can
+download the [Pyenv](https://github.com/pyenv/pyenv) tool to set up a virtual
+environment for the newest Python version.
 
 To install Pyenv, you can use [Pyenv Installer](https://github.com/pyenv/pyenv-installer)
 by typing the command in terminal:
@@ -59,11 +59,12 @@ eval "$(pyenv virtualenv-init -)"
 ```
 
 Once Pyenv is installed, you can install the latest version of Python
-for your Pyenv after restart your terminal window by typing `pyenv install 3.6.7`
-and `pyenv global 3.6.7` to install.
+for your Pyenv after restart your terminal window by typing `pyenv install 3.6.8`
+and `pyenv global 3.6.8` to install.
 
 After you finish this process, you should be able
-to type `python --version` and get `Python 3.6.7` in your terminal.
+to type `python --version` and get either `Python 3.6.8` or `Python 3.7.2` in
+your terminal.
 
 ## Initial Setup
 
