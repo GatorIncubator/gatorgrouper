@@ -18,14 +18,14 @@ install:
   - pip3 install pytest-cov
   - pip3 install autopep8
   - pip3 install gspread oauth2client
-  - pip3 install coveralls
   
 script:
+  - pytest --cov-config pytest.cov --cov
   - pytest tests
   - mdl README.md
   - coverage run --source tests -m py.test 
   - coverage report 
 
 after_success:
-  coveralls
+  codecov
 
