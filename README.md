@@ -36,11 +36,12 @@ Interested in learning more about the basics of virtual environments in Python
 [article](http://www.cs.allegheny.edu/sites/gkapfham/programming/research/idea/2017/07/14/Virtual-Environments/)
 to further develop your understanding of this topic.
 
-GatorGrouper requires users to use Python 3. You can type `python --version` into the 
-terminal window to check the current version of Python on your workstation. If you
-do not have the right Python version, or you can not download or upgrade Python
-on your workstation, you can download the [Pyenv](https://github.com/pyenv/pyenv) tool
-to maintain consistency between python versions.
+GatorGrouper requires users to use Python 3. You can type `python --version`
+into the terminal window to check the current version of Python on your
+workstation. If you do not have the right Python version, or you can not
+download or upgrade Python on your workstation, you can download the
+[Pyenv](https://github.com/pyenv/pyenv) tool to set up a virtual environment
+for the newest Python version.
 
 To install Pyenv, you can use [Pyenv Installer](https://github.com/pyenv/pyenv-installer)
 by typing the command in terminal:
@@ -77,18 +78,18 @@ directory of the repository. In the terminal use the command:
 python3 -m pip install --user gspread oauth2client
 ```
 
-Create a Google Sheets spreadsheet and a Google Form in Google Drive.  In the
+Create a Google Sheets spreadsheet and a Google Form in Google Drive. In the
 Form, create yes or no questions to measure the capabilities and skills of the
 students that you wish to group.  After you have at least one submission of the
 Form, you can go to the responses tab and click on the green icon with the white
-cross through it.  This will enable you to link the Sheet to the Form.  You can
-either create a new Sheet or link to a preexisting one.  If you need to change
+cross through it.  This will enable you to link the Sheet to the Form. You can
+either create a new Sheet or link to a preexisting one. If you need to change
 the destination, you can click on the three dot icon menu to the right of the
 green icon and select "Select response destination".
 
 Open the `.json` file in the `gatorgrouper` repository and find the `"client-email"`.
-Copy the quoted text that looks like an email address.  Return to the Sheet and
-open the sharing options.  Paste the address and click send.  Alternatively, if
+Copy the quoted text that looks like an email address. Return to the Sheet and
+open the sharing options.  Paste the address and click send. Alternatively, if
 you would like to create your own service account for confidentiality and
 security, follow the tutorial found at [www.twolio.com](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 to create a personal service account.
