@@ -20,14 +20,14 @@ pip3 install -r requirements.txt
 
 Note that you may have Python 3 setup in different ways on your computer. For
 instance, you may prefer to install GatorGrouper's dependencies in a site-wide
-location and then you would have to type, for instance, `sudo pip install -r
+location and then you would have to type `sudo pip install -r
 requirements.txt`. Alternatively, you may choose to install the dependencies by
 typing `pip install --user -r requirements.txt`.
 
 GatorGrouper was developed to easily run in conjunction with a [venv-based
 Python 3 virtual environment](https://docs.python.org/3/library/venv.html). This
-means that if you are in the directory that contains the `gatorgrouper`
-directory then you could type `python3 -m venv gatorgrouper` to create all of
+means that if you are in the directory that contains `gatorgrouper`
+then you could type `python3 -m venv gatorgrouper` to create all of
 the components of a venv-based virtual environment in the `gatorgrouper`
 directory. Once you complete this step, you can type the command `source
 gatorgrouper/bin/activate` to activate the venv-based virtual environment.
@@ -71,7 +71,7 @@ your terminal.
 
 ## Initial Setup
 
-Ensure that you have installed gspread and oauth2client installed in the root
+Ensure that you have installed gspread and oauth2client in the root
 directory of the repository. In the terminal use the command:
 
 ```shell
