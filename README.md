@@ -71,7 +71,7 @@ should restart your terminal window by typing `pyenv install 3.7.2`
 and `pyenv global 3.7.2`.
 
 After you finish this process, you should be able
-to type `python --version` and get 'Python 3.7.2` or other version after
+to type `python --version` and get `Python 3.7.2` or other version after
 `Python 3.6.8` in your terminal.
 
 ## Initial Setup
