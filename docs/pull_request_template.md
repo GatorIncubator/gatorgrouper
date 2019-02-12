@@ -7,6 +7,8 @@ Fixes # (issue)
 
 ## Type of change
 
+Please desribe your pull request as one of the following:
+
 - [ ] Bug fix
 - [ ] Breaking change
 - [ ] New feature
