@@ -1,10 +1,17 @@
 # GatorGrouper
 
-GatorGrouper is a Python 3 program that assigns a list of students to groups of
-a specified size. The output of this program could then be communicated to the
-students in a specific class. Then, if a course instructor is using [GitHub
-Classroom](https://classroom.github.com/), you can ask the students in your
-class to create and join their assigned group.
+Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
+and [Travis CI](https://travis-ci.com/), GatorGrouper is a group creation tool
+to help manage team based software development projects. While other group management
+tools perform similar actions, GatorGrouper features creative implementation
+with GitHub Classroom as a solution to facilitating random group creation in an
+educational setting.
+
+GatorGrouper, created entirely in Python 3, takes in a CSV file of student names
+and assigns students to groups of a specified size and a specified method. The 
+output of this program could then be communicated to the students in a specific
+class. Then, if a course instructor is using [GitHub Classroom](https://classroom.github.com/),
+you can ask the students in your class to create and join their assigned group.
 
 ## Installation
 
