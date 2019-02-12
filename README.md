@@ -308,19 +308,6 @@ script:
   - coverage report
 ```
 
-## Activating Coveralls
-
-- Go to <https://coveralls.io/sign-up>
-- Click Github Sign Up
-- Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
-- You should now see it in your repos click on Gator Grouper.
-- The now add to the end of your .travis.yml:
-
-```yml
-after_success:
-  coveralls
-```
-
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
