@@ -1,6 +1,6 @@
 language: python
 python:
-  - "3.5"
+  - "3.6"
 
 cache:
   directories:
@@ -23,18 +23,15 @@ notifications:
 
 install:
   - pip install --upgrade pip
-  - python3 -m pip install -r requirements.txt
-  - pip3 install pytest-flake8
-  - pip3 install pytest-cov
-  - pip3 install autopep8
-  - pip3 install gspread oauth2client
+  - pip install --upgrade pipenv
+  - pipenv install --dev
   
 script:
-  - pytest tests
+  - pipenv run pytest tests --cov-config pytest.cov --cov
+  - pipenv run flake8 tests*
+  - pipenv run pylint tests
   - mdl README.md
-  - coverage run --source tests -m py.test 
-  - coverage report 
 
 after_success:
-  codecov
+  - pipenv run codecov
 
