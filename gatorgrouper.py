@@ -45,9 +45,7 @@ if __name__ == '__main__':
     # shuffle the student identifiers
     SHUFFLED_STUDENT_IDENTIFIERS = shuffle_students(STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
-    logging.info(
-        "\n" +
-        create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
+    logging.info("\n" + create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
 
     # generate the groups and display them
     if GG_ARGUMENTS.grouping_method == "rrobin" and GG_ARGUMENTS.num_group is DEFAULT_NUMGRP:
