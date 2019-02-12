@@ -5,6 +5,17 @@ python:
 cache:
   directories:
     - $HOME/.pip-cache/
+    
+# Activating Coveralls
+# - Go to <https://codecov.io/gh>
+# - Login with Github
+# - Add Repo GatorEducator/gatorgrouper(make sure it is on)
+# - You should now see it in your repos click on Gator Grouper.
+# - The now add to the end of your .travis.yml:
+# ```
+# codecov
+# ```
+
 # install mdl for checking Markdown
 before_install:
   - gem install mdl
@@ -13,19 +24,18 @@ notifications:
 
 install:
   - pip install --upgrade pip
+  - pip install codecov
   - python3 -m pip install -r requirements.txt
   - pip3 install pytest-flake8
   - pip3 install pytest-cov
   - pip3 install autopep8
   - pip3 install gspread oauth2client
-  - pip3 install coveralls
   
 script:
   - pytest tests
   - mdl README.md
-  - coverage run --source tests -m py.test 
-  - coverage report 
+  - pytest --cov=./
 
 after_success:
-  coveralls
+  codecov
 
