@@ -52,7 +52,9 @@ curl https://pyenv.run | bash
 
 After the completion of this command, Pyenv should be installed. Please make
 sure that you have the following lines in your `~/.bashrc` or similar file
-types after following the installation instructions in Professor Kapfhammer's
+types. Notices that different development evironment may have different
+configuration configuration files (i.e., "dotfiles"). You can see more examples
+and learn more in the instructions of Professor Kapfhammer's
 [dotfiles](https://github.com/gkapfham/dotfiles) repository.
 
 ```shell
@@ -62,12 +64,14 @@ eval "$(pyenv virtualenv-init -)"
 ```
 
 Once Pyenv is installed, you can install the latest version of Python
-for your Pyenv after restart your terminal window by typing `pyenv install 3.6.8`
-and `pyenv global 3.6.8` to install.
+for your Pyenv. We suggest developers to use `Python 3.7.2`  for `gatorgrouper`.
+However, any version after `Python 3.6.8` would work well. To install, you
+should restart your terminal window by typing `pyenv install 3.7.2`
+and `pyenv global 3.7.2`.
 
 After you finish this process, you should be able
-to type `python --version` and get either `Python 3.6.8` or `Python 3.7.2` in
-your terminal.
+to type `python --version` and get 'Python 3.7.2` or other version after
+`Python 3.6.8` in your terminal.
 
 ## Initial Setup
 
