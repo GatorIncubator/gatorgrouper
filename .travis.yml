@@ -27,6 +27,7 @@ install:
   - pipenv install --dev
   
 script:
+  - pip --version
   - pipenv run pytest tests --cov-config pytest.cov --cov
   - pipenv run flake8 tests*
   - pipenv run pylint tests
