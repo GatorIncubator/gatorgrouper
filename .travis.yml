@@ -5,6 +5,18 @@ python:
 cache:
   directories:
     - $HOME/.pip-cache/
+    
+# Activating Coveralls
+# - Go to <https://coveralls.io/sign-up>
+# - Click Github Sign Up
+# - Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
+# - You should now see it in your repos click on Gator Grouper.
+# - The now add to the end of your .travis.yml:
+#```yml
+#after_success:
+#  coveralls
+#```
+
 # install mdl for checking Markdown
 before_install:
   - gem install mdl
