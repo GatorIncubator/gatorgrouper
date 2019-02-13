@@ -88,8 +88,8 @@ def parse_arguments(args):
             check_valid_group_size(
                 gg_arguments_finished.group_size,
                 read_student_file(gg_arguments_finished.students_file),
-                )
-                is False
+            )
+            is False
     ):
         quit()
 
@@ -97,8 +97,8 @@ def parse_arguments(args):
             check_valid_num_group(
                 gg_arguments_finished.num_group,
                 read_student_file(gg_arguments_finished.students_file),
-                )
-                is False
+            )
+            is False
     ):
         quit()
 
