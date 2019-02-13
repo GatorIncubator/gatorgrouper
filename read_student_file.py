@@ -1,5 +1,6 @@
 """ Reads CSV data file """
 
+import logging
 import csv
 from pathlib import Path
 
@@ -21,9 +22,9 @@ def read_student_file(filepath):
         temp = list()
         temp.append(record[0].replace('"', ''))
         for value in record[1:]:
-            if value == "True":
+            if value.lower() == "true" :
                 temp.append(True)
-            elif value == "False":
+            elif value.lower() == "false":
                 temp.append(False)
         responses.append(temp)
     return responses

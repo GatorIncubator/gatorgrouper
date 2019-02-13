@@ -2,8 +2,6 @@
 
 import csv
 import logging
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 from defaults import DEFAULT_CSVFILE
 from defaults import DEFAULT_WORKBOOK
 
@@ -12,14 +10,6 @@ def create_csv():
     """ Pulls data from Google Sheets, writing to the default CSV file """
 
     file_name = "./" + DEFAULT_CSVFILE
-    logging.info(
-        "Authenticating to Google Sheets to obtain Google Form data")
-    # use creds to create a client to interact with the Google Drive API
-    scope = ['https://spreadsheets.google.com/feeds']
-    creds = ServiceAccountCredentials.from_json_keyfile_name(
-        'authorizationKey/keyFile.json', scope)
-    client = gspread.authorize(creds)
-
     # Find a workbook by name and open the first sheet
     # Make sure you use the right name here.
     sheet = client.open(DEFAULT_WORKBOOK).sheet1
