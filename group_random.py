@@ -20,8 +20,7 @@ def group_random_group_size(responses, grpsize):
     if len(groups[last_group_index]) < grpsize:
 
         # distribute them throughout the other groups
-        logging.info(
-            "Partial group identified; distributing across other groups.")
+        logging.info("Partial group identified; distributing across other groups.")
         lastgroup = groups[last_group_index]
         outliers = copy.deepcopy(lastgroup)
         groups.remove(lastgroup)
@@ -56,9 +55,8 @@ def group_random_num_group(responses, numgrp):
             stunum = stunum + 1
         groups.append(group)
     # deal with the last remaining students
-    if len(responses) % stunum is not 0:
-        logging.info(
-            "Overflow students identified; distributing into groups.")
+    if len(responses) % stunum != 0:
+        logging.info("Overflow students identified; distributing into groups.")
     for x in range(0, len(responses) % stunum):
         groups[x].append(next(iterable))
         stunum = stunum + 1

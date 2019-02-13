@@ -12,14 +12,14 @@ def read_student_file(filepath):
         return "filenotfound"
 
     # read the raw CSV data
-    with open(filepath, 'rU') as csvfile:
-        csvdata = list(csv.reader(csvfile, delimiter=','))
+    with open(filepath, "rU") as csvfile:
+        csvdata = list(csv.reader(csvfile, delimiter=","))
 
     # transform into desired output
     responses = list()
     for record in csvdata:
         temp = list()
-        temp.append(record[0].replace('"', ''))
+        temp.append(record[0].replace('"', ""))
         for value in record[1:]:
             if value == "True":
                 temp.append(True)

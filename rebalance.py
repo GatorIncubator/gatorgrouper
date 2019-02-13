@@ -19,10 +19,12 @@ def rebalance(student_groups, scores, ave):
         lowest = min(student_groups[scores.index(min(scores))])
         # switches the highest and lowest valued students
         student_groups[scores.index(max(scores))].insert(
-            scores.index(max(scores)), lowest)
+            scores.index(max(scores)), lowest
+        )
         student_groups[scores.index(max(scores))].remove(temp)
         student_groups[scores.index(min(scores))].insert(
-            scores.index(min(scores)), temp)
+            scores.index(min(scores)), temp
+        )
         student_groups[scores.index(min(scores))].remove(lowest)
         # reevaluates scores
         score_groups(student_groups)
