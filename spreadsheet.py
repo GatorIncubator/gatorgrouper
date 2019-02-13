@@ -47,7 +47,7 @@ def create_csv():
             formated_list.append(formated_entry)
 
     logging.info("Writing formatted data to CSV file")
-    logging.debug("CSV file name: " + file_name)
+    logging.debug("CSV file name: %s", file_name)
     with open(file_name, "w") as myfile:
         writer = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         for item in formated_list:

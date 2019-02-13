@@ -57,8 +57,8 @@ def group_random_num_group(responses, numgrp):
     # deal with the last remaining students
     if len(responses) % stunum != 0:
         logging.info("Overflow students identified; distributing into groups.")
-    for x in range(0, len(responses) % stunum):
-        groups[x].append(next(iterable))
+    for _x in range(0, len(responses) % stunum):
+        groups[_x].append(next(iterable))
         stunum = stunum + 1
 
     # scoring and return
