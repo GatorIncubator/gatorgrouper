@@ -7,11 +7,11 @@ def rebalance(student_groups, scores, ave):
     """rebalances the groups of students"""
 
     # average score of the groups
-    ave = int(ave / len(scores))
+    ave = int(ave // len(scores))
     # print("average score: "+str(ave))
     # print("Threshold: "+str(int(ave*(2/3))))
 
-    if int(ave * (2 / 3)) - 1 in scores:
+    if int(ave * (2 // 3)) - 1 in scores:
         # print("Students not well distributed")
         # stores the student with the highest value in the highest valued group
         temp = max(student_groups[scores.index(max(scores))])
