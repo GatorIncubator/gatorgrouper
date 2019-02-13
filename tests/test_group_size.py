@@ -33,7 +33,7 @@ def test_check_valid_group_size_quarter():
         "jacob",
         "kapfhammer",
     ]
-    group_size = len(student_identifiers) / 4
+    group_size = len(student_identifiers) // 4
     student_groups = parse_arguments.check_valid_group_size(
         group_size, student_identifiers
     )
@@ -52,7 +52,7 @@ def test_check_valid_group_size_half():
         "jacob",
         "kapfhammer",
     ]
-    group_size = len(student_identifiers) / 2
+    group_size = len(student_identifiers) // 2
     student_groups = parse_arguments.check_valid_group_size(
         group_size, student_identifiers
     )
