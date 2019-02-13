@@ -12,7 +12,7 @@ def group_rrobin_group_size(responses, grpsize):
     # setup target groups
     groups = list()  # // integer div
     numgrps = len(responses) // grpsize
-    logging.info("target groups: " + str(numgrps))
+    logging.info("target groups: %d", numgrps)
     for _ in range(numgrps):
         groups.append(list())
 
@@ -25,7 +25,7 @@ def group_rrobin_group_size(responses, grpsize):
     for col in range(1, len(responses[0])):
         columns.append(col)
     shuffle(columns)
-    logging.info("column priority: " + str(columns))
+    logging.info("column priority: %d", columns)
 
     # iterate through the response columns
     for col in columns:
@@ -42,8 +42,8 @@ def group_rrobin_group_size(responses, grpsize):
     # scoring and return
     scores, ave = [], 0
     scores, ave = score_groups(groups)
-    logging.info("scores: " + str(scores))
-    logging.info("average: " + str(ave))
+    logging.info("scores: %d", scores)
+    logging.info("average: %d", ave)
     return groups
 
 
@@ -52,7 +52,7 @@ def group_rrobin_num_group(responses, numgrps):
 
     # setup target groups
     groups = list()  # // integer div
-    logging.info("target groups: " + str(numgrps))
+    logging.info("target groups: %d", numgrps)
     for _ in range(numgrps):
         groups.append(list())
 
@@ -65,7 +65,7 @@ def group_rrobin_num_group(responses, numgrps):
     for col in range(1, len(responses[0])):
         columns.append(col)
     shuffle(columns)
-    logging.info("column priority: " + str(columns))
+    logging.info("column priority: %d", columns)
 
     # iterate through the response columns
     for col in columns:
@@ -82,6 +82,6 @@ def group_rrobin_num_group(responses, numgrps):
     # scoring and return
     scores, ave = [], 0
     scores, ave = score_groups(groups)
-    logging.info("scores: " + str(scores))
-    logging.info("average: " + str(ave))
+    logging.info("scores: %d", scores)
+    logging.info("average: %d", ave)
     return groups
