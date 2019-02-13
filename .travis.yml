@@ -31,6 +31,7 @@ script:
   - pipenv run pytest tests --cov-config pytest.cov --cov
   - pipenv run flake8 tests*
   - pipenv run flake8 gatorgrouper*
+  - pipenv run pylint *.py
   - pipenv run pylint tests
   - mdl README.md
 
