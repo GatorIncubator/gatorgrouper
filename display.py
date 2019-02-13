@@ -16,7 +16,7 @@ def display_student_groups(student_groups):
             print("\033[0m" + student[0])  # converts the students back to original font
         print()
         group_counter = group_counter + 1
-    logging.info("Found " + str(place_counter) + " students")
+    logging.info("Found %d students", place_counter)
 
 
 def display_welcome_message():
