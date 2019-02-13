@@ -40,24 +40,24 @@ if __name__ == "__main__":
         GG_ARGUMENTS.absentees, read_student_file(GG_ARGUMENTS.students_file)
     )
     logging.info("GatorGrouper will group these students:")
-    logging.info("\n" + create_escaped_string_from_list(STUDENT_IDENTIFIERS))
+    logging.info("\n %s", create_escaped_string_from_list(STUDENT_IDENTIFIERS))
 
     # shuffle the student identifiers
     SHUFFLED_STUDENT_IDENTIFIERS = shuffle_students(STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
-    logging.info("\n" + create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
+    logging.info("\n %s", create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
 
     # generate the groups and display them
     if (
-        GG_ARGUMENTS.grouping_method == "rrobin"
-        and GG_ARGUMENTS.num_group is DEFAULT_NUMGRP
+            GG_ARGUMENTS.grouping_method == "rrobin"
+            and GG_ARGUMENTS.num_group is DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
         )
     elif (
-        GG_ARGUMENTS.grouping_method == "rrobin"
-        and GG_ARGUMENTS.num_group is not DEFAULT_NUMGRP
+            GG_ARGUMENTS.grouping_method == "rrobin"
+            and GG_ARGUMENTS.num_group is not DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin_num_group(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
@@ -75,11 +75,7 @@ if __name__ == "__main__":
     COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
     COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
     logging.info(
-        "Successfully placed "
-        + str(COUNT_STUDENTS)
-        + " students into "
-        + str(COUNT_GROUPS)
-        + " groups"
+        "Successfully placed %d students into %d groups ", COUNT_STUDENTS, COUNT_GROUPS
     )
 
     # report generated groups
