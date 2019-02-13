@@ -1,4 +1,3 @@
 [run]
-omit=tests/*
-omit=.venv/*
+omit=tests/*, .venv/*
 include=./*.py
