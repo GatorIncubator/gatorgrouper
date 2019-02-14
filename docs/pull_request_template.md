@@ -1,9 +1,10 @@
 # Description of Pull Request
 
-Please include a summary of the change and which issue is being fixed.
+Please include the number of the issue and a summary of the implemented changes.
 Please also include relevant context required for change.
 
-Fixes # (issue)
+Fixes Issue #:
+
 
 ## Type of change
 
