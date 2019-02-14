@@ -1,6 +1,6 @@
 # GatorGrouper
 
-![logo](gatorgrouper_logo.svg)
+![logo](gatorgrouper_logo.svg "GatorGrouper")
 
 Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
 and [Travis CI](https://travis-ci.com/), GatorGrouper is an online group creation
