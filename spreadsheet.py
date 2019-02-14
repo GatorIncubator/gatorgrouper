@@ -12,12 +12,12 @@ def create_csv():
     """ Pulls data from Google Sheets, writing to the default CSV file """
 
     file_name = "./" + DEFAULT_CSVFILE
-    logging.info(
-        "Authenticating to Google Sheets to obtain Google Form data")
+    logging.info("Authenticating to Google Sheets to obtain Google Form data")
     # use creds to create a client to interact with the Google Drive API
-    scope = ['https://spreadsheets.google.com/feeds']
+    scope = ["https://spreadsheets.google.com/feeds"]
     creds = ServiceAccountCredentials.from_json_keyfile_name(
-        'authorizationKey/keyFile.json', scope)
+        "authorizationKey/keyFile.json", scope
+    )
     client = gspread.authorize(creds)
 
     # Find a workbook by name and open the first sheet
@@ -35,22 +35,20 @@ def create_csv():
     for entry in list_of_hashes:
         formated_entry = list()
         for question, response in entry.items():
-            if question == 'Email Address':
-                username = entry[question].partition('@')[0]
+            if question == "Email Address":
+                username = entry[question].partition("@")[0]
                 formated_entry.append(username)
-            elif response == 'Yes':
+            elif response == "Yes":
                 formated_entry.append(True)
-            elif response == 'No':
+            elif response == "No":
                 formated_entry.append(False)
-        formated_entry.insert(
-            0, formated_entry.pop(
-                formated_entry.index(username)))
+        formated_entry.insert(0, formated_entry.pop(formated_entry.index(username)))
         if not any(formated_entry[0] in entry[0] for entry in formated_list):
             formated_list.append(formated_entry)
 
     logging.info("Writing formatted data to CSV file")
-    logging.debug("CSV file name: " + file_name)
-    with open(file_name, 'w') as myfile:
+    logging.debug("CSV file name: %s", file_name)
+    with open(file_name, "w") as myfile:
         writer = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         for item in formated_list:
             writer.writerow(item)
