@@ -153,6 +153,7 @@ an output like this:
 scores: [4, 4, 2, 0, 6, 4]
 average: 3
 ```
+
 The score of a group is determined by the amount of students that
 answered "yes" to a particular question. In this example, there is
 one group that has no students that are willing to be a team leader.
@@ -168,7 +169,6 @@ In this case, the average score is the same as with the random grouping method,
 but all the groups have atleast one student willing to be a team leader. This
 has the potential to make the assignment more effective by maximizing team
 effectiveness.
-
 
 ### Absent Students
 
