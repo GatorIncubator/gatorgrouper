@@ -4,9 +4,9 @@
 
 Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
 and [Travis CI](https://travis-ci.com/), GatorGrouper is an online group creation
-tool to help facilitate random group assignment in an educational setting.
+tool to help facilitate group assignment in an educational setting.
 While other group management tools create random groups, GatorGrouper
-supports random and round robbing style grouping with the option to specify
+supports random and round robin style grouping with the option to specify
 absentees. With creative implementation through a web application,
 users can return to the site and update or re-group using previously
 entered data.
