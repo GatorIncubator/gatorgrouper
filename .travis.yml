@@ -1,6 +1,6 @@
 dist: xenial
-python:
-  language: python
+language: python
+  python:
   - "3.7"
   - "3.6"
   - "3.5"
