@@ -16,24 +16,37 @@ env:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
     - secure: 2c0250fb-dfb1-45c9-abaf-cd3d874326c5
+
 # install mdl for checking Markdown
 before_install:
   - gem install mdl
+
 notifications:
   email: never
 
+# command to install dependencies
 install:
   - pip install --upgrade pip
   - pip install --upgrade pipenv
   - pipenv install --dev
 
+# perform testing:
+# --> run the test suite with pytest
+# --> lint the functions with flake8
+# --> lint the test suites with flake8
+# --> lint the functions with pylint
+# --> lint the test suites with pylint
+# --> lint the README documentation with mdl
 script:
   - pipenv run pytest tests --cov-config pytest.cov --cov
+  - pipenv run black *.py --check
+  - pipenv run black tests --check
   - pipenv run flake8 tests*
-  - pipenv run flake8 gatorgrouper*
-  - pipenv run pylint *.py
+  - pipenv run flake8 *.py
   - pipenv run pylint tests
+  - pipenv run pylint *.py
   - mdl README.md
 
+# report coverage information to CodeCov
 after_success:
   - pipenv run codecov
