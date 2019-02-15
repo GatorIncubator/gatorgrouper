@@ -84,21 +84,22 @@ def parse_arguments(args):
         level=gg_arguments_finished.logging_level,
     )
 
+    # pylint: disable=bad-continuation
     if (
-            check_valid_group_size(
-                gg_arguments_finished.group_size,
-                read_student_file(gg_arguments_finished.students_file),
-            )
-            is False
+        check_valid_group_size(
+            gg_arguments_finished.group_size,
+            read_student_file(gg_arguments_finished.students_file),
+        )
+        is False
     ):
         quit()
 
     if (
-            check_valid_num_group(
-                gg_arguments_finished.num_group,
-                read_student_file(gg_arguments_finished.students_file),
-            )
-            is False
+        check_valid_num_group(
+            gg_arguments_finished.num_group,
+            read_student_file(gg_arguments_finished.students_file),
+        )
+        is False
     ):
         quit()
 
