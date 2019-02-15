@@ -120,7 +120,11 @@ python3 gatorgrouper.py --random
 ```
 
 This will randomly group the list of students you have provided, and is the
-default grouping method used when none is provided.
+default grouping method used when none is provided. This method of grouping is
+appropriate for cases where the assignment does not require that groups have a
+minimum number of members that have responded as having a skill related to the
+assignment. Consider using this method for assignments like in class exercises,
+small discussion groups, or peer editing.
 
 ### Round-robin Grouping Method
 
@@ -136,7 +140,35 @@ represented as true and false.  Round-robin randomizes the categories and
 assigns a student, one at a time, to each group by using the first value
 indicated as true.  When all of the students with true values are assigned,
 it goes back and adds a student to each group until there are no students
-remaining.
+remaining. This method of grouping is appropriate for cases where
+the assignment or task would be more effective if every group had a relatively
+even spread of students that responded as having a skill related to the
+assignment. Consider using this method for assignments where students might have
+specialized roles. Take for example a poll that asks the students if they would
+be interested in taking on more responsibility as a team leader. Using the
+random method and the -v flag to see additional output, GatorGrouper may produce
+an output like this:
+
+```
+scores: [4, 4, 2, 0, 6, 4]
+average: 3
+```
+The score of a group is determined by the amount of students that
+answered "yes" to a particular question. In this example, there is
+one group that has no students that are willing to be a team leader.
+However if you use the round robin grouping method, one possible
+output would be:
+
+```
+scores: [4, 6, 4, 2, 2, 2]
+average: 3
+```
+
+In this case, the average score is the same as with the random grouping method,
+but all the groups have atleast one student willing to be a team leader. This
+has the potential to make the assignment more effective by maximizing team
+effectiveness.
+
 
 ### Absent Students
 
