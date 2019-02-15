@@ -12,6 +12,13 @@ matrix:
       language: generic
       python: "3.6"
       osx_image: xcode10.1
+    - os: windows
+      language: sh
+      python: "3.7"
+      before_install:
+        - choco install python3
+        - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
+        - python -m pip install --upgrade pip wheel
 
 cache:
   directories:
