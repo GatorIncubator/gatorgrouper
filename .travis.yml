@@ -6,6 +6,12 @@ python:
   - "3.5"
   - "3.4"
 
+matrix:
+  include:
+    - os: osx
+      language: generic
+      osx_image: xcode10.1
+
 cache:
   directories:
     - $HOME/.pip-cache/
