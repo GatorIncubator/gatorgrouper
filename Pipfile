@@ -17,11 +17,12 @@ pytest-clarity = "*"
 autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
+tox = "*"
+tox-pipenv = "*"
 
 [packages]
 pathlib = "*"
 py = "*"
-tox-pipenv = "*"
 
 [requires]
 python_version = "3.6"
