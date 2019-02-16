@@ -37,7 +37,7 @@ jobs:
   include:
   - python: "3.6"
     env: TOXENV = py36
-    script: tox
+    script: pipenv run tox
 
 # perform testing:
 # --> run the test suite with pytest
