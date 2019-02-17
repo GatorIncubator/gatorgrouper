@@ -6,27 +6,24 @@
         <form method="post">
           {% csrf_token %} <!--must have this line for forms-->
           <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Create a New Class</legend>
-            <!-- Adds the option to select the semester and year.  -->
-            <div class="form-group">
-              <label for="class-term">School Year:</label>
-              <select class="form-control" id="class-term" name="school_year">
-                <option>SP 2019</option>
-                <option>FA 2018</option>
-                <option>SP 2018</option>
-                <option>FA 2017</option>
-              </select>
-            </div>
-            <!-- Adds a section for entering the class title. -->
+            <legend class="border-bottom mb-4">Create a New Assignment</legend>
+            <!-- Adds a section for entering the assignment title. -->
             <form action="/action_page.php">
               <div class="form-group">
-                <label for="class-title">Class Title:</label>
-                <input type="text" class="form-control" placeholder="Enter Class Title" name="class-title">
+                <label for="assignment-title">Assignment Title:</label>
+                <input type="text" class="form-control" placeholder="Enter Assignment Title" name="assignment-title">
               </div>
-            <!-- Adds a section for uploading the student list. -->
+            <!-- Adds a section for entering the assignment description. -->
             <form action="/action_page.php">
               <div class="form-group">
-                <label for="student-list">Upload Student List:</label>
+                <label for="assignment-description">Assignment Description:</label>
+                <input type="text" class="form-control" placeholder="Enter Assignment Description" name="assignment-description">
+              </div>
+            </form>
+            <!-- Adds a button for uploading the assignment. -->
+            <form action="/action_page.php">
+              <div class="form-group">
+                <label for="assignment-file">Upload Assignment:</label>
                 <input type="file" class="form-control-file border" name="file">
                </div>
             </form>
