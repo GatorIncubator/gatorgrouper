@@ -5,7 +5,7 @@ import logging
 import itertools
 from random import shuffle
 
-from group_scoring import score_groups
+from .group_scoring import score_groups
 
 
 def group_random_group_size(responses, grpsize):
