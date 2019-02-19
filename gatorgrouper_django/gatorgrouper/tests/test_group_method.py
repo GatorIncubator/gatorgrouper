@@ -1,6 +1,6 @@
 from src.controllers import group_random
 from src.controllers import group_rrobin
-import gatorgrouper
+import utils.gatorgrouper
 
 
 def test_group_random1():
