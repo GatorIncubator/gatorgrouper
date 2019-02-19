@@ -1,6 +1,7 @@
 """ This is undocumented """
 from django.shortcuts import render
 from django.template import loader
+
 # from django.http import HttpResponse
 # from django.http import Http404
 from .models import Professor, Semester_Class

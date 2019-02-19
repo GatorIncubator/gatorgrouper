@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class Professor(models.Model):
     """ This is undocumented """
+
     email = models.EmailField(max_length=200)
     professor_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=25)
@@ -15,6 +16,7 @@ class Professor(models.Model):
 
 class Semester_Class(models.Model):
     """ This is undocumented """
+
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
     SPRING_2019 = "S19"
     FALL_2019 = "F19"
@@ -36,6 +38,7 @@ class Semester_Class(models.Model):
 
 class Assignments(models.Model):
     """ This is undocumented """
+
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
     assignment_id = models.CharField(max_length=20, primary_key=True)
     description = models.CharField(max_length=250, blank=True)
@@ -46,6 +49,7 @@ class Assignments(models.Model):
 
 class Students(models.Model):
     """ This is undocumented """
+
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
     student_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=30)
@@ -57,6 +61,7 @@ class Students(models.Model):
 
 class Grouped_Students(models.Model):
     """ This is undocumented """
+
     assignment_id = models.ForeignKey(Assignments, on_delete=models.CASCADE)
     student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
     group_id = models.CharField(max_length=40)
