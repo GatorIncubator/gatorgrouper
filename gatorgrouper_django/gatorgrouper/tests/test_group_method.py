@@ -1,7 +1,7 @@
 """Testing random grouping"""
-from src.controllers import group_random
-from src.controllers import group_rrobin
-import gatorgrouper
+from utils import group_random
+from utils import group_rrobin
+import utils.gatorgrouper
 
 
 def test_group_random1():

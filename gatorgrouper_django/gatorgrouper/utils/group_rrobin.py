@@ -3,7 +3,7 @@
 import logging
 from random import shuffle
 from itertools import cycle
-from .group_scoring import score_groups
+from group_scoring import score_groups
 
 
 def group_rrobin_group_size(responses, grpsize):

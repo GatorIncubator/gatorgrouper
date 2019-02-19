@@ -1,5 +1,5 @@
 """Testing the display  """
-from src.controllers import display
+from utils import display
 
 
 def test_display_student_groups(capsys):

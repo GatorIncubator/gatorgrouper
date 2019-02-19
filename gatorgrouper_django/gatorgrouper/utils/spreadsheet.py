@@ -4,8 +4,8 @@ import csv
 import logging
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from .defaults import DEFAULT_CSVFILE
-from .defaults import DEFAULT_WORKBOOK
+from defaults import DEFAULT_CSVFILE
+from defaults import DEFAULT_WORKBOOK
 
 
 def create_csv():

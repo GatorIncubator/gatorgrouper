@@ -1,4 +1,5 @@
 """Testing escaped strings from list"""
+import utils.gatorgrouper
 import string
 import random
 import gatorgrouper
