@@ -30,7 +30,6 @@ if __name__ == "__main__":
     # skip pulling from Google Sheets if CSV is provided
     if GG_ARGUMENTS.students_file == DEFAULT_CSVFILE:
         logging.info("Pulling CSV file from Google Sheets.")
-        create_csv()
     else:
         logging.info("Using the CSV file provided")
 
@@ -44,8 +43,10 @@ if __name__ == "__main__":
 
     # shuffle the student identifiers
     SHUFFLED_STUDENT_IDENTIFIERS = shuffle_students(STUDENT_IDENTIFIERS)
+    COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
     logging.info("\n %s", create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
+
 
     # generate the groups and display them
     # pylint: disable=bad-continuation
