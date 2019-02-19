@@ -21,6 +21,7 @@ class Semester_Class(models.Model):
     department = models.CharField(max_length = 10)
     class_number = models.CharField(max_length = 10)
     class_section = models.CharField(max_length = 10)
+    domain_name = models.CharField(max_length = 100)
 
     def __str__(self):
         return '{}: {}*{}'.format(self.department, self.class_number, self.class_section)
