@@ -17,9 +17,6 @@ pytest-clarity = "*"
 autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
-tox = "*"
-tox-pipenv = "*"
-pytest-xdist = "*"
 
 [packages]
 pathlib = "*"
