@@ -1,4 +1,4 @@
-from utils import parse_arguments
+from utils.parse_arguments import parse_arguments
 
 
 def test_check_valid_group_size_one():
