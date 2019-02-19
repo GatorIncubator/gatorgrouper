@@ -1,4 +1,4 @@
-from src.controllers import parse_arguments
+from utils import parse_arguments
 
 
 def test_check_valid_group_size_one():
