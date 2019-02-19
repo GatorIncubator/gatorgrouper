@@ -31,7 +31,7 @@ class Semester_Class(models.Model):
     department = models.CharField(max_length = 10)
     class_number = models.CharField(max_length = 10)
     class_section = models.CharField(max_length = 10)
-    domain_name = models.CharField(max_length = 100)
+    domain_name = models.CharField(max_length = 100, black = True)
 
     def __str__(self):
         return '{}: {}*{}'.format(self.department, self.class_number, self.class_section)
@@ -43,7 +43,7 @@ class Assignments(models.Model):
             on_delete=models.CASCADE,
             )
     assignment_id = models.CharField(max_length = 20, primary_key = True)
-    description = models.CharField(max_length = 250)
+    description = models.CharField(max_length = 250, blank = True)
 
     def __str__(self):
         return '{}'.format(self.assignment_id)
