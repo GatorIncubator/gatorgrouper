@@ -19,13 +19,12 @@ install:
   - pip3 install autopep8
   - pip3 install gspread oauth2client
   - pip3 install coveralls
-  
+
 script:
-  - pytest tests
+  - pytest gatorgrouper_django/gatorgrouper/tests
   - mdl README.md
-  - coverage run --source tests -m py.test 
-  - coverage report 
+  - coverage run --source gatorgrouper_django/gatorgrouper/tests -m py.test 
+  - coverage report
 
 after_success:
   coveralls
-
