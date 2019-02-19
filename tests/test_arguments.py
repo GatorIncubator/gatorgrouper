@@ -1,5 +1,5 @@
+import logging
 from src.controllers import parse_arguments
-from src.controllers import logging
 from src.controllers import defaults
 from src.controllers import group_random
 
