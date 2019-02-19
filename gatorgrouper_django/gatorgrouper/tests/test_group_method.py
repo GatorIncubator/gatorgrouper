@@ -1,5 +1,5 @@
-import group_random
-import group_rrobin
+from src.controllers import group_random
+from src.controllers import group_rrobin
 import gatorgrouper
 
 
