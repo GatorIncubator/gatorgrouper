@@ -1,3 +1,4 @@
+""" This is undocumented """
 from django.contrib import admin
 from .models import Professor, Semester_Class, Students, Grouped_Students, Assignments
 
