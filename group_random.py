@@ -46,7 +46,8 @@ def group_random_num_group(responses, numgrp):
     stunum = 0
     iterable = iter(responses)
     # number of students in each group (without overflow)
-    grpsize = int(len(responses) // numgrp)
+    # pylint: disable=old-division
+    grpsize = int(len(responses) / numgrp)
     groups = list()
     for _ in range(0, numgrp):
         group = list()
