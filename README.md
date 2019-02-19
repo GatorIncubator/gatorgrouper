@@ -322,10 +322,9 @@ script:
 ## Activating CodeCov
 
 - Go to <https://codecov.io>
-- Click Sign up in the top-right corner
-- Click Sign Up with Github
-- Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
-- You should now see it in your repos click on Gator Grouper.
+- Click Sign in in the top-right corner
+- Click Sign in with Github
+- Add Repo GatorEducator/gatorgrouper
 - Now add it to the end of your .travis.yml:
 
 ```yml
