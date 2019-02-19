@@ -1,5 +1,5 @@
-from src.controllers import group_random
-from src.controllers import group_rrobin
+from utils import group_random
+from utils import group_rrobin
 import utils.gatorgrouper
 
 
