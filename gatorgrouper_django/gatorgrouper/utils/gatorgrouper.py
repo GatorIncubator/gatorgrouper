@@ -4,8 +4,8 @@ import sys
 import logging
 
 from src.controllers import parse_arguments
-from src.controllers import read_student_file
-from src.controllers import remove_absent_students
+from src.controllers.read_student_file import read_student_file
+from src.controllers.remove_absent_students import remove_absent_students
 from src.controllers.display import display_welcome_message
 from src.controllers.display import display_student_groups
 from src.controllers.display import create_escaped_string_from_list
