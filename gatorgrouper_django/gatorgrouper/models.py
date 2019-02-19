@@ -32,6 +32,7 @@ class Assignments(models.Model):
             on_delete=models.CASCADE,
             )
     assignment_id = models.CharField(max_length = 20, primary_key = True)
+    description = models.CharField(max_length = 250)
 
     def __str__(self):
         return '{}'.format(self.assignment_id)
