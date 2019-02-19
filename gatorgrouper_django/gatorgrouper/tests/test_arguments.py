@@ -1,5 +1,5 @@
 import logging
-from utils import parse_arguments
+from utils.parse_arguments import parse_arguments
 from utils import defaults
 from utils import group_random
 

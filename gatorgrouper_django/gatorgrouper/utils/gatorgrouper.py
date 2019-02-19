@@ -3,20 +3,20 @@
 import sys
 import logging
 
-from src.controllers import parse_arguments
-from src.controllers.read_student_file import read_student_file
-from src.controllers.remove_absent_students import remove_absent_students
-from src.controllers.display import display_welcome_message
-from src.controllers.display import display_student_groups
-from src.controllers.display import create_escaped_string_from_list
-from src.controllers.group_random import shuffle_students
-from src.controllers.group_random import group_random_group_size
-from src.controllers.group_random import group_random_num_group
-from src.controllers.group_rrobin import group_rrobin_group_size
-from src.controllers.group_rrobin import group_rrobin_num_group
-from src.controllers.spreadsheet import create_csv
-from src.controllers.defaults import DEFAULT_CSVFILE
-from src.controllers.defaults import DEFAULT_NUMGRP
+from . import parse_arguments
+from utils.read_student_file import read_student_file
+from utils.remove_absent_students import remove_absent_students
+from utils.display import display_welcome_message
+from utils.display import display_student_groups
+from utils.display import create_escaped_string_from_list
+from utils.group_random import shuffle_students
+from utils.group_random import group_random_group_size
+from utils.group_random import group_random_num_group
+from utils.group_rrobin import group_rrobin_group_size
+from utils.group_rrobin import group_rrobin_num_group
+from utils.spreadsheet import create_csv
+from utils.defaults import DEFAULT_CSVFILE
+from utils.defaults import DEFAULT_NUMGRP
 
 
 if __name__ == '__main__':

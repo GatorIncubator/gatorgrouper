@@ -23,7 +23,7 @@ install:
 script:
   - pytest gatorgrouper_django/gatorgrouper/tests
   - mdl README.md
-  - coverage run --source gatorgrouper_django/gatorgrouper/tests -m py.test 
+  - coverage run --source gatorgrouper_django/gatorgrouper/tests -m py.test
   - coverage report
 
 after_success:

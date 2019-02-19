@@ -3,10 +3,10 @@
 import argparse
 import logging
 
-from defaults import DEFAULT_CSVFILE
-from defaults import DEFAULT_GRPSIZE
-from defaults import DEFAULT_NUMGRP
-from read_student_file import read_student_file
+from .defaults import DEFAULT_CSVFILE
+from .defaults import DEFAULT_GRPSIZE
+from .defaults import DEFAULT_NUMGRP
+from .read_student_file import read_student_file
 
 
 def parse_arguments(args):
