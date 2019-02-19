@@ -6,6 +6,7 @@ from django.template import loader
 # from django.http import Http404
 from .models import Professor, Semester_Class
 
+
 # Create your views here.
 def index(request):
     """ This is undocumented """
@@ -13,7 +14,7 @@ def index(request):
     classes = Semester_Class.objects.all()
 
     # pylint: disable=unused-variable
-    template = loader.get_template("gatorgrouper/index.html")
+    template = loader.get_template("gatorgrouper/index.html")  # noqa: F841
 
     return render(
         request,
