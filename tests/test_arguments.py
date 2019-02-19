@@ -1,7 +1,7 @@
-import parse_arguments
-import logging
-import defaults
-import group_random
+from src.controllers import parse_arguments
+from src.controllers import logging
+from src.controllers import defaults
+from src.controllers import group_random
 
 
 def test_parse_arguments1():
