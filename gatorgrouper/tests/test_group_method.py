@@ -1,7 +1,7 @@
 """Testing random grouping"""
 from utils import group_random
 from utils import group_rrobin
-import utils.gatorgrouper
+from utils import gatorgrouper
 
 
 def test_group_random1():

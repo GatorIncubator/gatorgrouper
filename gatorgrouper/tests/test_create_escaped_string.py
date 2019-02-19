@@ -1,8 +1,7 @@
 """Testing escaped strings from list"""
-import utils.gatorgrouper
+from utils import gatorgrouper
 import string
 import random
-import gatorgrouper
 
 
 def test_create_escaped_string_from_list():

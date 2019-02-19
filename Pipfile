@@ -21,6 +21,7 @@ oauth2client = "*"
 [packages]
 pathlib = "*"
 py = "*"
+django = "*"
 
 [requires]
 python_version = "3.6"
