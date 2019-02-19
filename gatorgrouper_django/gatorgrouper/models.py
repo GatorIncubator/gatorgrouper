@@ -16,7 +16,17 @@ class Semester_Class(models.Model):
             Professor,
             on_delete=models.CASCADE,
             )
-    semester = models.CharField(max_length = 50)
+    SPRING_2019 = "S19"
+    FALL_2019 = "F19"
+    SEMESTER_CHOICES = (
+        (SPRING_2019, 'Spring, 2019'),
+        (FALL_2019, 'Fall, 2019')
+    )
+    semester = models.CharField(
+        max_length = 3,
+        choices = SEMESTER_CHOICES,
+        default = "---------"
+    )
     class_id = models.AutoField(primary_key=True)
     department = models.CharField(max_length = 10)
     class_number = models.CharField(max_length = 10)
