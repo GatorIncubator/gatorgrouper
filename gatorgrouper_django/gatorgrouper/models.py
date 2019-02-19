@@ -8,7 +8,7 @@ class Professor(models.Model):
     last_name = models.CharField(max_length = 25)
 
     def __str__(self):
-        return '{}'.format(self.email)
+        return '{}, {}'.format(self.last_name, self.first_name)
 
 
 class Semester_Class(models.Model):
