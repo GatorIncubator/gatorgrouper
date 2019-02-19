@@ -8,3 +8,8 @@ def test_display_student_groups(capsys):
     display.display_student_groups(student_groups)
     out, err = capsys.readouterr()
     assert out.startswith('\033[0;32m' + '\033[1m' + '\033[4m' + "Group 1")
+
+
+def test_display_welcome_message():
+    """ Test if the welcome message can be displayed """
+    assert display.display_welcome_message() == None
