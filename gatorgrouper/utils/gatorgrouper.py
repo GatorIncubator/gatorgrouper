@@ -14,9 +14,6 @@ from utils.group_random import group_random_group_size
 from utils.group_random import group_random_num_group
 from utils.group_rrobin import group_rrobin_group_size
 from utils.group_rrobin import group_rrobin_num_group
-from utils.spreadsheet import create_csv
-from utils.defaults import DEFAULT_CSVFILE
-from utils.defaults import DEFAULT_NUMGRP
 
 
 if __name__ == "__main__":
@@ -26,12 +23,6 @@ if __name__ == "__main__":
     display_welcome_message()
     logging.info("Configuration of GatorGrouper:")
     logging.debug(GG_ARGUMENTS)
-
-    # skip pulling from Google Sheets if CSV is provided
-    if GG_ARGUMENTS.students_file == DEFAULT_CSVFILE:
-        logging.info("Pulling CSV file from Google Sheets.")
-    else:
-        logging.info("Using the CSV file provided")
 
     # read in the student identifiers from the specified file
     print(GG_ARGUMENTS.students_file)
@@ -43,10 +34,8 @@ if __name__ == "__main__":
 
     # shuffle the student identifiers
     SHUFFLED_STUDENT_IDENTIFIERS = shuffle_students(STUDENT_IDENTIFIERS)
-    COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
     logging.info("\n %s", create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
-
 
     # generate the groups and display them
     # pylint: disable=bad-continuation
