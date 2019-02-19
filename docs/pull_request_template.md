@@ -4,12 +4,12 @@ Please include a short summary of the proposed changes.
 
 Also include any other relevant information that is useful for this pull request.
 
-Fixes Issue #:
+Fixes #IssueNumber:
 
 
-## Type of change
+## Type of Change
 
-Please descirbe the pull request as one of the following: 
+Please describe the pull request as one of the following: 
 
 - [ ] Bug fix
 - [ ] Breaking change
