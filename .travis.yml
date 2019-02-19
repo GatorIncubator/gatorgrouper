@@ -33,12 +33,6 @@ install:
   - pip install --upgrade pipenv
   - pipenv install --dev
 
-jobs:
-  include:
-  - python: "3.6"
-    env: TOXENV = py36
-    script: pipenv run tox
-
 # perform testing:
 # --> run the test suite with pytest
 # --> lint the functions with flake8
