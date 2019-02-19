@@ -6,7 +6,7 @@ cache:
   directories:
     - $HOME/.pip-cache/
     
-# Activating Coveralls
+# Activating Codecov
 # - Go to <https://codecov.io/gh>
 # - Login with Github
 # - Add Repo GatorEducator/gatorgrouper(make sure it is on)
