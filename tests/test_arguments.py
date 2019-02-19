@@ -1,8 +1,8 @@
 """Command line argument testing"""
 import logging
-import parse_arguments
-import defaults
-import group_random
+from src.controllers import parse_arguments
+from src.controllers import defaults
+from src.controllers import group_random
 
 
 def test_parse_arguments1():

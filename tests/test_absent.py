@@ -1,5 +1,5 @@
 """Testing if absent.py correctly handles being absent"""
-import remove_absent_students
+from src.controllers import remove_absent_students
 
 
 def test_remove_absent_students():
