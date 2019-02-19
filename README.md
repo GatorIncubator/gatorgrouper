@@ -276,62 +276,6 @@ coverage run --source tests -m py.test
 coverage report
 ```
 
-## Activating Travis-Ci
-
-- In order to activate travis-ci you must have admin rights.
-- Make sure that you turned on the repo by seeing the green slide.
-- Then in the root directory of your repo create a .travis.yml
-- An example of a .travis.yml:
-
-```yml
-language: python
-python:
-  - "3.7"
-  - "3.6"
-  - "3.5"
-  - "3.4"
-cache:
-  directories:
-    - $HOME/.pip-cache/
-env:
-  global:
-    - PIPENV_VENV_IN_PROJECT=1
-    - PIPENV_IGNORE_VIRTUALENVS=1
-    - LANG=en_US.UTF-8
-    - LC_ALL=en_US.UTF-8
-    - secure: 2c0250fb-dfb1-45c9-abaf-cd3d874326c5
-before_install:
-  - gem install mdl
-notifications:
-  email: never
-install:
-  - pip install --upgrade pip
-  - pip install --upgrade pipenv
-  - pipenv install --dev
-script:
-  - pipenv run pytest tests --cov-config pytest.cov --cov
-  - pipenv run black *.py --check
-  - pipenv run black tests --check
-  - pipenv run flake8 tests*
-  - pipenv run flake8 *.py
-  - pipenv run pylint tests
-  - pipenv run pylint *.py
-  - mdl README.md
-```
-
-## Activating CodeCov
-
-- Go to <https://codecov.io>
-- Click Sign in in the top-right corner
-- Click Sign in with Github
-- Add Repo GatorEducator/gatorgrouper
-- Now add it to the end of your .travis.yml:
-
-```yml
-after_success:
-  pipenv run codecov
-```
-
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
