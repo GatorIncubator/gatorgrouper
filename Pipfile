@@ -1,0 +1,30 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+black = "*"
+pytest = "*"
+six = "*"
+codecov = "*"
+"flake8" = "*"
+pytest-cov = "*"
+neovim = "*"
+pytest-sugar = "*"
+pytest-clarity = "*"
+autopep8 = "*"
+gspread =  "*"
+oauth2client = "*"
+
+[packages]
+pathlib = "*"
+py = "*"
+django = "*"
+
+[requires]
+python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true

@@ -1,30 +1,55 @@
+dist: xenial
 language: python
 python:
+  - "3.7"
+  - "3.6"
   - "3.5"
+  - "3.4"
 
 cache:
   directories:
     - $HOME/.pip-cache/
+
+# ignore the virtualenv that Travis creates
+# setup a secure login to CodeCov
+env:
+  global:
+    - PIPENV_VENV_IN_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+    - secure: 2c0250fb-dfb1-45c9-abaf-cd3d874326c5
+
 # install mdl for checking Markdown
 before_install:
   - gem install mdl
+
 notifications:
   email: never
 
+# command to install dependencies
 install:
   - pip install --upgrade pip
-  - python3 -m pip install -r requirements.txt
-  - pip3 install pytest-flake8
-  - pip3 install pytest-cov
-  - pip3 install autopep8
-  - pip3 install gspread oauth2client
-  - pip3 install coveralls
+  - pip install --upgrade pipenv
+  - pipenv install --dev
 
+# perform testing:
+# --> run the test suite with pytest
+# --> lint the functions with flake8
+# --> lint the test suites with flake8
+# --> lint the functions with pylint
+# --> lint the test suites with pylint
+# --> lint the README documentation with mdl
 script:
-  - pytest gatorgrouper_django/gatorgrouper/tests
+  - pipenv run pytest gatorgrouper/tests --cov-config pytest.cov --cov
+  - pipenv run black */**.py --check
+  - pipenv run black tests --check
+  - pipenv run flake8 tests*
+  - pipenv run flake8 */**.py
+  - pipenv run pylint tests
+  - pipenv run pylint */**.py
   - mdl README.md
-  - coverage run --source gatorgrouper_django/gatorgrouper/tests -m py.test
-  - coverage report
 
+# report coverage information to CodeCov
 after_success:
-  coveralls
+  - pipenv run codecov
