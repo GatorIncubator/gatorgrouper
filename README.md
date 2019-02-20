@@ -1,17 +1,22 @@
 # GatorGrouper
 
-Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
-and [Travis CI](https://travis-ci.com/), GatorGrouper is a group creation tool
-to help manage team based software development projects. While other group management
-tools perform similar actions, GatorGrouper features creative implementation
-with GitHub Classroom as a solution to facilitating random group creation in an
-educational setting.
+![logo](gatorgrouper_logo.svg "GatorGrouper")
 
-GatorGrouper, created entirely in Python 3, takes in a CSV file of student names
-and assigns students to groups of a specified size and a specified method. The 
-output of this program could then be communicated to the students in a specific
-class. Then, if a course instructor is using [GitHub Classroom](https://classroom.github.com/),
-you can ask the students in your class to create and join their assigned group.
+Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
+and [Travis CI](https://travis-ci.com/), GatorGrouper is an online group creation
+tool to help facilitate group assignment in an educational setting.
+While other group management tools create random groups, GatorGrouper
+supports random and round robin style grouping with the option to specify
+absentees. With creative implementation through a web application,
+users can return to the site and update or re-group using previously
+entered data.
+
+GatorGrouper was created mainly in [Python 3](https://www.python.org/) and
+utilizes the [Django](https://www.djangoproject.com/) web framework. Upon access
+to the site, users are able to input student names and assign them to groups of
+a specified size and method. The output of this program can be communicated to
+the students in the class. If a course instructor is using [GitHub Classroom](https://classroom.github.com/),
+they can invite the students in the class to create and join their assigned group.
 
 ## Installation
 
