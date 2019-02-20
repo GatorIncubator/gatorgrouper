@@ -1,5 +1,7 @@
 # GatorGrouper
 
+[![Build Status](https://travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
+
 ![logo](gatorgrouper_logo.svg "GatorGrouper")
 
 Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
