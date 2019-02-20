@@ -11,12 +11,12 @@ absentees. With creative implementation through a web application,
 users can return to the site and update or re-group using previously
 entered data.
 
-GatorGrouper was created mainly in [Python 3](https://www.python.org/) and utilizes the
-[Django](https://www.djangoproject.com/) web framework. Upon access to the site, users are able
-to input student names and assign them to groups of a specified size and method. The output of
-this program can be communicated to the students in the class. If a course instructor is using
-[GitHub Classroom](https://classroom.github.com/), they can invite the students in the class
-to create and join their assigned group.
+GatorGrouper was created mainly in [Python 3](https://www.python.org/) and
+utilizes the [Django](https://www.djangoproject.com/) web framework. Upon access
+to the site, users are able to input student names and assign them to groups of
+a specified size and method. The output of this program can be communicated to
+the students in the class. If a course instructor is using [GitHub Classroom](https://classroom.github.com/),
+they can invite the students in the class to create and join their assigned group.
 
 ## Installation
 
