@@ -43,9 +43,9 @@ install:
 script:
   - pipenv run pytest gatorgrouper/tests --cov-config pytest.cov --cov
   - pipenv run black */**.py --check
-  - pipenv run flake8 tests*
+  - pipenv run flake8 gatorgrouper/tests*
   - pipenv run flake8 */**.py
-  - pipenv run pylint tests
+  - pipenv run pylint gatorgrouper/tests*
   - pipenv run pylint */**.py
   - mdl README.md
   - pipenv run python manage.py runserver
