@@ -4,4 +4,4 @@ omit=gatorgrouper/tests/*, .venv/*
 # run all of the tests that start with gator
 # note that this captures gatorgrader.py and
 # all of the modules in the gator package
-include=./*.py
+include=gatorgrouper/utils/*.py
