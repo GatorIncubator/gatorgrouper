@@ -48,7 +48,7 @@ script:
   - pipenv run pylint gatorgrouper/tests*
   - pipenv run pylint */**.py
   - mdl README.md
-  - pipenv run python manage.py runserver
+  - pipenv run python manage.py runserver &
 
 # report coverage information to CodeCov
 after_success:
