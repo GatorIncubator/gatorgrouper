@@ -2,7 +2,8 @@
 
 ![logo](gatorgrouper_logo.svg "GatorGrouper")
 
-[![Build Status](https://travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
+[![Build Status](https://travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
 
 Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
 and [Travis CI](https://travis-ci.com/), GatorGrouper is an online group creation
