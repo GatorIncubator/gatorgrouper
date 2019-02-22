@@ -1,5 +1,9 @@
 # GatorGrouper
 
+[![Build Status](https://api.travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
+[![codecov.io](http://codecov.io/github/GatorEducator/gatorgrouper/coverage.svg?branch=master)](http://codecov.io/github/GatorEducator/gatorgrouper?branch=master)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
+
 GatorGrouper is a Python 3 program that assigns a list of students to groups of
 a specified size. The output of this program could then be communicated to the
 students in a specific class. Then, if a course instructor is using [GitHub
@@ -20,14 +24,14 @@ pip3 install -r requirements.txt
 
 Note that you may have Python 3 setup in different ways on your computer. For
 instance, you may prefer to install GatorGrouper's dependencies in a site-wide
-location and then you would have to type, for instance, `sudo pip install -r
+location and then you would have to type `sudo pip install -r
 requirements.txt`. Alternatively, you may choose to install the dependencies by
 typing `pip install --user -r requirements.txt`.
 
 GatorGrouper was developed to easily run in conjunction with a [venv-based
 Python 3 virtual environment](https://docs.python.org/3/library/venv.html). This
-means that if you are in the directory that contains the `gatorgrouper`
-directory then you could type `python3 -m venv gatorgrouper` to create all of
+means that if you are in the directory that contains `gatorgrouper`
+then you could type `python3 -m venv gatorgrouper` to create all of
 the components of a venv-based virtual environment in the `gatorgrouper`
 directory. Once you complete this step, you can type the command `source
 gatorgrouper/bin/activate` to activate the venv-based virtual environment.
@@ -36,27 +40,65 @@ Interested in learning more about the basics of virtual environments in Python
 [article](http://www.cs.allegheny.edu/sites/gkapfham/programming/research/idea/2017/07/14/Virtual-Environments/)
 to further develop your understanding of this topic.
 
+GatorGrouper requires users to use Python 3. You can type `python --version`
+into the terminal window to check the current version of Python on your
+workstation. If you do not have the right Python version, you can go to
+[Python](https://www.python.org/downloads/) to download the latest version of
+Python. If you can not download or upgrade Python on your workstation, you can
+download the [Pyenv](https://github.com/pyenv/pyenv) tool to set up a virtual
+environment for the newest Python version.
+
+To install Pyenv, you can use [Pyenv Installer](https://github.com/pyenv/pyenv-installer)
+by typing the command in terminal:
+
+```shell
+curl https://pyenv.run | bash
+```
+
+After the completion of this command, Pyenv should be installed. Please make
+sure that you have the following lines in your `~/.bashrc` or similar file
+types. Notices that different development evironment may have different
+configuration configuration files (i.e., "dotfiles"). You can see more examples
+and learn more in the instructions of Professor Kapfhammer's
+[dotfiles](https://github.com/gkapfham/dotfiles) repository.
+
+```shell
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+```
+
+Once Pyenv is installed, you can install the latest version of Python
+for your Pyenv. We suggest developers to use `Python 3.7.2`  for `gatorgrouper`.
+However, any version after `Python 3.6.8` would work well. To install, you
+should restart your terminal window by typing `pyenv install 3.7.2`
+and `pyenv global 3.7.2`.
+
+After you finish this process, you should be able
+to type `python --version` and get `Python 3.7.2` or other version after
+`Python 3.6.8` in your terminal.
+
 ## Initial Setup
 
-Ensure that you have installed gspread and oauth2client installed in the root
-directory of the repository.  In the terminal use the command:
+Ensure that you have installed gspread and oauth2client in the root
+directory of the repository. In the terminal use the command:
 
 ```shell
 python3 -m pip install --user gspread oauth2client
 ```
 
-Create a Google Sheets spreadsheet and a Google Form in Google Drive.  In the
+Create a Google Sheets spreadsheet and a Google Form in Google Drive. In the
 Form, create yes or no questions to measure the capabilities and skills of the
 students that you wish to group.  After you have at least one submission of the
 Form, you can go to the responses tab and click on the green icon with the white
-cross through it.  This will enable you to link the Sheet to the Form.  You can
-either create a new Sheet or link to a preexisting one.  If you need to change
+cross through it.  This will enable you to link the Sheet to the Form. You can
+either create a new Sheet or link to a preexisting one. If you need to change
 the destination, you can click on the three dot icon menu to the right of the
 green icon and select "Select response destination".
 
 Open the `.json` file in the `gatorgrouper` repository and find the `"client-email"`.
-Copy the quoted text that looks like an email address.  Return to the Sheet and
-open the sharing options.  Paste the address and click send.  Alternatively, if
+Copy the quoted text that looks like an email address. Return to the Sheet and
+open the sharing options.  Paste the address and click send. Alternatively, if
 you would like to create your own service account for confidentiality and
 security, follow the tutorial found at [www.twolio.com](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 to create a personal service account.
@@ -120,7 +162,11 @@ python3 gatorgrouper.py --random
 ```
 
 This will randomly group the list of students you have provided, and is the
-default grouping method used when none is provided.
+default grouping method used when none is provided. This method of grouping is
+appropriate for cases where the assignment does not require that groups have a
+minimum number of members that have responded as having a skill related to the
+assignment. Consider using this method for assignments like in class exercises,
+small discussion groups, or peer editing.
 
 ### Round-robin Grouping Method
 
@@ -136,7 +182,35 @@ represented as true and false.  Round-robin randomizes the categories and
 assigns a student, one at a time, to each group by using the first value
 indicated as true.  When all of the students with true values are assigned,
 it goes back and adds a student to each group until there are no students
-remaining.
+remaining. This method of grouping is appropriate for cases where
+the assignment or task would be more effective if every group had a relatively
+even spread of students that responded as having a skill related to the
+assignment. Consider using this method for assignments where students might have
+specialized roles. Take for example a poll that asks the students if they would
+be interested in taking on more responsibility as a team leader. Using the
+random method and the -v flag to see additional output, GatorGrouper may produce
+an output like this:
+
+```
+scores: [4, 4, 2, 0, 6, 4]
+average: 3
+```
+
+The score of a group is determined by the amount of students that
+answered "yes" to a particular question. In this example, there is
+one group that has no students that are willing to be a team leader.
+However if you use the round robin grouping method, one possible
+output would be:
+
+```
+scores: [4, 6, 4, 2, 2, 2]
+average: 3
+```
+
+In this case, the average score is the same as with the random grouping method,
+but all the groups have atleast one student willing to be a team leader. This
+has the potential to make the assignment more effective by maximizing team
+effectiveness.
 
 ### Absent Students
 
@@ -272,55 +346,6 @@ coverage run --source tests -m py.test
 coverage report
 ```
 
-## Activating Travis-Ci
-
-- In order to activate travis-ci you must have admin rights.
-- Make sure that you turned on the repo by seeing the green slide.
-- Then in the root directory of your repo create a .travis.yml
-- An example of a .travis.yml:
-
-```yml
-language: python
-python:
-  - "3.5"
-
-cache:
-  directories:
-    - $HOME/.pip-cache/
-before_install:
-  - gem install mdl
-notifications:
-  email: never
-
-install:
-  - pip install --upgrade pip
-  - python3 -m pip install -r requirements.txt
-  - pip3 install pytest-flake8
-  - pip3 install pytest-cov
-  - pip3 install autopep8
-  - pip3 install gspread oauth2client
-  - pip3 install coveralls
-
-script:
-  - pytest tests
-  - mdl README.md
-  - coverage run --source tests -m py.test
-  - coverage report
-```
-
-## Activating Coveralls
-
-- Go to <https://coveralls.io/sign-up>
-- Click Github Sign Up
-- Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
-- You should now see it in your repos click on Gator Grouper.
-- The now add to the end of your .travis.yml:
-
-```yml
-after_success:
-  coveralls
-```
-
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
@@ -328,5 +353,3 @@ create an issue associated with this Git repository using the "Issues" link at
 the top of this site. The contributors to GatorGrouper will do all that they can
 to resolve your issue and ensure that the entire tool works well in your
 teaching and development environment.
-
-[![Coverage Status](https://coveralls.io/repos/github/GatorGrouper/gatorgrouper/badge.svg?branch=master)](https://coveralls.io/github/GatorGrouper/gatorgrouper?branch=master)

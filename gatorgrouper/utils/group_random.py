@@ -5,7 +5,7 @@ import logging
 import itertools
 from random import shuffle
 
-from group_scoring import score_groups
+from .group_scoring import score_groups
 
 
 def group_random_group_size(responses, grpsize):
@@ -20,8 +20,7 @@ def group_random_group_size(responses, grpsize):
     if len(groups[last_group_index]) < grpsize:
 
         # distribute them throughout the other groups
-        logging.info(
-            "Partial group identified; distributing across other groups.")
+        logging.info("Partial group identified; distributing across other groups.")
         lastgroup = groups[last_group_index]
         outliers = copy.deepcopy(lastgroup)
         groups.remove(lastgroup)
@@ -36,8 +35,8 @@ def group_random_group_size(responses, grpsize):
     # scoring and return
     scores, ave = [], 0
     scores, ave = score_groups(groups)
-    logging.info("scores: " + str(scores))
-    logging.info("average: " + str(ave))
+    logging.info("scores: %d", scores)
+    logging.info("average: %d", ave)
     return groups
 
 
@@ -47,27 +46,27 @@ def group_random_num_group(responses, numgrp):
     stunum = 0
     iterable = iter(responses)
     # number of students in each group (without overflow)
+    # pylint: disable=old-division
     grpsize = int(len(responses) / numgrp)
     groups = list()
-    for i in range(0, numgrp):
+    for _ in range(0, numgrp):
         group = list()
         while len(group) is not grpsize and stunum < len(responses):
             group.append(next(iterable))
             stunum = stunum + 1
         groups.append(group)
     # deal with the last remaining students
-    if len(responses) % stunum is not 0:
-        logging.info(
-            "Overflow students identified; distributing into groups.")
-    for x in range(0, len(responses) % stunum):
-        groups[x].append(next(iterable))
+    if len(responses) % stunum != 0:
+        logging.info("Overflow students identified; distributing into groups.")
+    for _x in range(0, len(responses) % stunum):
+        groups[_x].append(next(iterable))
         stunum = stunum + 1
 
     # scoring and return
     scores, ave = [], 0
     scores, ave = score_groups(groups)
-    logging.info("scores: " + str(scores))
-    logging.info("average: " + str(ave))
+    logging.info("scores: %d", scores)
+    logging.info("average: %d", ave)
     return groups
 
 
