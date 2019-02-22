@@ -134,7 +134,6 @@ def check_valid_group_size(group_size, students_list):
         logging.info("Skipping group size check; file must not exist.")
         return True
     students_list_length = len(students_list)
-    # pylint: disable=old-division
     if group_size <= 1 or group_size > students_list_length / 2:
         logging.error("Group size: %d", group_size)
         logging.error("Number of students: %d", students_list_length)
