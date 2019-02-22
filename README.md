@@ -1,14 +1,25 @@
 # GatorGrouper
 
-[![Build Status](https://api.travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
-[![codecov.io](http://codecov.io/github/GatorEducator/gatorgrouper/coverage.svg?branch=master)](http://codecov.io/github/GatorEducator/gatorgrouper?branch=master)
+[logo](src/static/gatorgrouper_logo.svg "GatorGrouper")
+
+[![Build Status](https://travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
 
-GatorGrouper is a Python 3 program that assigns a list of students to groups of
-a specified size. The output of this program could then be communicated to the
-students in a specific class. Then, if a course instructor is using [GitHub
-Classroom](https://classroom.github.com/), you can ask the students in your
-class to create and join their assigned group.
+Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
+and [Travis CI](https://travis-ci.com/), GatorGrouper is an online group creation
+tool to help facilitate group assignment in an educational setting.
+While other group management tools create random groups, GatorGrouper
+supports random and round robin style grouping with the option to specify
+absentees. With creative implementation through a web application,
+users can return to the site and update or re-group using previously
+entered data.
+
+GatorGrouper was created mainly in [Python 3](https://www.python.org/) and
+utilizes the [Django](https://www.djangoproject.com/) web framework. Upon access
+to the site, users are able to input student names and assign them to groups of
+a specified size and method. The output of this program can be communicated to
+the students in the class. If a course instructor is using [GitHub Classroom](https://classroom.github.com/),
+they can invite the students in the class to create and join their assigned group.
 
 ## Installation
 
