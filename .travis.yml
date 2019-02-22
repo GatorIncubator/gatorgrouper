@@ -39,7 +39,6 @@ install:
 # --> lint the functions with pylint
 # --> lint the test suites with pylint
 # --> lint the README documentation with mdl
-# --> Run django server
 script:
   - pipenv run pytest gatorgrouper/tests --cov-config pytest.cov --cov
   - pipenv run black */*/*.py --check
