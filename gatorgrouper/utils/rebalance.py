@@ -7,7 +7,6 @@ def rebalance(student_groups, scores, ave):
     """rebalances the groups of students"""
 
     # average score of the groups
-    # pylint: disable=old-division
     ave = int(ave // len(scores))
     # print("average score: "+str(ave))
     # print("Threshold: "+str(int(ave*(2/3))))
