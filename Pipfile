@@ -22,6 +22,7 @@ oauth2client = "*"
 pathlib = "*"
 py = "*"
 django = "*"
+mutmut = "*"
 
 [pipenv]
 allow_prereleases = true
