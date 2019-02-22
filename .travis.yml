@@ -32,19 +32,21 @@ install:
   - pipenv install --dev
 
 # perform testing:
-# --> run the test suite with pytest
+# --> run the test suite with pytest and codecov
+# --> Check for black format
 # --> lint the functions with flake8
 # --> lint the test suites with flake8
 # --> lint the functions with pylint
 # --> lint the test suites with pylint
 # --> lint the README documentation with mdl
+# --> Run django server
 script:
   - pipenv run pytest gatorgrouper/tests --cov-config pytest.cov --cov
-  - pipenv run black */**.py --check
-  - pipenv run flake8 tests*
-  - pipenv run flake8 */**.py
-  - pipenv run pylint tests
-  - pipenv run pylint */**.py
+  - pipenv run black */*/*.py --check
+  - pipenv run flake8 gatorgrouper/tests*
+  - pipenv run flake8 */*/*.py
+  - pipenv run pylint gatorgrouper/tests*
+  - pipenv run pylint */*/*.py
   - mdl README.md
 
 # report coverage information to CodeCov

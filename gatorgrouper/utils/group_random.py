@@ -4,7 +4,6 @@ import copy
 import logging
 import itertools
 from random import shuffle
-
 from .group_scoring import score_groups
 
 
