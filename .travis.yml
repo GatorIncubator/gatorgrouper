@@ -17,6 +17,8 @@ env:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
     - secure: 2c0250fb-dfb1-45c9-abaf-cd3d874326c5
+  tests:
+    - TESTFOLDER=gatorgrouper/tests
 
 # install mdl for checking Markdown
 before_install:
@@ -48,6 +50,7 @@ script:
   - pipenv run pylint gatorgrouper/tests*
   - pipenv run pylint */*/*.py
   - mdl README.md
+  - bundle exec rake test:"$TESTFOLDER"
 
 # report coverage information to CodeCov
 after_success:
