@@ -5,7 +5,7 @@ import logging
 
 def remove_absent_students(absentee_list, list_of_student_lists):
     """Remove missing students before group assignment"""
-    
+
     logging.info("Removing absent students")
     list_of_student_lists_copy = list_of_student_lists[:]
     for name in absentee_list:
