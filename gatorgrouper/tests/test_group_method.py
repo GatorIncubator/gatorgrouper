@@ -106,6 +106,31 @@ def test_round_robin():
     assert (["Austin", True, True, True] in actual_output[1]) is True
 
 
+def test_rrobin_responses():
+    """Testing the grouping function according to responses"""
+    list = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", True, True, True],
+        ["Nick", False, False, False],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False],
+    ]
+    numgrps = 4
+    response_output = group_rrobin.group_rrobin_num_group(list, numgrps)
+    assert len(response_output[0]) == 3
+    assert len(response_output) == numgrps
+    assert (["Dan", True, True, True] in response_output[0]) is True
+    assert (["Jesse", True, True, True] in response_output[2]) is True
+    assert (["Austin", True, True, True] in response_output[1]) is True
+
+
 def test_random():
     """Testing the random grouping function to assure proper output"""
     lst = [
