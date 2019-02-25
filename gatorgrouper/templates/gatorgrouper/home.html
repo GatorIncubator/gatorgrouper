@@ -1,0 +1,58 @@
+<!-- TODO: add the correct filefolder name in django structure -->
+{% extends "#/base.html" %}
+{% block content %}
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('static/blog/img/GGbackground.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Gator Grouper</h3>
+          <p class="lead">Gator Grouper is an program that easily seperates a classroom full of individuals into groups based on user preferences!.</p>
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('static/blog/img/Allegheny.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Developer Story</h3>
+          <p class="lead">The Gator Grouper program was developed by the Allegheny College Software Engineering team.</p>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('static/blog/img/groupWork.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Teamwork</h3>
+          <p class="lead">"Teamwork is the ability to work together toward a common vision. The ability to direct individual accomplishments toward organizational objectives. It is the fuel that allows common people to attain uncommon results." --Andrew Carnegie.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+  <!-- Page Content -->
+<section class="py-5">
+  <div class="container">
+    <h1 class="font-weight-light">Half Page Image Slider</h1>
+    <p class="lead">We can have contact us, FAQs or .........at the bottom</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-light py-5">
+  <div class="container">
+    <div class="small text-center text-muted">Copyright &copy; 2019 - GatorGrouper</div>
+  </div>
+</footer>
+
+{% endblock content %}
