@@ -39,6 +39,7 @@ def test_check_number_groups_size_one():
     )
     assert student_groups
 
+
 def test_check_number_groups_over():
     """Checking if the number of groups greater than number of students"""
     numgrp = 9
