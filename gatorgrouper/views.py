@@ -38,3 +38,6 @@ def survey(request):
 
 def signup(request):
     return render(request, 'gatorgrouper/signup.html', {'title': 'Signup'})
+
+def groupResult(request):
+    return render(request, 'gatorgrouper/viewing-groups.html', {'title': 'Group Result'})

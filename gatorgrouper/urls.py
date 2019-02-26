@@ -7,10 +7,11 @@ from django.urls import re_path
 from . import views
 
 urlpatterns = [
-    # re_path(r"^$", views.index, name="index"),
+    path('index', views.index, name="index"),
     path('', views.home, name='Gtorgrouper-home'), # first attribute is a space, meaning homepage
     path('classes', views.classes, name='Gtorgrouper-classes'),
     path('assignments', views.assignments, name='Gatorgrouper-assignments'),
     path('survey', views.survey, name='Gatorgrouper-survey'),
-    path('signup', views.signup, name='Gatorgrouper-signup')
+    path('signup', views.signup, name='Gatorgrouper-signup'),
+    path('group-result', views.groupResult, name='Gatorgrouper-groups')
     ]
