@@ -22,7 +22,8 @@ if __name__ == "__main__":
     # read in the student identifiers from the specified file
     print(GG_ARGUMENTS.students_file)
     STUDENT_IDENTIFIERS = remove_absent_students.remove_absent_students(
-        GG_ARGUMENTS.absentees, read_student_file.read_student_file(GG_ARGUMENTS.students_file)
+        GG_ARGUMENTS.absentees,
+        read_student_file.read_student_file(GG_ARGUMENTS.students_file),
     )
     logging.info("GatorGrouper will group these students:")
     logging.info("\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS))
@@ -30,7 +31,9 @@ if __name__ == "__main__":
     # shuffle the student identifiers
     SHUFFLED_STUDENT_IDENTIFIERS = group_random.shuffle_students(STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
-    logging.info("\n %s", display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS))
+    logging.info(
+        "\n %s", display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS)
+    )
 
     # generate the groups and display them
     # pylint: disable=bad-continuation
