@@ -1,6 +1,6 @@
 """ rebalance groups by swapping lowest with highest scoring """
 
-from group_scoring import score_groups
+import group_scoring
 
 
 def rebalance(student_groups, scores, ave):
@@ -27,4 +27,4 @@ def rebalance(student_groups, scores, ave):
         )
         student_groups[scores.index(min(scores))].remove(lowest)
         # reevaluates scores
-        score_groups(student_groups)
+        group_scoring.score_groups(student_groups)
