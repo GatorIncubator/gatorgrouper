@@ -108,7 +108,7 @@ def test_round_robin():
 
 def test_rrobin_responses():
     """Testing the grouping function according to responses"""
-    list = [
+    lst = [
         ["Dan", True, True, True],
         ["Jesse", True, True, True],
         ["Austin", True, True, True],
@@ -123,7 +123,7 @@ def test_rrobin_responses():
         ["Jacob", False, False, False],
     ]
     numgrps = 4
-    response_output = group_rrobin.group_rrobin_num_group(list, numgrps)
+    response_output = group_rrobin.group_rrobin_num_group(lst, numgrps)
     assert len(response_output[0]) == 3
     assert len(response_output) == numgrps
     assert (["Dan", True, True, True] in response_output[0]) is True
