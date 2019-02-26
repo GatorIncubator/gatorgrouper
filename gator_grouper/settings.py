@@ -20,6 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
+AUTHENTICATION_BACKENDS = (
+    'Social_core.backends.google.Google0Auth2',
+    'django.contrib.auth.backends.ModelBackend'
+)
 def find_or_create_secret_key():
     """
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
