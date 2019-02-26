@@ -14,6 +14,7 @@ from utils.group_rrobin import group_rrobin_group_size
 from utils.group_rrobin import group_rrobin_num_group
 from utils.defaults import DEFAULT_NUMGRP
 from . import parse_arguments
+from globals import ALGORITHM_ROUND_ROBIN
 
 
 if __name__ == "__main__":
@@ -40,14 +41,14 @@ if __name__ == "__main__":
     # generate the groups and display them
     # pylint: disable=bad-continuation
     if (
-        GG_ARGUMENTS.grouping_method == "rrobin"
+        GG_ARGUMENTS.grouping_method == ALGORITHM_ROUND_ROBIN
         and GG_ARGUMENTS.num_group is DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
         )
     elif (
-        GG_ARGUMENTS.grouping_method == "rrobin"
+        GG_ARGUMENTS.grouping_method == ALGORITHM_ROUND_ROBIN
         and GG_ARGUMENTS.num_group is not DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin_num_group(
