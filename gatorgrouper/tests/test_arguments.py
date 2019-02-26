@@ -1,5 +1,6 @@
 """Command line argument testing"""
 import logging
+import pytest
 from utils import parse_arguments
 from utils import defaults
 from utils import group_random
