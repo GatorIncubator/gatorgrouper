@@ -17,6 +17,9 @@ pytest-clarity = "*"
 autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
+libsass = "*"
+django-compressor = "*"
+django-sass-processor = "*"
 
 [packages]
 pathlib = "*"
