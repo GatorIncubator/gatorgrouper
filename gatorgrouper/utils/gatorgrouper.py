@@ -13,8 +13,8 @@ from utils.group_random import group_random_num_group
 from utils.group_rrobin import group_rrobin_group_size
 from utils.group_rrobin import group_rrobin_num_group
 from utils.defaults import DEFAULT_NUMGRP
-from . import parse_arguments
 from globals import ALGORITHM_ROUND_ROBIN
+from . import parse_arguments
 
 
 if __name__ == "__main__":

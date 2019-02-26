@@ -5,6 +5,7 @@ import logging
 from .defaults import DEFAULT_CSVFILE
 from .defaults import DEFAULT_GRPSIZE
 from .defaults import DEFAULT_NUMGRP
+from globals import ALGORITHM_ROUND_ROBIN
 from .read_student_file import read_student_file
 
 
@@ -71,7 +72,7 @@ def parse_arguments(args):
         help="Use round-robin grouping method",
         action="store_const",
         dest="grouping_method",
-        const="rrobin",
+        const=ALGORITHM_ROUND_ROBIN,
     )
 
     gg_parser.add_argument("--absentees", nargs="+", type=str)
