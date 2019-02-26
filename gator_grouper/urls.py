@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, re_path
+from django.conf import settings
+from django.contrib.auth import logout
 
 urlpatterns = [
+    re_path('', include('social_django.urls', namespace='social')),
+    re_path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
+    name='logout'),
     re_path(r"^admin/", admin.site.urls),
     re_path(r"", include("gatorgrouper.urls")),
     re_path(r"^gatorgrouper/", include("gatorgrouper.urls")),

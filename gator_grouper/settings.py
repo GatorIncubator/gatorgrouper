@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import sys
-from django.conf import settings
-from django.contrib.auth.views import logout
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,19 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'INSERT_PROVIDED_KEY_HERE'
-#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'INSERT_PROVIDED_KEY_HERE'
-#urlpatterns = [
-#...,
-#path('', include('social_django.urls', anmespace='social')),
-#path('logout/', logout, {'next_page':settings.LOGOUT_REDIRECT_URL},
-#    name='logout'),
-#...,
-#]
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'INSERT_PROVIDED_KEY_HERE'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'INSERT_PROVIDED_KEY_HERE'
+
 SOCIAL_AUTH_URL_NAMESPACE ='social'
-#LOGIN_URL = '/auth/login/google-oauth2/'
-#LOGIN_REDIRECT_URL = '/'
-#LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/auth/login/google-oauth2/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 AUTHENTICATION_BACKENDS = (
@@ -108,6 +102,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect"
             ]
         },
     }
