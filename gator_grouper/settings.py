@@ -20,10 +20,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
+LOGIN_URL = '/auth/login/google-oauth2/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'INSERT_PROVIDED_KEY_HERE'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'INSERT_PROVIDED_KEY_HERE'
+
 AUTHENTICATION_BACKENDS = (
     'Social_core.backends.google.Google0Auth2',
     'django.contrib.auth.backends.ModelBackend'
 )
+
+
 def find_or_create_secret_key():
     """
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
