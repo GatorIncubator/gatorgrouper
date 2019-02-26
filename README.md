@@ -1,5 +1,14 @@
 # GatorGrouper
 
+[![Build Status](https://api.travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
+[![codecov.io](http://codecov.io/github/GatorEducator/gatorgrouper/coverage.svg?branch=master)](http://codecov.io/github/GatorEducator/gatorgrouper?branch=master)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
+
+GatorGrouper is a Python 3 program that assigns a list of students to groups of
+a specified size. The output of this program could then be communicated to the
+students in a specific class. Then, if a course instructor is using [GitHub
+Classroom](https://classroom.github.com/), you can ask the students in your
+class to create and join their assigned group.
 ![logo](src/static/gatorgrouper_logo.svg "GatorGrouper")
 
 [![Build Status](https://travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
@@ -173,7 +182,11 @@ python3 gatorgrouper.py --random
 ```
 
 This will randomly group the list of students you have provided, and is the
-default grouping method used when none is provided.
+default grouping method used when none is provided. This method of grouping is
+appropriate for cases where the assignment does not require that groups have a
+minimum number of members that have responded as having a skill related to the
+assignment. Consider using this method for assignments like in class exercises,
+small discussion groups, or peer editing.
 
 ### Round-robin Grouping Method
 
@@ -189,7 +202,35 @@ represented as true and false.  Round-robin randomizes the categories and
 assigns a student, one at a time, to each group by using the first value
 indicated as true.  When all of the students with true values are assigned,
 it goes back and adds a student to each group until there are no students
-remaining.
+remaining. This method of grouping is appropriate for cases where
+the assignment or task would be more effective if every group had a relatively
+even spread of students that responded as having a skill related to the
+assignment. Consider using this method for assignments where students might have
+specialized roles. Take for example a poll that asks the students if they would
+be interested in taking on more responsibility as a team leader. Using the
+random method and the -v flag to see additional output, GatorGrouper may produce
+an output like this:
+
+```
+scores: [4, 4, 2, 0, 6, 4]
+average: 3
+```
+
+The score of a group is determined by the amount of students that
+answered "yes" to a particular question. In this example, there is
+one group that has no students that are willing to be a team leader.
+However if you use the round robin grouping method, one possible
+output would be:
+
+```
+scores: [4, 6, 4, 2, 2, 2]
+average: 3
+```
+
+In this case, the average score is the same as with the random grouping method,
+but all the groups have atleast one student willing to be a team leader. This
+has the potential to make the assignment more effective by maximizing team
+effectiveness.
 
 ### Absent Students
 
@@ -325,55 +366,6 @@ coverage run --source tests -m py.test
 coverage report
 ```
 
-## Activating Travis-Ci
-
-- In order to activate travis-ci you must have admin rights.
-- Make sure that you turned on the repo by seeing the green slide.
-- Then in the root directory of your repo create a .travis.yml
-- An example of a .travis.yml:
-
-```yml
-language: python
-python:
-  - "3.5"
-
-cache:
-  directories:
-    - $HOME/.pip-cache/
-before_install:
-  - gem install mdl
-notifications:
-  email: never
-
-install:
-  - pip install --upgrade pip
-  - python3 -m pip install -r requirements.txt
-  - pip3 install pytest-flake8
-  - pip3 install pytest-cov
-  - pip3 install autopep8
-  - pip3 install gspread oauth2client
-  - pip3 install coveralls
-
-script:
-  - pytest tests
-  - mdl README.md
-  - coverage run --source tests -m py.test
-  - coverage report
-```
-
-## Activating Coveralls
-
-- Go to <https://coveralls.io/sign-up>
-- Click Github Sign Up
-- Add Repo GKAPFHAM/ gatorgrouper(make sure it is on)
-- You should now see it in your repos click on Gator Grouper.
-- The now add to the end of your .travis.yml:
-
-```yml
-after_success:
-  coveralls
-```
-
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
@@ -381,5 +373,3 @@ create an issue associated with this Git repository using the "Issues" link at
 the top of this site. The contributors to GatorGrouper will do all that they can
 to resolve your issue and ensure that the entire tool works well in your
 teaching and development environment.
-
-[![Coverage Status](https://coveralls.io/repos/github/GatorGrouper/gatorgrouper/badge.svg?branch=master)](https://coveralls.io/github/GatorGrouper/gatorgrouper?branch=master)
