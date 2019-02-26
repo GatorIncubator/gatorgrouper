@@ -1,30 +1,39 @@
-<doctype html!>
-<html>
-  <head>
-    <!-- Creates the Logo of our project -->
-    <img src="/home/f/faulknert/CS203/gatorgrouper/static/images/gatorgrouper_logo.svg" height="120cm">
-    <title>Gator Grouper Login</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Creates the account name login box -->
-    <form action="/action_page.php" method="get">
-      <h4>Login </h4> </br>
-      <p5>Account Name: </p5>
-      <input type="text" Account Name=""> </br> </br>
+{% extends "#/base.html" %}
+{% block content %}
+  <main role="main" class="container">
+    <div class="content-section">
+      <form method="post">
+<!-- Creates the Login title -->
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Login</legend>
+<!-- Creates the account name login box -->
+          <form action="/action_page.php">
+            <div class="form-group">
+              <label for="Login">Login: </label>
+              <input type="text" class="form-control" placeholder="Enter Login Info" name="Login">
+            </div>
+          </form>
+<!-- Creates the password login box -->
+          <form action="/action_page.php">
+            <div class="form-group">
+              <label for="Password">Password: </label>
+              <input type="text" class="form-control" placeholder="Enter Password" name="Password">
+            </div>
+          </form>
 
-      <!-- Creates the password login box -->
-      <p6>Password: </p6>
-      <input type="password" > </br>
+<!-- Creates a stay logged in button -->
+        <input type="checkbox"><label for="checkbox">Keep me logged in</label>
 
-      <!-- Creates a stay logged in button -->
-      <input type="checkbox"><label for="checkbox">Keep me logged in</label>
-
-      <!-- Creates the actually button that sends the requests -->
-      <input type="submit" value="Login">
-    </form>
-  </body>
-</html>
-
-
-<!-- I want to create a link in the gator grouper logo to reference the home page but can't until we get the website domain -->
+<!-- Creates the actually button that sends the requests -->
+        <div class="form-group">
+          <button type="submit" name="button" class="btn btn-outline-info">Login</button>
+          <button type="submit" name="button" class="btn btn-outline-info">Cancel</button>
+          <small class="text-muted">Back to Dashboard</small>
+        </div>
+      </form>
+      <div class="border-top pt-3">
+    </div>
+  </div>
+</main>
+{% endblock %}
