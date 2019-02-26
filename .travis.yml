@@ -1,11 +1,13 @@
+dist: xenial
 language: python
 python:
-  - "3.5"
+  - "3.7"
+  - "3.6"
 
 cache:
   directories:
     - $HOME/.pip-cache/
-    
+
 # Activating Codecov
 # - Go to <https://codecov.io/gh>
 # - Login with Github
@@ -16,12 +18,25 @@ cache:
 # codecov
 # ```
 
+# ignore the virtualenv that Travis creates
+# setup a secure login to CodeCov
+env:
+  global:
+    - PIPENV_VENV_IN_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+    - secure: 2c0250fb-dfb1-45c9-abaf-cd3d874326c5
+d02e9c07ac92587b2089ff572dd0e51fdb76b8fa
+
 # install mdl for checking Markdown
 before_install:
   - gem install mdl
+
 notifications:
   email: never
 
+# command to install dependencies
 install:
   - pip install --upgrade pip
   - pip install codecov
@@ -30,12 +45,31 @@ install:
   - pip3 install pytest-cov
   - pip3 install autopep8
   - pip3 install gspread oauth2client
-  
+
+  - pip install --upgrade pipenv
+  - pipenv install --dev
+
+# perform testing:
+# --> run the test suite with pytest and codecov
+# --> Check for black format
+# --> lint the functions with flake8
+# --> lint the test suites with flake8
+# --> lint the functions with pylint
+# --> lint the test suites with pylint
+# --> lint the README documentation with mdl
+d02e9c07ac92587b2089ff572dd0e51fdb76b8fa
 script:
-  - pytest tests
+  - pipenv run pytest gatorgrouper/tests --cov-config pytest.cov --cov
+  - pipenv run black */*/*.py --check
+  - pipenv run flake8 */*/*.py
+  - pipenv run pylint */*/*.py
   - mdl README.md
   - pytest --cov=./
+d02e9c07ac92587b2089ff572dd0e51fdb76b8fa
 
+# report coverage information to CodeCov
 after_success:
   codecov
 
+  - pipenv run codecov
+d02e9c07ac92587b2089ff572dd0e51fdb76b8fa
