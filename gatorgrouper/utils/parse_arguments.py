@@ -2,10 +2,10 @@
 
 import argparse
 import logging
+from globals import ALGORITHM_ROUND_ROBIN
 from .defaults import DEFAULT_CSVFILE
 from .defaults import DEFAULT_GRPSIZE
 from .defaults import DEFAULT_NUMGRP
-from globals import ALGORITHM_ROUND_ROBIN
 from .read_student_file import read_student_file
 
 
