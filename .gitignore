@@ -2,3 +2,6 @@ __pycache__
 .cache
 *.pyc
 *.csv
+gatorgrouper_django/gatorgrouper/migrations/
+/.coverage
+secret_key.py
