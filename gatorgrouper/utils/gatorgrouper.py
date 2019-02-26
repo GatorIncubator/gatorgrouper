@@ -2,18 +2,13 @@
 
 import sys
 import logging
+import parse_arguments
+from defaults import DEFAULT_NUMGRP
 from read_student_file import read_student_file
 from remove_absent_students import remove_absent_students
-from display import display_welcome_message
-from display import display_student_groups
-from display import create_escaped_string_from_list
-from group_random import shuffle_students
-from group_random import group_random_group_size
-from group_random import group_random_num_group
-from group_rrobin import group_rrobin_group_size
-from group_rrobin import group_rrobin_num_group
-from defaults import DEFAULT_NUMGRP
-import parse_arguments
+from group_rrobin import group_rrobin_group_size, group_rrobin_num_group
+from group_random import shuffle_students, group_random_group_size, group_random_num_group
+from display import display_welcome_message, display_student_groups, create_escaped_string_from_list
 
 
 if __name__ == "__main__":
