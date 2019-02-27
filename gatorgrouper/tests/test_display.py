@@ -16,6 +16,10 @@ def test_display_student_groups(capsys):
 
 def test_display_welcome_message():
     """ Test if the welcome message is correctly displayed"""
-    expected_output = "\nGatorGrouper: Automatically Assign Students to Groups\nhttps://github.com/GatorGrouper/gatorgrouper\n"
+    firstline = ""
+    secondline = "GatorGrouper: Automatically Assign Students to Groups"
+    thirdline = "https://github.com/GatorGrouper/gatorgrouper"
+    forthline = ""
+    expected_output = firstline + secondline + thirdline + forthline
     output = display.display_welcome_message()
     assert output == expected_output
