@@ -69,3 +69,20 @@ class Grouped_Students(models.Model):
 
     def __str__(self):
         return "{}: {}".format(self.assignment_id, self.group_id)
+        
+
+class Student_Conflicts(model.Model):
+    """ This is undocumented """
+
+    ONE = "1"
+    TWO = "2"
+    THREE = "3"
+    FOUR = "4"
+    FIVE = "5"
+    SEVERITY_CHOICES = ((ONE, "1"),(TWO, "2"),(THREE,"3"),(FOUR, "4"),(FIVE, "5"))
+    conflict_id = models.AutoField(primary_key=True)
+    student1 = ForeignKey(Students, on_delete=models.CASCADE)
+    student2 = ForeignKey(Students, on_delete=models.CASCADE)
+
+    severity_rank = CharField(max_length = 1, choices=SEVERITY_CHOICES, blank=True)
+    class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
