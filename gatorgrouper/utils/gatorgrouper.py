@@ -40,14 +40,14 @@ if __name__ == "__main__":
     # pylint: disable=bad-continuation
     if (
         GG_ARGUMENTS.grouping_method == globals.ALGORITHM_ROUND_ROBIN
-        and GG_ARGUMENTS.num_group is DEFAULT_NUMGRP
+        and GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
         )
     elif (
         GG_ARGUMENTS.grouping_method == globals.ALGORITHM_ROUND_ROBIN
-        and GG_ARGUMENTS.num_group is not DEFAULT_NUMGRP
+        and GG_ARGUMENTS.num_group is not defaults.DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
