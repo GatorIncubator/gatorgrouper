@@ -31,22 +31,24 @@ def find_or_create_secret_key():
     sys.path.insert(1, SECRET_KEY_DIR)
 
     if os.path.isfile(SECRET_KEY_FILEPATH):
-        from secret_key import SECRET_KEY
+        # pylint: disable=import-error
+        from secret_key import SECRET_KEY as key
 
-        return SECRET_KEY
-    else:
-        from django.utils.crypto import get_random_string
+        return key
+    from django.utils.crypto import get_random_string
 
-        chars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)"
-        new_key = get_random_string(50, chars)
-        with open(SECRET_KEY_FILEPATH, "w") as f:
-            f.write(
-                "# Django secret key\n# Do NOT check this into version control.\n\nSECRET_KEY = '%s'\n"
-                % new_key
-            )
-        from secret_key import SECRET_KEY
+    chars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)"
+    new_key = get_random_string(50, chars)
+    with open(SECRET_KEY_FILEPATH, "w") as f:
+        f.write(
+            "# Django secret key\n# Do NOT check this into version control.\n\n"
+            "SECRET_KEY = '%s'\n" % new_key
+        )
+    # pylint: disable=import-error
+    from secret_key import SECRET_KEY as key
 
-        return SECRET_KEY
+    return key
+
 
 
 # Make this unique, and do not share it with anybody.
