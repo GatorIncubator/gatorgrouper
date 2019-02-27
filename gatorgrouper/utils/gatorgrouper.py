@@ -11,7 +11,7 @@ import group_random
 import display
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  #pragma: no cover
 
     # parse the arguments and display welcome message
     GG_ARGUMENTS = parse_arguments.parse_arguments(sys.argv[1:])
