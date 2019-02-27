@@ -4,6 +4,7 @@ import argparse
 import logging
 import read_student_file
 import defaults
+import constants
 
 
 def parse_arguments(args):
@@ -69,7 +70,7 @@ def parse_arguments(args):
         help="Use round-robin grouping method",
         action="store_const",
         dest="grouping_method",
-        const="rrobin",
+        const=constants.ALGORITHM_ROUND_ROBIN,
     )
 
     gg_parser.add_argument("--absentees", nargs="+", type=str)
