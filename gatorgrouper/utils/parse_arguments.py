@@ -2,11 +2,9 @@
 
 import argparse
 import logging
+import read_student_file
+import defaults
 from globals import ALGORITHM_ROUND_ROBIN
-from .defaults import DEFAULT_CSVFILE
-from .defaults import DEFAULT_GRPSIZE
-from .defaults import DEFAULT_NUMGRP
-from .read_student_file import read_student_file
 
 
 def parse_arguments(args):
@@ -39,7 +37,7 @@ def parse_arguments(args):
         "--group-size",
         help="Number of students in a group",
         type=int,
-        default=DEFAULT_GRPSIZE,
+        default=defaults.DEFAULT_GRPSIZE,
         required=False,
     )
 
@@ -47,7 +45,7 @@ def parse_arguments(args):
         "--num-group",
         help="Number of groups",
         type=int,
-        default=DEFAULT_NUMGRP,
+        default=defaults.DEFAULT_NUMGRP,
         required=False,
     )
 
@@ -55,7 +53,7 @@ def parse_arguments(args):
         "--students-file",
         help="File containing last name of students",
         type=str,
-        default=DEFAULT_CSVFILE,
+        default=defaults.DEFAULT_CSVFILE,
         required=False,
     )
 
@@ -88,7 +86,7 @@ def parse_arguments(args):
     if (
         check_valid_group_size(
             gg_arguments_finished.group_size,
-            read_student_file(gg_arguments_finished.students_file),
+            read_student_file.read_student_file(gg_arguments_finished.students_file),
         )
         is False
     ):
@@ -97,7 +95,7 @@ def parse_arguments(args):
     if (
         check_valid_num_group(
             gg_arguments_finished.num_group,
-            read_student_file(gg_arguments_finished.students_file),
+            read_student_file.read_student_file(gg_arguments_finished.students_file),
         )
         is False
     ):
