@@ -8,8 +8,18 @@ def read_student_file(filepath):
     """ Read the responses from the CSV, returning them in a list of lists """
 
     # handle nonexistant files
-    if Path(filepath).is_file() is False:
-        return "filenotfound"
+    # if Path(filepath).is_file() is False:
+    #     return "filenotfound"
+try:
+    f = open(fname, 'rb') 
+except IOError:
+    print ("Could not read file:", fname)
+    sys.exit()
+
+with f:
+    reader = csv.reader(f)
+    for row in reader:
+        pass #do stuff here
 
     # read the raw CSV data
     with open(filepath, "rU") as csvfile:
