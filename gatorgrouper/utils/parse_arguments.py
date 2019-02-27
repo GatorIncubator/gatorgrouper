@@ -6,6 +6,7 @@ import read_student_file
 import defaults
 import constants
 
+
 def parse_arguments(args):
     """ Parses the arguments provided on the command-line """
 
