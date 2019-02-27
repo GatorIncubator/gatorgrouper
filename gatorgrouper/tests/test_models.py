@@ -4,8 +4,8 @@ import pytest
 from mixer.backend.django import mixer
 pytestmark = pytest.mark.django_db
 
-class TestModel:
-    def test_Professor(self):
+class TestProfessor:
+    def test_model(self):
         obj = mixer.blend('gatorgrouper.Professor')
         # it creates a professor instance
         assert obj.pk == 1
