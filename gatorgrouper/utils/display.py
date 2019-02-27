@@ -21,11 +21,9 @@ def display_student_groups(student_groups):
 
 def display_welcome_message():
     """ Display a welcome message """
-    firstline = ""
-    secondline = "GatorGrouper: Automatically Assign Students to Groups"
-    thirdline = "https://github.com/GatorGrouper/gatorgrouper"
-    forthline = ""
-    return firstline + secondline + thirdline + forthline
+    firstline = "\nGatorGrouper: Automatically Assign Students to Groups"
+    secondline = "\nhttps://github.com/GatorGrouper/gatorgrouper\n"
+    return print(firstline + secondline)
 
 
 def create_escaped_string_from_list(student_identifers):
