@@ -9,7 +9,7 @@ import read_student_file
 import group_rrobin
 import group_random
 import display
-import globals
+import constants
 
 
 if __name__ == "__main__":
@@ -39,14 +39,14 @@ if __name__ == "__main__":
     # generate the groups and display them
     # pylint: disable=bad-continuation
     if (
-        GG_ARGUMENTS.grouping_method == globals.ALGORITHM_ROUND_ROBIN
+        GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
         and GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
         )
     elif (
-        GG_ARGUMENTS.grouping_method == globals.ALGORITHM_ROUND_ROBIN
+        GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
         and GG_ARGUMENTS.num_group is not defaults.DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
