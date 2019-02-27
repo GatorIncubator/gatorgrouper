@@ -2,13 +2,13 @@
 
 import sys
 import logging
-from . import parse_arguments
-from . import remove_absent_students
-from . import defaults
-from . import read_student_file
-from . import group_rrobin
-from . import group_random
-from . import display
+import parse_arguments
+import remove_absent_students
+import defaults
+import read_student_file
+import group_rrobin
+import group_random
+import display
 
 
 if __name__ == "__main__":

@@ -2,8 +2,8 @@
 
 import argparse
 import logging
-from . import read_student_file
-from . import defaults
+import read_student_file
+import defaults
 
 
 def parse_arguments(args):

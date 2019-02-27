@@ -3,7 +3,7 @@
 import logging
 import random
 import itertools
-from . import group_scoring
+import group_scoring
 
 
 def group_rrobin_group_size(responses, grpsize):
