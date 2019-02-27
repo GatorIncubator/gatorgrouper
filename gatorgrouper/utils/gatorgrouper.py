@@ -16,7 +16,7 @@ from utils.defaults import DEFAULT_NUMGRP
 from . import parse_arguments
 
 
-if __name__ == "__main__":  #pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
 
     # parse the arguments and display welcome message
     GG_ARGUMENTS = parse_arguments.parse_arguments(sys.argv[1:])
