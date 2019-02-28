@@ -1,12 +1,13 @@
 """ Testing read_student_file """
-import pytest
+
 import csv
+import pytest
 
 from utils import read_student_file
 
 
 @pytest.fixture(scope="session")
-def file_name(tmpdir_factory):
+def generatecsv(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
     headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
@@ -19,7 +20,7 @@ def file_name(tmpdir_factory):
     return str(fn)
 
 
-def test_read_student_file(file_name):
+def test_read_student_file(generatecsv):
     """ Test read_student_file """
     expectedoutput = [["delgrecoj", True, True, False, True]]
-    assert read_student_file.read_student_file(file_name) == expectedoutput
+    assert read_student_file.read_student_file(generatecsv) == expectedoutput
