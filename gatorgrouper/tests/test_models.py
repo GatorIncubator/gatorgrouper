@@ -5,6 +5,7 @@ from mixer.backend.django import mixer
 pytestmark = pytest.mark.django_db
 
 class TestProfessor:
+    ```test professor class```
     def test_model(self):
         obj = mixer.blend('gatorgrouper.Professor')
         # it creates a professor instance
