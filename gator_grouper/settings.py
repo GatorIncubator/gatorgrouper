@@ -23,8 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Insert Secret Key'
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
+SOCIAL_AUTH_GITHUB_KEY = '87f5d68b5651aa790c68'
+SOCIAL_AUTH_GITHUB_SECRET = 'bbc47fee697eaa43b65365615e50ef11cb537158'
 #LOGIN_URL = '/auth/login/google-oauth2/'
 
 LOGIN_REDIRECT_URL = 'Gatorgrouper-survey'
@@ -41,6 +42,7 @@ AUTHENTICATION_BACKENDS = (
     "social_core.backends.open_id.OpenIdAuth",
     'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.github.GithubOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -94,6 +96,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "social_django.middleware.SocialAuthExceptionMiddleware",
 ]
 
 ROOT_URLCONF = "gator_grouper.urls"

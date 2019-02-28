@@ -47,7 +47,15 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Log In</a>
-            <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Log In With Google</a>
+
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a>
+
+        </li>
+        <li class="nav-item">
+
+           <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Log In With Google</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Sign Up</a>
