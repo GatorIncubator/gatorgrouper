@@ -117,9 +117,9 @@ def test_round_robin():
     actual_output = group_rrobin.group_rrobin_group_size(lst, group_size)
     assert len(actual_output) == 4
     assert len(actual_output[0]) == group_size
-    assert (["Dan", True, True, True] in actual_output[0]) is True
-    assert (["Jesse", True, True, True] in actual_output[2]) is True
-    assert (["Austin", True, True, True] in actual_output[1]) is True
+    assert ["Dan", True, True, True] in actual_output[0]
+    assert ["Jesse", True, True, True] in actual_output[2]
+    assert ["Austin", True, True, True] in actual_output[1]
 
 
 def test_rrobin_responses():
@@ -142,9 +142,9 @@ def test_rrobin_responses():
     response_output = group_rrobin.group_rrobin_num_group(lst, numgrps)
     assert len(response_output[0]) == 3
     assert len(response_output) == numgrps
-    assert (["Dan", True, True, True] in response_output[0]) is True
-    assert (["Jesse", True, True, True] in response_output[2]) is True
-    assert (["Austin", True, True, True] in response_output[1]) is True
+    assert ["Dan", True, True, True] in response_output[0]
+    assert ["Jesse", True, True, True] in response_output[2]
+    assert ["Austin", True, True, True] in response_output[1]
 
 
 def test_random():
