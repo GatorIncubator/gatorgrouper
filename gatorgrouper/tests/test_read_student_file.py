@@ -1,6 +1,7 @@
 """ Testing read_student_file """
 
 import csv
+
 # pylint: disable=redefined-outer-name
 import pytest
 

@@ -36,7 +36,7 @@ def test_check_number_groups_size_one():
     assert student_groups
 
 
-def test_check_number_groups_size_muti():
+def test_check_number_groups_size_multi():
     """Checking 1 group"""
     numgrp = 2
     numgrp2 = 3
