@@ -1,11 +1,11 @@
 """ Testing read_student_file """
 
 import csv
+# pylint: disable=redefined-outer-name
 import pytest
 
 from utils import read_student_file
 
-generate_csv = None
 
 @pytest.fixture(scope="session")
 def generate_csv(tmpdir_factory):
