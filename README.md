@@ -1,6 +1,6 @@
 # GatorGrouper
 
-![logo](docs/gatorgrouper_logo.svg "GatorGrouper")
+![logo](.github/gatorgrouper_logo.svg "GatorGrouper")
 
 [![Build Status](https://api.travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
 [![codecov.io](http://codecov.io/github/GatorEducator/gatorgrouper/coverage.svg?branch=master)](http://codecov.io/github/GatorEducator/gatorgrouper?branch=master)
