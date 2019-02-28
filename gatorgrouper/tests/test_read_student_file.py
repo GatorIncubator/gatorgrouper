@@ -5,9 +5,10 @@ import pytest
 
 from utils import read_student_file
 
+generate_csv = None
 
 @pytest.fixture(scope="session")
-def generatecsv(tmpdir_factory):
+def generate_csv(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
     headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
@@ -20,7 +21,7 @@ def generatecsv(tmpdir_factory):
     return str(fn)
 
 
-def test_read_student_file(generatecsv):
+def test_read_student_file(generate_csv):
     """ Test read_student_file """
     expectedoutput = [["delgrecoj", True, True, False, True]]
-    assert read_student_file.read_student_file(generatecsv) == expectedoutput
+    assert read_student_file.read_student_file(generate_csv) == expectedoutput
