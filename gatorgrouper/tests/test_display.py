@@ -1,4 +1,6 @@
 """Testing the display  """
+import pytest
+import sys
 from utils import display
 
 
@@ -14,10 +16,13 @@ def test_display_student_groups(capsys):
     assert out.startswith("\033[0;32m" + "\033[1m" + "\033[4m" + "Group 1")
 
 
-def test_display_welcome_message():
+def test_display_welcome_message(capsys):
     """ Test if the welcome message is correctly displayed"""
-    firstline = "\nGatorGrouper: Automatically Assign Students to Groups"
-    secondline = "\nhttps://github.com/GatorGrouper/gatorgrouper\n"
-    expected_output = print(firstline + secondline)
-    output = display.display_welcome_message()
-    assert output == expected_output
+    display.display_welcome_message()
+    captured = capsys.readouterr()
+    expected_output = """
+GatorGrouper: Automatically Assign Students to Groups
+https://github.com/GatorGrouper/gatorgrouper
+
+"""
+    assert captured.out == expected_output
