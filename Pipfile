@@ -22,6 +22,7 @@ oauth2client = "*"
 pathlib = "*"
 py = "*"
 django = "*"
+social-auth-app-django = "*"
 
 [pipenv]
 allow_prereleases = true
