@@ -1,6 +1,5 @@
 """Testing the display  """
-import pytest
-import sys
+
 from utils import display
 
 
