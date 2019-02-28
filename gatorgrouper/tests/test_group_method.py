@@ -93,8 +93,8 @@ def test_shuffle():
     ]
     shuffled_students = gatorgrouper.shuffle_students(student_identifiers)
     for i in range(0, len(shuffled_students)):
-        assert student_identifiers[i] in shuffled_students)
-    assert student_identifiers != shuffled_students)
+        assert student_identifiers[i] in shuffled_students
+    assert student_identifiers != shuffled_students
 
 
 def test_round_robin():
