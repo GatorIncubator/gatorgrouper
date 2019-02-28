@@ -1,22 +1,25 @@
-"""Testing number of groups"""
+""" Testing read_student_file """
 import pytest
 import csv
-#from coreapi import Client
+
 from utils import read_student_file
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def file_name(tmpdir_factory):
-    fn = tmpdir_factory.mktemp('data').join('csvNg.csv')
-    headers = ['NAME','Q1','Q2','Q3','Q4']
-    with open(str(fn),'w') as csvfile:
-        writer = csv.DictWriter(csvfile,fieldnames=headers)
+    """ Generate a tempory sample csv """
+    fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
+    headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
+    with open(str(fn), "w") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=headers)
         writer.writeheader()
-        writer.writerow({"NAME": "delgrecoj", 'Q1': True, 'Q2': True,
-            'Q3': False, 'Q4': True })
+        writer.writerow(
+            {"NAME": "delgrecoj", "Q1": True, "Q2": True, "Q3": False, "Q4": True}
+        )
     return str(fn)
 
 
 def test_read_student_file(file_name):
-    expectedoutput = [["delgrecoj", True ,True, False, True]]
+    """ Test read_student_file """
+    expectedoutput = [["delgrecoj", True, True, False, True]]
     assert read_student_file.read_student_file(file_name) == expectedoutput
