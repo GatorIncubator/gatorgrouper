@@ -1,9 +1,9 @@
 """ group using round robin approach"""
 
 import logging
-from random import shuffle
-from itertools import cycle
-from .group_scoring import score_groups
+import random
+import itertools
+import group_scoring
 
 
 def group_rrobin_group_size(responses, grpsize):
@@ -18,13 +18,13 @@ def group_rrobin_group_size(responses, grpsize):
 
     # setup cyclical group target
     indices = list(range(0, numgrps))
-    target_group = cycle(indices)
+    target_group = itertools.cycle(indices)
 
     # randomize the order in which the columns will be drained
     columns = list()
     for col in range(1, len(responses[0])):
         columns.append(col)
-    shuffle(columns)
+    random.shuffle(columns)
     logging.info("column priority: %d", columns)
 
     # iterate through the response columns
@@ -41,7 +41,7 @@ def group_rrobin_group_size(responses, grpsize):
 
     # scoring and return
     scores, ave = [], 0
-    scores, ave = score_groups(groups)
+    scores, ave = group_scoring.score_groups(groups)
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
     return groups
@@ -58,13 +58,13 @@ def group_rrobin_num_group(responses, numgrps):
 
     # setup cyclical group target
     indices = list(range(0, numgrps))
-    target_group = cycle(indices)
+    target_group = itertools.cycle(indices)
 
     # randomize the order in which the columns will be drained
     columns = list()
     for col in range(1, len(responses[0])):
         columns.append(col)
-    shuffle(columns)
+    random.shuffle(columns)
     logging.info("column priority: %d", columns)
 
     # iterate through the response columns
@@ -81,7 +81,7 @@ def group_rrobin_num_group(responses, numgrps):
 
     # scoring and return
     scores, ave = [], 0
-    scores, ave = score_groups(groups)
+    scores, ave = group_scoring.score_groups(groups)
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
     return groups

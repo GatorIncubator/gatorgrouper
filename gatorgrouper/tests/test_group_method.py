@@ -1,7 +1,6 @@
 """Testing random grouping"""
 from utils import group_random
 from utils import group_rrobin
-from utils import gatorgrouper
 
 
 def test_group_random1():
@@ -91,7 +90,7 @@ def test_shuffle():
         "Jesse",
         "Maria",
     ]
-    shuffled_students = gatorgrouper.shuffle_students(student_identifiers)
+    shuffled_students = group_random.shuffle_students(student_identifiers)
     for i in range(0, len(shuffled_students)):
         assert student_identifiers[i] in shuffled_students
     assert student_identifiers != shuffled_students
