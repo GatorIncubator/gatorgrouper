@@ -17,7 +17,7 @@ def read_student_file(filepath):
 
     # transform into desired output
     responses = list()
-    for record in csvdata:
+    for record in csvdata[1:]:
         temp = list()
         temp.append(record[0].replace('"', ""))
         for value in record[1:]:
