@@ -51,7 +51,9 @@ def test_check_number_groups_size_muti():
         "kapfhammer",
     ]
     student_groups = parse_arguments.check_valid_num_group(numgrp, student_identifiers)
-    student_groups2 = parse_arguments.check_valid_num_group(numgrp2, student_identifiers)
+    student_groups2 = parse_arguments.check_valid_num_group(
+        numgrp2, student_identifiers
+    )
     assert student_groups
     assert student_groups2
 
