@@ -22,6 +22,7 @@ pylint = "*"
 pathlib = "*"
 py = "*"
 django = "*"
+networkx = "*"
 
 [pipenv]
 allow_prereleases = true
