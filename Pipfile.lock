@@ -62,10 +62,10 @@
         },
         "astroid": {
             "hashes": [
-                "sha256:110f590c8775f6c371027793204d60c65051c4349768df7a0f30d24fe40a4614",
-                "sha256:1c4aea7133a5b0f33ca3944a9ed37453ff27bac0a8a0587f96e1f392eaecca99"
+                "sha256:1d5d0e6e408701ae657342645465d08be6fb66cf0ede16a31cc6435bd2e61718",
+                "sha256:8fc40235cd184bff5d7b8e1284a647005cbd36bbc87d0c39f6f6389ae26e17ad"
             ],
-            "version": "==2.2.0.dev1"
+            "version": "==2.2.0"
         },
         "atomicwrites": {
             "hashes": [
@@ -221,6 +221,7 @@
         },
         "isort": {
             "hashes": [
+                "sha256:ee5fddfd792e6e1d664ee28f3fbe00dfc26d8d3c6f059ee78f4da4c19718007c",
                 "sha256:f19b23b22fb5a919a081bc31aabcc0991614c244d9215267e11abf2ca7b684ce"
             ],
             "version": "==4.3.9"
@@ -363,11 +364,11 @@
         },
         "pylint": {
             "hashes": [
-                "sha256:daa2dfc3aec7252e5d5c00cb5fb2bfc8a4d43c593f8e58366fb43dc2b13f3ec3",
-                "sha256:fea08b65e41a13f31133f04af57e103d52c3cca06f044468e0ec53140c18f95a"
+                "sha256:2bf4bd58d6d5d87174fbc9d1d134a9aeee852d4dc29cbd422a7015772770bc63",
+                "sha256:ee80c7af4f127b2a480d83010c9f0e97beb8eaa652b78c2837d3ed30b12e1182"
             ],
             "index": "pypi",
-            "version": "==2.3.0.dev2"
+            "version": "==2.3.0"
         },
         "pynvim": {
             "hashes": [
@@ -485,7 +486,8 @@
         },
         "wrapt": {
             "hashes": [
-                "sha256:4aea003270831cceb8a90ff27c4031da6ead7ec1886023b80ce0dfe0adf61533"
+                "sha256:4aea003270831cceb8a90ff27c4031da6ead7ec1886023b80ce0dfe0adf61533",
+                "sha256:f5d1f9b03d189fc65b2e442fccc31cc1267e47a85c4988bc80fe6a6aaa7b3a44"
             ],
             "version": "==1.11.1"
         }
