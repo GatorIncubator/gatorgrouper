@@ -21,6 +21,7 @@ env:
 # install mdl for checking Markdown
 before_install:
   - gem install mdl
+  - pip install mixer
 
 notifications:
   email: never
