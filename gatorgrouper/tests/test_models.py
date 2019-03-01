@@ -25,18 +25,20 @@ class TestProfessor:
         assert result == expected
 
 
-class TestSemesterClss:
+class TestSemesterClass:
     """test semester class"""
     # pylint: disable=R0201
     def test_model(self):
-        """test semester model"""
+        """test semester model by creating a semester and class instance and
+        assert that there is one in the database"""
         obj = mixer.blend('gatorgrouper.Semester_Class')
         # it creates a semester class instance
         assert obj.pk == 1
 
     # pylint: disable=R0201
     def test_str(self):
-        """test __str__ method """
+        """test __str__ method by putting varibles into the database and
+        expecting the output to be in a specific format"""
         obj = mixer.blend('gatorgrouper.Semester_Class',
                           department='CS', class_number='203', class_section='01')
         result = obj.__str__()
