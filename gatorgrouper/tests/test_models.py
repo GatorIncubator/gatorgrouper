@@ -70,14 +70,16 @@ class TestStudents:
     """test student class"""
     # pylint: disable=R0201
     def test_model(self):
-        """test student model"""
+        """test student model by creating a student instance and assert that
+        there is one in the database"""
         obj = mixer.blend('gatorgrouper.Students')
         # it creates a student instance
         assert obj.pk == 1
 
     # pylint: disable=R0201
     def test_str(self):
-        """test __str__ method """
+        """test __str__ method by putting varibles into the database and
+        expecting the output to be in a specific format"""
         obj = mixer.blend('gatorgrouper.Students', last_name='Y', first_name='Enpu')
         result = obj.__str__()
         expected = 'Y, Enpu'
