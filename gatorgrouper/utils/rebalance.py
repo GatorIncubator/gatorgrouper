@@ -3,7 +3,7 @@
 import group_scoring
 
 
-def rebalance(student_groups, scores, ave):
+def rebalance_groups(student_groups, scores, ave):
     """rebalances the groups of students"""
 
     # average score of the groups
