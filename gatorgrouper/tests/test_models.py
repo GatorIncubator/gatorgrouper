@@ -7,12 +7,14 @@ pytestmark = pytest.mark.django_db
 
 class TestProfessor:
     """test professor class"""
+    # pylint: disable=R0201
     def test_model(self):
         """test professor model"""
         obj = mixer.blend('gatorgrouper.Professor')
         # it creates a professor instance
         assert obj.pk == 1
 
+    # pylint: disable=R0201
     def test_str(self):
         """test __str__ method """
         obj = mixer.blend('gatorgrouper.Professor', last_name='K', first_name='Greg')
@@ -23,12 +25,14 @@ class TestProfessor:
 
 class TestSemesterClss:
     """test semester class"""
+    # pylint: disable=R0201
     def test_model(self):
         """test semester model"""
         obj = mixer.blend('gatorgrouper.Semester_Class')
         # it creates a semester class instance
         assert obj.pk == 1
 
+    # pylint: disable=R0201
     def test_str(self):
         """test __str__ method """
         obj = mixer.blend('gatorgrouper.Semester_Class',
@@ -40,12 +44,14 @@ class TestSemesterClss:
 
 class TestAssignments:
     """test assignment class"""
+    # pylint: disable=R0201
     def test_model(self):
         """test assignment model"""
         obj = mixer.blend('gatorgrouper.Assignments')
         # it creates a assignment instance
         assert obj.pk != " "
 
+    # pylint: disable=R0201
     def test_str(self):
         """test __str__ method """
         obj = mixer.blend('gatorgrouper.Assignments', assignment_id='Assignment One')
@@ -56,12 +62,14 @@ class TestAssignments:
 
 class TestStudents:
     """test student class"""
+    # pylint: disable=R0201
     def test_model(self):
         """test student model"""
         obj = mixer.blend('gatorgrouper.Students')
         # it creates a student instance
         assert obj.pk == 1
 
+    # pylint: disable=R0201
     def test_str(self):
         """test __str__ method """
         obj = mixer.blend('gatorgrouper.Students', last_name='Y', first_name='Enpu')
@@ -72,12 +80,14 @@ class TestStudents:
 
 class TestGrouped_Students:
     """test grouped student class"""
+    # pylint: disable=R0201
     def test_model(self):
         """test grouped student model"""
         obj = mixer.blend('gatorgrouper.Grouped_Students')
         # it creates a grouped students instance
         assert obj.pk == 1
 
+    # pylint: disable=R0201
     def test_str(self):
         """test __str__ method """
         obj = mixer.blend('gatorgrouper.Grouped_Students')
