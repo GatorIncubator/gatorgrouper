@@ -13,14 +13,18 @@ database engine, and supports a large set of database systems including SQLite.
 
 #### Running
 
-After the successful installation of Django, we inclined towards running the
-application. In order to run the application smoothly, please make sure that you
-are in the correct directory which is GatorGrouper_Django.
+In order to run the application, type in this command in the terminal:
 
-Next, make sure to run this command in the terminal: `python manage.py runserver`
+```shell
+pipenv run python manage.py runserver
+```
 
 To check if your server is set up and running, open up your browser and
-type: `local host:8000`
+type:
+
+```shell
+localhost:8000
+```
 
 #### Design and Configuration
 
