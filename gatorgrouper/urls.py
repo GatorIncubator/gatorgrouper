@@ -12,6 +12,5 @@ urlpatterns = [
     path('classes', views.classes, name='Gtorgrouper-classes'),
     path('assignments', views.assignments, name='Gatorgrouper-assignments'),
     path('survey', views.survey, name='Gatorgrouper-survey'),
-    path('signup', views.signup, name='Gatorgrouper-signup'),
     path('group-result', views.groupResult, name='Gatorgrouper-groups')
     ]

@@ -36,8 +36,5 @@ def assignments(request):
 def survey(request):
     return render(request, 'gatorgrouper/survey.html', {'title': 'Survey'})
 
-def signup(request):
-    return render(request, 'gatorgrouper/signup.html', {'title': 'Signup'})
-
 def groupResult(request):
     return render(request, 'gatorgrouper/viewing-groups.html', {'title': 'Group Result'})
