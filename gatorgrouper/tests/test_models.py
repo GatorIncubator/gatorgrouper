@@ -90,7 +90,8 @@ class TestGrouped_Students:
     """test grouped student class"""
     # pylint: disable=R0201
     def test_model(self):
-        """test grouped student model"""
+        """test grouped student model by creating a grouped student instance and
+        assert that there is one in the database"""
         obj = mixer.blend('gatorgrouper.Grouped_Students')
         # it creates a grouped students instance
         assert obj.pk == 1
