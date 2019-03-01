@@ -5,7 +5,7 @@ from mixer.backend.django import mixer
 pytestmark = pytest.mark.django_db
 
 class TestProfessor:
-    ```test professor class```
+    """test professor class"""
     def test_model(self):
         obj = mixer.blend('gatorgrouper.Professor')
         # it creates a professor instance
@@ -18,6 +18,7 @@ class TestProfessor:
         assert result == expected
 
 class TestSemesterClss:
+    """test semester class"""
     def test_model(self):
         obj = mixer.blend('gatorgrouper.Semester_Class')
         # it creates a semester class instance
@@ -30,6 +31,7 @@ class TestSemesterClss:
         assert result == expected
 
 class TestAssignments:
+    """test semester class"""
     def test_model(self):
         obj = mixer.blend('gatorgrouper.Assignments')
         # it creates a assignment instance
@@ -42,6 +44,7 @@ class TestAssignments:
         assert result == expected
 
 class TestStudents:
+    """test student class"""
     def test_model(self):
         obj = mixer.blend('gatorgrouper.Students')
         # it creates a student instance
@@ -54,6 +57,7 @@ class TestStudents:
         assert result == expected
 
 class TestGrouped_Students:
+    """test grouped student class"""
     def test_model(self):
         obj = mixer.blend('gatorgrouper.Grouped_Students')
         # it creates a grouped students instance
