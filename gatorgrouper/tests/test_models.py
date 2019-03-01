@@ -17,7 +17,8 @@ class TestProfessor:
 
     # pylint: disable=R0201
     def test_str(self):
-        """test __str__ method """
+        """test __str__ method by putting varibles into the database and
+        expecting the output to be in a specific format"""
         obj = mixer.blend('gatorgrouper.Professor', last_name='K', first_name='Greg')
         result = obj.__str__()
         expected = 'K, Greg'
