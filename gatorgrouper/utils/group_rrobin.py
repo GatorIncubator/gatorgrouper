@@ -1,4 +1,4 @@
-""" group using round robin approach"""
+""" promotes diversity by grouping different responses together using round robin approach"""
 
 import logging
 import random
@@ -7,7 +7,7 @@ import group_scoring
 
 
 def group_rrobin_group_size(responses, grpsize):
-    """ group responses using round robin approach """
+    """ forms equally sized groups based on desired group size """
 
     # setup target groups
     groups = list()  # // integer div
@@ -48,7 +48,7 @@ def group_rrobin_group_size(responses, grpsize):
 
 
 def group_rrobin_num_group(responses, numgrps):
-    """ group responses using round robin approach """
+    """ forms equally sized groups based on desired number of groups """
 
     # setup target groups
     groups = list()  # // integer div
