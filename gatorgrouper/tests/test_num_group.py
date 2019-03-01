@@ -37,7 +37,7 @@ def test_check_number_groups_size_one():
 
 
 def test_check_number_groups_size_multi():
-    """Checking 1 group"""
+    """Checking multiple group"""
     numgrp = 2
     numgrp2 = 3
     student_identifiers = [
