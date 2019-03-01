@@ -9,7 +9,8 @@ class TestProfessor:
     """test professor class"""
     # pylint: disable=R0201
     def test_model(self):
-        """test professor model"""
+        """test professor model by creating a professor instance and assert
+        that there is one in the database"""
         obj = mixer.blend('gatorgrouper.Professor')
         # it creates a professor instance
         assert obj.pk == 1
