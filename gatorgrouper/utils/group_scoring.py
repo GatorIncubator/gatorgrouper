@@ -18,7 +18,6 @@ def score_groups(student_groups):
     for group in student_groups:
         scores.append(score_group(group))
         ave += score_group(group)
-    # pylint: disable=old-division
     ave = int(ave / len(student_groups))
     # returns the scores of each group as well as the average score
     return scores, ave

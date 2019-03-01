@@ -20,18 +20,38 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
-SOCIAL_AUTH_GITHUB_KEY = '87f5d68b5651aa790c68'
-SOCIAL_AUTH_GITHUB_SECRET = 'bbc47fee697eaa43b65365615e50ef11cb537158'
-#LOGIN_URL = '/auth/login/google-oauth2/'
+def find_or_create_secret_key():
+    """
+    Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
+    Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
+    """
+    SECRET_KEY_DIR = os.path.dirname(__file__)
+    SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, "secret_key.py")
+    sys.path.insert(1, SECRET_KEY_DIR)
 
-LOGIN_REDIRECT_URL = 'Gatorgrouper-survey'
-LOGOUT_REDIRECT_URL = '/'
+    if os.path.isfile(SECRET_KEY_FILEPATH):
+        # pylint: disable=import-error
+        from secret_key import SECRET_KEY as key
 
-SECRET_KEY = "jc*l8zi5+h1_^f6i)x@0v%l=rw=219!i(dyf@2%_ez1e6mta$x"
+        return key
+    from django.utils.crypto import get_random_string
+
+    chars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)"
+    new_key = get_random_string(50, chars)
+    with open(SECRET_KEY_FILEPATH, "w") as f:
+        f.write(
+            "# Django secret key\n# Do NOT check this into version control.\n\n"
+            "SECRET_KEY = '%s'\n" % new_key
+        )
+    # pylint: disable=import-error
+    from secret_key import SECRET_KEY as key
+
+    return key
+
+
+# Make this unique, and do not share it with anybody.
+SECRET_KEY = find_or_create_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

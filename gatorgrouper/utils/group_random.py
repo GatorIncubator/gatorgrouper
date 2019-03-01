@@ -3,9 +3,8 @@
 import copy
 import logging
 import itertools
-from random import shuffle
-
-from .group_scoring import score_groups
+import random
+import group_scoring
 
 
 def group_random_group_size(responses, grpsize):
@@ -34,7 +33,7 @@ def group_random_group_size(responses, grpsize):
 
     # scoring and return
     scores, ave = [], 0
-    scores, ave = score_groups(groups)
+    scores, ave = group_scoring.score_groups(groups)
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
     return groups
@@ -46,7 +45,6 @@ def group_random_num_group(responses, numgrp):
     stunum = 0
     iterable = iter(responses)
     # number of students in each group (without overflow)
-    # pylint: disable=old-division
     grpsize = int(len(responses) / numgrp)
     groups = list()
     for _ in range(0, numgrp):
@@ -64,7 +62,7 @@ def group_random_num_group(responses, numgrp):
 
     # scoring and return
     scores, ave = [], 0
-    scores, ave = score_groups(groups)
+    scores, ave = group_scoring.score_groups(groups)
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
     return groups
@@ -73,5 +71,5 @@ def group_random_num_group(responses, numgrp):
 def shuffle_students(responses):
     """ Shuffle the responses """
     shuffled_responses = responses[:]
-    shuffle(shuffled_responses)
+    random.shuffle(shuffled_responses)
     return shuffled_responses

@@ -5,3 +5,4 @@ __pycache__
 *.DS_Store
 gatorgrouper_django/gatorgrouper/migrations/
 /.coverage
+secret_key.py

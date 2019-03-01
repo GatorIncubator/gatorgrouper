@@ -1,13 +1,12 @@
 """ rebalance groups by swapping lowest with highest scoring """
 
-from group_scoring import score_groups
+import group_scoring
 
 
 def rebalance(student_groups, scores, ave):
     """rebalances the groups of students"""
 
     # average score of the groups
-    # pylint: disable=old-division
     ave = int(ave // len(scores))
     # print("average score: "+str(ave))
     # print("Threshold: "+str(int(ave*(2/3))))
@@ -28,4 +27,4 @@ def rebalance(student_groups, scores, ave):
         )
         student_groups[scores.index(min(scores))].remove(lowest)
         # reevaluates scores
-        score_groups(student_groups)
+        group_scoring.score_groups(student_groups)
