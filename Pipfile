@@ -17,6 +17,8 @@ pytest-clarity = "*"
 autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
+pytest-django = "*"
+mixer = "*"
 
 [packages]
 pathlib = "*"
