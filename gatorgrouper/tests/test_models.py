@@ -50,14 +50,16 @@ class TestAssignments:
     """test assignment class"""
     # pylint: disable=R0201
     def test_model(self):
-        """test assignment model"""
+        """test assignment model by creating a assignment instance and asserted
+        that database is not empty"""
         obj = mixer.blend('gatorgrouper.Assignments')
         # it creates a assignment instance
         assert obj.pk != " "
 
     # pylint: disable=R0201
     def test_str(self):
-        """test __str__ method """
+        """test __str__ method by putting varibles into the database and
+        expecting the output to be in a specific format"""
         obj = mixer.blend('gatorgrouper.Assignments', assignment_id='Assignment One')
         result = obj.__str__()
         expected = 'Assignment One'
