@@ -35,22 +35,20 @@
         <div class="container">
           <a class="navbar-brand" href="#">
             <img src="static/gatorgrouper/images/gatorgrouper_logo.svg" alt="gatorgrouper_logo" height="120em">
-        </a>
+          </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
+            <a class="btn-md btn btn-primary btn-space" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-block btn-social btn-github" href="{% url 'social:begin' 'github' %}"><span class="fab fa-github"></span>Login with GitHub</a>
+          <a class="btn btn-md btn-social btn-github btn-space" href="{% url 'social:begin' 'github' %}"><span class="fab fa-github img-fluid"></span>Login with GitHub</a>
         </li>
         <li class="nav-item">
-           <a class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}"> <span class="fab fa-google"></span> Log In With Google</a>
+           <a class="btn btn-md btn-social btn-google btn-space" href="{% url 'social:begin' 'google-oauth2' %}"> <span class="fab fa-google img-fluid"></span> Log In With Google</a>
         </li>
       </ul>
     </div>
