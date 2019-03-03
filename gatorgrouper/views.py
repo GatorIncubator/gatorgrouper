@@ -24,22 +24,27 @@ def index(request):
 
 
 def home(request):
+    """ Homepage view """
     return render(request, 'gatorgrouper/home.html')
     # return HttpResponse('<h1>Blog Home</h1>')
 
-    
+
 def classes(request):
+    """ Create classes view """   
     return render(request, 'gatorgrouper/classes.html', {'title': 'Create Classes'})
     # return HttpResponse('<h1>Blog Picture</h1>')
 
-    
+
 def assignments(request):
+    """ Create assignments view """
     return render(request, 'gatorgrouper/assignments.html', {'title': 'Create Assignments'})
 
 
 def survey(request):
+    """ Student's grouping preference? """
     return render(request, 'gatorgrouper/survey.html', {'title': 'Survey'})
 
 
 def groupResult(request):
+    """ Group result view """
     return render(request, 'gatorgrouper/viewing-groups.html', {'title': 'Group Result'})
