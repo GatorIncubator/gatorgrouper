@@ -76,7 +76,7 @@ def find_or_create_secret_key():
     
     SECRET_KEY_DIR = os.path.dirname(__file__)
     SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, 'secret_key.py')
-    sys.path.insert(1,SECRET_KEY_DIR)
+    sys.path.insert(1, SECRET_KEY_DIR)
 
     if os.path.isfile(SECRET_KEY_FILEPATH):
         from secret_key import SECRET_KEY
