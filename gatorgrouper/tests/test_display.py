@@ -21,7 +21,7 @@ def test_display_welcome_message(capsys):
     captured = capsys.readouterr()
     expected_output = """
 GatorGrouper: Automatically Assign Students to Groups
-https://github.com/GatorGrouper/gatorgrouper
+https://github.com/GatorEducator/gatorgrouper
 
 """
     assert captured.out == expected_output
