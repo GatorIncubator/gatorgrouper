@@ -1,0 +1,13 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pathlib = "==1.0.1"
+py = "==1.4.34"
+
+[requires]
+python_version = "3.6"
