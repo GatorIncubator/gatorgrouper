@@ -38,7 +38,7 @@ def find_or_create_secret_key():
     new_key = get_random_string(50, chars)
     with open(SECRET_KEY_FILEPATH, "w") as f:
         f.write(
-            "# Django secret key\n# Do NOT check this into version control.\n\n"
+            '"""\nDjango secret key\nDo NOT check this into version control.\n"""\n\n'
             'SECRET_KEY = "%s"\n' % new_key
         )
     # pylint: disable=import-error
