@@ -11,10 +11,8 @@ def read_student_file(filepath):
         # read the raw CSV data
         with open(filepath, "r") as csvfile:
             csvdata = list(csv.reader(csvfile, delimiter=","))
-    except IOError as e:
+    except IOError:
         print("File Not Found!")
-    except:
-        print("Attribute Error")
 
     # transform into desired output
     responses = list()
