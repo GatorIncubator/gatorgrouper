@@ -12,7 +12,7 @@ urlpatterns = [
     path(
         "", views.home, name="Gtorgrouper-home"
     ),  # first attribute is a space, meaning homepage
-    path("classes", views.classes, name="Gtorgrouper-classes"),
+    path("classes", views.create_classes, name="Gtorgrouper-classes"),
     path("assignments", views.assignments, name="Gatorgrouper-assignments"),
     path("survey", views.survey, name="Gatorgrouper-survey"),
     path("group-result", views.groupResult, name="Gatorgrouper-groups"),
