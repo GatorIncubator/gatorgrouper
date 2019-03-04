@@ -276,7 +276,7 @@ If neither of these flags are set, logging will only be shown if an error occurs
 $ python3 gatorgrouper.py --group-size 3 --absentees becky george --random
 
 GatorGrouper: Automatically Assign Students to Groups
-https://github.com/gkapfham/gatorgrouper
+https://github.com/GatorEducator/gatorgrouper
 
 Successfully placed 9 students into 3 groups
 
