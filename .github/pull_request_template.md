@@ -19,4 +19,3 @@ Please describe the pull request as one of the following:
 
 <!-- Please tag those who are responsible for reviewing proposed changes below. -->
 <!-- Don't forget to assign people who is going to work on this issue and add labels. -->
-
