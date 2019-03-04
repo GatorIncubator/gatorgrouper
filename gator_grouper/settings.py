@@ -87,7 +87,9 @@ def find_or_create_secret_key():
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)'
         new_key = get_random_string(50, chars)
         with open(SECRET_KEY_FILEPATH, 'w') as f:
-            f.write("# Django secret key\n# Do NOT check this into version control.\n\nSECRET_KEY = '%s'\n" % new_key)
+            f.write("# Django secret key\n# Do NOT check this into version control.\n\n"
+                    "SECRET_KEY = '%s'\n" % new_key
+                   )
 
         from secret_key import SECRET_KEY
         return SECRET_KEY
