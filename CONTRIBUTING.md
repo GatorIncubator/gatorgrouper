@@ -75,7 +75,7 @@ should,
     `pylint` [here](https://www.pylint.org/).
   * Use the Python code formatter,
     [black](https://github.com/ambv/black). This will help with meeting the
-    above requirements for both `flake8` and `pylint`. Furhermore, code not
+    above requirements for both `flake8` and `pylint`. Furthermore, code not
     in the `black` format will fail the TravisCI build.
 
 ### Testing
