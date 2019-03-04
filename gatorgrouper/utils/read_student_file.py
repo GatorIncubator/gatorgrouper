@@ -7,10 +7,15 @@ from pathlib import Path
 def read_student_file(filepath):
     """ Read the responses from the CSV, returning them in a list of lists """
 
-
-    # read the raw CSV data
-    with open(filepath, "r") as csvfile:
-        csvdata = list(csv.reader(csvfile, delimiter=","))
+    csvdata = list()
+    try:
+        # read the raw CSV data
+        with open(filepath, "r") as csvfile:
+            csvdata = list(csv.reader(csvfile, delimiter=","))
+    except IOError as e:
+        print("File Not Found!")
+    except:
+        print("Attribute Error")
 
     # transform into desired output
     responses = list()
