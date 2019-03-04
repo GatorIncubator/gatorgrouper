@@ -73,10 +73,10 @@ should,
     [here](http://flake8.pycqa.org/en/latest/).
   * Score 10.0/10.0 when using the `pylint` tool. You can learn more about using
     `pylint` [here](https://www.pylint.org/).
-
-It is strongly encouraged that you use the Python code formatter,
-[black](https://github.com/ambv/black). This will help with meeting the above
-requirements for both `flake8` and `pylint`.
+  * Use the Python code formatter,
+    [black](https://github.com/ambv/black). This will help with meeting the
+    above requirements for both `flake8` and `pylint`. Furhermore, code not
+    in the `black` format will fail the TravisCI build.
 
 ### Testing
 
