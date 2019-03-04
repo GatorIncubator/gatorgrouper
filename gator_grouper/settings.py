@@ -68,6 +68,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+
 def find_or_create_secret_key():
     """
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
@@ -90,6 +91,8 @@ def find_or_create_secret_key():
 
         from secret_key import SECRET_KEY
         return SECRET_KEY
+
+
 # Make this unique, and do not share it with anybody.
 SECRET_KEY = find_or_create_secret_key()
 

@@ -30,7 +30,7 @@ def home(request):
 
 
 def classes(request):
-    """ Create classes view """   
+    """ Create classes view """
     return render(request, 'gatorgrouper/classes.html', {'title': 'Create Classes'})
     # return HttpResponse('<h1>Blog Picture</h1>')
 
