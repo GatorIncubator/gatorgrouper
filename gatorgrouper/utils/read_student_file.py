@@ -1,7 +1,6 @@
 """ Reads CSV data file """
 
 import csv
-from pathlib import Path
 
 
 def read_student_file(filepath):
