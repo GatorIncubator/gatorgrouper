@@ -101,7 +101,7 @@ maximizing the clarity and ease of modification of GatorGrouper. All
 contributions to GatorGrouper should have the following qualities:
 
 1. Changeability -
-*Software will be easily changeable to allow for future scalability.*
+*Software shall be easily changeable to allow for future scalability.*
 2. Uniqueness -
 *Software shall not contain redundant features or code snippets.*
 3. Encapsulation -
