@@ -30,7 +30,7 @@ def read_csv_data(filepath):
                     temp.append(False)
             responses.append(temp)
     else:
-        for record in csvdata:
+        for record in csvdata[0:]:
             temp = list()
             temp.append(record[0].replace('"', ""))
             for value in record[1:]:
