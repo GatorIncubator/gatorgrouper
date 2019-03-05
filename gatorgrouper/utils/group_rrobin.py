@@ -6,7 +6,7 @@ import itertools
 import group_scoring
 
 
-def group_rrobin_group_size(responses, grpsize):
+def group_rrobin_group_size(responses: str, grpsize: int):
     """ group responses using round robin approach """
 
     # setup target groups
@@ -47,7 +47,7 @@ def group_rrobin_group_size(responses, grpsize):
     return groups
 
 
-def group_rrobin_num_group(responses, numgrps):
+def group_rrobin_num_group(responses: str, numgrps: int):
     """ group responses using round robin approach """
 
     # setup target groups
