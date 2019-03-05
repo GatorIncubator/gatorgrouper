@@ -10,7 +10,7 @@ import group_scoring
 
 def group_random_group_size(
     responses: Union[str, List[List[Union[str, bool]]]], grpsize: int
-    ) -> Union[List[List[List[Union[str, bool]]]], List[List[str]]]:
+) -> Union[List[List[List[Union[str, bool]]]], List[List[str]]]:
     """ group responses using randomization approach """
 
     # use itertools to chunk the students into groups
@@ -73,7 +73,7 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
 
 def shuffle_students(
     responses: Union[str, List[List[Union[str, bool]]]]
-    ) -> List[List[Union[str, bool]]]:
+) -> List[List[Union[str, bool]]]:
     """ Shuffle the responses """
     shuffled_responses = responses[:]
     random.shuffle(shuffled_responses)
