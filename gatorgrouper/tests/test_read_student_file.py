@@ -26,12 +26,7 @@ def generate_csv(tmpdir_factory):
 def generate_csv_no_header(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
-    with open(str(fn), "w") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.write_text(
-            "delgrecoj, True, True, False, True\n"
-        )
-    csvfile.close()
+    fn.write("delgrecoj, True, True, False, True\n")
     return str(fn)
 
 
