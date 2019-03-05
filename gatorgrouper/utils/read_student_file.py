@@ -15,7 +15,7 @@ def read_csv_data(filepath):
     with open(filepath, "r") as csvfile:
         csvdata = list(csv.reader(csvfile, delimiter=","))
         sniffer = csv.Sniffer()
-        has_header = sniffer.has_header(str(csvdata))
+        has_header = sniffer.has_header(str(csvfile))
 
     # transform into desired output
     responses = list()
