@@ -50,7 +50,7 @@ def test_group_random1():
     assert len(actual_output4[0]) == 2
 
 
-@given(group_size=integers(min_value=1, max_value = 3))
+@given(group_size=integers(min_value=1, max_value=3))
 @settings(verbosity=Verbosity.verbose, deadline=None)
 @pytest.mark.hypothesisworks
 def test_group_random1(group_size):
