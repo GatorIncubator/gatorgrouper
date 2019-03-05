@@ -17,6 +17,7 @@ autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
 pylint = "*"
+pandas = "*"
 
 [packages]
 pathlib = "*"

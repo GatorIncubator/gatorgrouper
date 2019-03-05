@@ -1,6 +1,7 @@
 """ Testing read_student_file """
 
 import csv
+import pandas as pd
 
 # pylint: disable=redefined-outer-name
 import pytest
@@ -26,7 +27,9 @@ def generate_csv(tmpdir_factory):
 def generate_csv_no_header(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
-    fn.write("delgrecoj, True, True, False, True\n")
+    df_list = {["delgrecoj", True, True, False, True]}
+    df = pd.DataFrame(df_list)
+    df.to_csv(str(fn), index=False)
     return str(fn)
 
 
