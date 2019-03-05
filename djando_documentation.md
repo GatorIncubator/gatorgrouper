@@ -26,6 +26,14 @@ type:
 localhost:8000
 ```
 
+#### Testing
+
+In order to run the testing, type in this command in the terminal:
+
+```shell
+pipenv run pytest gatorgrouper/tests --cov-config pytest.cov --cov
+```
+
 #### Design and Configuration
 
 The web applications in Django have access to the data and manage it through
