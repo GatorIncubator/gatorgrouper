@@ -71,7 +71,7 @@ def test_group_random_extra():
     assert num_group == 2
 
 
-@given(grpsize=integers(min_value = 1, max_value = 3))
+@given(grpsize=integers(min_value=1, max_value=3))
 @settings(verbosity=Verbosity.verbose)
 @pytest.mark.hypothesisworks
 def test_group_random2(grpsize):
@@ -79,11 +79,11 @@ def test_group_random2(grpsize):
     responses = [
         [
             'Nick', True, False, True, False], [
-            'Marvin', False, False, True, True], [
-                'Evin', True, True, True, False], [
-                    'Nikki', True, True, False, False], [
-                        'Nick', True, False, True, False], [
-                            'Dan', False, True, False, True]]
+                'Marvin', False, False, True, True], [
+                    'Evin', True, True, True, False], [
+                        'Nikki', True, True, False, False], [
+                            'Nick', True, False, True, False], [
+                                'Dan', False, True, False, True]]
     returned_groups = group_random.group_random_group_size(responses, grpsize)
     size_count = grpsize
     assert len(returned_groups[0]) == size_count
