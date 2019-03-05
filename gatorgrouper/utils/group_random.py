@@ -1,4 +1,4 @@
-""" group using randomization approach """
+""" Promotes diversity by grouping using randomization approach. """
 
 import copy
 import logging
