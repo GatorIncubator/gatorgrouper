@@ -47,7 +47,6 @@ def group_random_num_group(responses, numgrp):
     Forms equally sized groups based on the desired number of groups using
     randomization approach.
     """
-    
     # number of students placed into a group
     stunum = 0
     iterable = iter(responses)
