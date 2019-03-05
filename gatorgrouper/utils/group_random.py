@@ -7,7 +7,8 @@ import random
 import group_scoring
 
 
-def group_random_group_size(responses, grpsize):
+from typing import List, Union
+def group_random_group_size(responses: Union[str, List[List[Union[str, bool]]]], grpsize: int) -> Union[List[List[List[Union[str, bool]]]], List[List[str]]]:
     """ group responses using randomization approach """
 
     # use itertools to chunk the students into groups
@@ -39,7 +40,7 @@ def group_random_group_size(responses, grpsize):
     return groups
 
 
-def group_random_num_group(responses, numgrp):
+def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     """ group responses using randomization approach """
     # number of students placed into a group
     stunum = 0
@@ -68,7 +69,7 @@ def group_random_num_group(responses, numgrp):
     return groups
 
 
-def shuffle_students(responses):
+def shuffle_students(responses: Union[str, List[List[Union[str, bool]]]]) -> List[List[Union[str, bool]]]:
     """ Shuffle the responses """
     shuffled_responses = responses[:]
     random.shuffle(shuffled_responses)
