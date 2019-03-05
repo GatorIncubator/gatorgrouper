@@ -21,3 +21,8 @@ def index(request):
         "gatorgrouper/index.html",
         {"all_professors": professors, "all_classes": classes},
     )
+
+
+def upload_csv(request):
+    """ POST request for handling CSV upload and grouping students """
+    pass
