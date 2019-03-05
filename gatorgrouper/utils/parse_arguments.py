@@ -8,6 +8,8 @@ from gatorgrouper.utils import constants
 
 from argparse import Namespace
 from typing import List, Union
+
+
 def parse_arguments(args: List[str]) -> Namespace:
     """ Parses the arguments provided on the command-line """
 
@@ -85,7 +87,9 @@ def parse_arguments(args: List[str]) -> Namespace:
     return gg_arguments_finished
 
 
-def check_valid_num_group(numgrp: int, students_list: Union[List[List[Union[str, bool]]], str]) -> bool:
+def check_valid_num_group(
+    numgrp: int, students_list: Union[List[List[Union[str, bool]]], str]
+) -> bool:
     """Checking if valid num group"""
     if students_list == "filenotfound":
         logging.info("Skipping group size check; file must not exist.")
@@ -105,7 +109,9 @@ def check_valid_num_group(numgrp: int, students_list: Union[List[List[Union[str,
     return True
 
 
-def check_valid_group_size(group_size: int, students_list: Union[List[List[Union[str, bool]]], str]) -> bool:
+def check_valid_group_size(
+    group_size: int, students_list: Union[List[List[Union[str, bool]]], str]
+) -> bool:
     """ Checks if group size is valid """
     if students_list == "filenotfound":
         logging.info("Skipping group size check; file must not exist.")
