@@ -4,6 +4,8 @@ import logging
 
 
 from typing import List, Union
+
+
 def display_student_groups(student_groups: List[List[List[Union[str, bool]]]]) -> None:
     """ Display the student groups with labels """
     group_counter = 1
@@ -28,7 +30,9 @@ def display_welcome_message() -> None:
     print()
 
 
-def create_escaped_string_from_list(student_identifers: Union[str, List[List[Union[str, bool]]]]) -> str:
+def create_escaped_string_from_list(
+    student_identifers: Union[str, List[List[Union[str, bool]]]]
+) -> str:
     """ Return a string that lists the student identifiers """
     student_list = ""
     for student in student_identifers:
