@@ -35,7 +35,7 @@ def generate_csv_no_header(tmpdir_factory):
         "Q4": [True],
     }
     df = pd.DataFrame(df_list)
-    df.to_csv(str(fn), index=False, header=False, delimiter=",")
+    df.to_csv(str(fn), index=False, header=False)
     return str(fn)
 
 

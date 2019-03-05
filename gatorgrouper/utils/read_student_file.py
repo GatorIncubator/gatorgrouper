@@ -13,7 +13,7 @@ def read_csv_data(filepath):
 
     # read the raw CSV data
     sniffer = csv.Sniffer()
-    has_header = sniffer.has_header(open(filepath).read(32))
+    has_header = sniffer.has_header(open(filepath, "r").read(32))
     with open(filepath, "r") as csvfile:
         csvdata = list(csv.reader(csvfile, delimiter=","))
 
