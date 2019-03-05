@@ -1,9 +1,8 @@
 """ This is undocumented """
 from django.shortcuts import render
 from django.template import loader
-
-# from django.http import HttpResponse
-# from django.http import Http404
+from django.http import HttpResponse, HttpResponseRedirect
+from .forms import UploadFileForm
 from .models import Professor, Semester_Class
 
 
@@ -25,7 +24,14 @@ def index(request):
 
 def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
-    pass
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('/success/url/')
+    else:
+        form = UploadFileForm()
+    return render(request, 'upload.html', {'form': form})
 
 
 def create_group_from_csv(request):
