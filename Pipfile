@@ -17,12 +17,12 @@ pytest-clarity = "*"
 autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
+mutmut = "*"
 
 [packages]
 pathlib = "*"
 py = "*"
 django = "*"
-mutmut = "*"
 
 [pipenv]
 allow_prereleases = true
