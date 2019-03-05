@@ -32,7 +32,7 @@ def display_welcome_message() -> None:
 
 def create_escaped_string_from_list(
     student_identifers: Union[str, List[List[Union[str, bool]]]]
-) -> str:
+    ) -> str:
     """ Return a string that lists the student identifiers """
     student_list = ""
     for student in student_identifers:
