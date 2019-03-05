@@ -27,7 +27,7 @@ def generate_csv_no_header(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
     with open(str(fn), "w") as csvfile:
-        writer =  writer = csv.writer(csvfile)
+        writer = csv.writer(csvfile)
         writer.writerow(
             [["delgrecoj", True, True, False, True], ["delgrecoj2", True, True, False, True]]
         )
