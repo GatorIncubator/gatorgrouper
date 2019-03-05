@@ -6,8 +6,7 @@ import parse_arguments
 import remove_absent_students
 import defaults
 import read_student_file
-import group_rrobin
-import group_random
+import group_creation
 import display
 import constants
 
@@ -30,7 +29,7 @@ if __name__ == "__main__":  # pragma: no cover
     logging.info("\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS))
 
     # shuffle the student identifiers
-    SHUFFLED_STUDENT_IDENTIFIERS = group_random.shuffle_students(STUDENT_IDENTIFIERS)
+    SHUFFLED_STUDENT_IDENTIFIERS = group_creation.shuffle_students(STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
     logging.info(
         "\n %s", display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS)
@@ -42,22 +41,22 @@ if __name__ == "__main__":  # pragma: no cover
         GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
         and GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP
     ):
-        GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
+        GROUPED_STUDENT_IDENTIFIERS = group_creation.group_rrobin_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
         )
     elif (
         GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
         and GG_ARGUMENTS.num_group is not defaults.DEFAULT_NUMGRP
     ):
-        GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
+        GROUPED_STUDENT_IDENTIFIERS = group_creation.group_rrobin_num_group(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
         )
     elif GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP:  # default to random method
-        GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_group_size(
+        GROUPED_STUDENT_IDENTIFIERS = group_creation.group_random_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
         )
     else:
-        GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_num_group(
+        GROUPED_STUDENT_IDENTIFIERS = group_creation.group_random_num_group(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
         )
 
