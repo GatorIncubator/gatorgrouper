@@ -30,7 +30,7 @@ def generate_csv_no_header(tmpdir_factory):
     with f as csvfile:
         writer =  writer = csv.writer(csvfile)
         writer.writerow(
-            [["delgrecoj", True, True, False, True]]
+            [["delgrecoj", True, True, False, True], ["delgrecoj2", True, True, False, True]]
         )
     return str(fn)
 
