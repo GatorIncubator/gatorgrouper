@@ -5,7 +5,7 @@ from typing import List, Tuple, Union
 
 
 def score_group(
-    student_identifers: Union[List[List[Union[str, bool]]], List[str]]
+        student_identifers: Union[List[List[Union[str, bool]]], List[str]]
 ) -> int:
     """ score single group """
     score = 0
@@ -17,7 +17,7 @@ def score_group(
 
 
 def score_groups(
-    student_groups: Union[List[List[str]], List[List[List[Union[str, bool]]]]]
+        student_groups: Union[List[List[str]], List[List[List[Union[str, bool]]]]]
 ) -> Tuple[List[int], int]:
     """ score multiple groups """
     scores = []
