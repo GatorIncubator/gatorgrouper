@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import UploadFileForm
+from .forms import UploadCSVForm
 from .models import Professor, Semester_Class
 
 
@@ -25,12 +25,12 @@ def index(request):
 def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
     if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
+        form = UploadCSVForm(request.POST, request.FILES)
         if form.is_valid():
             handle_uploaded_file(request.FILES['file'])
             return HttpResponseRedirect('/success/url/')
     else:
-        form = UploadFileForm()
+        form = UploadCSVForm()
     return render(request, 'upload.html', {'form': form})
 
 
