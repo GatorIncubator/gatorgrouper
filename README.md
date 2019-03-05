@@ -410,10 +410,16 @@ objects in Python which are referred to as models. A model is a special type of
 object that is saved in the database. It defines the structure of the stored data,
 includes the field types along with their size if possible, and contains behaviors
 of the data that is being stored. After creating the model structure for the
-project, Django handles all the communication that goes within.
+project, Django handles all the communication that goes within it.
 
 The Django web framework comes with a built-in object-relational mapping module,
-ORM, which allows interaction with the database in an object-oriented setup.
+ORM, which allows interaction with the database in an object-oriented setup. It
+allows the users to have access to the stored data in the database. This technique
+builds a bridge between the data tables, field, and the Python objects. ORM allows
+the developer to work with Python code instead of SQL to work with the data schemas
+in their database. This approach allows the developers to work with a database in
+a programming language they prefer instead of a database management language.
+
 Prior to dealing with ORM, we define model classes that translate to data tables
 and the relation between them. For the GatorGrouper project, we created six classes
 entitled as: Professor, Classes, Assignment, Students, Traits, and Grouped
