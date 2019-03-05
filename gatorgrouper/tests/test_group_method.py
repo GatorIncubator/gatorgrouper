@@ -1,15 +1,17 @@
 """Testing random grouping"""
-import hypothesis
+# import hypothesis
 from hypothesis import given
 from hypothesis import settings
 from hypothesis import Verbosity
 from hypothesis.strategies import integers
-from hypothesis.strategies import text
-from utils import group_random
+
+# from hypothesis.strategies import text
 import pytest
+from utils import group_random
 from utils import group_rrobin
-import parse_arguments
-import gatorgrouper
+
+# import parse_arguments
+# import gatorgrouper
 
 
 def test_group_random1():
@@ -75,13 +77,13 @@ def test_group_random_extra():
 def test_group_random2(grpsize):
     """This hypothesis test will test the test_group_random_extra"""
     responses = [
-        [
-            'Nick', True, False, True, False], [
-                'Marvin', False, False, True, True], [
-                    'Evin', True, True, True, False], [
-                        'Nikki', True, True, False, False], [
-                            'Nick', True, False, True, False], [
-                                'Dan', False, True, False, True]]
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Nick", True, False, True, False],
+        ["Dan", False, True, False, True],
+    ]
     returned_groups = group_random.group_random_group_size(responses, grpsize)
     size_count = grpsize
     assert len(returned_groups[0]) == size_count
