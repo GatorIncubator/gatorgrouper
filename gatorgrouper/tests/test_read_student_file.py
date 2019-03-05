@@ -22,7 +22,26 @@ def generate_csv(tmpdir_factory):
     return str(fn)
 
 
+@pytest.fixture(scope="session")
+def generate_csv_no_header(tmpdir_factory):
+    """ Generate a tempory sample csv """
+    fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
+    f = open(str(fn), "w")
+    with f as csvfile:
+        writer =  writer = csv.writer(csvfile)
+        writer.writerow(
+            [["delgrecoj", True, True, False, True]]
+        )
+    return str(fn)
+
+
 def test_read_student_file(generate_csv):
     """ Test read_student_file """
     expectedoutput = [["delgrecoj", True, True, False, True]]
     assert read_student_file.read_csv_data(generate_csv) == expectedoutput
+
+
+def test_read_student_file_no_header(generate_csv_no_header):
+    """ Test read_student_file """
+    expectedoutput = [["delgrecoj", True, True, False, True]]
+    assert read_student_file.read_csv_data(generate_csv_no_header) == expectedoutput
