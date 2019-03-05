@@ -4,7 +4,8 @@ import csv
 from pathlib import Path
 
 
-def read_csv_data(filepath):
+from typing import List, Union
+def read_student_file(filepath: str) -> Union[str, List[List[Union[str, bool]]]]:
     """ Read the responses from the CSV, returning them in a list of lists """
 
     # handle nonexistant files
