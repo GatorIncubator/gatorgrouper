@@ -3,7 +3,7 @@
 import logging
 
 
-def remove_absent_students(absentee_list, list_of_student_lists):
+def remove_missing_students(absentee_list, list_of_student_lists):
     """Remove missing students before group assignment"""
 
     logging.info("Removing absent students")

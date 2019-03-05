@@ -1,4 +1,4 @@
-""" group using randomization approach """
+""" Promotes diversity by grouping using randomization approach. """
 
 import copy
 import logging
@@ -8,7 +8,10 @@ import group_scoring
 
 
 def group_random_group_size(responses, grpsize):
-    """ group responses using randomization approach """
+    """
+    Forms equally sized groups based on desired group size using randomization
+    approach.
+    """
 
     # use itertools to chunk the students into groups
     iterable = iter(responses)
@@ -40,7 +43,10 @@ def group_random_group_size(responses, grpsize):
 
 
 def group_random_num_group(responses, numgrp):
-    """ group responses using randomization approach """
+    """
+    Forms equally sized groups based on the desired number of groups using
+    randomization approach.
+    """
     # number of students placed into a group
     stunum = 0
     iterable = iter(responses)
