@@ -29,7 +29,7 @@ def generate_csv_no_header(tmpdir_factory):
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
     df_list = [["delgrecoj", True, True, False, True]]
     df = pd.DataFrame(df_list)
-    df.to_csv(str(fn), index=False)
+    df.to_csv(str(fn), index=False, header=None)
     return str(fn)
 
 
