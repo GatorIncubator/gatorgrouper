@@ -31,7 +31,7 @@ def generate_csv_no_header(tmpdir_factory):
         writer.writerow(
             [["delgrecoj", True, True, False, True], ["delgrecoj2", True, True, False, True]]
         )
-        csvfile.close()
+    csvfile.close()
     return str(fn)
 
 
