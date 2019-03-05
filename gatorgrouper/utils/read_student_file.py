@@ -1,6 +1,7 @@
 """ Reads CSV data file """
 
 import csv
+import sys
 # from pathlib import Path
 
 
@@ -18,6 +19,7 @@ def read_student_file(filepath):
             csvdata = list(csv.reader(csvfile, delimiter=","))
     except IOError:
         print("File Not Found!")
+        sys.exit()
 
     # transform into desired output
     responses = list()
