@@ -4,6 +4,8 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import UploadCSVForm
 from .models import Professor, Semester_Class
+from io import StringIO
+import csv
 
 
 # Create your views here.
@@ -27,7 +29,8 @@ def upload_csv(request):
     if request.method == 'POST':
         form = UploadCSVForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(request.FILES['file'])
+            responses = handle_uploaded_file(request.FILES['file'])
+            print(responses)
             return HttpResponseRedirect('/success/url/')
     else:
         form = UploadCSVForm()
@@ -37,3 +40,20 @@ def upload_csv(request):
 def create_group_from_csv(request):
     """ GET request displaying the CSV upload form"""
     pass
+
+def handle_uploaded_file(csvfile):
+    f = StringIO(csvfile.read().decode("utf-8"))
+    csvdata = list(csv.reader(f, delimiter=","))
+
+    # transform into desired output
+    responses = list()
+    for record in csvdata:
+        temp = list()
+        temp.append(record[0].replace('"', ""))
+        for value in record[1:]:
+            if value.lower() == "true":
+                temp.append(True)
+            elif value.lower() == "false":
+                temp.append(False)
+        responses.append(temp)
+    return responses
