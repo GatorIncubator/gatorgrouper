@@ -12,10 +12,10 @@ def read_csv_data(filepath):
         return "filenotfound"
 
     # read the raw CSV data
+    sniffer = csv.Sniffer()
+    has_header = sniffer.has_header(open(filepath).read(32))
     with open(filepath, "r") as csvfile:
         csvdata = list(csv.reader(csvfile, delimiter=","))
-        sniffer = csv.Sniffer()
-        has_header = sniffer.has_header(str(csvfile))
 
     # transform into desired output
     responses = list()
@@ -30,7 +30,7 @@ def read_csv_data(filepath):
                     temp.append(False)
             responses.append(temp)
     else:
-        for record in csvdata[0:]:
+        for record in csvdata:
             temp = list()
             temp.append(record[0].replace('"', ""))
             for value in record[1:]:
