@@ -12,10 +12,10 @@ def read_csv_data(filepath):
         return "filenotfound"
 
     # read the raw CSV data
-    sniffer = csv.Sniffer()
+    sniffer = csv.Sniffer().sniff(open(filepath, "r").readline())
     has_header = sniffer.has_header(open(filepath, "r").read(32))
     with open(filepath, "r") as csvfile:
-        csvdata = list(csv.reader(csvfile, delimiter=","))
+        csvdata = list(csv.reader(csvfile))
 
     # transform into desired output
     responses = list()
