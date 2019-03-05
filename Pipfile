@@ -12,10 +12,11 @@ flake8 = "*"
 pytest-cov = "*"
 neovim = "*"
 pytest-sugar = "*"
-pytest-clarity = "*"
 autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
+pytest-django = "*"
+mixer = "*"
 pylint = "*"
 
 [packages]
