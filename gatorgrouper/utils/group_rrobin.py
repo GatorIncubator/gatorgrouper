@@ -3,6 +3,7 @@
 import logging
 from random import shuffle
 from itertools import cycle
+from operator import itemgetter
 from .group_scoring import score_groups
 
 
@@ -86,19 +87,19 @@ def group_rrobin_num_group(responses, numgrps):
     logging.info("average: %d", ave)
     return groups
 
-def conflict_sorting(conflicts, severity, students):
+def conflict_sorting(severity, conflicts, students):
     """ sort through student conflicts by severity """
 
     #setup groups for sorting
     student_conflicts = list()
-    for _ in range(students):
-        student_conflicts.append(list())
 
     #populate the lists in student_conflicts to contain all the imported information
-    for i in range(student_conflicts):
-        student_conflicts.insert(i, (severity, conflicts, students))
+    for i in range(len(students)):
+        student_conflicts.append((severity[i], conflicts[i], students[i]))
 
+    print(student_conflicts)
     #sort the student conflicts by severity
-    student_conflicts.sort(key=lambda reverse=True)
+    for i in range(len(student_conflicts)):
+        sorted(student_conflicts, reverse=True, key=lambda elem: elem[0])
 
     return student_conflicts

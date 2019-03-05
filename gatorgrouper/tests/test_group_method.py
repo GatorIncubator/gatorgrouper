@@ -126,3 +126,33 @@ def test_random():
     actual_output = group_random.group_random_group_size(lst, group_size)
     assert len(actual_output) == 3
     assert len(actual_output[0]) == 4
+
+def test_conflict_sorting():
+    """Testing the conflict sorting function to assure it's sorting properly"""
+
+    severity = [
+        [6,3],
+        [9],
+        [6],
+        [2],
+    ]
+    student = [
+        "Dan",
+        "Zach",
+        "Tara",
+        "Mikey",
+    ]
+    conflicts = [
+        [0,1],
+        [3],
+        [1],
+        [0],
+    ]
+    output = [
+        [9], "Zach", [3]],
+        [[6, 3], "Dan", [0, 1]],
+        [[6], "Tara", [1]],
+        [[2], "Mikey", [0]],
+    ]
+    actual_output = group_rrobin.conflict_sorting(severity, student, conflicts)
+    assert output == actual_output
