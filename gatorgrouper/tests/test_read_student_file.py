@@ -47,5 +47,5 @@ def test_read_student_file(generate_csv):
 
 def test_read_student_file_no_header(generate_csv_no_header):
     """ Test read_student_file """
-    expectedoutput = [["delgrecoj", True, True, False, True]]
+    expectedoutput = []
     assert read_student_file.read_csv_data(generate_csv_no_header) == expectedoutput
