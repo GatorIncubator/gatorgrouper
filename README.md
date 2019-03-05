@@ -358,16 +358,7 @@ coverage run --source tests -m py.test
 coverage report
 ```
 
-## Problems or Praise
-
-If you have any problems with installing or using GatorGrouper, then please
-create an issue associated with this Git repository using the "Issues" link at
-the top of this site. The contributors to GatorGrouper will do all that they can
-to resolve your issue and ensure that the entire tool works well in your
-teaching and development environment.
-
-
-#### Django
+## Django
 
 Django is a free and open source web application framework that is written in
 Python and helps to implement websites in a convenient manner. With the collection
@@ -380,7 +371,7 @@ the project's structure. In addition to this, it supports Object-Relational
 Mapping, which allows the user to create a bridge between the data model and the
 database engine, and supports a large set of database systems including SQLite.
 
-#### Running
+### Running
 
 In order to run the application, type in this command in the terminal:
 
@@ -395,7 +386,7 @@ type:
 localhost:8000
 ```
 
-#### Testing
+### Testing Django Framework
 
 In order to run the testing, type in this command in the terminal:
 
@@ -403,7 +394,7 @@ In order to run the testing, type in this command in the terminal:
 pipenv run pytest gatorgrouper/tests --cov-config pytest.cov --cov
 ```
 
-#### Design and Configuration
+### Design and Configuration
 
 The web applications in Django have access to the data and manage it through
 objects in Python which are referred to as models. A model is a special type of
@@ -427,3 +418,11 @@ Students. In order to establish a relationship between these classes, we define
 foreign keys using `django.db.models.ForeignKey`. The different entities within
 the classes are linked by a means one-to-many, many-to-one, and many-to-many
 relationship.
+
+## Problems or Praise
+
+If you have any problems with installing or using GatorGrouper, then please
+create an issue associated with this Git repository using the "Issues" link at
+the top of this site. The contributors to GatorGrouper will do all that they can
+to resolve your issue and ensure that the entire tool works well in your
+teaching and development environment.
