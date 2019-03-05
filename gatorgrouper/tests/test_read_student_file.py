@@ -28,8 +28,8 @@ def generate_csv_no_header(tmpdir_factory):
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
     with open(str(fn), "w") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(
-            [["delgrecoj", True, True, False, True], ["delgrecoj2", True, True, False, True]]
+        writer.write(
+            "delgrecoj, True, True, False, True\n"
         )
     csvfile.close()
     return str(fn)
@@ -43,5 +43,5 @@ def test_read_student_file(generate_csv):
 
 def test_read_student_file_no_header(generate_csv_no_header):
     """ Test read_student_file """
-    expectedoutput = [["delgrecoj", True, True, False, True], ["delgrecoj2", True, True, False, True]]
+    expectedoutput = [["delgrecoj", True, True, False, True]]
     assert read_student_file.read_csv_data(generate_csv_no_header) == expectedoutput
