@@ -11,8 +11,8 @@ def score_group(student_identifers):
     return score
 
 
-def score_groups(student_groups):
-    """ score multiple groups """
+def calculate_ave(student_groups):
+    """ Utilizes score_group in order to find the mean for all of the groups """
     scores = []
     ave = 0
     for group in student_groups:
