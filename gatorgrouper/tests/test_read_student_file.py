@@ -27,7 +27,13 @@ def generate_csv(tmpdir_factory):
 def generate_csv_no_header(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
-    df_list = {"NAME": ["delgrecoj"], "Q1": [True], "Q2": [True], "Q3": [False], "Q4": [True]}
+    df_list = {
+        "NAME": ["delgrecoj"],
+        "Q1": [True],
+        "Q2": [True],
+        "Q3": [False],
+        "Q4": [True],
+    }
     df = pd.DataFrame(df_list)
     df.to_csv(str(fn), index=False, header=False)
     return str(fn)
