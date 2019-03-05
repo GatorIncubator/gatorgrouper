@@ -13,8 +13,8 @@ def test_parse_arguments1():
     assert parsed_args.logging_level == logging.ERROR
     assert parsed_args.group_size == defaults.DEFAULT_GRPSIZE
     assert parsed_args.students_file == defaults.DEFAULT_CSVFILE
-    #The following line may need to be changed
-    #Unsure of the group_random references
+    # The following line may need to be changed
+    # Unsure of the group_creation references
     assert (parsed_args.grouping_method == group_creation) is False
 
 

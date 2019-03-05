@@ -7,7 +7,7 @@ import random
 import group_scoring
 
 
-#group_random.py
+# group_random.py
 def group_random_group_size(responses, grpsize):
     """
     Forms equally sized groups based on desired group size using randomization
@@ -81,7 +81,8 @@ def shuffle_students(responses):
     random.shuffle(shuffled_responses)
     return shuffled_responses
 
-#group_rrobin.py
+
+# group_rrobin.py
 def group_rrobin_group_size(responses, grpsize):
     """ group responses using round robin approach """
 
