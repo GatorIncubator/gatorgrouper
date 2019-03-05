@@ -18,12 +18,12 @@ oauth2client = "*"
 pytest-django = "*"
 mixer = "*"
 pylint = "*"
+mutmut = "*"
 
 [packages]
 pathlib = "*"
 py = "*"
 django = "*"
-mutmut = "*"
 
 [pipenv]
 allow_prereleases = true
