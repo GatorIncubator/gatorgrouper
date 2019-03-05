@@ -2,22 +2,23 @@
 
 import csv
 import sys
-# from pathlib import Path
+from pathlib import Path
 
 
 def read_student_file(filepath):
     """ Read the responses from the CSV, returning them in a list of lists """
 
     # handle nonexistant files
-    # if Path(filepath).is_file() is False:
-    #     return "filenotfound"
+    if Path(filepath).is_file() is False:
+        print ("FileNotFound")
+        return "filenotfound" # return something else
 
-    try:
-        f = open(filepath, 'rb')
-        f.close()
-    except IOError:
-        print("File Not Found!")
-        sys.exit()
+    # try:
+    #     f = open(filepath, 'rb')
+    #     f.close()
+    # except IOError:
+    #     print("File Not Found!")
+    #     sys.exit()
 
     # read the raw CSV data
     with open(filepath, "r") as csvfile:
