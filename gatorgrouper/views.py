@@ -26,3 +26,8 @@ def index(request):
 def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
     pass
+
+
+def create_group_from_csv(request):
+    """ GET request displaying the CSV upload form"""
+    pass
