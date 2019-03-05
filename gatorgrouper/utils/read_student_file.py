@@ -12,14 +12,16 @@ def read_student_file(filepath):
     # if Path(filepath).is_file() is False:
     #     return "filenotfound"
 
-    csvdata = list()
     try:
-        # read the raw CSV data
-        with open(filepath, "r") as csvfile:
-            csvdata = list(csv.reader(csvfile, delimiter=","))
+        f = open(filepath, 'rb')
+        f.close()
     except IOError:
         print("File Not Found!")
         sys.exit()
+
+    # read the raw CSV data
+    with open(filepath, "r") as csvfile:
+        csvdata = list(csv.reader(csvfile, delimiter=","))
 
     # transform into desired output
     responses = list()
