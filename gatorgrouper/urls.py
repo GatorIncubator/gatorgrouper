@@ -3,7 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("index", views.index, name="index"),
     path(
         "", views.home, name="Gatorgrouper-home"
     ),  # first attribute is a space, meaning homepage
