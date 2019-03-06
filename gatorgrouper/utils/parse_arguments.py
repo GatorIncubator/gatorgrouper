@@ -90,7 +90,8 @@ def parse_arguments(args):
         )
         is False
     ):
-        quit()
+        # quit() is not a valid command
+        return "Invalid entry."
 
     if (
         check_valid_num_group(
