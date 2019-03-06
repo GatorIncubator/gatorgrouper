@@ -48,14 +48,14 @@ def parse_arguments(args):
         required=False,
     )
 
-    parser.add_argument(
+    gg_parser.add_argument(
         "--folder",
         required=True,
         type=str,
         help="Input the directory",
     )
 
-    parser.add_argument(
+    gg_parser.add_argument(
         "--file",
         verified_arguments = True,
         required=True,
