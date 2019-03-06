@@ -2,7 +2,7 @@
 
 import argparse
 import logging
-import read_student_file
+from . import read_student_file
 from . import constants
 
 
@@ -88,7 +88,7 @@ def check_valid(args):
         verified_arguments = True
     if args.numgroup is not constants.NONE:
         verified_arguments = True
-    if read_student_file.read_student_file(args.file) is not "":
+    if read_student_file.read_student_file(args.file) != "":
         verified_arguments = True
     return verified_arguments
 
