@@ -33,7 +33,15 @@ def home(request):
 
 def create_classes(request):
     """ Create classes view """
-    return render(request, "gatorgrouper/classes.html", {"title": "Create Classes"})
+    ClassFormSet = modelform_factory(Semester_Class, fields=("semester","department","class_number","class_section"))
+    if request.method == "POST":
+        formset = AuthorFormSet(request.POST)
+        if formset.is_valid():
+            formset.save()
+    else:
+        formset = ClassFormSet()
+
+    return render(request, "gatorgrouper/classes.html", {"title": "Create Classes",'formset': formset})
     # return HttpResponse
 
 
