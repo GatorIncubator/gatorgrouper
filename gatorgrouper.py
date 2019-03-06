@@ -34,13 +34,18 @@ if __name__ == "__main__":  # pragma: no cover
             read_student_file.read_student_file(GG_ARGUMENTS.students_file),
         )
         logging.info("GatorGrouper will group these students:")
-        logging.info("\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS))
+        logging.info(
+            "\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS)
+        )
 
         # shuffle the student identifiers
-        SHUFFLED_STUDENT_IDENTIFIERS = group_random.shuffle_students(STUDENT_IDENTIFIERS)
+        SHUFFLED_STUDENT_IDENTIFIERS = group_random.shuffle_students(
+            STUDENT_IDENTIFIERS
+        )
         logging.info("GatorGrouper randomly ordered the students:")
         logging.info(
-            "\n %s", display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS)
+            "\n %s",
+            display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS),
         )
 
         # generate the groups and display them
@@ -59,7 +64,9 @@ if __name__ == "__main__":  # pragma: no cover
             GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
             )
-        elif GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP:  # default to random method
+        elif (
+            GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP
+        ):  # default to random method
             GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_group_size(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
             )
@@ -72,7 +79,9 @@ if __name__ == "__main__":  # pragma: no cover
         COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
         COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
         logging.info(
-            "Successfully placed %d students into %d groups ", COUNT_STUDENTS, COUNT_GROUPS
+            "Successfully placed %d students into %d groups ",
+            COUNT_STUDENTS,
+            COUNT_GROUPS,
         )
 
         # report generated groups

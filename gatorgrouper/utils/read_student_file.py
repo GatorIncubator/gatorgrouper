@@ -5,6 +5,7 @@ import sys
 
 from pathlib import Path
 
+
 def add_sys_path(requested_path):
     """Add the requested_path to the sys.path"""
     sys.path.insert(0, requested_path)
@@ -15,7 +16,7 @@ def read_student_file(filepath):
 
     # handle nonexistant files
     if Path(filepath).is_file() is False:
-        Print ("filenotfound")
+        Print("filenotfound")
         return ""
     else:
         # read the raw CSV data
