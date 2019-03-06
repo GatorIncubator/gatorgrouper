@@ -16,7 +16,7 @@ def read_student_file(filepath):
 
     # handle nonexistant files
     if Path(filepath).is_file() is False:
-        Print("filenotfound")
+        print("filenotfound")
         return ""
     else:
         # read the raw CSV data

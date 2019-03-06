@@ -2,8 +2,6 @@
 import logging
 from utils import parse_arguments
 from utils import constants
-from utils import group_random
-from utils import constants
 
 
 def test_parse_arguments2(generate_csv):
