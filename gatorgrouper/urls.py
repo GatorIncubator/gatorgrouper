@@ -1,14 +1,14 @@
 """ This is undocumented """
-from django.urls import path
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    path(
+    url(
         "", views.home, name="Gatorgrouper-home"
     ),  # first attribute is a space, meaning homepage
-    path("group/", views.upload_csv, name="upload_csv"),
-    path("classes", views.create_classes, name="Gatorgrouper-classes"),
-    path("assignments", views.assignments, name="Gatorgrouper-assignments"),
-    path("survey", views.survey, name="Gatorgrouper-survey"),
-    path("group-result", views.groupResult, name="Gatorgrouper-groups"),
+    url("group/", views.upload_csv, name="upload_csv"),
+    url("classes", views.create_classes, name="Gatorgrouper-classes"),
+    url("assignments", views.assignments, name="Gatorgrouper-assignments"),
+    url("survey", views.survey, name="Gatorgrouper-survey"),
+    url("group-result", views.groupResult, name="Gatorgrouper-groups"),
 ]
