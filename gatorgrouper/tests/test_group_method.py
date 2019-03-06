@@ -72,7 +72,7 @@ def test_group_random_extra():
 @settings(verbosity=Verbosity.verbose)
 @pytest.mark.hypothesisworks
 def test_group_random2(grpsize):
-    """This hypothesis test will test the test_group_random_extra"""
+    """This hypothesis test will test the group_random_group_size method"""
     responses = [
         ["Nick", True, False, True, False],
         ["Marvin", False, False, True, True],
