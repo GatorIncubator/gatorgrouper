@@ -5,7 +5,6 @@ import logging
 
 from gatorgrouper.util import parse_arguments
 from gatorgrouper.util import remove_absent_students
-from gatorgrouper.util import defaults
 from gatorgrouper.util import read_student_file
 from gatorgrouper.util import group_rrobin
 from gatorgrouper.util import group_random
