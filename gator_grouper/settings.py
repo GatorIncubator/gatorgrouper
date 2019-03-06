@@ -17,6 +17,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com'
+SOCIAL_AUTH_GITHUB_KEY = '87f5d68b5651aa790c68'
+SOCIAL_AUTH_GITHUB_SECRET =
+LOGIN_URL = Gatorgrouper('login')
+LOGIN_REDIRECT_URL = 'Gatorgrouper-survey'
+LOGOUT_REDIRECT_URL = '/'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+AUTHENTICATION_BACKENDS = (
+    "social_core.backends.open_id.OpenIdAuth",
+    "social_core.backends.google.GoogleOpenId",
+    "social_core.backends.google.GoogleOAuth2",
+    "social_core.backends.github.GithubOAuth2",
+
+    "django.contrib.auth.backends.ModelBackend",
+)
 
 def find_or_create_secret_key():
     """
@@ -46,23 +67,6 @@ def find_or_create_secret_key():
     from secret_key import SECRET_KEY as key
 
     return key
-
-
-# Make this unique, and do not share it with anybody.
-SECRET_KEY = find_or_create_secret_key()
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-AUTHENTICATION_BACKENDS = (
-    "social_core.backends.open_id.OpenIdAuth",
-    "social_core.backends.google.GoogleOpenId",
-    "social_core.backends.google.GoogleOAuth2",
-    "social_core.backends.github.GithubOAuth2",
-    "django.contrib.auth.backends.ModelBackend",
-)
 
 
 # Make this unique, and do not share it with anybody.
