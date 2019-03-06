@@ -16,6 +16,8 @@ if __name__ == "__main__":  # pragma: no cover
 
     # parse the arguments and display welcome message
     GG_ARGUMENTS = parse_arguments.parse_arguments(sys.argv[1:])
+    if (GG_ARGUMENTS == "Invalid entry"):
+        quit()
     display.display_welcome_message()
     logging.info("Configuration of GatorGrouper:")
     logging.debug(GG_ARGUMENTS)
