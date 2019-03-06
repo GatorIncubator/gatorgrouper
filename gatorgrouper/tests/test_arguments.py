@@ -1,6 +1,5 @@
 """Command line argument testing"""
 import logging
-import gatorgrouper
 from utils import parse_arguments
 from utils import constants
 from utils import group_random
