@@ -53,7 +53,7 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=[]) -> int:
 
 def group_graph_partition(
     responses: List[str], weights: List[Tuple[int]], grpsize: int
-) -> List[str]:
+    ) -> List[str]:
     """
     Creates a graph and then looks through the graph and partitions all the
     vertices and adds weighted edges which is computed by compatibility scores.
@@ -83,7 +83,7 @@ def group_graph_partition(
 
 def group_graph_partition_multiobjective(
     responses: List[str], weights: List[Tuple[int]], grpsize: int, preferences=[]
-) -> List[str]:
+    ) -> List[str]:
     if not weights:
         return
     objective_weights = [1] * len(weights[0])
