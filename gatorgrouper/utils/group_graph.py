@@ -1,3 +1,5 @@
+"""Utilizes graph properties to group students together"""
+
 from typing import List, Set, Tuple
 from math import log
 from networkx import Graph
@@ -52,6 +54,10 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=[]) -> int:
 def group_graph_partition(
     responses: List[str], weights: List[Tuple[int]], grpsize: int
 ) -> List[str]:
+    """
+    Creates a graph and then looks through the graph and partitions all the
+    vertices and adds weighted edges which is computed by compatibility scores.
+    """
     # Create graph and populate with node weights
     vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
     G = Graph()
