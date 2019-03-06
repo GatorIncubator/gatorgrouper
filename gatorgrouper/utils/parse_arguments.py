@@ -100,7 +100,8 @@ def parse_arguments(args):
         )
         is False
     ):
-        quit()
+        # quit() is not a valid command
+        return "Invalid entry."
 
     if gg_arguments_finished.absentees is None:
         gg_arguments_finished.absentees = []
