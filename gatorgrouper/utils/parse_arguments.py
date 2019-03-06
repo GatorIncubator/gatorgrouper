@@ -3,7 +3,6 @@
 import argparse
 import logging
 import read_student_file
-import defaults
 import constants
 
 
