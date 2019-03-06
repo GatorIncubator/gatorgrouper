@@ -1,5 +1,5 @@
 from django import forms
 
 class UploadCSVForm(forms.Form):
-    file = forms.FileField() # CSV file to be uploaded & parsed
-    numgrp = forms.IntegerField(min_value=2, max_value=25) # Number of groups to create
+    file = forms.FileField(label="Student data CSV file")
+    numgrp = forms.IntegerField(min_value=2, max_value=25, label="Number of groups to create")
