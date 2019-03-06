@@ -53,7 +53,7 @@ def test_group_random1():
 def hypothesis_test_group_random1(group_size):
     """this hypothesis test can generate the group numbers and test if it pass
         the requirements"""
-    list = [
+    lst = [
         "Austin",
         "Dan",
         "Angie",
@@ -66,10 +66,10 @@ def hypothesis_test_group_random1(group_size):
         "Kelly",
         "Nikki",
         "Robert"]
-    list2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
+    lst2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
     size_count = group_size
-    actual_output = group_random.group_random_group_size(list, group_size)
-    actual_output2 = group_random.group_random_group_size(list2, group_size)
+    actual_output = group_random.group_random_group_size(lst, group_size)
+    actual_output2 = group_random.group_random_group_size(lst2, group_size)
 
     assert len(actual_output) == 12 / size_count
     assert len(actual_output[0]) == size_count
