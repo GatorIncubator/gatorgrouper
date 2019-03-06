@@ -64,7 +64,7 @@ class Grouped_Student(models.Model):
     """ This is undocumented """
 
     assignment_id = models.ForeignKey(Assignment, on_delete=models.CASCADE)
-    student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
     group_id = models.CharField(max_length=40)
 
     def __str__(self):
