@@ -2,14 +2,15 @@
 
 import sys
 import logging
-import parse_arguments
-import remove_absent_students
-import defaults
-import read_student_file
-import group_rrobin
-import group_random
-import display
-import constants
+
+from gatorgrouper.utils import parse_arguments
+from gatorgrouper.utils import remove_absent_students
+from gatorgrouper.utils import defaults
+from gatorgrouper.utils import read_student_file
+from gatorgrouper.utils import group_rrobin
+from gatorgrouper.utils import group_random
+from gatorgrouper.utils import display
+from gatorgrouper.utils import constants
 
 
 if __name__ == "__main__":  # pragma: no cover
@@ -21,7 +22,7 @@ if __name__ == "__main__":  # pragma: no cover
     logging.debug(GG_ARGUMENTS)
 
     # read in the student identifiers from the specified file
-    print(GG_ARGUMENTS.students_file)
+    check_if_arguments_valid = arguments.check_valid(GG_ARGUMENTS)
     STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
         GG_ARGUMENTS.absentees,
         read_student_file.read_student_file(GG_ARGUMENTS.students_file),
