@@ -57,7 +57,7 @@ def parse_arguments(args):
 
     parser.add_argument(
         "--file",
-        verified_arguments = True
+        verified_arguments = True,
         required=True,
         type=str,
         help="Input the file path",
@@ -103,7 +103,7 @@ def check_valid(args):
         verified_arguments = True
     if args.numgroup is not constants.NONE:
         verified_arguments = True
-    if read_student_file.read_student_file(args.file)) is not "":
+    if read_student_file.read_student_file(args.file) is not "":
         verified_arguments = True
     return verified_arguments
 
