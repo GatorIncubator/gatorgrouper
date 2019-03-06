@@ -21,3 +21,34 @@ def index(request):
         "gatorgrouper/index.html",
         {"all_professors": professors, "all_classes": classes},
     )
+
+
+def home(request):
+    """ Homepage view """
+    return render(request, "gatorgrouper/home.html")
+    # return HttpResponse
+
+
+def create_classes(request):
+    """ Create classes view """
+    return render(request, "gatorgrouper/classes.html", {"title": "Create Classes"})
+    # return HttpResponse
+
+
+def assignments(request):
+    """ Create assignments view """
+    return render(
+        request, "gatorgrouper/assignments.html", {"title": "Create Assignments"}
+    )
+
+
+def survey(request):
+    """ Student's grouping preference? """
+    return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
+
+
+def groupResult(request):
+    """ Group result view """
+    return render(
+        request, "gatorgrouper/viewing-groups.html", {"title": "Group Result"}
+    )
