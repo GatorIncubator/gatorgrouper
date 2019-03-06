@@ -12,7 +12,7 @@ import display
 import constants
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
 
     # parse the arguments and display welcome message
     GG_ARGUMENTS = parse_arguments.parse_arguments(sys.argv[1:])
@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     # read in the student identifiers from the specified file
     print(GG_ARGUMENTS.students_file)
-    STUDENT_IDENTIFIERS = remove_absent_students.remove_absent_students(
+    STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
         GG_ARGUMENTS.absentees,
         read_student_file.read_student_file(GG_ARGUMENTS.students_file),
     )

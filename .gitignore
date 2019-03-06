@@ -2,6 +2,7 @@ __pycache__
 .cache
 *.pyc
 *.csv
+*.DS_Store
 gatorgrouper_django/gatorgrouper/migrations/
 /.coverage
 secret_key.py

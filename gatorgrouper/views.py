@@ -24,7 +24,6 @@ def index(request):
         {"all_professors": professors, "all_classes": classes},
     )
 
-
 def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
     if request.method == 'POST':
@@ -59,3 +58,34 @@ def handle_uploaded_file(csvfile):
                 temp.append(False)
         responses.append(temp)
     return responses
+
+
+def home(request):
+    """ Homepage view """
+    return render(request, "gatorgrouper/home.html")
+    # return HttpResponse
+
+
+def create_classes(request):
+    """ Create classes view """
+    return render(request, "gatorgrouper/classes.html", {"title": "Create Classes"})
+    # return HttpResponse
+
+
+def assignments(request):
+    """ Create assignments view """
+    return render(
+        request, "gatorgrouper/assignments.html", {"title": "Create Assignments"}
+    )
+
+
+def survey(request):
+    """ Student's grouping preference? """
+    return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
+
+
+def groupResult(request):
+    """ Group result view """
+    return render(
+        request, "gatorgrouper/viewing-groups.html", {"title": "Group Result"}
+    )
