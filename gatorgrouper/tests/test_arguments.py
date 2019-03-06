@@ -16,18 +16,19 @@ def test_parse_arguments1():
     assert (parsed_args.grouping_method == group_random) is False
 
 
-def test_parse_arguments2():
+def test_parse_arguments2(generate_csv):
     """Testing specfied arguments"""
-    args = ["--debug", "--students-file", "students.csv", "--random"]
+    args = ["--debug","--file", generate_csv, "--random"]
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.logging_level == logging.DEBUG
-    assert parsed_args.students_file == "students.csv"
+    print (parsed_args.file)
+    assert "csvNg.csv" in parsed_args.file
     assert parsed_args.grouping_method == "random"
 
 
-def test_parse_gatorgrouper_arguments3():
+def test_parse_gatorgrouper_arguments3(generate_csv):
     """Testing specfied arguments"""
-    args = ["--verbose", "--round-robin"]
+    args = ["--verbose", "--file", generate_csv, "--round-robin"]
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.logging_level == logging.INFO
     assert parsed_args.grouping_method == constants.ALGORITHM_ROUND_ROBIN
