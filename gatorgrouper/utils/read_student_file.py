@@ -6,11 +6,6 @@ import sys
 from pathlib import Path
 
 
-def add_sys_path(requested_path):
-    """Add the requested_path to the sys.path"""
-    sys.path.insert(0, requested_path)
-
-
 def read_student_file(filepath):
     """ Read the responses from the CSV, returning them in a list of lists """
 
@@ -32,5 +27,5 @@ def read_student_file(filepath):
                 temp.append(True)
             elif value == "False":
                 temp.append(False)
-    responses.append(temp)
+        responses.append(temp)
     return responses
