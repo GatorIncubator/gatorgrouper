@@ -30,6 +30,7 @@ def display_welcome_message() -> None:
     print()
 
 
+# pylint: disable=bad-continuation
 def create_escaped_string_from_list(
     student_identifers: Union[str, List[List[Union[str, bool]]]]
 ) -> str:

@@ -8,6 +8,7 @@ from typing import List, Union
 import group_scoring
 
 
+# pylint: disable=bad-continuation
 def group_random_group_size(
     responses: Union[str, List[List[Union[str, bool]]]], grpsize: int
 ) -> Union[List[List[List[Union[str, bool]]]], List[List[str]]]:
@@ -71,6 +72,7 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     return groups
 
 
+# pylint: disable=bad-continuation
 def shuffle_students(
     responses: Union[str, List[List[Union[str, bool]]]]
 ) -> List[List[Union[str, bool]]]:
