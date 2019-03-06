@@ -33,7 +33,6 @@ def upload_csv(request):
             responses = handle_uploaded_file(request.FILES['file'])
             numgrp = form.cleaned_data['numgrp']
             groups = group_rrobin_num_group(responses, numgrp)
-            res_string = ""
             return render(request, 'displaygroups.html', {'groups': groups})
     else:
         form = UploadCSVForm()
