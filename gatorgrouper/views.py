@@ -30,7 +30,7 @@ def home(request):
     return render(request, "gatorgrouper/home.html")
     # return HttpResponse
 
-@login_required
+
 def create_classes(request):
     """ Create classes view """
 

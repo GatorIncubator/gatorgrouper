@@ -1,17 +1,20 @@
 """ This is undocumented """
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
 # Create your models here.
 class Professor(AbstractUser):
     """ This is undocumented """
-    REQUIRED_FIELDS = ('email',)
+    REQUIRED_FIELDS = ('first_name','last_name')
     USERNAME_FIELD = 'email'
+    username = None
     email = models.EmailField(max_length=200, unique=True)
     professor_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
+    if not email:
+        raise ValueError('Users must have an email address')
 
     def __str__(self):
         return "{}, {}".format(self.last_name, self.first_name)
