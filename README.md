@@ -24,34 +24,6 @@ they can invite the students in the class to create and join their assigned grou
 
 ## Installation
 
-As a Python 3 program, GatorGrouper relies on
-[pip](https://pip.pypa.io/en/stable/installing/) for installation. To ensure
-that all of the dependencies are installed correctly, please type
-the following commands before running GatorGrouper.
-
-```shell
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
-```
-
-Note that you may have Python 3 setup in different ways on your computer. For
-instance, you may prefer to install GatorGrouper's dependencies in a site-wide
-location and then you would have to type `sudo pip install -r
-requirements.txt`. Alternatively, you may choose to install the dependencies by
-typing `pip install --user -r requirements.txt`.
-
-GatorGrouper was developed to easily run in conjunction with a [venv-based
-Python 3 virtual environment](https://docs.python.org/3/library/venv.html). This
-means that if you are in the directory that contains `gatorgrouper`
-then you could type `python3 -m venv gatorgrouper` to create all of
-the components of a venv-based virtual environment in the `gatorgrouper`
-directory. Once you complete this step, you can type the command `source
-gatorgrouper/bin/activate` to activate the venv-based virtual environment.
-Interested in learning more about the basics of virtual environments in Python
-3? You can read this
-[article](http://www.cs.allegheny.edu/sites/gkapfham/programming/research/idea/2017/07/14/Virtual-Environments/)
-to further develop your understanding of this topic.
-
 GatorGrouper requires users to use Python 3. You can type `python --version`
 into the terminal window to check the current version of Python on your
 workstation. If you do not have the right Python version, you can go to
@@ -89,6 +61,55 @@ and `pyenv global 3.7.2`.
 After you finish this process, you should be able
 to type `python --version` and get `Python 3.7.2` or other version after
 `Python 3.6.8` in your terminal.
+
+As a Python 3 program, GatorGrouper relies on
+[Pipenv](https://github.com/pypa/pipenv) for the installation of the libraries
+on which it depends and the creation of the virtual environments in which it
+runs. To install GatorGrader, you should first follow Pipenv's installation
+instructions. You should also ensure that you have installed Git on your
+computer and that you can run Git commands in a terminal window. Then, you can
+type the following command in your terminal window to clone GatorGrader's GitHub
+repository:
+
+```
+git clone git@github.com:GatorEducator/gatorgrouper.git
+```
+
+If you plan to develop new features for GatorGrader or if you want to run the
+tool's test suite in [Pytest](https://github.com/pytest-dev/pytest), then you
+will need to install the developer dependencies by typing `pipenv install --dev`
+in the directory that was cloned. If you only want to use GatorGrouper,
+then you can type `pipenv install` instead. Once these commands complete
+successfully, that's all you you have to do to install GatorGrouper!
+
+## Testing GatorGrouper
+
+GatorGrader uses [Pytest](https://docs.pytest.org/en/latest/) for testing.
+Depending on your goals, there are several different configurations in which you
+can run the provided test suite. If you want to run the test suite to see if all
+of the test cases are correctly passing, then you can type one of the following
+commands in your terminal window:
+
+```
+pipenv run pytest
+```
+
+```
+pipenv run test
+```
+
+Please note that you must preface the execution of the test suite with the
+command `pipenv run` if you want to ensure that the tests run with the correct
+access to their Python packages and in the desired virtual environment. The first
+command runs `pytest` explicitely, while the second utilizes `pytest-xdist`. If you
+are using GatorGrader and you find that a test fails in your development
+environment, please raise an issue in GatorGrader's issue tracker. With that
+said, if you are developing new features for Pytest and you want it to produce
+console output and stop when it runs the first failing test, you can type:
+
+```
+pipenv run pytest -x -s
+```
 
 ## Initial Setup
 
