@@ -3,7 +3,7 @@
 import logging
 import random
 import itertools
-import group_scoring
+import gatorgrouper.utils.group_scoring as group_scoring
 
 
 def group_rrobin_group_size(responses, grpsize):
