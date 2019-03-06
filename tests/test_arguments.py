@@ -1,7 +1,8 @@
 """Command line argument testing"""
+
 import logging
-from utils import parse_arguments
-from utils import constants
+from gatorgrouper.utils import parse_arguments
+from gatorgrouper.utils import constants
 
 
 def test_parse_arguments2(generate_csv):
