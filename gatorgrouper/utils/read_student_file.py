@@ -25,7 +25,5 @@ def read_student_file(filepath):
                 temp.append(True)
             elif value == "False":
                 temp.append(False)
-            else:
-                temp.append(value)
         responses.append(temp)
     return responses
