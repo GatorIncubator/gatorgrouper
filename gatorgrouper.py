@@ -23,51 +23,57 @@ if __name__ == "__main__":  # pragma: no cover
 
     # read in the student identifiers from the specified file
     check_if_arguments_valid = arguments.check_valid(GG_ARGUMENTS)
-    STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
-        GG_ARGUMENTS.absentees,
-        read_student_file.read_student_file(GG_ARGUMENTS.students_file),
-    )
-    logging.info("GatorGrouper will group these students:")
-    logging.info("\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS))
-
-    # shuffle the student identifiers
-    SHUFFLED_STUDENT_IDENTIFIERS = group_random.shuffle_students(STUDENT_IDENTIFIERS)
-    logging.info("GatorGrouper randomly ordered the students:")
-    logging.info(
-        "\n %s", display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS)
-    )
-
-    # generate the groups and display them
-    # pylint: disable=bad-continuation
-    if (
-        GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-        and GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP
-    ):
-        GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
-            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
-        )
-    elif (
-        GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-        and GG_ARGUMENTS.num_group is not defaults.DEFAULT_NUMGRP
-    ):
-        GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
-            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
-        )
-    elif GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP:  # default to random method
-        GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_group_size(
-            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
-        )
+    if check_if_arguments_valid is False:
+        print("Incorrect command-line arguments.")
+        sys.exit(1)
     else:
-        GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_num_group(
-            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
+        read_student_file.add_sys_path(GG_ARGUMENTS.folder)
+
+        STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
+            GG_ARGUMENTS.absentees,
+            read_student_file.read_student_file(GG_ARGUMENTS.students_file),
+        )
+        logging.info("GatorGrouper will group these students:")
+        logging.info("\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS))
+
+        # shuffle the student identifiers
+        SHUFFLED_STUDENT_IDENTIFIERS = group_random.shuffle_students(STUDENT_IDENTIFIERS)
+        logging.info("GatorGrouper randomly ordered the students:")
+        logging.info(
+            "\n %s", display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS)
         )
 
-    # report grouping results
-    COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
-    COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
-    logging.info(
-        "Successfully placed %d students into %d groups ", COUNT_STUDENTS, COUNT_GROUPS
-    )
+        # generate the groups and display them
+        # pylint: disable=bad-continuation
+        if (
+            GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
+            and GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP
+        ):
+            GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
+                SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
+            )
+        elif (
+            GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
+            and GG_ARGUMENTS.num_group is not defaults.DEFAULT_NUMGRP
+        ):
+            GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
+                SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
+            )
+        elif GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP:  # default to random method
+            GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_group_size(
+                SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
+            )
+        else:
+            GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_num_group(
+                SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
+            )
 
-    # report generated groups
-    display.display_student_groups(GROUPED_STUDENT_IDENTIFIERS)
+        # report grouping results
+        COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
+        COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
+        logging.info(
+            "Successfully placed %d students into %d groups ", COUNT_STUDENTS, COUNT_GROUPS
+        )
+
+        # report generated groups
+        display.display_student_groups(GROUPED_STUDENT_IDENTIFIERS)
