@@ -26,13 +26,13 @@ def index(request):
 def home(request):
     """ Homepage view """
     return render(request, "gatorgrouper/home.html")
-    # return HttpResponse('<h1>Blog Home</h1>')
+    # return HttpResponse
 
 
 def create_classes(request):
     """ Create classes view """
     return render(request, "gatorgrouper/classes.html", {"title": "Create Classes"})
-    # return HttpResponse('<h1>Blog Picture</h1>')
+    # return HttpResponse
 
 
 def assignments(request):
