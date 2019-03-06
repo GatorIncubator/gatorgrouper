@@ -10,9 +10,6 @@ import pytest
 from utils import group_random
 from utils import group_rrobin
 
-# import parse_arguments
-# import gatorgrouper
-
 
 def test_group_random1():
     """Testing that the group_random() function creates the
