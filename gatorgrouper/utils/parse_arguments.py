@@ -71,7 +71,31 @@ def parse_arguments(args):
 
     gg_arguments_finished = gg_parser.parse_args(args)
 
-    return gg_arguments_finished
+    logging.basicConfig(
+        format="%(levelname)s:%(pathname)s: %(message)s",
+        level=gg_arguments_finished.logging_level,
+    )
+
+    # pylint: disable=bad-continuation
+    if (
+        check_valid_group_size(
+            gg_arguments_finished.group_size,
+            read_student_file.read_student_file(gg_arguments_finished.students_file),
+        )
+        is False
+    ):
+        # quit() is not a valid command
+        return "Invalid entry."
+
+    if (
+        check_valid_num_group(
+            gg_arguments_finished.num_group,
+            read_student_file.read_student_file(gg_arguments_finished.students_file),
+        )
+        is False
+    ):
+        # quit() is not a valid command
+        return "Invalid entry."
 
 
 def check_valid(args):
@@ -93,7 +117,7 @@ def check_valid(args):
 def check_valid_num_group(numgrp, students_list):
     """Checking if valid num group"""
     students_list_length = len(students_list)
-    if numgrp > students_list_length:
+    if numgrp <= 1 or numgrp > students_list_length:
         logging.error("Number of groups: %d", numgrp)
         logging.error("Number of students: %d", students_list_length)
         logging.error(
