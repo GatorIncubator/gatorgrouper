@@ -26,7 +26,7 @@ if __name__ == "__main__":  # pragma: no cover
         print("Incorrect command-line arguments.")
         sys.exit(1)
     else:
-        read_student_file.add_sys_path(GG_ARGUMENTS.folder)
+        read_student_file.add_sys_path(GG_ARGUMENTS.file)
 
         STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
             GG_ARGUMENTS.absentees,
