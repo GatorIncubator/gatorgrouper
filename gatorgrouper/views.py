@@ -38,10 +38,6 @@ def upload_csv(request):
     return render(request, 'upload.html', {'form': form})
 
 
-def create_group_from_csv(request):
-    """ GET request displaying the CSV upload form"""
-    pass
-
 def handle_uploaded_file(csvfile):
     f = StringIO(csvfile.read().decode("utf-8"))
     csvdata = list(csv.reader(f, delimiter=","))
@@ -58,7 +54,6 @@ def handle_uploaded_file(csvfile):
                 temp.append(False)
         responses.append(temp)
     return responses
-
 
 def home(request):
     """ Homepage view """

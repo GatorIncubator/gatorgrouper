@@ -338,10 +338,10 @@
         },
         "isort": {
             "hashes": [
-                "sha256:144c4295314c0ed34fb034f838b2b7e242c52dd3eafdd6f5d49078692f582c0c",
-                "sha256:92a7ddacb0e7e10ed2976e6b5d58496dcda27a3f525c187a3a1a0ae5fa79ff1b"
+                "sha256:2caefcdc45aa8b63a77416f41ba20bbb02b752deda93fb4ce7d2df68acd4ea1b",
+                "sha256:909141ae3ac8c78daa9a6ae61371ad6daa628f533f6d3e01e5a0d073864ef26b"
             ],
-            "version": "==4.3.10"
+            "version": "==4.3.11"
         },
         "lazy-object-proxy": {
             "hashes": [
