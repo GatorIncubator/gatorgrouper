@@ -1,6 +1,6 @@
 """Testing the display  """
 
-from utils import display
+from gatorgrouper.utils import display
 
 
 def test_display_student_groups(capsys):
