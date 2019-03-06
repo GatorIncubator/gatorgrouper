@@ -4,7 +4,7 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import UploadCSVForm
 from .models import Professor, Semester_Class
-from gatorgrouper.utils.group_random import group_random_num_group
+from gatorgrouper.utils.group_rrobin import group_rrobin_num_group
 from io import StringIO
 import csv
 
@@ -32,7 +32,7 @@ def upload_csv(request):
         if form.is_valid():
             responses = handle_uploaded_file(request.FILES['file'])
             numgrp = form.cleaned_data['numgrp']
-            groups = group_random_num_group(responses, numgrp)
+            groups = group_rrobin_num_group(responses, numgrp)
             res_string = ""
             return render(request, 'displaygroups.html', {'groups': groups})
     else:
