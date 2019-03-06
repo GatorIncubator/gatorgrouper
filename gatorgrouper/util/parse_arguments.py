@@ -3,7 +3,7 @@
 import argparse
 import logging
 import read_student_file
-import constants
+from . import constants
 
 
 def parse_arguments(args):
