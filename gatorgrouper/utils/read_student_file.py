@@ -1,6 +1,8 @@
 """ Reads CSV data file """
 
 import csv
+import sys
+
 from pathlib import Path
 
 
@@ -9,13 +11,13 @@ def read_student_file(filepath):
 
     # handle nonexistant files
     if Path(filepath).is_file() is False:
-        return "filenotfound"
-
+        print("filenotfound")
+        return ""
     # read the raw CSV data
     with open(filepath, "r") as csvfile:
         csvdata = list(csv.reader(csvfile, delimiter=","))
 
-    # transform into desired output
+        # transform into desired output
     responses = list()
     for record in csvdata[1:]:
         temp = list()
