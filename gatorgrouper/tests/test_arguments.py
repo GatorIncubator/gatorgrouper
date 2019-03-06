@@ -1,7 +1,7 @@
 """Command line argument testing"""
 import logging
-from util import parse_arguments
-from util import constants
+from utils import parse_arguments
+from utils import constants
 
 
 def test_parse_arguments2(generate_csv):

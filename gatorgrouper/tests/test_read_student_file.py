@@ -5,7 +5,7 @@ import csv
 # pylint: disable=redefined-outer-name
 import pytest
 
-from util import read_student_file
+from utils import read_student_file
 
 
 @pytest.fixture(scope="session")

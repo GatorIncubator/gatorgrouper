@@ -1,6 +1,6 @@
 """Testing random grouping"""
-from util import group_random
-from util import group_rrobin
+from utils import group_random
+from utils import group_rrobin
 
 
 def test_group_random1():

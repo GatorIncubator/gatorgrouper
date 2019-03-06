@@ -1,7 +1,7 @@
 """Testing escaped strings from list"""
 import string
 import random
-from util import display
+from utils import display
 
 
 def test_create_escaped_string_from_list():
