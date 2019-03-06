@@ -57,7 +57,6 @@ def parse_arguments(args):
 
     gg_parser.add_argument(
         "--file",
-        verified_arguments = True,
         required=True,
         type=str,
         help="Input the file path",
