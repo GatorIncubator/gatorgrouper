@@ -27,7 +27,7 @@ def group_rrobin_group_size(responses, grpsize):
     random.shuffle(columns)
     logging.info("column priority: %d", columns)
 
-    # iterate through the response columns
+    # iterate through the response columns TODO: See if this is bugged
     for col in columns:
         for response in responses:
             if response[col] is True:
