@@ -2,26 +2,8 @@
 import csv
 from io import StringIO
 from django.shortcuts import render
-from django.template import loader
+from .utils.group_rrobin import group_rrobin_num_group
 from .forms import UploadCSVForm
-from .models import Professor, Semester_Class
-from gatorgrouper.utils.group_rrobin import group_rrobin_num_group
-
-
-# Create your views here.
-def index(request):
-    """ This is undocumented """
-    professors = Professor.objects.all()
-    classes = Semester_Class.objects.all()
-
-    # pylint: disable=unused-variable
-    template = loader.get_template("gatorgrouper/index.html")  # noqa: F841
-
-    return render(
-        request,
-        "gatorgrouper/index.html",
-        {"all_professors": professors, "all_classes": classes},
-    )
 
 
 def upload_csv(request):
