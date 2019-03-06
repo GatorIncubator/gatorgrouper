@@ -78,6 +78,11 @@ def parse_arguments(args):
         dest="grouping_method",
         const=constants.ALGORITHM_ROUND_ROBIN,
     )
+    gg_parser.add_argument(
+        "--absentees",
+        nargs="+",
+        type=str
+    )
 
     gg_arguments_finished = gg_parser.parse_args(args)
 
