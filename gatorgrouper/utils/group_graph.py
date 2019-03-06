@@ -51,8 +51,8 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=None) -> int:
 
 
 def group_graph_partition(
-        responses: List[str], weights: List[Tuple[int]], numgrp=2
-    ) -> List[str]:
+    responses: List[str], weights: List[Tuple[int]], numgrp=2
+) -> List[str]:
     """
     Form groups using recursive Kernighan-Lin algorithm
     """
