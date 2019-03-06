@@ -3,7 +3,10 @@
 import logging
 
 
-def display_student_groups(student_groups):
+from typing import List, Union
+
+
+def display_student_groups(student_groups: List[List[List[Union[str, bool]]]]) -> None:
     """ Display the student groups with labels """
     group_counter = 1
     place_counter = 0
@@ -19,15 +22,18 @@ def display_student_groups(student_groups):
     logging.info("Found %d students", place_counter)
 
 
-def display_welcome_message():
+def display_welcome_message() -> None:
     """ Display a welcome message """
     print()
     print("GatorGrouper: Automatically Assign Students to Groups")
-    print("https://github.com/GatorGrouper/gatorgrouper")
+    print("https://github.com/GatorEducator/gatorgrouper")
     print()
 
 
-def create_escaped_string_from_list(student_identifers):
+# pylint: disable=bad-continuation
+def create_escaped_string_from_list(
+    student_identifers: Union[str, List[List[Union[str, bool]]]]
+) -> str:
     """ Return a string that lists the student identifiers """
     student_list = ""
     for student in student_identifers:
