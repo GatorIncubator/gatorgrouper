@@ -49,13 +49,6 @@ def parse_arguments(args):
     )
 
     gg_parser.add_argument(
-        "--folder",
-        required=True,
-        type=str,
-        help="Input the directory",
-    )
-
-    gg_parser.add_argument(
         "--file",
         required=True,
         type=str,
