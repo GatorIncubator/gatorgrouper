@@ -84,7 +84,6 @@ def test_group_random2(grpsize):
     returned_groups = group_random.group_random_group_size(responses, grpsize)
     size_count = grpsize
     assert len(returned_groups[0]) == size_count
-    assert grpsize == size_count
 
 
 def test_group_random():
