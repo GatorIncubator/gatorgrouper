@@ -1,7 +1,7 @@
 """ This is undocumented """
 from django.shortcuts import render
 from django.template import loader
- from django.forms import modelform_factory
+from django.forms import modelform_factory
 
 # from django.http import HttpResponse
 # from django.http import Http404
@@ -35,7 +35,7 @@ def create_classes(request):
     """ Create classes view """
     ClassFormSet = modelform_factory(Semester_Class, fields=("semester","department","class_number","class_section"))
     if request.method == "POST":
-        formset = AuthorFormSet(request.POST)
+        formset = ClassFormSet(request.POST)
         if formset.is_valid():
             formset.save()
     else:
