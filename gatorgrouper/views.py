@@ -35,7 +35,7 @@ def upload_csv(request):
             return render(request, 'gatorgrouper/viewing-groups.html', {'groups': groups})
     else:
         form = UploadCSVForm()
-    return render(request, 'upload.html', {'form': form})
+    return render(request, 'gatorgrouper/assignments.html', {'form': form})
 
 
 def handle_uploaded_file(csvfile):
