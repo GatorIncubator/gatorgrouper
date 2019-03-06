@@ -80,7 +80,7 @@ def parse_arguments(args):
     if (
         check_valid_group_size(
             gg_arguments_finished.group_size,
-            read_student_file.read_student_file(gg_arguments_finished.students_file),
+            read_student_file.read_student_file(gg_arguments_finished.file),
         )
         is False
     ):
@@ -90,7 +90,7 @@ def parse_arguments(args):
     if (
         check_valid_num_group(
             gg_arguments_finished.num_group,
-            read_student_file.read_student_file(gg_arguments_finished.students_file),
+            read_student_file.read_student_file(gg_arguments_finished.file),
         )
         is False
     ):
