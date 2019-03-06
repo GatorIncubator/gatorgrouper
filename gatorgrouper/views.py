@@ -24,18 +24,21 @@ def index(request):
         {"all_professors": professors, "all_classes": classes},
     )
 
+
 def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UploadCSVForm(request.POST, request.FILES)
         if form.is_valid():
-            responses = handle_uploaded_file(request.FILES['file'])
-            numgrp = form.cleaned_data['numgrp']
+            responses = handle_uploaded_file(request.FILES["file"])
+            numgrp = form.cleaned_data["numgrp"]
             groups = group_rrobin_num_group(responses, numgrp)
-            return render(request, 'gatorgrouper/viewing-groups.html', {'groups': groups})
+            return render(
+                request, "gatorgrouper/viewing-groups.html", {"groups": groups}
+            )
     else:
         form = UploadCSVForm()
-    return render(request, 'gatorgrouper/assignments.html', {'form': form})
+    return render(request, "gatorgrouper/assignments.html", {"form": form})
 
 
 def handle_uploaded_file(csvfile):
@@ -54,6 +57,7 @@ def handle_uploaded_file(csvfile):
                 temp.append(False)
         responses.append(temp)
     return responses
+
 
 def home(request):
     """ Homepage view """
