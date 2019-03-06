@@ -35,26 +35,32 @@ def parse_arguments(args):
 
     gg_parser.add_argument(
         "--group-size",
+        required=True,
         help="Number of students in a group",
         type=int,
         default=constants.DEFAULT_GRPSIZE,
-        required=False,
     )
 
     gg_parser.add_argument(
         "--num-group",
+        required=True
         help="Number of groups",
         type=int,
         default=constants.DEFAULT_NUMGRP,
-        required=False,
     )
 
-    gg_parser.add_argument(
-        "--students-file",
-        help="File containing last name of students",
+    parser.add_argument(
+        "--file",
+        required=True,
         type=str,
-        default=constants.DEFAULT_CSVFILE,
-        required=False,
+        help="Package directory with functions to analyze",
+    )
+    
+    parser.add_argument(
+        "--folder",
+        required=True,
+        type=str,
+        help="Module name with functions to analyze",
     )
 
     gg_parser.add_argument(
