@@ -30,7 +30,7 @@ if __name__ == "__main__":  # pragma: no cover
 
         STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
             GG_ARGUMENTS.absentees,
-            read_student_file.read_student_file(GG_ARGUMENTS.students_file),
+            read_student_file.read_student_file(GG_ARGUMENTS.file),
         )
         logging.info("GatorGrouper will group these students:")
         logging.info(

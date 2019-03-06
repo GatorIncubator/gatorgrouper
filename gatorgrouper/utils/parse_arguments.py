@@ -77,17 +77,14 @@ def parse_arguments(args):
 def check_valid(args):
     """Verify the command-line arguments"""
     verified_arguments = False
-    # CHECK: folder was specified and it is not ""
-    if args.folder is not constants.NONE:
-        verified_arguments = True
     # CHECK: file was specified and it is not ""
     if args.file is not constants.NONE:
         verified_arguments = True
     # CHECK: number was specified and it is not ""
-    if args.groupsize is not constants.NONE:
-        verified_arguments = True
-    if args.numgroup is not constants.NONE:
-        verified_arguments = True
+    # if args.group_size is not constants.NONE:
+    #     verified_arguments = True
+    # if args.num_group is not constants.NONE:
+    #     verified_arguments = True
     if read_student_file.read_student_file(args.file) != "":
         verified_arguments = True
     return verified_arguments
