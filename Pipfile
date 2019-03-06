@@ -15,14 +15,11 @@ pytest-sugar = "*"
 autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
-pytest-django = "*"
-mixer = "*"
 pylint = "*"
 
 [packages]
 pathlib = "*"
 py = "*"
-django = "*"
 
 [pipenv]
 allow_prereleases = true
