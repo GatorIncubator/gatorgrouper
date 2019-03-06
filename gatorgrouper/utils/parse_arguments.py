@@ -115,7 +115,7 @@ def check_valid_num_group(numgrp, students_list):
         logging.info("Skipping group size check; file must not exist.")
         return True
     students_list_length = len(students_list)
-    if numgrp > students_list_length:
+    if numgrp <= 1 or numgrp > students_list_length:
         logging.error("Number of groups: %d", numgrp)
         logging.error("Number of students: %d", students_list_length)
         logging.error(
