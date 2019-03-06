@@ -1,12 +1,11 @@
 """ This is undocumented """
+import csv
+from io import StringIO
 from django.shortcuts import render
 from django.template import loader
-from django.http import HttpResponse, HttpResponseRedirect
 from .forms import UploadCSVForm
 from .models import Professor, Semester_Class
 from gatorgrouper.utils.group_rrobin import group_rrobin_num_group
-from io import StringIO
-import csv
 
 
 # Create your views here.
