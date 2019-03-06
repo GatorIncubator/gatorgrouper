@@ -94,50 +94,18 @@ commands in your terminal window:
 pipenv run pytest
 ```
 
-```
-pipenv run test
-```
-
 Please note that you must preface the execution of the test suite with the
 command `pipenv run` if you want to ensure that the tests run with the correct
-access to their Python packages and in the desired virtual environment. The first
-command runs `pytest` explicitely, while the second utilizes `pytest-xdist`. If you
-are using GatorGrader and you find that a test fails in your development
-environment, please raise an issue in GatorGrader's issue tracker. With that
-said, if you are developing new features for Pytest and you want it to produce
-console output and stop when it runs the first failing test, you can type:
+access to their Python packages and in the desired virtual environment. The
+provided command runs `pytest` explicitly. If you are using GatorGrouper and you
+find that a test fails in your development environment, please raise an issue in
+GatorGrouper's issue tracker. With that said, if you are developing new features
+for Pytest and you want it to produce console output and stop when it runs the
+first failing test, you can type:
 
 ```
 pipenv run pytest -x -s
 ```
-
-## Initial Setup
-
-Ensure that you have installed gspread and oauth2client in the root
-directory of the repository. In the terminal use the command:
-
-```shell
-python3 -m pip install --user gspread oauth2client
-```
-
-Create a Google Sheets spreadsheet and a Google Form in Google Drive. In the
-Form, create yes or no questions to measure the capabilities and skills of the
-students that you wish to group.  After you have at least one submission of the
-Form, you can go to the responses tab and click on the green icon with the white
-cross through it.  This will enable you to link the Sheet to the Form. You can
-either create a new Sheet or link to a preexisting one. If you need to change
-the destination, you can click on the three dot icon menu to the right of the
-green icon and select "Select response destination".
-
-Open the `.json` file in the `gatorgrouper` repository and find the `"client-email"`.
-Copy the quoted text that looks like an email address. Return to the Sheet and
-open the sharing options.  Paste the address and click send. Alternatively, if
-you would like to create your own service account for confidentiality and
-security, follow the tutorial found at [www.twolio.com](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
-to create a personal service account.
-
-Within `defaults.py`, update the `DEFAULT_WORKBOOK` constant to the name of your
-Sheet.
 
 ---
 
@@ -149,14 +117,24 @@ file called `students.csv` and creating groups of two students means that you
 will run GatorGrouper with this command:
 
 ```shell
-python3 gatorgrouper.py
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py
 ```
 
 In order to see all the possible commands and their descriptions, enter
 the following command:
 
 ```shell
-python3 gatorgrouper.py -h
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py -h
+```
+
+### Specify File Containing List of Students
+
+If your `.csv` file is not named `students.csv`, use the `--students-file` flag
+to let GatorGrouper know the file you are using.
+
+```shell
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --students-file "file_name.csv"
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --students-file file_name.csv
 ```
 
 ### Group Size
@@ -164,7 +142,7 @@ python3 gatorgrouper.py -h
 To specify the size of the groups, use the flag `--group-size`.
 
 ```shell
-python3 gatorgrouper.py --group-size 4
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --group-size 4
 ```
 
 This indicates that groups should each contain 4 members.  The provided group
@@ -177,7 +155,7 @@ To specify the number of groups the students should be placed in, use the flag
 `--num-groups`.
 
 ```shell
-python3 gatorgrouper.py --num-groups 4
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --num-groups 4
 ```
 
 This indicates that the students should be divided into 4 groups. The number of
@@ -191,7 +169,7 @@ flag is ignored. This flag can be used along side `--absentees`, `--random`, and
 To randomly group the students, use the flag `--random`.
 
 ```shell
-python3 gatorgrouper.py --random
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --random
 ```
 
 This will randomly group the list of students you have provided, and is the
@@ -206,7 +184,7 @@ small discussion groups, or peer editing.
 To group students using the round-robin method, use the flag `--round-robin`.
 
 ```shell
-python3 gatorgrouper.py --round-robin
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --round-robin
 ```
 
 The round-robin method takes the responses from the Sheet into account when
@@ -252,9 +230,9 @@ flag `--absentees`.  The arguments can be entered in the following ways:
 
 ```shell
 
-python3 gatorgrouper.py --absentees student1 student2
-python3 gatorgrouper.py --absentees 'student1' 'student2'
-python3 gatorgrouper.py --absentees "student1" "student2"
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --absentees student1 student2
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --absentees 'student1' 'student2'
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --absentees "student1" "student2"
 ```
 
 Note that the absent students' names must be separated by spaces, not quotes.
@@ -263,30 +241,20 @@ The names can be surrounded by single or double quotes if desired.
 If no absentees are indicated with this flag, then the program will assume that
 there are no students absent.
 
-### Specify File Containing List of Students
-
-To bypass the Google Forms integration and instead supply a list of students
-directly to the program, use the `--students-file` flag.
-
-```shell
-python3 gatorgrouper.py --students-file "file_name.csv"
-python3 gatorgrouper.py --students-file file_name.csv
-```
-
 ### Monitoring GatorGrouper
 
 To see detailed general output to monitor progress, use the flag `-v` or
 `--verbose`.
 
 ```shell
-python3 gatorgrouper.py --verbose
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --verbose
 ```
 
 To see detailed technical output to diagnose problems, use the flag `-d` or
 `--debug`.
 
 ```shell
-python3 gatorgrouper.py --debug
+pipenv run python3 gatorgrouper/utils/gatorgrouper.py --debug
 ```
 
 If neither of these flags are set, logging will only be shown if an error occurs.
@@ -294,7 +262,7 @@ If neither of these flags are set, logging will only be shown if an error occurs
 ### Full Example
 
 ```shell
-$ python3 gatorgrouper.py --group-size 3 --absentees becky george --random
+$ pipenv run python3 gatorgrouper/utils/gatorgrouper.py --group-size 3 --absentees becky george --random
 
 GatorGrouper: Automatically Assign Students to Groups
 https://github.com/GatorEducator/gatorgrouper
@@ -322,62 +290,6 @@ Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
 operating systems that support Python version 3.
 
 ---
-
-## Testing
-
-### Functions Tested
-
-The test suite is designed to test the different functions of `gatorgrouper.py`.
-The first function the test suites test is to make sure that there are the
-correct amount of students in each group. The test suite also makes sure that
-the shuffle function is working correctly. There are also test cases to make
-sure that the professor has the option to mark students absent, and these
-students will not get grouped. Lastly, the test suite test checks to see if
-students are being correctly grouped based on category.
-
-### Running the Test Suite
-
-The test suite requires `pytest-flake8`, which can be installed with the
-following command:
-
-```shell
-pip3 install --user pytest-flake8
-```
-
-From the root directory, the test suite can be ran with the following command:
-
-```shell
-python3 -m pytest tests
-```
-
-### Automatic Linting
-
-For any future issues with linting, you can install an autolinting tool with:
-
-```shell
-pip3 install --user autopep8
-```
-
-To run the tool, type the following into the main directory.
-
-```shell
-autopep8 --in-place --aggressive *.py
-```
-
-If there are any linting issues that were not fixed by the tool, the error
-message from the test suite will direct you to where the issue is and tell you
-what it is in order for you to fix it.
-
-## Test Coverage
-
-Test coverage reporting is handled with `pytest-coverage`.  The following
-commands will install and run `pytest-coverage`.
-
-```shell
-pip install pytest-cov
-coverage run --source tests -m py.test
-coverage report
-```
 
 ## Problems or Praise
 
