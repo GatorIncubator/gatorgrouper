@@ -37,7 +37,7 @@ class Semester_Class(models.Model):
         )
 
 
-class Assignments(models.Model):
+class Assignment(models.Model):
     """ This is undocumented """
 
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
@@ -48,7 +48,7 @@ class Assignments(models.Model):
         return "{}".format(self.assignment_id)
 
 
-class Students(models.Model):
+class Student(models.Model):
     """ This is undocumented """
 
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
@@ -60,7 +60,7 @@ class Students(models.Model):
         return "{}, {}".format(self.last_name, self.first_name)
 
 
-class Grouped_Students(models.Model):
+class Grouped_Student(models.Model):
     """ This is undocumented """
 
     assignment_id = models.ForeignKey(Assignments, on_delete=models.CASCADE)
