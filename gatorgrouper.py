@@ -3,14 +3,14 @@
 import sys
 import logging
 
-from gatorgrouper.utils import parse_arguments
-from gatorgrouper.utils import remove_absent_students
-from gatorgrouper.utils import defaults
-from gatorgrouper.utils import read_student_file
-from gatorgrouper.utils import group_rrobin
-from gatorgrouper.utils import group_random
-from gatorgrouper.utils import display
-from gatorgrouper.utils import constants
+from gatorgrouper.util import parse_arguments
+from gatorgrouper.util import remove_absent_students
+from gatorgrouper.util import defaults
+from gatorgrouper.util import read_student_file
+from gatorgrouper.util import group_rrobin
+from gatorgrouper.util import group_random
+from gatorgrouper.util import display
+from gatorgrouper.util import constants
 
 
 if __name__ == "__main__":  # pragma: no cover

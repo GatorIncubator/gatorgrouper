@@ -1,5 +1,5 @@
 """Testing number of groups"""
-from utils import parse_arguments
+from util import parse_arguments
 
 
 def test_check_number_groups_size_zero():

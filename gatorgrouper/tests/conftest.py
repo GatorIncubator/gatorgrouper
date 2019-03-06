@@ -10,7 +10,7 @@ import pytest
 # set the system path to contain the previous directory
 # the utils folder must be in the PYTHONPATH
 MYPATH = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, MYPATH + "/../utils/")
+sys.path.insert(0, MYPATH + "/../util/")
 
 
 @pytest.fixture(scope="session")

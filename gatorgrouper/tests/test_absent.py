@@ -1,5 +1,5 @@
 """Testing if absent.py correctly handles being absent"""
-from utils import remove_absent_students
+from util import remove_absent_students
 
 
 def test_remove_missing_students():
