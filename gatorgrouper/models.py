@@ -8,7 +8,7 @@ class Professor(AbstractUser):
     """ This is undocumented """
     REQUIRED_FIELDS = ('email',)
     USERNAME_FIELD = 'email'
-    email = models.EmailField(max_length=200)
+    email = models.EmailField(max_length=200, unique=True)
     professor_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
