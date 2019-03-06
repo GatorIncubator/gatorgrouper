@@ -65,7 +65,8 @@ def hypothesis_test_group_random1(group_size):
         "James",
         "Kelly",
         "Nikki",
-        "Robert"]
+        "Robert",
+    ]
     lst2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
     size_count = group_size
     actual_output = group_random.group_random_group_size(lst, group_size)
