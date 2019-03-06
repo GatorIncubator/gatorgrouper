@@ -35,7 +35,7 @@ def parse_arguments(args):
 
     gg_parser.add_argument(
         "--groupsize",
-        required=True,
+        required=False,
         help="Number of students in a group",
         type=int,
         default=constants.DEFAULT_GRPSIZE,
@@ -43,7 +43,7 @@ def parse_arguments(args):
 
     gg_parser.add_argument(
         "--numgroup",
-        required=True
+        required=False
         help="Number of groups",
         type=int,
         default=constants.DEFAULT_NUMGRP,
