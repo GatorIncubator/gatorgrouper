@@ -5,6 +5,8 @@ from networkx import Graph
 from networkx.algorithms.community import kernighan_lin_bisection
 from networkx.algorithms.cuts import cut_size
 
+# pylint: disable=bad-continuation
+
 
 def recursive_kl(graph: Graph, numgrp=2) -> List[Set[int]]:
     """
