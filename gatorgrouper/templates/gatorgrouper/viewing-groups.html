@@ -7,14 +7,14 @@
 <div class="container">
   <h2>Team Groupings</h2>
   <div class="list-group">
-    <a href="#" class="list-group-item active">
       {% for group in groups %}
       <h4 class="list-group-item-heading">Team #{{ forloop.counter }}</h4>
+      <ul>
         {% for student in group %}
-        <p class="list-group-item-text">{{ student | first }}</p>
+        <li class="list-group-item-text">{{ student | first }}</li>
         {% endfor %}
+      </ul>
       {% endfor %}
-    </a>
   </div>
 </div>
 
