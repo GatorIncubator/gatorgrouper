@@ -43,7 +43,7 @@ def parse_arguments(args):
     gg_parser.add_argument(
         "--numgroup",
         required=False
-        help="Number of groups",
+        #help="Number of groups",
         type=int,
         default=constants.DEFAULT_NUMGRP,
     )
