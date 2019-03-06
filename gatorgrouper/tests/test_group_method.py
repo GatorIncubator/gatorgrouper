@@ -1,17 +1,14 @@
 """Testing random grouping"""
-import pytest
-import parse_arguments
-import hypothesis
-import gatorgrouper
-
-
-from utils import group_random
-from utils import group_rrobin
 from hypothesis import given
 from hypothesis import settings
 from hypothesis import Verbosity
 from hypothesis.strategies import integers
-from hypothesis.strategies import text
+from utils import group_random
+from utils import group_rrobin
+
+
+import pytest
+
 
 def test_group_random1():
     """Testing that the group_random() function creates the
