@@ -5,8 +5,8 @@ from django.forms import modelform_factory
 
 # from django.http import HttpResponse
 # from django.http import Http404
-from .models import Professor, Semester_Class, Students
-from .models import Assignments, Grouped_Students
+from .models import Professor, Semester_Class, Student
+from .models import Assignment, Grouped_Student
 
 
 # Create your views here.
@@ -30,9 +30,10 @@ def home(request):
     return render(request, "gatorgrouper/home.html")
     # return HttpResponse
 
-
+@login_required
 def create_classes(request):
     """ Create classes view """
+
     ClassFormSet = modelform_factory(Semester_Class, fields=("semester","department","class_number","class_section"))
     if request.method == "POST":
         formset = ClassFormSet(request.POST)
