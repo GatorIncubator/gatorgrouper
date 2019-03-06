@@ -1,19 +1,10 @@
 """Command line argument testing"""
 import logging
+import gatorgrouper
 from utils import parse_arguments
 from utils import constants
 from utils import group_random
 from utils import constants
-
-
-def test_parse_arguments1():
-    """General testing of arguments - if arguments exists"""
-    args = []
-    parsed_args = parse_arguments.parse_arguments(args)
-    assert parsed_args.logging_level == logging.ERROR
-    assert parsed_args.group_size == defaults.DEFAULT_GRPSIZE
-    assert parsed_args.students_file == defaults.DEFAULT_CSVFILE
-    assert (parsed_args.grouping_method == group_random) is False
 
 
 def test_parse_arguments2(generate_csv):
