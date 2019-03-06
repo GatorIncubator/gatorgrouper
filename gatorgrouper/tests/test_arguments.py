@@ -47,3 +47,25 @@ def test_parse_arguments5():
     args = ["--num-group", "3"]
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.num_group == 3
+
+
+def test_invalid_group_size():
+    """Test if invalid group or size return invalid entry"""
+    args = ["--group-size", "3"]
+    test_group_size = 3
+    #output = parse_arguments.check_valid_group_size(test_group_size, args)
+    assert parse_arguments.check_valid_group_size(test_group_size, args) == False
+
+
+def test_invalid_num_group():
+    """Test if invalid group or size return invalid entry"""
+    args = ["--num-group", "9"]
+    test_num_group = 9
+    assert parse_arguments.check_valid_num_group(test_num_group, args) == False
+    # assert gatorgrouper.GG_ARGUMENTS == "Invalid entry"
+
+
+def test_check_valid_num_group():
+    """Test if num group is valid"""
+    args = ["John", "Maria", "Will"]
+    assert parse_arguments.check_valid_num_group(3, args) == True
