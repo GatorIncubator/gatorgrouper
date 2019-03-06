@@ -262,7 +262,8 @@ If neither of these flags are set, logging will only be shown if an error occurs
 ### Full Example
 
 ```shell
-$ pipenv run python3 gatorgrouper/utils/gatorgrouper.py --group-size 3 --absentees becky george --random
+$ pipenv run python3 gatorgrouper/utils/gatorgrouper.py --group-size 3
+--absentees becky george --random
 
 GatorGrouper: Automatically Assign Students to Groups
 https://github.com/GatorEducator/gatorgrouper
