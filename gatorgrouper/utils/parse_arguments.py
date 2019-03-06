@@ -37,7 +37,7 @@ def parse_arguments(args):
         "--group-size",
         help="Number of students in a group",
         type=int,
-        default=defaults.DEFAULT_GRPSIZE,
+        default=constants.DEFAULT_GRPSIZE,
         required=False,
     )
 
@@ -45,7 +45,7 @@ def parse_arguments(args):
         "--num-group",
         help="Number of groups",
         type=int,
-        default=defaults.DEFAULT_NUMGRP,
+        default=constants.DEFAULT_NUMGRP,
         required=False,
     )
 
@@ -53,7 +53,7 @@ def parse_arguments(args):
         "--students-file",
         help="File containing last name of students",
         type=str,
-        default=defaults.DEFAULT_CSVFILE,
+        default=constants.DEFAULT_CSVFILE,
         required=False,
     )
 
