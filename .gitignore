@@ -3,7 +3,6 @@ __pycache__
 *.pyc
 *.csv
 gatorgrouper_django/gatorgrouper/migrations/
-/.coverage
 secret_key.py
 
 # Created by https://www.gitignore.io/api/vim,git,macos,linux,django,python,eclipse,windows,intellij,notepadpp
@@ -15,7 +14,6 @@ secret_key.py
 *.pyc
 __pycache__/
 local_settings.py
-db.sqlite3
 media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
@@ -355,47 +353,6 @@ Temporary Items
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
-
-# Installer logs
-
-# Unit test / coverage reports
-
-# Translations
-
-# Django stuff:
-
-# Flask stuff:
-
-# Scrapy stuff:
-
-# Sphinx documentation
-
-# PyBuilder
-
-# Jupyter Notebook
-
-# IPython
-
-# pyenv
-
-# celery beat schedule file
-
-# SageMath parsed files
-
-# Environments
-
-# Spyder project settings
-
-# Rope project settings
-
-# mkdocs documentation
-
-# mypy
-
-# Pyre type checker
-
-### Python Patch ###
-.venv/
 
 ### Vim ###
 # Swap
