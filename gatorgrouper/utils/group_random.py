@@ -4,7 +4,7 @@ import copy
 import logging
 import itertools
 import random
-import group_scoring
+from . import group_scoring
 
 
 def group_random_group_size(responses, grpsize):

@@ -1,7 +1,9 @@
 """ Testing read_student_file """
 
 # pylint: disable=redefined-outer-name
-from utils import read_student_file
+import pytest
+
+from gatorgrouper.utils import read_student_file
 
 
 def test_read_student_file(generatcsv):

@@ -2,9 +2,8 @@
 
 import argparse
 import logging
-import read_student_file
-import defaults
-import constants
+from . import read_student_file
+from . import constants
 
 
 def parse_arguments(args):
@@ -37,7 +36,7 @@ def parse_arguments(args):
         "--group-size",
         help="Number of students in a group",
         type=int,
-        default=defaults.DEFAULT_GRPSIZE,
+        default=constants.DEFAULT_GRPSIZE,
         required=False,
     )
 
@@ -45,16 +44,12 @@ def parse_arguments(args):
         "--num-group",
         help="Number of groups",
         type=int,
-        default=defaults.DEFAULT_NUMGRP,
+        default=constants.DEFAULT_NUMGRP,
         required=False,
     )
 
     gg_parser.add_argument(
-        "--students-file",
-        help="File containing last name of students",
-        type=str,
-        default=defaults.DEFAULT_CSVFILE,
-        required=False,
+        "--file", required=True, type=str, help="Input the file path"
     )
 
     gg_parser.add_argument(
@@ -62,17 +57,16 @@ def parse_arguments(args):
         help="Use random grouping method",
         action="store_const",
         dest="grouping_method",
-        const="random",
+        const=constants.ALGORITHM_RANDOM,
     )
 
     gg_parser.add_argument(
-        "--round-robin",
+        "--rrobin",
         help="Use round-robin grouping method",
         action="store_const",
         dest="grouping_method",
         const=constants.ALGORITHM_ROUND_ROBIN,
     )
-
     gg_parser.add_argument("--absentees", nargs="+", type=str)
 
     gg_arguments_finished = gg_parser.parse_args(args)
@@ -104,17 +98,25 @@ def parse_arguments(args):
     ):
         return error
 
-    if gg_arguments_finished.absentees is None:
-        gg_arguments_finished.absentees = []
 
-    return gg_arguments_finished
+def check_valid(args):
+    """Verify the command-line arguments"""
+    verified_arguments = False
+    # CHECK: file was specified and it is not ""
+    if args.file is not constants.NONE:
+        verified_arguments = True
+    # CHECK: number was specified and it is not ""
+    # if args.group_size is not constants.NONE:
+    #     verified_arguments = True
+    # if args.num_group is not constants.NONE:
+    #     verified_arguments = True
+    if read_student_file.read_student_file(args.file) != "":
+        verified_arguments = True
+    return verified_arguments
 
 
 def check_valid_num_group(numgrp, students_list):
     """Checking if valid num group"""
-    if students_list == "filenotfound":
-        logging.info("Skipping group size check; file must not exist.")
-        return True
     students_list_length = len(students_list)
     if numgrp <= 1 or numgrp > students_list_length:
         logging.error("Number of groups: %d", numgrp)
@@ -132,9 +134,6 @@ def check_valid_num_group(numgrp, students_list):
 
 def check_valid_group_size(group_size, students_list):
     """ Checks if group size is valid """
-    if students_list == "filenotfound":
-        logging.info("Skipping group size check; file must not exist.")
-        return True
     students_list_length = len(students_list)
     if group_size <= 1 or group_size > students_list_length / 2:
         logging.error("Group size: %d", group_size)
