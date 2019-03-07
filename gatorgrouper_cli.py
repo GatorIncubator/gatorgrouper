@@ -28,8 +28,7 @@ if __name__ == "__main__":  # pragma: no cover
         sys.exit(1)
     else:
         STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
-            GG_ARGUMENTS.absentees,
-            read_student_file.read_csv_data(GG_ARGUMENTS.file),
+            GG_ARGUMENTS.absentees, read_student_file.read_csv_data(GG_ARGUMENTS.file)
         )
         logging.info("GatorGrouper will group these students:")
         logging.info(
