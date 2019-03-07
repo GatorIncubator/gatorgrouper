@@ -1,7 +1,13 @@
 """ score groups by approximate level of diversity """
 
 
-def score_group(student_identifers):
+from typing import List, Tuple, Union
+
+
+# pylint: disable=bad-continuation
+def score_group(
+    student_identifers: Union[List[List[Union[str, bool]]], List[str]]
+) -> int:
     """ score single group """
     score = 0
     for student in student_identifers:
@@ -11,7 +17,10 @@ def score_group(student_identifers):
     return score
 
 
-def score_groups(student_groups):
+# pylint: disable=bad-continuation
+def score_groups(
+    student_groups: Union[List[List[str]], List[List[List[Union[str, bool]]]]]
+) -> Tuple[List[int], int]:
     """ score multiple groups """
     scores = []
     ave = 0

@@ -1,0 +1,57 @@
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+  <main role="main" class="container">
+      <div class="content-section">
+        <form method="post">
+          {% csrf_token %} <!--must have this line for forms-->
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Student Survey</legend>
+            <!-- Adds a section for question one. -->
+            <form action="/action_page.php">
+              <div class="form-group">
+                <label for="Question One">Question One:</label>
+                <input type="text" class="form-control" placeholder="Enter Yes or No" name="question-answer">
+              </div>
+            </form>
+            <!-- Adds a section for question two. -->
+            <form action="/action_page.php">
+              <div class="form-group">
+                <label for="Question Two">Question Two:</label>
+                <input type="text" class="form-control" placeholder="Enter Yes or No" name="question-answer">
+              </div>
+            </form>
+            <!-- Adds a section for Question Three. -->
+            <form action="/action_page.php">
+              <div class="form-group">
+                <label for="Question Three">Question Three:</label>
+                <input type="text" class="form-control" placeholder="Enter Yes or No" name="question-answer">
+              </div>
+            </form>
+            <!-- Adds a section for Question Four. -->
+            <form action="/action_page.php">
+              <div class="form-group">
+                <label for="Question Four">Question Four:</label>
+                <input type="text" class="form-control" placeholder="Enter Yes or No" name="question-answer">
+              </div>
+            </form>
+            <!-- Adds a section for Question Five. -->
+            <form action="/action_page.php">
+              <div class="form-group">
+                <label for="Question Five">Question Five:</label>
+                <input type="text" class="form-control" placeholder="Enter Yes or No" name="question-answer">
+              </div>
+            </form>
+
+          </fieldset>
+          <!-- Adds the create and cancel buttons. -->
+          <div class="form-group">
+            <button type="submit" name="button" class="btn btn-outline-info">Submit</button>
+            <button type="submit" name="button" class="btn btn-outline-info">Cancel</button>
+            <small class="text-muted">Back to Dashboard</small>
+          </div>
+        </form>
+        <div class="border-top pt-3">
+        </div>
+      </div>
+    </main>
+{% endblock %}
