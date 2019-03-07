@@ -24,7 +24,7 @@ if __name__ == "__main__":  # pragma: no cover
     print(GG_ARGUMENTS.students_file)
     STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
         GG_ARGUMENTS.absentees,
-        read_student_file.read_student_file(GG_ARGUMENTS.students_file),
+        read_student_file.read_csv_data(GG_ARGUMENTS.students_file),
     )
     logging.info("GatorGrouper will group these students:")
     logging.info("\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS))
