@@ -3,7 +3,6 @@
 import argparse
 import logging
 from gatorgrouper.utils import read_student_file
-from gatorgrouper.utils import defaults
 from gatorgrouper.utils import constants
 
 
@@ -96,6 +95,6 @@ def check_valid(args, students_list):
         verified_arguments = True
     if args.file is constants.NONE:
         verified_arguments = False
-    if read_student_file.read_student_file(args.file) == "":
+    if read_student_file.read_csv_data(args.file) == "":
         verified_arguments = False
     return verified_arguments

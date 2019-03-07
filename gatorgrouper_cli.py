@@ -21,7 +21,7 @@ if __name__ == "__main__":  # pragma: no cover
     logging.debug(GG_ARGUMENTS)
 
     # read in the student identifiers from the specified file
-    input_list = read_student_file.read_student_file(GG_ARGUMENTS.file)
+    input_list = read_student_file.read_csv_data(GG_ARGUMENTS.file)
     check_if_arguments_valid = parse_arguments.check_valid(GG_ARGUMENTS, input_list)
     if check_if_arguments_valid is False:
         print("Incorrect command-line arguments.")
@@ -29,7 +29,7 @@ if __name__ == "__main__":  # pragma: no cover
     else:
         STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
             GG_ARGUMENTS.absentees,
-            read_student_file.read_student_file(GG_ARGUMENTS.file),
+            read_student_file.read_csv_data(GG_ARGUMENTS.file),
         )
         logging.info("GatorGrouper will group these students:")
         logging.info(
