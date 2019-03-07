@@ -65,17 +65,17 @@ to type `python --version` and get `Python 3.7.2` or other version after
 As a Python 3 program, GatorGrouper relies on
 [Pipenv](https://github.com/pypa/pipenv) for the installation of the libraries
 on which it depends and the creation of the virtual environments in which it
-runs. To install GatorGrader, you should first follow Pipenv's installation
+runs. To install GatorGrouper, you should first follow Pipenv's installation
 instructions. You should also ensure that you have installed Git on your
 computer and that you can run Git commands in a terminal window. Then, you can
-type the following command in your terminal window to clone GatorGrader's GitHub
+type the following command in your terminal window to clone GatorGrouper's GitHub
 repository:
 
 ```
 git clone git@github.com:GatorEducator/gatorgrouper.git
 ```
 
-If you plan to develop new features for GatorGrader or if you want to run the
+If you plan to develop new features for GatorGrouper or if you want to run the
 tool's test suite in [Pytest](https://github.com/pytest-dev/pytest), then you
 will need to install the developer dependencies by typing `pipenv install --dev`
 in the directory that was cloned. If you only want to use GatorGrouper,
@@ -84,7 +84,7 @@ successfully, that's all you you have to do to install GatorGrouper!
 
 ## Testing GatorGrouper
 
-GatorGrader uses [Pytest](https://docs.pytest.org/en/latest/) for testing.
+GatorGrouper uses [Pytest](https://docs.pytest.org/en/latest/) for testing.
 Depending on your goals, there are several different configurations in which you
 can run the provided test suite. If you want to run the test suite to see if all
 of the test cases are correctly passing, then you can type one of the following
