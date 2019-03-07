@@ -329,6 +329,15 @@
             ],
             "version": "==0.12.1"
         },
+        "hypothesis": {
+            "hashes": [
+                "sha256:292b6a972e984e073b4a8e9ce5159412994ec2d6f62d2a777665b7017bb8442c",
+                "sha256:46767a7ecd03e51722280104aa813058ec75dabafddace9b307c618a963a41ed",
+                "sha256:5ed6d40ee9e5bf44a954fe33affcdb2f0a595b9f0adafe777d9ec87de702e4a0"
+            ],
+            "index": "pypi",
+            "version": "==4.7.19"
+        },
         "idna": {
             "hashes": [
                 "sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407",

@@ -98,6 +98,24 @@ def test_group_random_extra():
     assert num_group == 2
 
 
+@given(grpsize=integers(min_value=1, max_value=3))
+@settings(verbosity=Verbosity.verbose)
+@pytest.mark.hypothesisworks
+def test_group_random2(grpsize):
+    """This hypothesis test will test the group_random_group_size method"""
+    responses = [
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Nick", True, False, True, False],
+        ["Dan", False, True, False, True],
+    ]
+    returned_groups = group_random.group_random_group_size(responses, grpsize)
+    size_count = grpsize
+    assert len(returned_groups[0]) == size_count
+
+
 def test_group_random():
     """Testing the random type of grouping with everyone in an assigned group"""
     responses = [
