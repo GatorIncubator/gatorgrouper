@@ -33,13 +33,13 @@ def generate_csv_no_header(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
     data = [
-    # optionally include headers as the first entry
-    ["delgrecoj", "True", "True", "False", "True"],
-    ["delgrecoj2", "True", "True", "True", "True"]
+        # optionally include headers as the first entry
+        ["delgrecoj", "True", "True", "False", "True"],
+        ["delgrecoj2", "True", "True", "True", "True"],
     ]
     csv_string = ""
     for entry in data:
-        csv_string += ",".join(entry) +"\r\n"
+        csv_string += ",".join(entry) + "\r\n"
     with open(str(fn), "w") as csvfile:
         csvfile.write(csv_string)
     return str(fn)
