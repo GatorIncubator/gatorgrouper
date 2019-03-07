@@ -2,6 +2,7 @@
 
 from gatorgrouper.utils import read_student_file
 
+
 def test_read_student_file(generate_csv):
     """ Test read_student_file """
     expectedoutput = [["delgrecoj", True, True, False, True]]
