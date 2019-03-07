@@ -92,9 +92,9 @@ def check_valid(args, students_list):
     # CHECK: file was specified and it is not ""
     if args.file is not constants.NONE:
         verified_arguments = True
-    if 1 < args.group_size < students_list_length:
+    if 1 < args.group_size and args.group_size < students_list_length:
         verified_arguments = True
-    if 1 < args.num_group < students_list_length / 2:
+    if 1 < args.num_group and args.group_size < students_list_length / 2:
         verified_arguments = True
     if read_student_file.read_student_file(args.file) != "":
         verified_arguments = True
