@@ -26,3 +26,8 @@ def test_read_student_file(generate_csv):
     """ Test read_student_file """
     expectedoutput = [["delgrecoj", True, True, False, True]]
     assert read_student_file.read_student_file(generate_csv) == expectedoutput
+
+
+def test_no_file_found():
+    """ No file found """
+    assert read_student_file.read_student_file("fakepath") == ""
