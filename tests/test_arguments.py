@@ -75,18 +75,9 @@ def test_valid_size(generate_csv):
     assert checker is True
 
 
-def test_invalid_size(generate_csv):
-    """Check that invalid size arguments will not verify correctly"""
-    wrong_arguments = ["--file", generate_csv, "--group-size", "7"]
-    parsed_arguments = parse_arguments.parse_arguments(wrong_arguments)
-    input_list = read_student_file.read_student_file(parsed_arguments.file)
-    checker = parse_arguments.check_valid(parsed_arguments, input_list)
-    assert checker is False
-
-
-def test_invalid_num(generate_csv):
-    """Check that invalid number arguments will not verify correctly"""
-    wrong_arguments = ["--file", generate_csv, "--num-group", "7"]
+def test_invalid_input(generate_csv):
+    """Check that invalid size and number arguments will not verify correctly"""
+    wrong_arguments = ["--file", generate_csv, "--group-size", "7", "--num-group", "7"]
     parsed_arguments = parse_arguments.parse_arguments(wrong_arguments)
     input_list = read_student_file.read_student_file(parsed_arguments.file)
     checker = parse_arguments.check_valid(parsed_arguments, input_list)
