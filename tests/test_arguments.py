@@ -69,7 +69,7 @@ def test_file_argument_verifiable(generate_csv):
 def test_file_argument_invalid():
     """Check that invalid file arguments will not verify correctly"""
     wrong_arguments = ["--file", "x"]
-    parsed_arguments = parse_arguments.parse_arguments(correct_arguments)
+    parsed_arguments = parse_arguments.parse_arguments(wrong_arguments)
     input_list = read_student_file.read_student_file(parsed_arguments.file)
     checker = parse_arguments.check_valid(parsed_arguments, input_list)
     assert checker is False
