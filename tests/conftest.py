@@ -4,7 +4,6 @@ import sys
 import csv
 import pandas as pd
 
-# pylint: disable=redefined-outer-name
 import pytest
 
 # set the system path to contain the previous directory
