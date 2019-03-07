@@ -133,7 +133,6 @@ If your `.csv` file is not named `students.csv`, use the `--students-file` flag
 to let GatorGrouper know the file you are using.
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --students-file "file_name.csv"
 pipenv run python3 gatorgrouper/utils/gatorgrouper.py --students-file file_name.csv
 ```
 
