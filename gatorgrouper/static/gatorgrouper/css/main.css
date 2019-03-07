@@ -97,3 +97,42 @@ a.article-title:hover {
     margin-right: 15px;
     margin-top: 10px;
 }
+
+.dropbtn {
+  background-color: #007BFF;
+  color: white;
+  padding: 11px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 120px;
+  overflow: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,1);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 18px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
