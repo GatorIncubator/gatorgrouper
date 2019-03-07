@@ -1,5 +1,5 @@
 """ This is undocumented """
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
@@ -42,7 +42,11 @@ def create_classes(request):
     if request.method == "POST":
         formset = ClassFormSet(request.POST)
         if formset.is_valid():
-            formset.save()
+            stock = formset.save(commit=False)
+            stock.professor_id = request.user
+            stock.save()
+
+            return redirect('Gatorgrouper-home')
     else:
         formset = ClassFormSet()
 
