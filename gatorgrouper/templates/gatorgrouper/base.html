@@ -39,15 +39,24 @@
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="nav ml-auto">
-        <li class="nav-item">
-            <a class="btn-md btn btn-primary btn-space" href="{% url 'Gatorgrouper-home' %}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-md btn-social btn-github btn-space" href="https://github.com/login"><span class="fab fa-github img-fluid"></span>Login with GitHub</a>
-        </li>
-        <li class="nav-item">
-           <a class="btn btn-md btn-social btn-google btn-space" href="https://accounts.google.com/ServiceLogin/identifier?hl=en&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><span class="fab fa-google img-fluid"></span> Log In With Google</a>
-        </li>
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="btn btn-md btn-google btn-space" href="{% url 'logout' %}">Log Out</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="btn btn-md btn-google btn-space" href="{% url 'login' %}">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn-md btn btn-primary btn-space" href="{% url 'Gatorgrouper-home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-md btn-social btn-github btn-space" href="https://github.com/login"><span class="fab fa-github img-fluid"></span>Login with GitHub</a>
+            </li>
+            <li class="nav-item">
+               <a class="btn btn-md btn-social btn-google btn-space" href="https://accounts.google.com/ServiceLogin/identifier?hl=en&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><span class="fab fa-google img-fluid"></span> Log In With Google</a>
+            </li>
+        {% endif %}
         <li class="nav-item">
           <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">|||</button>
@@ -81,12 +90,6 @@
             }
           }
         </script>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-md btn-google btn-space" href="{% url 'login' %}">Log In</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-md btn-google btn-space" href="{% url 'logout' %}">Log Out</a>
         </li>
       </ul>
     </div>
