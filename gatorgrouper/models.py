@@ -47,6 +47,7 @@ class Professor(AbstractUser):
     last_name = models.CharField(max_length=25)
     if not email:
         raise ValueError('Users must have an email address')
+    objects = UserManager()
 
     def __str__(self):
         return "{}, {}".format(self.last_name, self.first_name)
