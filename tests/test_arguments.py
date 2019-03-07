@@ -81,4 +81,7 @@ def test_invalid_size(generate_csv):
     parsed_arguments = parse_arguments.parse_arguments(wrong_arguments)
     input_list = read_student_file.read_student_file(parsed_arguments.file)
     checker = parse_arguments.check_valid(parsed_arguments, input_list)
+    print(input_list)
+    print(parsed_arguments)
+    print(parsed_arguments.group_size)
     assert checker is False
