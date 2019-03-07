@@ -1,5 +1,5 @@
 """Testing group size"""
-from utils import parse_arguments
+from gatorgrouper.utils import parse_arguments
 
 
 def test_check_valid_group_size_one():
