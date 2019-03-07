@@ -1,0 +1,67 @@
+
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One -->
+      <div class="carousel-item active" style="background-image: url('static/gatorgrouper/images/GGbackground.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Gator Grouper</h3>
+          <p class="lead">Gator Grouper is an program that easily seperates a classroom full of individuals into groups based on user preferences!.</p>
+        </div>
+      </div>
+      <!-- Slide Two -->
+      <div class="carousel-item" style="background-image: url('static/gatorgrouper/images/Allegheny.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Developer Story</h3>
+          <p class="lead">The Gator Grouper program was developed by the Allegheny College Software Engineering team.</p>
+        </div>
+      </div>
+      <!-- Slide Three  -->
+      <div class="carousel-item" style="background-image: url('static/gatorgrouper/images/groupWork.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="display-4">Teamwork</h3>
+          <p class="lead">"Teamwork is the ability to work together toward a common vision. The ability to direct individual accomplishments toward organizational objectives. It is the fuel that allows common people to attain uncommon results." --Andrew Carnegie.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+  <!-- Page Content -->
+<section class="py-5">
+    <div class="container">
+      <h1 class="font-weight-light">Product Desrcription</h1>
+      <p class="lead">Gator Grouper is a website that helps assist teachers when organzing students into groups. It organizes these groups based off of the students skill levels.</p>
+      <p class="lead">To use this tool one can sign up via multiple ways. After that you can then login to your account, answer the survey, then be placed into groups with people in your class.</p>
+      <p class="lead">This tool is designed to create fair and balanced groups based on a set of questions. Professors, teachers, students, and anyone in need of creating balanced groups for projects is encouraged to try this tool.</p>
+      <p class="lead">Any others</p>
+    </div>
+</section>
+<section class="py-5">
+  <div class="container">
+    <h1 class="font-weight-light">Contact Us</h1>
+    <p class="lead">If you have problems or concerns with gatorgrouper please do not hesitat to reach out to the Allegheny Software Engineering team</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-light py-5">
+  <div class="container">
+    <div class="small text-center text-muted">Copyright &copy; 2019 - GatorGrouper</div>
+  </div>
+</footer>
+
+{% endblock content %}

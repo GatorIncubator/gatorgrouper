@@ -9,9 +9,10 @@ import read_student_file
 import group_rrobin
 import group_random
 import display
+import constants
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
 
     # parse the arguments and display welcome message
     GG_ARGUMENTS = parse_arguments.parse_arguments(sys.argv[1:])
@@ -21,9 +22,9 @@ if __name__ == "__main__":
 
     # read in the student identifiers from the specified file
     print(GG_ARGUMENTS.students_file)
-    STUDENT_IDENTIFIERS = remove_absent_students.remove_absent_students(
+    STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
         GG_ARGUMENTS.absentees,
-        read_student_file.read_student_file(GG_ARGUMENTS.students_file),
+        read_student_file.read_csv_data(GG_ARGUMENTS.students_file),
     )
     logging.info("GatorGrouper will group these students:")
     logging.info("\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS))
@@ -38,14 +39,14 @@ if __name__ == "__main__":
     # generate the groups and display them
     # pylint: disable=bad-continuation
     if (
-        GG_ARGUMENTS.grouping_method == "rrobin"
+        GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
         and GG_ARGUMENTS.num_group is defaults.DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
         )
     elif (
-        GG_ARGUMENTS.grouping_method == "rrobin"
+        GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
         and GG_ARGUMENTS.num_group is not defaults.DEFAULT_NUMGRP
     ):
         GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
