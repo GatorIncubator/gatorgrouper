@@ -84,4 +84,5 @@ def test_invalid_size(generate_csv):
     print(input_list)
     print(parsed_arguments)
     print(parsed_arguments.group_size)
+    print(len(input_list))
     assert checker is False
