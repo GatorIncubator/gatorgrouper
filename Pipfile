@@ -24,6 +24,7 @@ pandas = "*"
 pathlib = "*"
 py = "*"
 django = "*"
+social-auth-app-django = "*"
 
 [pipenv]
 allow_prereleases = true
