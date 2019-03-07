@@ -40,7 +40,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="nav ml-auto">
         <li class="nav-item">
-            <a class="btn-md btn btn-primary btn-space" href="#">Home</a>
+            <a class="btn-md btn btn-primary btn-space" href="{% url 'Gatorgrouper-home' %}">Home</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-md btn-social btn-github btn-space" href="https://github.com/login"><span class="fab fa-github img-fluid"></span>Login with GitHub</a>
@@ -83,7 +83,10 @@
         </script>
         </li>
         <li class="nav-item">
-            <a class="btn btn-md btn-social btn-google btn-space" href="{% url 'login' %}">Log In</a>
+            <a class="btn btn-md btn-google btn-space" href="{% url 'login' %}">Log In</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-md btn-google btn-space" href="{% url 'logout' %}">Log Out</a>
         </li>
       </ul>
     </div>
