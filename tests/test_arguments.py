@@ -75,6 +75,15 @@ def test_file_argument_invalid():
     assert checker is False
 
 
+def test_file_argument_empty():
+    """Check that invalid file arguments will not verify correctly"""
+    wrong_arguments = ["--file", ""]
+    parsed_arguments = parse_arguments.parse_arguments(wrong_arguments)
+    input_list = read_student_file.read_student_file(parsed_arguments.file)
+    checker = parse_arguments.check_valid(parsed_arguments, input_list)
+    assert checker is False
+
+
 def test_valid_size(generate_csv):
     """Check that valid size arguments will not verify correctly"""
     correct_arguments = ["--file", generate_csv, "--group-size", "3"]
