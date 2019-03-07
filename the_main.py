@@ -21,8 +21,8 @@ if __name__ == "__main__":  # pragma: no cover
     logging.debug(GG_ARGUMENTS)
 
     # read in the student identifiers from the specified file
-    input_file = read_student_file.read_student_file(GG_ARGUMENTS.file)
-    check_if_arguments_valid = parse_arguments.check_valid(GG_ARGUMENTS, input_file)
+    input_list = read_student_file.read_student_file(GG_ARGUMENTS.file)
+    check_if_arguments_valid = parse_arguments.check_valid(GG_ARGUMENTS, input_list)
     if check_if_arguments_valid is False:
         print("Incorrect command-line arguments.")
         sys.exit(1)
