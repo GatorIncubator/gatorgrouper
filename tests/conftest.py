@@ -2,7 +2,6 @@
 import os
 import sys
 import csv
-import pandas as pd
 
 import pytest
 
@@ -81,15 +80,16 @@ def generate_csv(tmpdir_factory):
 def generate_csv_no_header(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
-    df_list = {
-        "NAME": ["delgrecoj", "delgrecoj2"],
-        "Q1": ["True", "True"],
-        "Q2": ["True", "True"],
-        "Q3": ["False", "True"],
-        "Q4": ["True", "True"],
-    }
-    df = pd.DataFrame(df_list)
-    df.to_csv(str(fn), index=False, header=False)
+    data = [
+        # optionally include headers as the first entry
+        ["delgrecoj", "True", "True", "False", "True"],
+        ["delgrecoj2", "True", "True", "True", "True"],
+    ]
+    csv_string = ""
+    for entry in data:
+        csv_string += ",".join(entry) + "\r\n"
+    with open(str(fn), "w") as csvfile:
+        csvfile.write(csv_string)
     return str(fn)
 
 
