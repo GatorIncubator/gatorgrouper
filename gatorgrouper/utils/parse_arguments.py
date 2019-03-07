@@ -91,11 +91,11 @@ def check_valid(args, students_list):
     students_list_length = len(students_list)
     # CHECK: file was specified and it is not ""
     if args.file is not constants.NONE:
-        verified_arguments = True
+        verified_arguments = 1
     if 1 < args.group_size and args.group_size < students_list_length:
-        verified_arguments = True
+        verified_arguments = 2
     if 1 < args.num_group and args.group_size < students_list_length / 2:
-        verified_arguments = True
+        verified_arguments = 3
     if read_student_file.read_student_file(args.file) != "":
-        verified_arguments = True
+        verified_arguments = 4
     return verified_arguments
