@@ -94,9 +94,9 @@ def check_valid(args, students_list):
         verified_arguments = True
     # CHECK: number was specified and it is not ""
     if 1 < args.group_size < students_list_length:
-         verified_arguments = True
+        verified_arguments = True
     if 1 < args.num_group < students_list_length / 2:
-         verified_arguments = True
+        verified_arguments = True
     if read_student_file.read_student_file(args.file) != "":
         verified_arguments = True
     return verified_arguments
