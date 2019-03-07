@@ -23,11 +23,11 @@ def generate_csv(tmpdir_factory):
         writer.writeheader()
         writer.writerow(
             {
-                "NAME": "delgrecoj",
-                "Q1": "True",
-                "Q2": "True",
-                "Q3": "False",
-                "Q4": "True",
+                "NAME": ["delgrecoj", "delgrecoj2", "delgrecoj3"],
+                "Q1": ["True", "True", "True"],
+                "Q2": ["True", "True", "True"],
+                "Q3": ["False", "True", "True"],
+                "Q4": ["True", "True", "True"],
             }
         )
     return str(fn)
