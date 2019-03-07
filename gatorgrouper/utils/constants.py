@@ -10,3 +10,7 @@ DEFAULT_NUMGRP = 3
 DEFAULT_ABSENT = ""
 
 NONE = ""
+
+EMPTY_STRING = ""
+
+ERROR = "error:"

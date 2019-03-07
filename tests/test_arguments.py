@@ -1,8 +1,17 @@
 """Command line argument testing"""
 
 import logging
+import pytest
 from gatorgrouper.utils import parse_arguments
 from gatorgrouper.utils import constants
+
+def test_parse_arguments1(no_arguments, capsys):
+    """No command-line arguments is incorrect"""
+    with pytest.raises(SystemExit):
+        parse_arguments.parse_arguments(no_arguments)
+    standard_out, standard_err = capsys.readouterr()
+    assert standard_out is constants.EMPTY_STRING
+    assert constants.ERROR in standard_err
 
 
 def test_parse_arguments2(generate_csv):

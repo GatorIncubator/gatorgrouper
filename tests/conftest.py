@@ -47,3 +47,9 @@ def generate_csv_no_header(tmpdir_factory):
     df = pd.DataFrame(df_list)
     df.to_csv(str(fn), index=False, header=False)
     return str(fn)
+
+
+@pytest.fixture
+def no_arguments():
+    """Return no command-line arguments"""
+    return []
