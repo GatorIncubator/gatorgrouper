@@ -134,6 +134,27 @@ def test_group_random():
     assert len(returned_groups1[0]) == 2
 
 
+@given(grpsize=integers(min_value=1, max_value=3))
+@settings(verbosity=Verbosity.verbose)
+@pytest.mark.hypothesisworks
+def test_hypothesis_group_random(grpsize):
+    """Testing the random type of grouping with everyone in an assigned group with hypothesis"""
+    responses = [
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Dan", False, True, False, True],
+        ["Michael", True, True, False, False],
+    ]
+    num_group = len(responses) // grpsize
+    returned_groups = group_random.group_random_group_size(responses, grpsize)
+    returned_groups1 = group_random.group_random_num_group(responses, num_group)
+    size_count = grpsize
+    assert len(returned_groups) == num_group
+    assert len(returned_groups1[0]) == grpsize
+
+
 def test_shuffle():
     """Checking the shuffle_students method for appropriate ouput"""
     student_identifiers = [
