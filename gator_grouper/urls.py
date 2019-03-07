@@ -18,9 +18,8 @@ from django.urls import include, re_path, path
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    re_path(r"^admin/", admin.site.urls),
-    re_path(r"", include("gatorgrouper.urls")),
-    re_path(r"^gatorgrouper/", include("gatorgrouper.urls")),
+    path("admin/", admin.site.urls),
+    path("", include("gatorgrouper.urls")),
     re_path(r"^auth/", include("social_django.urls", namespace="social")),
     path('login/', auth_views.LoginView.as_view(template_name='gatorgrouper/login.html'), name = 'login')
 
