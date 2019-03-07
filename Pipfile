@@ -18,11 +18,13 @@ oauth2client = "*"
 pytest-django = "*"
 mixer = "*"
 pylint = "*"
+hypothesis = "*"
 
 [packages]
 pathlib = "*"
 py = "*"
 django = "*"
+networkx = "*"
 social-auth-app-django = "*"
 
 [pipenv]
