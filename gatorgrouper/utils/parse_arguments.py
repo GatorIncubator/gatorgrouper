@@ -94,7 +94,7 @@ def parse_arguments(args):
         )
         is False
     ):
-        return error
+        return constants.ERROR
 
 
 def check_valid(args):
