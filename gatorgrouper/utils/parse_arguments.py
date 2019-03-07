@@ -85,7 +85,7 @@ def parse_arguments(args):
         )
         is False
     ):
-        return error
+        return constants.ERROR
 
     if (
         check_valid_num_group(
