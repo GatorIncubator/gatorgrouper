@@ -16,11 +16,14 @@ autopep8 = "*"
 gspread =  "*"
 oauth2client = "*"
 pylint = "*"
-pandas = "*"
+hypothesis = "*"
 
 [packages]
 pathlib = "*"
 py = "*"
+django = "*"
+networkx = "*"
+social-auth-app-django = "*"
 
 [pipenv]
 allow_prereleases = true

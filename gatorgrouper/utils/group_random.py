@@ -6,6 +6,7 @@ import itertools
 import random
 from . import group_scoring
 from typing import List, Union
+from gatorgrouper.utils import group_scoring
 
 
 # pylint: disable=bad-continuation
