@@ -50,7 +50,7 @@ def test_group_random1():
 @given(group_size=integers(min_value=1, max_value=3))
 @settings(verbosity=Verbosity.verbose, deadline=None)
 @pytest.mark.hypothesisworks
-def hypothesis_test_group_random1(group_size):
+def test_hypothesis_group_random1(group_size):
     """this hypothesis test can generate the group numbers and test if it pass
         the requirements"""
     lst = [
@@ -101,7 +101,7 @@ def test_group_random_extra():
 @given(grpsize=integers(min_value=1, max_value=3))
 @settings(verbosity=Verbosity.verbose)
 @pytest.mark.hypothesisworks
-def test_group_random2(grpsize):
+def test_hypothesis_group_random_extra(grpsize):
     """This hypothesis test will test the group_random_group_size method"""
     responses = [
         ["Nick", True, False, True, False],
@@ -114,6 +114,27 @@ def test_group_random2(grpsize):
     returned_groups = group_random.group_random_group_size(responses, grpsize)
     size_count = grpsize
     assert len(returned_groups[0]) == size_count
+
+
+@given(grpsize=integers(min_value=1, max_value=3))
+@settings(verbosity=Verbosity.verbose)
+@pytest.mark.hypothesisworks
+def test_hypothesis_group_random(grpsize):
+    """Testing the random type of grouping with everyone in an assigned group"""
+    responses = [
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Dan", False, True, False, True],
+        ["Michael", True, True, False, False],
+    ]
+    grpsize = 2
+    num_group = 3
+    returned_groups = group_random.group_random_group_size(responses, grpsize)
+    returned_groups1 = group_random.group_random_num_group(responses, num_group)
+    assert len(returned_groups) == 3
+    assert len(returned_groups1[0]) == 2
 
 
 def test_group_random():
