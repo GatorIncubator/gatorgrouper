@@ -67,7 +67,7 @@ def test_file_argument_verifiable(generate_csv):
 
 
 def test_valid_size(generate_csv):
-    """Check that invalid size arguments will not verify correctly"""
+    """Check that valid size arguments will not verify correctly"""
     correct_arguments = ["--file", generate_csv, "--group-size", "3"]
     parsed_arguments = parse_arguments.parse_arguments(correct_arguments)
     input_list = read_student_file.read_student_file(parsed_arguments.file)
