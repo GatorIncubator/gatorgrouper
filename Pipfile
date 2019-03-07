@@ -24,6 +24,7 @@ hypothesis = "*"
 pathlib = "*"
 py = "*"
 django = "*"
+networkx = "*"
 social-auth-app-django = "*"
 
 [pipenv]

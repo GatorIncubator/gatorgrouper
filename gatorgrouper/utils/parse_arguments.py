@@ -2,9 +2,9 @@
 
 import argparse
 import logging
-import read_student_file
-import defaults
-import constants
+from gatorgrouper.utils import read_student_file
+from gatorgrouper.utils import defaults
+from gatorgrouper.utils import constants
 
 
 def parse_arguments(args):

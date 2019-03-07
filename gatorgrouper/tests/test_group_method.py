@@ -6,8 +6,8 @@ from hypothesis.strategies import integers
 
 
 import pytest
-from utils import group_random
-from utils import group_rrobin
+from gatorgrouper.utils import group_random
+from gatorgrouper.utils import group_rrobin
 
 
 def test_group_random1():
