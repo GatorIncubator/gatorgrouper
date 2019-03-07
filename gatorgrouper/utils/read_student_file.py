@@ -1,7 +1,6 @@
 """ Reads CSV data file """
 
 import csv
-import sys
 
 from pathlib import Path
 
