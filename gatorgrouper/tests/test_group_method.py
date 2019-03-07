@@ -1,4 +1,11 @@
 """Testing random grouping"""
+from hypothesis import given
+from hypothesis import settings
+from hypothesis import Verbosity
+from hypothesis.strategies import integers
+
+
+import pytest
 from gatorgrouper.utils import group_random
 from gatorgrouper.utils import group_rrobin
 
@@ -38,6 +45,37 @@ def test_group_random1():
     assert len(actual_output3[0]) == 6
     assert len(actual_output4) == 3
     assert len(actual_output4[0]) == 2
+
+
+@given(group_size=integers(min_value=1, max_value=3))
+@settings(verbosity=Verbosity.verbose, deadline=None)
+@pytest.mark.hypothesisworks
+def hypothesis_test_group_random1(group_size):
+    """this hypothesis test can generate the group numbers and test if it pass
+        the requirements"""
+    lst = [
+        "Austin",
+        "Dan",
+        "Angie",
+        "Cullen",
+        "Chase",
+        "Vinny",
+        "Nick",
+        "Jeff",
+        "James",
+        "Kelly",
+        "Nikki",
+        "Robert",
+    ]
+    lst2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
+    size_count = group_size
+    actual_output = group_random.group_random_group_size(lst, group_size)
+    actual_output2 = group_random.group_random_group_size(lst2, group_size)
+
+    assert len(actual_output) == 12 // size_count
+    assert len(actual_output[0]) == size_count
+    assert len(actual_output2) == 6 // size_count
+    assert len(actual_output2[0]) == size_count
 
 
 def test_group_random_extra():
