@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.forms import modelform_factory
+from django.contrib.auth.decorators import login_required
 
 # from django.http import HttpResponse
 # from django.http import Http404
@@ -27,10 +28,13 @@ def index(request):
 
 def home(request):
     """ Homepage view """
+    if request.user.__str__() != 'AnonymousUser':
+        print(request.user.email)
+        print("Hello")
     return render(request, "gatorgrouper/home.html")
     # return HttpResponse
 
-
+@login_required
 def create_classes(request):
     """ Create classes view """
 
