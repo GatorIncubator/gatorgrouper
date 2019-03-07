@@ -78,8 +78,6 @@ def parse_arguments(args):
 
     # pylint: disable=bad-continuation
 
-    error = "Invalid entry."
-
     if (
         check_valid_group_size(
             gg_arguments_finished.group_size,
