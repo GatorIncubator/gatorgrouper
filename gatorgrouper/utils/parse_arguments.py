@@ -96,6 +96,7 @@ def parse_arguments(args):
     ):
         # quit() is not a valid command
         return "Invalid entry."
+    return gg_arguments_finished
 
 
 def check_valid(args):
