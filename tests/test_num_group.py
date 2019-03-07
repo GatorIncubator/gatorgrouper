@@ -16,7 +16,7 @@ def test_check_number_groups_size_zero():
         "kapfhammer",
     ]
     student_groups = parse_arguments.check_valid_num_group(numgrp, student_identifiers)
-    assert student_groups
+    assert student_groups is False
 
 
 def test_check_number_groups_size_one():
@@ -33,7 +33,7 @@ def test_check_number_groups_size_one():
         "kapfhammer",
     ]
     student_groups = parse_arguments.check_valid_num_group(numgrp, student_identifiers)
-    assert student_groups
+    assert student_groups is False
 
 
 def test_check_number_groups_size_multi():
