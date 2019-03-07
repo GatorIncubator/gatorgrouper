@@ -4,6 +4,7 @@ import logging
 import pytest
 from gatorgrouper.utils import parse_arguments
 from gatorgrouper.utils import constants
+from gatorgrouper.utils import read_student_file
 
 
 def test_parse_arguments1(no_arguments, capsys):
@@ -54,3 +55,12 @@ def test_parse_arguments5(generate_csv):
     args = ["--file", generate_csv, "--num-group", "3"]
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.num_group == 3
+
+
+def test_file_argument_verifiable(generate_csv):
+    """Check that valid directory arguments will verify correctly"""
+    correct_arguments = ["--file", generate_csv]
+    parsed_arguments = parse_arguments.parse_arguments(correct_arguments)
+    input_list = read_student_file.read_student_file(parsed_arguments.file)
+    checker = parse_arguments.check_valid(parsed_arguments, input_list)
+    assert checker is True
