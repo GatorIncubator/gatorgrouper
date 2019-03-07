@@ -48,6 +48,33 @@ def generate_csv(tmpdir_factory):
                 "Q4": "True",
             }
         )
+        writer.writerow(
+            {
+                "NAME": "delgrecoj4",
+                "Q1": "True",
+                "Q2": "True",
+                "Q3": "False",
+                "Q4": "True",
+            }
+        )
+        writer.writerow(
+            {
+                "NAME": "delgrecoj5",
+                "Q1": "True",
+                "Q2": "True",
+                "Q3": "False",
+                "Q4": "True",
+            }
+        )
+        writer.writerow(
+            {
+                "NAME": "delgrecoj6",
+                "Q1": "True",
+                "Q2": "True",
+                "Q3": "False",
+                "Q4": "True",
+            }
+        )
     return str(fn)
 
 
