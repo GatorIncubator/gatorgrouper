@@ -49,19 +49,19 @@ def create_classes(request):
     return render(request, "gatorgrouper/classes.html", {"title": "Create Classes",'formset': formset})
     # return HttpResponse
 
-
+@login_required
 def assignments(request):
     """ Create assignments view """
     return render(
         request, "gatorgrouper/assignments.html", {"title": "Create Assignments"}
     )
 
-
+@login_required
 def survey(request):
     """ Student's grouping preference? """
     return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
 
-
+@login_required
 def groupResult(request):
     """ Group result view """
     return render(
