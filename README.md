@@ -87,8 +87,8 @@ successfully, that's all you you have to do to install GatorGrouper!
 GatorGrouper uses [Pytest](https://docs.pytest.org/en/latest/) for testing.
 Depending on your goals, there are several different configurations in which you
 can run the provided test suite. If you want to run the test suite to see if all
-of the test cases are correctly passing, then you can type one of the following
-commands in your terminal window:
+of the test cases are correctly passing, then you can type the following
+command in your terminal window:
 
 ```
 pipenv run pytest
