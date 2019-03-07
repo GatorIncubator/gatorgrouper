@@ -53,6 +53,7 @@ def create_classes(request):
     return render(request, "gatorgrouper/classes.html", {"title": "Create Classes",'formset': formset})
     # return HttpResponse
 
+
 @login_required
 def assignments(request):
     """ Create assignments view """
