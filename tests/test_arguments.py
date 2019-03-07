@@ -5,6 +5,7 @@ import pytest
 from gatorgrouper.utils import parse_arguments
 from gatorgrouper.utils import constants
 
+
 def test_parse_arguments1(no_arguments, capsys):
     """No command-line arguments is incorrect"""
     with pytest.raises(SystemExit):
