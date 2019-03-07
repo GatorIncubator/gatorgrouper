@@ -52,11 +52,11 @@
           <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">|||</button>
             <div id="myDropdown" class="dropdown-content">
-              <a href="http://127.0.0.1:8000">Home</a>
-              <a href="http://127.0.0.1:8000/assignments">Assignments</a>
-              <a href="http://127.0.0.1:8000/classes">Classes</a>
-              <a href="http://127.0.0.1:8000/survey">Survey</a>
-              <a href="http://127.0.0.1:8000/viewing-groups">Viewing Groups</a>
+              <a href="{% url 'Gatorgrouper-home' %}">Home</a>
+              <a href="{% url 'Gatorgrouper-assignments' %}">Assignments</a>
+              <a href="{% url 'Gatorgrouper-classes' %}">Classes</a>
+              <a href="{% url 'Gatorgrouper-survey' %}">Survey</a>
+              <a href="{% url 'Gatorgrouper-groups' %}">Viewing Groups</a>
             </div>
           </div>
 
