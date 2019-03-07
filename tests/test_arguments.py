@@ -58,8 +58,17 @@ def test_parse_arguments5(generate_csv):
 
 
 def test_file_argument_verifiable(generate_csv):
-    """Check that valid directory arguments will verify correctly"""
+    """Check that valid file arguments will verify correctly"""
     correct_arguments = ["--file", generate_csv]
+    parsed_arguments = parse_arguments.parse_arguments(correct_arguments)
+    input_list = read_student_file.read_student_file(parsed_arguments.file)
+    checker = parse_arguments.check_valid(parsed_arguments, input_list)
+    assert checker is True
+
+
+def test_valid_size(generate_csv):
+    """Check that invalid size arguments will not verify correctly"""
+    correct_arguments = ["--file", generate_csv, "--group-size", "3"]
     parsed_arguments = parse_arguments.parse_arguments(correct_arguments)
     input_list = read_student_file.read_student_file(parsed_arguments.file)
     checker = parse_arguments.check_valid(parsed_arguments, input_list)
