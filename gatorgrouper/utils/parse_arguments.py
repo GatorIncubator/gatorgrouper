@@ -3,7 +3,6 @@
 import argparse
 import logging
 from gatorgrouper.utils import read_student_file
-from gatorgrouper.utils import defaults
 from gatorgrouper.utils import constants
 
 
@@ -37,7 +36,7 @@ def parse_arguments(args):
         "--group-size",
         help="Number of students in a group",
         type=int,
-        default=defaults.DEFAULT_GRPSIZE,
+        default=constants.DEFAULT_GRPSIZE,
         required=False,
     )
 
@@ -45,16 +44,12 @@ def parse_arguments(args):
         "--num-group",
         help="Number of groups",
         type=int,
-        default=defaults.DEFAULT_NUMGRP,
+        default=constants.DEFAULT_NUMGRP,
         required=False,
     )
 
     gg_parser.add_argument(
-        "--students-file",
-        help="File containing last name of students",
-        type=str,
-        default=defaults.DEFAULT_CSVFILE,
-        required=False,
+        "--file", required=True, type=str, help="Input the file path"
     )
 
     gg_parser.add_argument(
@@ -62,18 +57,24 @@ def parse_arguments(args):
         help="Use random grouping method",
         action="store_const",
         dest="grouping_method",
-        const="random",
+        const=constants.ALGORITHM_RANDOM,
     )
 
     gg_parser.add_argument(
-        "--round-robin",
+        "--rrobin",
         help="Use round-robin grouping method",
         action="store_const",
         dest="grouping_method",
         const=constants.ALGORITHM_ROUND_ROBIN,
     )
-
-    gg_parser.add_argument("--absentees", nargs="+", type=str)
+    gg_parser.add_argument(
+        "--absentees",
+        help="Student that is absent",
+        nargs="+",
+        type=str,
+        default=constants.DEFAULT_ABSENT,
+        required=False,
+    )
 
     gg_arguments_finished = gg_parser.parse_args(args)
 
@@ -81,68 +82,19 @@ def parse_arguments(args):
         format="%(levelname)s:%(pathname)s: %(message)s",
         level=gg_arguments_finished.logging_level,
     )
-
-    # pylint: disable=bad-continuation
-    if (
-        check_valid_group_size(
-            gg_arguments_finished.group_size,
-            read_student_file.read_csv_data(gg_arguments_finished.students_file),
-        )
-        is False
-    ):
-        quit()
-
-    if (
-        check_valid_num_group(
-            gg_arguments_finished.num_group,
-            read_student_file.read_csv_data(gg_arguments_finished.students_file),
-        )
-        is False
-    ):
-        quit()
-
-    if gg_arguments_finished.absentees is None:
-        gg_arguments_finished.absentees = []
-
     return gg_arguments_finished
 
 
-def check_valid_num_group(numgrp, students_list):
-    """Checking if valid num group"""
-    if students_list == "filenotfound":
-        logging.info("Skipping group size check; file must not exist.")
-        return True
+def check_valid(args, students_list):
+    """Verify the command-line arguments"""
+    verified_arguments = False
     students_list_length = len(students_list)
-    if numgrp > students_list_length:
-        logging.error("Number of groups: %d", numgrp)
-        logging.error("Number of students: %d", students_list_length)
-        logging.error(
-            "Number of groups must be less than or equal to "
-            "the number of students to be grouped. "
-        )
-        return False
-    logging.info("Number of groups: %d", numgrp)
-    logging.info("Number of students: %d", students_list_length)
-    logging.info("Valid number of groups.")
-    return True
-
-
-def check_valid_group_size(group_size, students_list):
-    """ Checks if group size is valid """
-    if students_list == "filenotfound":
-        logging.info("Skipping group size check; file must not exist.")
-        return True
-    students_list_length = len(students_list)
-    if group_size <= 1 or group_size > students_list_length / 2:
-        logging.error("Group size: %d", group_size)
-        logging.error("Number of students: %d", students_list_length)
-        logging.error(
-            "Group size must be greater than 1 and less than "
-            "or equal to half of the number of students."
-        )
-        return False
-    # group size passed checks
-    logging.info("Group size: %d", group_size)
-    logging.info("Number of students: %d", students_list_length)
-    logging.info("Valid group size.")
-    return True
+    if args.group_size > 1 and args.group_size <= students_list_length / 2:
+        verified_arguments = True
+    if args.num_group > 1 and args.group_size <= students_list_length / 2:
+        verified_arguments = True
+    if args.file is constants.NONE:
+        verified_arguments = False
+    if read_student_file.read_csv_data(args.file) == "":
+        verified_arguments = False
+    return verified_arguments
