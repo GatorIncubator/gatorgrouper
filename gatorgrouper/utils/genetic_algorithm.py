@@ -1,4 +1,6 @@
-"""Generate grouping based on student skills and preferences."""
+"""Generate grouping based on student skills and preferences.
+This code is under MIT license from
+https://github.com/yeeunmariakim/gatorgrouper/blob/master/genetic_algorithm.py"""
 from typing import List
 import random
 from colors import bold
