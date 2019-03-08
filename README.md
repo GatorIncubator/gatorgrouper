@@ -222,7 +222,7 @@ average: 3
 ```
 
 In this case, the average score is the same as with the random grouping method,
-but all the groups have atleast one student willing to be a team leader. This
+but all the groups have at least one student willing to be a team leader. This
 has the potential to make the assignment more effective by maximizing team
 effectiveness.
 
