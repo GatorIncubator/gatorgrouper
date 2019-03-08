@@ -130,14 +130,12 @@ pipenv run python3 gatorgrouper_cli.py -h
 ### Details with Importing Input File
 
 Since input file is required, use the `--file` flag to let GatorGrouper know
-the path of the file you are using, or the file name if it is in the root of
-GatorGrouper repository. Please make sure the input file has more than six
-students. Otherwise you should change both group size and number of groups
+the path of the file you are using. Please make sure the input file has more than
+six students. Otherwise you should change both group size and number of groups
 to a value larger than 1 and smaller than half of the total number of students.
 
 ```shell
 pipenv run python3 gatorgrouper_cli.py --file filepath
-pipenv run python3 gatorgrouper_cli.py --file filename.csv
 ```
 
 ### Group Size
@@ -149,7 +147,7 @@ pipenv run python3 gatorgrouper_cli.py --file filepath --group-size 4
 ```
 
 This indicates that groups should each contain 4 members.  The provided group
-size should be greater than 2 and equal to or less than half the total number of
+size should be greater than or equal to 2 and equal to or less than half the total number of
 students.  If the group size is not specified, the default group size is 3.
 
 ### Number of groups
