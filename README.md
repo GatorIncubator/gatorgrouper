@@ -149,7 +149,7 @@ pipenv run python3 gatorgrouper_cli.py --file filepath --group-size 4
 ```
 
 This indicates that groups should each contain 4 members.  The provided group
-size should be greater than 1 and equal to or less than half the total number of
+size should be greater than 2 and equal to or less than half the total number of
 students.  If the group size is not specified, the default group size is 3.
 
 ### Number of groups
@@ -162,10 +162,9 @@ pipenv run python3 gatorgrouper_cli.py --file filepath --num-groups 4
 ```
 
 This indicates that the students should be divided into 4 groups. The number of
-groups should be at minimum 1 and at maximum the number of students to be placed
-into groups. If the number of groups is not specified or is specified as '3' the
-flag is ignored. This flag can be used along side `--absentees`, `--random`, and
-`--round-robin`.
+groups should be at minimum 2 and at maximum the number of half of the students to
+be placed into groups. This flag can be used along side `--absentees`, `--random`,
+and `--round-robin`.
 
 ### Random Grouping Method
 
