@@ -147,8 +147,8 @@ pipenv run python3 gatorgrouper_cli.py --file filepath --group-size 4
 ```
 
 This indicates that groups should each contain 4 members.  The provided group
-size should be greater than or equal to 2 and equal to or less than half the total number of
-students.  If the group size is not specified, the default group size is 3.
+size should be greater than or equal to 2 and equal to or less than half the total
+number of students.  If the group size is not specified, the default group size is 3.
 
 ### Number of groups
 
