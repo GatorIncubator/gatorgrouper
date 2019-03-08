@@ -85,20 +85,3 @@ def group_rrobin_num_group(responses, numgrps):
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
     return groups
-
-def conflict_sorting(students, conflicts):
-    """ sort through student conflicts by number of conflicts """
-
-    #adds to students the number of conflicts per student
-    for i in range(len(students)):
-        students[i].append(len(conflicts[i]))
-
-    shuffle(students)
-    print(students)
-    #sort the student conflicts by number of conflicts, removing the number of
-    #conflicts as it goes
-    sorted(students, key=lambda elem: elem[i][4])
-    for i in range(len(students)):
-        students[i].pop()
-
-    return students
