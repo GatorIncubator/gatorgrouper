@@ -4,10 +4,10 @@
       <div class="content-section">
         <form method="post">
           {% csrf_token %} <!--must have this line for forms-->
-          {{ formset }}
+          {{ formset.as_p }}
           <div class="form-group">
             <button type="submit" name="button" class="btn btn-outline-info">Create</button>
-            <button type="submit" name="button" class="btn btn-outline-info">Cancel</button>
+              <a class="btn btn-outline-info" href="{% url 'Gatorgrouper-home'%}">Cancel</a>
             <small class="text-muted">Back to Dashboard</small>
           </div>
         </form>
