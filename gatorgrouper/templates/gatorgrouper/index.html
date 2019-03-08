@@ -28,6 +28,13 @@
             qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum
             qui dolorem eum fugiat quo voluptas nulla pariatur?
       </p>
-      
+      {% for class in all_classes %}
+      <h2>{{ class }}</h2>
+        {% for assignment in all_assignments %}
+          {% if assignment.class_id == class  %}
+            <p>{{ assignment }}</p>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
   </body>
 </html>
