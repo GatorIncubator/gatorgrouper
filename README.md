@@ -133,7 +133,7 @@ Since input file is required, use the `--file` flag to let GatorGrouper know
 the path of the file you are using, or the file name if it is in the root of
 GatorGrouper repository. Please make sure the input file has more than six
 students. Otherwise you should change both group size and number of groups
-to a value larger than 1 and smaller than half of the total number of students. 
+to a value larger than 1 and smaller than half of the total number of students.
 
 ```shell
 pipenv run python3 gatorgrouper_cli.py --file filepath
@@ -205,7 +205,7 @@ be interested in taking on more responsibility as a team leader. Using the
 random method and the -v flag to see additional output, GatorGrouper may produce
 an output like this:
 
-```nd 
+```
 scores: [4, 4, 2, 0, 6, 4]
 average: 3
 ```
