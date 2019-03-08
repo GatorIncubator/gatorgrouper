@@ -1,6 +1,13 @@
 """Testing random grouping"""
-from utils import group_random
-from utils import group_rrobin
+from hypothesis import given
+from hypothesis import settings
+from hypothesis import Verbosity
+from hypothesis.strategies import integers
+
+
+import pytest
+from gatorgrouper.utils import group_random
+from gatorgrouper.utils import group_rrobin
 
 
 def test_group_random1():
@@ -40,6 +47,37 @@ def test_group_random1():
     assert len(actual_output4[0]) == 2
 
 
+@given(group_size=integers(min_value=1, max_value=3))
+@settings(verbosity=Verbosity.verbose, deadline=None)
+@pytest.mark.hypothesisworks
+def hypothesis_test_group_random1(group_size):
+    """this hypothesis test can generate the group numbers and test if it pass
+        the requirements"""
+    lst = [
+        "Austin",
+        "Dan",
+        "Angie",
+        "Cullen",
+        "Chase",
+        "Vinny",
+        "Nick",
+        "Jeff",
+        "James",
+        "Kelly",
+        "Nikki",
+        "Robert",
+    ]
+    lst2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
+    size_count = group_size
+    actual_output = group_random.group_random_group_size(lst, group_size)
+    actual_output2 = group_random.group_random_group_size(lst2, group_size)
+
+    assert len(actual_output) == 12 // size_count
+    assert len(actual_output[0]) == size_count
+    assert len(actual_output2) == 6 // size_count
+    assert len(actual_output2[0]) == size_count
+
+
 def test_group_random_extra():
     """Testing the random type of grouping with a group of extra people not assigned
      to their own group"""
@@ -58,6 +96,24 @@ def test_group_random_extra():
     assert grpsize == 2
     assert len(returned_groups1) == 2
     assert num_group == 2
+
+
+@given(grpsize=integers(min_value=1, max_value=3))
+@settings(verbosity=Verbosity.verbose)
+@pytest.mark.hypothesisworks
+def test_group_random2(grpsize):
+    """This hypothesis test will test the group_random_group_size method"""
+    responses = [
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Nick", True, False, True, False],
+        ["Dan", False, True, False, True],
+    ]
+    returned_groups = group_random.group_random_group_size(responses, grpsize)
+    size_count = grpsize
+    assert len(returned_groups[0]) == size_count
 
 
 def test_group_random():
