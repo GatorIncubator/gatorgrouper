@@ -11,6 +11,7 @@ def group_rrobin_group_size(responses, grpsize):
 
     # setup target groups
     groups = list()  # // integer div
+    responsesToRemove = list()
     numgrps = len(responses) // grpsize
     logging.info("target groups: %d", numgrps)
     for _ in range(numgrps):
