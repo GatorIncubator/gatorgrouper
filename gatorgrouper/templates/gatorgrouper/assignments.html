@@ -4,34 +4,10 @@
       <div class="content-section">
         <form method="post">
           {% csrf_token %} <!--must have this line for forms-->
-          <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Create a New Assignment</legend>
-            <!-- Adds a section for entering the assignment title. -->
-            <form action="/action_page.php">
-              <div class="form-group">
-                <label for="assignment-title">Assignment Title:</label>
-                <input type="text" class="form-control" placeholder="Enter Assignment Title" name="assignment-title">
-              </div>
-            </form>
-            <!-- Adds a section for entering the assignment description. -->
-            <form action="/action_page.php">
-              <div class="form-group">
-                <label for="assignment-description">Assignment Description:</label>
-                <input type="text" class="form-control" placeholder="Enter Assignment Description" name="assignment-description">
-              </div>
-            </form>
-            <!-- Adds a button for uploading the assignment. -->
-            <form action="/action_page.php">
-              <div class="form-group">
-                <label for="assignment-file">Upload Assignment:</label>
-                <input type="file" class="form-control-file border" name="file">
-               </div>
-            </form>
-          </fieldset>
-          <!-- Adds the create and cancel buttons. -->
+          {{ formset.as_p }}
           <div class="form-group">
             <button type="submit" name="button" class="btn btn-outline-info">Create</button>
-            <button type="submit" name="button" class="btn btn-outline-info">Cancel</button>
+            <a class="btn btn-outline-info" href="{% url 'Gatorgrouper-home'%}">Cancel</a>
             <small class="text-muted">Back to Dashboard</small>
           </div>
         </form>
