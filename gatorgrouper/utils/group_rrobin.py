@@ -25,7 +25,7 @@ def group_rrobin_group_size(responses, grpsize):
     for col in range(1, len(responses[0])):
         columns.append(col)
     random.shuffle(columns)
-    logging.info("column priority: %d", columns)
+    logging.info("column priority: %d", columns[0])
 
     # iterate through the response columns
     for col in columns:
@@ -42,8 +42,8 @@ def group_rrobin_group_size(responses, grpsize):
     # scoring and return
     scores, ave = [], 0
     scores, ave = group_scoring.score_groups(groups)
-    logging.info("scores: %d", scores)
-    logging.info("average: %d", ave)
+    logging.info("scores: %s", scores)
+    logging.info("average: %s", ave)
     return groups
 
 

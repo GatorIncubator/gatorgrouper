@@ -39,6 +39,7 @@ if __name__ == "__main__":  # pragma: no cover
         SHUFFLED_STUDENT_IDENTIFIERS = group_random.shuffle_students(
             STUDENT_IDENTIFIERS
         )
+        COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
         logging.info("GatorGrouper randomly ordered the students:")
         logging.info(
             "\n %s",
@@ -74,7 +75,6 @@ if __name__ == "__main__":  # pragma: no cover
 
         # report grouping results
         COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
-        COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
         logging.info(
             "Successfully placed %d students into %d groups ",
             COUNT_STUDENTS,
