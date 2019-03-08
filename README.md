@@ -112,28 +112,32 @@ pipenv run pytest -x -s
 ## Usage
 
 GatorGrouper accepts command line arguments and then generates output in your
-terminal window. Using the defaults of storing your student identifiers in the
-file called `students.csv` and creating groups of two students means that you
-will run GatorGrouper with this command:
+terminal window. The program requires user to provide an input `.csv` file.
+This will create groups of three students means that you will run GatorGrouper
+with this command:
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py
+pipenv run python3 gatorgrouper_cli.py --file filepath
 ```
 
 In order to see all the possible commands and their descriptions, enter
 the following command:
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py -h
+pipenv run python3 gatorgrouper_cli.py -h
 ```
 
-### Specify File Containing List of Students
+### Details with Importing Input File
 
-If your `.csv` file is not named `students.csv`, use the `--students-file` flag
-to let GatorGrouper know the file you are using.
+Since input file is required, use the `--file` flag to let GatorGrouper know
+the path of the file you are using, or the file name if it is in the root of
+GatorGrouper repository. Please make sure the input file has more than six
+students. Otherwise you should change both group size and number of groups
+to a value larger than 1 and smaller than half of the total number of students. 
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --students-file file_name.csv
+pipenv run python3 gatorgrouper_cli.py --file filepath
+pipenv run python3 gatorgrouper_cli.py --file filename.csv
 ```
 
 ### Group Size
@@ -141,7 +145,7 @@ pipenv run python3 gatorgrouper/utils/gatorgrouper.py --students-file file_name.
 To specify the size of the groups, use the flag `--group-size`.
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --group-size 4
+pipenv run python3 gatorgrouper_cli.py --file filepath --group-size 4
 ```
 
 This indicates that groups should each contain 4 members.  The provided group
@@ -154,12 +158,12 @@ To specify the number of groups the students should be placed in, use the flag
 `--num-groups`.
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --num-groups 4
+pipenv run python3 gatorgrouper_cli.py --file filepath --num-groups 4
 ```
 
 This indicates that the students should be divided into 4 groups. The number of
 groups should be at minimum 1 and at maximum the number of students to be placed
-into groups. If the number of groups is not specified or is specified as '0' the
+into groups. If the number of groups is not specified or is specified as '3' the
 flag is ignored. This flag can be used along side `--absentees`, `--random`, and
 `--round-robin`.
 
@@ -168,7 +172,7 @@ flag is ignored. This flag can be used along side `--absentees`, `--random`, and
 To randomly group the students, use the flag `--random`.
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --random
+pipenv run python3 gatorgrouper_cli.py --file filepath --random
 ```
 
 This will randomly group the list of students you have provided, and is the
@@ -183,7 +187,7 @@ small discussion groups, or peer editing.
 To group students using the round-robin method, use the flag `--round-robin`.
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --round-robin
+pipenv run python3 gatorgrouper_cli.py --file filepath --round-robin
 ```
 
 The round-robin method takes the responses from the Sheet into account when
@@ -201,7 +205,7 @@ be interested in taking on more responsibility as a team leader. Using the
 random method and the -v flag to see additional output, GatorGrouper may produce
 an output like this:
 
-```
+```nd 
 scores: [4, 4, 2, 0, 6, 4]
 average: 3
 ```
@@ -229,9 +233,9 @@ flag `--absentees`.  The arguments can be entered in the following ways:
 
 ```shell
 
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --absentees student1 student2
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --absentees 'student1' 'student2'
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --absentees "student1" "student2"
+pipenv run python3 gatorgrouper_cli.py --file filepath --absentees student1 student2
+pipenv run python3 gatorgrouper_cli.py --file filepath --absentees 'student1' 'student2'
+pipenv run python3 gatorgrouper_cli.py --file filepath --absentees "student1" "student2"
 ```
 
 Note that the absent students' names must be separated by spaces, not quotes.
@@ -246,14 +250,14 @@ To see detailed general output to monitor progress, use the flag `-v` or
 `--verbose`.
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --verbose
+pipenv run python3 gatorgrouper-cli.py --verbose
 ```
 
 To see detailed technical output to diagnose problems, use the flag `-d` or
 `--debug`.
 
 ```shell
-pipenv run python3 gatorgrouper/utils/gatorgrouper.py --debug
+pipenv run python3 gatorgrouper-cli.py --debug
 ```
 
 If neither of these flags are set, logging will only be shown if an error occurs.
@@ -261,7 +265,7 @@ If neither of these flags are set, logging will only be shown if an error occurs
 ### Full Example
 
 ```shell
-$ pipenv run python3 gatorgrouper/utils/gatorgrouper.py --group-size 3
+$ pipenv run python3 gatorgrouper_cli.py --file /home/w/wuj/cs203S2019/lab/students.csv
 --absentees becky george --random
 
 GatorGrouper: Automatically Assign Students to Groups
@@ -322,7 +326,7 @@ localhost:8000
 In order to run the testing, type in this command in the terminal:
 
 ```shell
-pipenv run pytest gatorgrouper/tests --cov-config pytest.cov --cov
+pipenv run pytest tests --cov-config pytest.cov --cov
 ```
 
 ### Design and Configuration
