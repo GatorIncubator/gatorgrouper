@@ -1,6 +1,7 @@
 """ Reads CSV data file """
 
 import csv
+
 from pathlib import Path
 
 
@@ -9,8 +10,8 @@ def read_csv_data(filepath):
 
     # handle nonexistant files
     if Path(filepath).is_file() is False:
-        return "filenotfound"
-
+        print("filenotfound")
+        return ""
     # read the raw CSV data
     with open(filepath, "r") as csvfile:
         has_header = csv.Sniffer().has_header(csvfile.read(1024))
