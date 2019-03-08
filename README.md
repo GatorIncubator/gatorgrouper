@@ -232,9 +232,6 @@ To indicate which students are absent so they are not grouped, use the
 flag `--absentees`.  The arguments can be entered in the following ways:
 
 ```shell
-
-pipenv run python3 gatorgrouper_cli.py --file filepath --absentees student1 student2
-pipenv run python3 gatorgrouper_cli.py --file filepath --absentees 'student1' 'student2'
 pipenv run python3 gatorgrouper_cli.py --file filepath --absentees "student1" "student2"
 ```
 
