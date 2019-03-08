@@ -2,8 +2,10 @@
 import csv
 from io import StringIO
 from django.shortcuts import render
+from django.http import Http404
 from .utils.group_rrobin import group_rrobin_num_group
-from .forms import UploadCSVForm
+from .forms import UploadCSVForm, StudentCompatibilityFormSet
+from .models import Semester_Class
 
 
 def upload_csv(request):
@@ -63,9 +65,30 @@ def assignments(request):
     )
 
 
-def survey(request):
-    """ Student's grouping preference? """
-    return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
+def survey(request, class_id = None):
+    """ POST and GET requests for handling student survey """
+    # TODO: get students in class
+    # TODO: make formset with a compatibility form for each student
+    # TODO: populate formset with existing compatibility responses
+    # TODO: validate formset
+    # TODO: save to db
+    
+    # Verify that the class exists
+    try:
+        Semester_Class.objects.get(class_id = class_id)
+    except Semester_Class.DoesNotExist:
+        raise Http404("Class not found")
+    enrolled_students = Students.objects.filter(class_id = class_id)
+    if request.method == "POST":
+        formset = StudentCompatibilityFormSet(request.POST)
+        if formset.is_valid():
+            print(formset.cleaned_data)
+            return render(request, "gatorgrouper/survey.html")
+    else:
+        # TODO: ensure logged in user is enrolled as student
+        formset = StudentCompatibilityFormSet()
+    print(formset)
+    return render(request, "gatorgrouper/survey.html", {"form": formset})
 
 
 def groupResult(request):
