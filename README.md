@@ -250,14 +250,14 @@ To see detailed general output to monitor progress, use the flag `-v` or
 `--verbose`.
 
 ```shell
-pipenv run python3 gatorgrouper-cli.py --verbose
+pipenv run python3 gatorgrouper_cli.py --verbose
 ```
 
 To see detailed technical output to diagnose problems, use the flag `-d` or
 `--debug`.
 
 ```shell
-pipenv run python3 gatorgrouper-cli.py --debug
+pipenv run python3 gatorgrouper_cli.py --debug
 ```
 
 If neither of these flags are set, logging will only be shown if an error occurs.
