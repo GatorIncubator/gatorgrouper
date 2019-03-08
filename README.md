@@ -65,7 +65,7 @@ to type `python --version` and get `Python 3.7.2` or other version after
 As a Python 3 program, GatorGrouper relies on
 [Pipenv](https://github.com/pypa/pipenv) for the installation of the libraries that
 it depends on and the creation of the virtual environments in which it
-runs in. To install GatorGrouper, you should first follow Pipenv's installation
+runs. To install GatorGrouper, you should first follow Pipenv's installation
 instructions. You should also ensure that you have installed Git on your
 computer and that you can run Git commands in a terminal window. Then, you can
 type the following command in your terminal window to clone GatorGrouper's GitHub
