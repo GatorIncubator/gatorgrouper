@@ -11,5 +11,4 @@ urlpatterns = [
     url(
         "", views.home, name="Gatorgrouper-home"
     ),  # first attribute is a space, meaning homepage
-
 ]
