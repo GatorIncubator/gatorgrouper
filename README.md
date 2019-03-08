@@ -77,7 +77,7 @@ git clone git@github.com:GatorEducator/gatorgrouper.git
 
 If you plan to develop new features for GatorGrouper or if you want to run the
 tool's test suite in [Pytest](https://github.com/pytest-dev/pytest), then you should
-install the developer dependencies by entering `pipenv install --dev`
+install the developer dependencies by running `pipenv install --dev`
 in the directory that was cloned. If you only want to use GatorGrouper,
 then you can type `pipenv install` instead. Once these commands complete
 successfully, that's all you have to do to install GatorGrouper!
