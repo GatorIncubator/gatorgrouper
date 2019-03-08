@@ -57,8 +57,17 @@ def create_classes(request):
 @login_required
 def assignments(request):
     """ Create assignments view """
+    AssignmentFormSet = modelform_factory(Assignment, fields=("class_id","assignment_id","description"))
+    if request.method == "POST":
+        formset = AssignmentFormSet(request.POST)
+        if formset.is_valid():
+            formset.save()
+            return redirect('Gatorgrouper-home')
+    else:
+        formset = AssignmentFormSet()
+
     return render(
-        request, "gatorgrouper/assignments.html", {"title": "Create Assignments"}
+        request, "gatorgrouper/assignments.html", {"title": "Create Assignments",'formset': formset}
     )
 
 @login_required
