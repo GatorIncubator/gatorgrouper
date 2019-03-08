@@ -13,16 +13,15 @@ from .models import Assignment, Grouped_Student
 # Create your views here.
 def index(request):
     """ This is undocumented """
-    professors = Professor.objects.all()
-    classes = Semester_Class.objects.all()
-
-    # pylint: disable=unused-variable
-    template = loader.get_template("gatorgrouper/index.html")  # noqa: F841
-
+    current_professor = request.user
+    classes = list(Semester_Class.objects.filter(professor_id = current_professor))
+    assignments = list(Assignment.objects.all())
+    for item in classes:
+        print(item)
     return render(
         request,
         "gatorgrouper/index.html",
-        {"all_professors": professors, "all_classes": classes},
+        {"all_classes": classes, "all_assignments": assignments},
     )
 
 
