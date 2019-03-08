@@ -9,3 +9,9 @@ class UploadCSVForm(forms.Form):
     numgrp = forms.IntegerField(
         min_value=2, max_value=25, label="Number of groups to create"
     )
+
+class StudentCompatibilityForm(forms.Form):
+    """ Survey question allowing students to rate their compatibility with potential teammates"""
+    preferred = forms.BooleanField()
+
+StudentCompatibilityFormSet = forms.formset_factory(StudentCompatibilityForm)
