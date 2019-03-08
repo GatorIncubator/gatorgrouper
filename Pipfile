@@ -19,11 +19,14 @@ pytest-django = "*"
 mixer = "*"
 pylint = "*"
 mutmut = "*"
+hypothesis = "*"
 
 [packages]
 pathlib = "*"
 py = "*"
 django = "*"
+networkx = "*"
+social-auth-app-django = "*"
 
 [pipenv]
 allow_prereleases = true
