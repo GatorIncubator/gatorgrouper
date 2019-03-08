@@ -28,6 +28,7 @@ def find_or_create_secret_key():
     sys.path.insert(1, SECRET_KEY_DIR)
 
     if os.path.isfile(SECRET_KEY_FILEPATH):
+        # pylint: disable=import-error
         from secret_key import SECRET_KEY as key
 
         return key
@@ -41,6 +42,7 @@ def find_or_create_secret_key():
             "# Django secret key\n# Do NOT check this into version control.\n\n"
             'SECRET_KEY = "%s"\n' % new_key
         )
+    # pylint: disable=import-error
     from secret_key import SECRET_KEY as key
 
     return key
