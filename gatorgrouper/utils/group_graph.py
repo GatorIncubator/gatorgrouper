@@ -52,7 +52,7 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=None) -> int:
     return sum(adjusted_scores)
 
 
-def group_graph_partition(inputlist, numgrp=2):
+def group_graph_partition(inputlist, numgrp=2): # pylint: disable=too-many-locals
     """
     Form groups using recursive Kernighan-Lin algorithm
     """
@@ -75,9 +75,9 @@ def group_graph_partition(inputlist, numgrp=2):
     for p in partition:
         groups.append([responses[i] for i in p])
     output = list()
-    for students in groups:
+    for student in groups:
         temp = list()
-        for value in students:
+        for value in student:
             value += " fakestring"
             value = value.split(" ")
             temp.append(value)
