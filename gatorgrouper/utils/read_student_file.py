@@ -44,5 +44,4 @@ def read_csv_data(filepath):
                 else:
                     temp.append(float(value))
             responses.append(temp)
-    print (responses)
     return responses

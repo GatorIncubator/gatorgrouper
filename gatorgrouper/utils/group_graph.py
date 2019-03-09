@@ -77,10 +77,13 @@ def group_graph_partition(
             G.add_edge(i, j, weight=score)
 
     # Partition the vertices
-    partition = recursive_kl(G, numgrp=numgrp)
-    groups = []
-    for p in partition:
-        groups.append([responses[i] for i in p])
+    # partition = recursive_kl(G, numgrp=numgrp)
+    # groups = []
+    # for p in partition:
+    #     groups.append([responses[i] for i in p])
+    # for pair in groups:
+    #     for a[i] in pair:
+    #         pair.insert(i, [1, 2])
     return groups
 
 
