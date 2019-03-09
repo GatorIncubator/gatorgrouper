@@ -40,7 +40,6 @@ def group_random_group_size(
     scores, ave = group_scoring.score_groups(groups)
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
-    print(groups)
     return groups
 
 
