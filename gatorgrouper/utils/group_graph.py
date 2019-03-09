@@ -93,7 +93,6 @@ def group_graph_partition(
     Form groups using recursive Kernighan-Lin algorithm
     """
     # Read in students list and the weight list
-    responses = [item[0] for item in inputlist]
     weights = [item[1:] for item in inputlist]
     # Create graph and populate with node weights
     vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
