@@ -42,7 +42,7 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=None) -> int:
     """
     Returns a score representing the compatibility between student a and student b.
     The maximum of each a[i] and b[i] in the tuples is scaled by preferences[i],
-    and the score is the sum of all of these scapair.insert(a, [1, 2])led values.
+    and the score is the sum of all of these scaled values.
     """
     if not len(a) == len(b):
         raise Exception("Tuples passed to compatibility() must have same size")
@@ -56,9 +56,10 @@ def group_graph_partition(inputlist, numgrp=2):  # pylint: disable=too-many-loca
     """
     Form groups using recursive Kernighan-Lin algorithm
     """
+    # Read in students list and the weight list
     responses = [item[0] for item in inputlist]
-    # Create graph and populate with node weights
     weights = [item[1:] for item in inputlist]
+    # Create graph and populate with node weights
     vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
     G = Graph()
     G.add_nodes_from(vertex_weight_pairs)
@@ -75,6 +76,7 @@ def group_graph_partition(inputlist, numgrp=2):  # pylint: disable=too-many-loca
     for p in partition:
         groups.append([responses[i] for i in p])
     output = list()
+    # Generate a list of list of list in order to fit the required display input
     for student in groups:
         temp = list()
         for value in student:
