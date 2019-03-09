@@ -52,7 +52,7 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=None) -> int:
     return sum(adjusted_scores)
 
 
-def group_graph_partition(inputlist, numgrp=2): # pylint: disable=too-many-locals
+def group_graph_partition(inputlist, numgrp=2):  # pylint: disable=too-many-locals
     """
     Form groups using recursive Kernighan-Lin algorithm
     """
