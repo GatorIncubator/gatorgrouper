@@ -11,6 +11,7 @@ import math
 
 class Student:
     """Represent student."""
+
     def __init__(self, email: str, skills: List[int], preferences: List[str]):
         self.email = email
         self.skills = skills
@@ -36,6 +37,7 @@ class Student:
 
 class Individual:
     """Represent individual."""
+
     def __init__(self, grouping: List[List[Student]], fitness):
         self.grouping = grouping
         self.fitness = fitness
@@ -51,6 +53,7 @@ class Individual:
 
 class Fitness:
     """Represent fitness. Variables range from 0 to 1."""
+
     def __init__(self, preference, balance, fairness):
         self.preference = preference
         self.balance = balance
@@ -91,23 +94,45 @@ def create():
     # print("CREATED GROUPNG: " + str(grouping))
     return grouping
 
+
 """population_size: int, mutation_rate: float, crossover_rate: float, fitness, mutations, create"""
-def evolve(population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations):
+
+
+def evolve(
+    population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
+):
 
     global best_grouping
     global best_fitness
 
     print("in evolve")
     population = [create() for _ in range(population_size)]
-    population = list(map(lambda grouping: Individual(grouping, calculate_fitness(grouping)), population))
+    population = list(
+        map(
+            lambda grouping: Individual(grouping, calculate_fitness(grouping)),
+            population,
+        )
+    )
 
     gen = 0
     while gen < 200:
         # spawn next generation
         # print("Start of gen {}".format(gen))
         gen += 1
-        population = spawn(population, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations)
-        population = list(map(lambda grouping: Individual(grouping, calculate_fitness(grouping)), population))
+        population = spawn(
+            population,
+            mutation_rate,
+            elitism_rate,
+            create_rate,
+            crossover_rate,
+            mutations,
+        )
+        population = list(
+            map(
+                lambda grouping: Individual(grouping, calculate_fitness(grouping)),
+                population,
+            )
+        )
 
         dupl = False
         for ind in population:
@@ -238,7 +263,14 @@ def mutate(mutations, grouping: List[List[Student]]):
     return random.choice(mutations)(grouping)
 
 
-def spawn(prev_population: List[Individual], mutation_rate: float, elitism_rate: float, create_rate: float, crossover_rate: float, mutations):
+def spawn(
+    prev_population: List[Individual],
+    mutation_rate: float,
+    elitism_rate: float,
+    create_rate: float,
+    crossover_rate: float,
+    mutations,
+):
     count = len(prev_population)
 
     next_population = list()
@@ -321,12 +353,12 @@ def spawn(prev_population: List[Individual], mutation_rate: float, elitism_rate:
 
 def select(population: List[Individual]):
     """Select random individuals from population and find most fit tournament-style."""
-    SELECT_NUMBER = 8 #math.floor(len(population) / 3)
+    SELECT_NUMBER = 8  # math.floor(len(population) / 3)
     selected = random.sample(population, SELECT_NUMBER)
     while len(selected) > 1:
         individual_one = selected.pop(0)
         individual_two = selected.pop(0)
-        if (individual_one.fitness > individual_two.fitness):
+        if individual_one.fitness > individual_two.fitness:
             selected.append(individual_one)
         else:
             selected.append(individual_two)
@@ -370,10 +402,11 @@ def calculate_fitness(grouping: List[List[Student]]):
             print("GROUP IS TOO SMALL")
             print(grouping)
 
-
     skills_by_group = []
     for _ in range(len(grouping)):
-        skills_by_group += [[0] * len(grouping[0][0].skills)]  # assumes there is at least one student in one group
+        skills_by_group += [
+            [0] * len(grouping[0][0].skills)
+        ]  # assumes there is at least one student in one group
 
     for group_index, group in enumerate(grouping):
         skills_within_group = [0] * len(group[0].skills)
