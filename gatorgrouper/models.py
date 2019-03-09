@@ -36,9 +36,10 @@ class UserManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
 
+
 class Professor(AbstractUser):
     """ This is undocumented """
-    REQUIRED_FIELDS = ('first_name','last_name')
+    REQUIRED_FIELDS = ('first_name', 'last_name')
     USERNAME_FIELD = 'email'
     username = None
     email = models.EmailField(max_length=200, unique=True)
