@@ -6,7 +6,7 @@ from mixer.backend.django import mixer
 pytestmark = pytest.mark.django_db
 
 
-class TestProfessor:
+class Test_Professor:
     """test professor class"""
 
     # pylint: disable=R0201
@@ -27,7 +27,7 @@ class TestProfessor:
         assert result == expected
 
 
-class TestSemesterClass:
+class Test_Semester_Class:
     """test semester class"""
 
     # pylint: disable=R0201
@@ -53,7 +53,7 @@ class TestSemesterClass:
         assert result == expected
 
 
-class TestAssignments:
+class Test_Assignments:
     """test assignment class"""
 
     # pylint: disable=R0201
@@ -74,7 +74,7 @@ class TestAssignments:
         assert result == expected
 
 
-class TestStudents:
+class Test_Student:
     """test student class"""
 
     # pylint: disable=R0201
@@ -95,7 +95,7 @@ class TestStudents:
         assert result == expected
 
 
-class TestGrouped_Students:
+class Test_Grouped_Student:
     """test grouped student class"""
 
     # pylint: disable=R0201
