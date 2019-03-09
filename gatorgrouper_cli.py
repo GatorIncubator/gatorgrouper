@@ -79,7 +79,7 @@ if __name__ == "__main__":  # pragma: no cover
             GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
             )
-
+        print(GROUPED_STUDENT_IDENTIFIERS)
         # report grouping results
         COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
         COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)

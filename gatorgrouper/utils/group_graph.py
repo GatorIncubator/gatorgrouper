@@ -43,7 +43,7 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=None) -> int:
     """
     Returns a score representing the compatibility between student a and student b.
     The maximum of each a[i] and b[i] in the tuples is scaled by preferences[i],
-    and the score is the sum of all of these scaled values.
+    and the score is the sum of all of these scapair.insert(a, [1, 2])led values.
     """
     if not len(a) == len(b):
         raise Exception("Tuples passed to compatibility() must have same size")
@@ -55,7 +55,7 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=None) -> int:
 
 def group_graph_partition(
     inputlist, numgrp=2
-) -> List[str]:
+):
     """
     Form groups using recursive Kernighan-Lin algorithm
     """
@@ -77,14 +77,19 @@ def group_graph_partition(
             G.add_edge(i, j, weight=score)
 
     # Partition the vertices
-    # partition = recursive_kl(G, numgrp=numgrp)
-    # groups = []
-    # for p in partition:
-    #     groups.append([responses[i] for i in p])
-    # for pair in groups:
-    #     for a[i] in pair:
-    #         pair.insert(i, [1, 2])
-    return groups
+    partition = recursive_kl(G, numgrp=numgrp)
+    groups = []
+    for p in partition:
+        groups.append([responses[i] for i in p])
+    output = list()
+    for students in groups:
+        temp = list()
+        for value in students:
+            value += " fakestring"
+            value = value.split(" ")
+            temp.append(value)
+        output.append(temp)
+    return output
 
 
 if __name__ == "__main__":
