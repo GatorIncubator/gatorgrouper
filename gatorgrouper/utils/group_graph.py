@@ -4,7 +4,6 @@ from math import log
 from networkx import Graph
 from networkx.algorithms.community import kernighan_lin_bisection
 from networkx.algorithms.cuts import cut_size
-import re
 
 # pylint: disable=bad-continuation
 
@@ -53,19 +52,17 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=None) -> int:
     return sum(adjusted_scores)
 
 
-def group_graph_partition(
-    inputlist, numgrp=2
-):
+def group_graph_partition(inputlist, numgrp=2):
     """
     Form groups using recursive Kernighan-Lin algorithm
     """
     responses = [item[0] for item in inputlist]
     # Create graph and populate with node weights
     weights = [item[1:] for item in inputlist]
-    #print(weights1)
-    #regex = re.compile(r'[-+]?[0-9]*\.?[0-9]*')
-    #weights = regex.sub(weights1)
-    #print(wrights)
+    # print(weights1)
+    # regex = re.compile(r'[-+]?[0-9]*\.?[0-9]*')
+    # weights = regex.sub(weights1)
+    # print(wrights)
     vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
     G = Graph()
     G.add_nodes_from(vertex_weight_pairs)
@@ -93,17 +90,15 @@ def group_graph_partition(
 
 
 if __name__ == "__main__":
-    students = [["one", "0", "0"], ["two", "0", "0.5"], ["three", "0.5", "0"], ["four", "0.75", "0.75"],
-    ["five", "0.8", "0.1"], ["six", "0", "1"], ["seven", "1", "0"], ["eight", "1", "1"]]
-    student_weights = [
-        (0, 0),
-        (0, 0.5),
-        (0.5, 0),
-        (0.75, 0.75),
-        (0.8, 0.1),
-        (0, 1),
-        (1, 0),
-        (1, 1),
+    students = [
+        ["one", "0", "0"],
+        ["two", "0", "0.5"],
+        ["three", "0.5", "0"],
+        ["four", "0.75", "0.75"],
+        ["five", "0.8", "0.1"],
+        ["six", "0", "1"],
+        ["seven", "1", "0"],
+        ["eight", "1", "1"],
     ]
     student_groups = group_graph_partition(students, 4)
     print(student_groups)
