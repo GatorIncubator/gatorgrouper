@@ -59,10 +59,6 @@ def group_graph_partition(inputlist, numgrp=2):
     responses = [item[0] for item in inputlist]
     # Create graph and populate with node weights
     weights = [item[1:] for item in inputlist]
-    # print(weights1)
-    # regex = re.compile(r'[-+]?[0-9]*\.?[0-9]*')
-    # weights = regex.sub(weights1)
-    # print(wrights)
     vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
     G = Graph()
     G.add_nodes_from(vertex_weight_pairs)
