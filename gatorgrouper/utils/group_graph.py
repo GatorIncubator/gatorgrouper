@@ -53,12 +53,14 @@ def compatibility(a: Tuple[int], b: Tuple[int], preferences=None) -> int:
 
 
 def group_graph_partition(
-    responses: List[str], weights: List[Tuple[int]], numgrp=2
+    inputlist, numgrp=2
 ) -> List[str]:
     """
     Form groups using recursive Kernighan-Lin algorithm
     """
+    responses = [item[0] for item in inputlist]
     # Create graph and populate with node weights
+    weights = [item[1:] for item in inputlist]
     vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
     G = Graph()
     G.add_nodes_from(vertex_weight_pairs)
@@ -68,21 +70,23 @@ def group_graph_partition(
         for j, w2 in enumerate(weights[:i]):
             score = compatibility(w1, w2)
             G.add_edge(i, j, weight=score)
-            print(i, j, w1, w2, score)
+            #print(i, j, w1, w2, score)
 
     # Partition the vertices
     partition = recursive_kl(G, numgrp=numgrp)
     groups = []
-    print("Partition:")
+    #print("Partition:")
     for p in partition:
         groups.append([responses[i] for i in p])
-        print([G.nodes[i]["weight"] for i in p])
-    print("Total cut size:", total_cut_size(G, partition))
+        #print([G.nodes[i]["weight"] for i in p])
+    #print("Total cut size:", total_cut_size(G, partition))
     return groups
 
 
 if __name__ == "__main__":
-    students = ["one", "two", "three", "four", "five", "six", "seven", "eight"]
+    #students = ["one", "two", "three", "four", "five", "six", "seven", "eight"]
+    students = [["one", 0, 0], ["two", 0, 0.5], ["three", 0.5, 0], ["four", 0.75, 0.75],
+    ["five", 0.8, 0.1], ["six", 0, 1], ["seven", 1, 0], ["eight", 1, 1]]
     student_weights = [
         (0, 0),
         (0, 0.5),
@@ -93,5 +97,5 @@ if __name__ == "__main__":
         (1, 0),
         (1, 1),
     ]
-    student_groups = group_graph_partition(students, student_weights, 4)
+    student_groups = group_graph_partition(students, 4)
     print(student_groups)
