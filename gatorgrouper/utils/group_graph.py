@@ -79,7 +79,7 @@ def compatibility(
         elif measure == "match":
             compat = int(a_score == b_score)
         elif measure == "diff":
-            compat = abs(a[i] - b[i]) # pylint: disable=E0602
+            compat = abs(a[i] - b[i])  # pylint: disable=E0602
 
         # Scale the compatibility of a[i] and b[i] using the i-th objective weight
         scores.append(compat * weight)
