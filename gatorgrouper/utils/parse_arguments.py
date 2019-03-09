@@ -67,6 +67,15 @@ def parse_arguments(args):
         dest="grouping_method",
         const=constants.ALGORITHM_ROUND_ROBIN,
     )
+
+    gg_parser.add_argument(
+        "--graph",
+        help="Use graph grouping method",
+        action="store_const",
+        dest="grouping_method",
+        const=constants.ALGORITHM_GRAPH,
+    )
+
     gg_parser.add_argument(
         "--absentees",
         help="Student that is absent",
