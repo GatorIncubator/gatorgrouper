@@ -115,17 +115,17 @@ def group_graph_partition(
     partition = recursive_kl(G, numgrp=numgrp)
     groups = []
     for p in partition:
-        groups.append([responses[i] for i in p])
-    output = list()
+        groups.append([inputlist[i] for i in p])
+    # output = list()
     # Generate a list of list of list in order to fit the required display input
-    for student in groups:
-        temp = list()
-        for value in student:
-            value += " fakestring"
-            value = value.split(" ")
-            temp.append(value)
-        output.append(temp)
-    return output
+    # for student in groups:
+    #     temp = list()
+    #     for value in student:
+    #         value += " fakestring"
+    #         value = value.split(" ")
+    #         temp.append(value)
+    #     output.append(temp)
+    return groups
 
 
 if __name__ == "__main__":
