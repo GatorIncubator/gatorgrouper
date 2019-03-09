@@ -70,21 +70,16 @@ def group_graph_partition(
         for j, w2 in enumerate(weights[:i]):
             score = compatibility(w1, w2)
             G.add_edge(i, j, weight=score)
-            #print(i, j, w1, w2, score)
 
     # Partition the vertices
     partition = recursive_kl(G, numgrp=numgrp)
     groups = []
-    #print("Partition:")
     for p in partition:
         groups.append([responses[i] for i in p])
-        #print([G.nodes[i]["weight"] for i in p])
-    #print("Total cut size:", total_cut_size(G, partition))
     return groups
 
 
 if __name__ == "__main__":
-    #students = ["one", "two", "three", "four", "five", "six", "seven", "eight"]
     students = [["one", 0, 0], ["two", 0, 0.5], ["three", 0.5, 0], ["four", 0.75, 0.75],
     ["five", 0.8, 0.1], ["six", 0, 1], ["seven", 1, 0], ["eight", 1, 1]]
     student_weights = [
