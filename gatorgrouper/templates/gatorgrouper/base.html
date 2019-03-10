@@ -41,6 +41,9 @@
       <ul class="nav ml-auto">
         {% if user.is_authenticated %}
             <li class="nav-item">
+                <a class="btn btn-md btn-google btn-space" href="{% url 'profile' %}">Profile</a>
+            </li>
+            <li class="nav-item">
                 <a class="btn btn-md btn-google btn-space" href="{% url 'logout' %}">Log Out</a>
             </li>
         {% else %}
@@ -49,6 +52,9 @@
             </li>
             <li class="nav-item">
                 <a class="btn-md btn btn-primary btn-space" href="{% url 'Gatorgrouper-home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn-md btn btn-primary btn-space" href="{% url 'register' %}">Register</a>
             </li>
         {% endif %}
         <li class="nav-item">
@@ -92,7 +98,13 @@
 
     </header>
 
-
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{message}}
+    </div>
+  {% endfor %}
+{% endif %}
 {% block content %}{% endblock %}
 
 
