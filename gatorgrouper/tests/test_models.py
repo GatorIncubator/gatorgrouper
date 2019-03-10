@@ -46,6 +46,11 @@ class Test_UserManager:
             User = get_user_model()
             User.objects.create_superuser(email='superuser@user.com', password='super', is_superuser=False)
 
+    def test_is_staff_exception(self):
+        with pytest.raises(ValueError):
+            User = get_user_model()
+            User.objects.create_superuser(email='superuser@user.com', password='super', is_staff=False)
+
     def test_email_exception(self):
         with pytest.raises(ValueError):
             User = get_user_model()
