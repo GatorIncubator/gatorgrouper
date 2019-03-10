@@ -5,7 +5,7 @@ from networkx import Graph
 from networkx.algorithms.community import kernighan_lin_bisection
 from networkx.algorithms.cuts import cut_size
 
-# pylint: disable=bad-continuation
+# pylint: disable=bad-continuation,too-many-locals
 
 
 def recursive_kl(graph: Graph, numgrp=2) -> List[Set[int]]:
@@ -136,7 +136,7 @@ def group_graph_partition(
 
 
 if __name__ == "__main__":
-    students = [
+    student_data = [
         ["one", 0, 0],
         ["two", 0, 0.5],
         ["three", 0.5, 0],
@@ -146,5 +146,4 @@ if __name__ == "__main__":
         ["seven", 1, 0],
         ["eight", 1, 1],
     ]
-    student_groups = group_graph_partition(students, 4)
-    print(student_groups)
+    student_groups = group_graph_partition(student_data, 4)
