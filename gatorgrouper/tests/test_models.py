@@ -31,9 +31,21 @@ class Test_UserManager:
 
     def test_create_user(self):
         User = get_user_model()
-        user = User.objects.create_user(email='normal@user.com', password='foo')
-        assert user.email == 'normal@user.com'
+        user = User.objects.create_user(email='normaluser@user.com', password='normal')
+        assert user.email == 'normaluser@user.com'
+        assert user.is_superuser is False
 
+    def test_create_superuser(self):
+        User = get_user_model()
+        user = User.objects.create_superuser(email='superuser@user.com', password='super')
+        assert user.is_staff is True
+        assert user.is_superuser is True
+
+    # @pytest.mark.xfail(raises=ValueError)
+    def test_create_superuser_exception(self):
+        with pytest.raises(ValueError):
+            User = get_user_model()
+            User.objects.create_superuser(email='superuser@user.com', password='super', is_superuser=False)
 
 class Test_Professor:
     """test professor class"""
