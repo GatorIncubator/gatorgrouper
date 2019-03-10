@@ -1,4 +1,4 @@
-"""models.py testing"""
+"""Testing database models"""
 
 import pytest
 from mixer.backend.django import mixer
