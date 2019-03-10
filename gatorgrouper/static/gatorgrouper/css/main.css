@@ -135,4 +135,26 @@ a.article-title:hover {
 
 .dropdown a:hover {background-color: #ddd;}
 
+.class-container {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: beige;
+  flex-wrap: wrap;
+  height: 20em
+
+}
+
+.class-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 10px 15px 15px;
+}
+
+.assignments {
+  display: flex;
+  flex-direction: column;
+}
 .show {display: block;}
