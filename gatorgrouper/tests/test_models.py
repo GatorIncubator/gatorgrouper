@@ -61,13 +61,12 @@ class Test_Professor:
     """test professor class"""
 
     # pylint: disable=R0201
-    # def test_model(self):
-    #     """test professor model by creating a professor instance and assert
-    #     that there is one in the database"""
-    #     Professor.objects.create_user(email="test@test.test",
-    #                                   password="testpassword")
-    # it creates a professor instance
-    #     assert Professor.pk == 1
+    def test_model(self):
+        """test professor model by creating a professor instance and assert
+        that there is one in the database"""
+        obj = mixer.blend("gatorgrouper.Professor")
+        # it creates a professor instance
+        assert obj.pk == 1
 
     # pylint: disable=R0201
     def test_str(self):
