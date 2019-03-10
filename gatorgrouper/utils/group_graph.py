@@ -131,3 +131,10 @@ def main():
     ]
     student_groups = group_graph_partition(students, 4)
     print(student_groups)
+
+
+def init():
+  if __name__ == "__main__":
+    exit(main())
+
+init()
