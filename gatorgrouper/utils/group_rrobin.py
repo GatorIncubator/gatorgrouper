@@ -20,20 +20,15 @@ def group_rrobin_group_size(responses, grpsize):
     # setup cyclical group target
     indices = list(range(0, numgrps))
     target_group = itertools.cycle(indices)
-
-    # randomize the order in which the columns will be drained
-    columns = list()
-    for col in range(1, len(responses[0])):
-        columns.append(col)
-    random.shuffle(columns)
-    logging.info("column priority: %d", columns[0])
+    priorityColumn = random.randint(1,len(responses[0])-1)
+    logging.info("column priority: %d", priorityColumn)
 
     # iterate through the response column
     for response in responses:
         logging.info("Responses looks like: " + str(responses))
         logging.info("Response looks like: " + str(response))
-        if response[columns[0]] is True:
-            logging.info("Value for response at column " + str(columns[0]) + " is true")
+        if response[priorityColumn] is True:
+            logging.info("Value for response at column " + str(priorityColumn) + " is true")
             logging.info("Groups looked like " + str(groups))
             groups[target_group.__next__()].append(response)
             logging.info("Groups now looks like " + str(groups))
