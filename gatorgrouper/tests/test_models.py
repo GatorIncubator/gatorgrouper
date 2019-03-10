@@ -12,28 +12,12 @@ pytestmark = pytest.mark.django_db
 class Test_UserManager:
     """test UserManager class"""
 
-    # @classmethod
-    # def test_create_user(self):
-    #     """undocumented"""
-    #     Professor.objects.create_user(email="test@test.test",
-    #                                   password="testpassword")
-    #     user = Professor.objects.get(email="test@test.test")
-    #     assert user.is_superuser is False
-    # assert user == ""
-
-    # @classmethod
-    # def test_create_superuser(self):
-    #     """undocumented"""
-    #     Professor.objects.create_superuser(email="test@test.test",
-    #                                        password="testpassword")
-    #     user = Professor.objects.get(email="test@test.test")
-    #     assert user.is_superuser is False
-
     def test_create_user(self):
         User = get_user_model()
         user = User.objects.create_user(email='normaluser@user.com', password='normal')
         assert user.email == 'normaluser@user.com'
         assert user.is_superuser is False
+
 
     def test_create_superuser(self):
         User = get_user_model()
@@ -67,6 +51,10 @@ class Test_Professor:
         obj = mixer.blend("gatorgrouper.Professor")
         # it creates a professor instance
         assert obj.pk == 1
+
+    # def test_model_exception(self):
+    #     with pytest.raises(ValueError):
+    #         obj = mixer.blend("gatorgrouper.Professor", email=None)
 
     # pylint: disable=R0201
     def test_str(self):
