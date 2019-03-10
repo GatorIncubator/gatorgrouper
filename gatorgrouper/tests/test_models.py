@@ -11,6 +11,7 @@ pytestmark = pytest.mark.django_db
 class Test_UserManager:
     """test UserManager class"""
 
+    @classmethod
     def test_create_user(self):
         "undocumented"
         Professor.objects.create_user(email="test@test.test",
@@ -19,12 +20,14 @@ class Test_UserManager:
         assert user.is_superuser is False
         # assert user == ""
 
+    @classmethod
     def test_create_superuser(self):
         "undocumented"
         Professor.objects.create_superuser(email="test@test.test",
                                            password="testpassword")
         user = Professor.objects.get(email="test@test.test")
         assert user.is_superuser is False
+
 
 class Test_Professor:
     """test professor class"""
