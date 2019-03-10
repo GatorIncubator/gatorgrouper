@@ -135,13 +135,8 @@ def group_graph_partition(
     return groups
 
 
-<<<<<<< HEAD
 def main():
     students = [
-=======
-if __name__ == "__main__":
-    student_data = [
->>>>>>> 30d8848b1d0f6801ce744547fa2d2fbefc1dfc02
         ["one", 0, 0],
         ["two", 0, 0.5],
         ["three", 0.5, 0],
@@ -151,7 +146,6 @@ if __name__ == "__main__":
         ["seven", 1, 0],
         ["eight", 1, 1],
     ]
-<<<<<<< HEAD
     student_groups = group_graph_partition(students, 4)
     print(student_groups)
 
@@ -161,6 +155,3 @@ def init():
     exit(main())
 
 init()
-=======
-    student_groups = group_graph_partition(student_data, 4)
->>>>>>> 30d8848b1d0f6801ce744547fa2d2fbefc1dfc02
