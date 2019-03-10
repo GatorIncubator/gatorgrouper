@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
+from .forms import CustomUserCreationForm
+from django.contrib import messages
+
 
 # from django.http import HttpResponse
 # from django.http import Http404
@@ -11,6 +14,21 @@ from .models import Assignment, Grouped_Student
 
 
 # Create your views here.
+def register(request):
+    """ This view loads the register page and handles the form """
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
+            messages.success(request, f'Account created for {first_name} {last_name}')
+            return redirect('login')
+    else:
+        form = CustomUserCreationForm()
+    return render(request, "gatorgrouper/register.html", {'form':form})
+
+@login_required
 def profile(request):
     """ This is undocumented """
     current_professor = request.user
