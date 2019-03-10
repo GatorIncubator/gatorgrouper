@@ -41,11 +41,16 @@ class Test_UserManager:
         assert user.is_staff is True
         assert user.is_superuser is True
 
-    # @pytest.mark.xfail(raises=ValueError)
-    def test_create_superuser_exception(self):
+    def test_is_superuser_exception(self):
         with pytest.raises(ValueError):
             User = get_user_model()
             User.objects.create_superuser(email='superuser@user.com', password='super', is_superuser=False)
+
+    def test_email_exception(self):
+        with pytest.raises(ValueError):
+            User = get_user_model()
+            User.objects._create_user(email=None, password='super', is_superuser=False)
+
 
 class Test_Professor:
     """test professor class"""
