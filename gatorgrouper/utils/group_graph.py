@@ -5,7 +5,7 @@ from networkx import Graph
 from networkx.algorithms.community import kernighan_lin_bisection
 from networkx.algorithms.cuts import cut_size
 
-# pylint: disable=bad-continuation
+# pylint: disable=bad-continuation,too-many-locals
 
 
 def recursive_kl(graph: Graph, numgrp=2) -> List[Set[int]]:
@@ -79,7 +79,7 @@ def compatibility(
         elif measure == "match":
             compat = int(a_score == b_score)
         elif measure == "diff":
-            compat = abs([i for i in a] - [i for i in b])
+            compat = abs(a_score - b_score)
 
         # Scale the compatibility of a[i] and b[i] using the i-th objective weight
         scores.append(compat * weight)
@@ -87,12 +87,19 @@ def compatibility(
 
 
 def group_graph_partition(
-    inputlist, numgrp=2, objective_weights=None, objective_measures=None
+    inputlist,
+    numgrp=2,
+    objective_weights=None,
+    objective_measures=None,
+    preferences=None,
+    preferences_weight=1.1,
+    preferences_weight_match=1.3,
 ):
     """
     Form groups using recursive Kernighan-Lin algorithm
     """
     # Read in students list and the weight list
+    students = [item[0] for item in inputlist]
     weights = [item[1:] for item in inputlist]
     # Create graph and populate with node weights
     vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
@@ -108,6 +115,16 @@ def group_graph_partition(
                 objective_weights=objective_weights,
                 objective_measures=objective_measures,
             )
+            if preferences:
+                # Scale the compatibility score based on students' preferences for each other
+                prefs_j = preferences.get(students[j])
+                prefs_i = preferences.get(students[i])
+                match_j = students[i] in prefs_j if prefs_j else None
+                match_i = students[j] in prefs_i if prefs_i else None
+                if match_i and match_j:
+                    score = score * preferences_weight_match
+                elif match_i or match_j:
+                    score = score * preferences_weight
             G.add_edge(i, j, weight=score)
 
     # Partition the vertices
@@ -119,7 +136,7 @@ def group_graph_partition(
 
 
 if __name__ == "__main__":
-    students = [
+    student_data = [
         ["one", 0, 0],
         ["two", 0, 0.5],
         ["three", 0.5, 0],
@@ -129,5 +146,4 @@ if __name__ == "__main__":
         ["seven", 1, 0],
         ["eight", 1, 1],
     ]
-    student_groups = group_graph_partition(students, 4)
-    print(student_groups)
+    student_groups = group_graph_partition(student_data, 4)
