@@ -36,7 +36,6 @@ def parse_arguments(args):
         "--group-size",
         help="Number of students in a group",
         type=int,
-        default=constants.DEFAULT_GRPSIZE,
         required=False,
     )
 
@@ -44,7 +43,6 @@ def parse_arguments(args):
         "--num-group",
         help="Number of groups",
         type=int,
-        default=constants.DEFAULT_NUMGRP,
         required=False,
     )
 
@@ -98,9 +96,15 @@ def check_valid(args, students_list):
     """Verify the command-line arguments"""
     verified_arguments = False
     students_list_length = len(students_list)
-    if args.group_size > 1 and args.group_size <= students_list_length / 2:
+    logging.info("Group size is " + str(args.group_size))
+    logging.info("Num group is " + str(args.num_group))
+    if args.group_size is not None and args.group_size <= students_list_length / 2:
         verified_arguments = True
-    if args.num_group > 1 and args.group_size <= students_list_length / 2:
+    if args.num_group is not None and args.num_group <= students_list_length / 2:
+        verified_arguments = True
+    if args.group_size is None and constants.DEFAULT_GRPSIZE <= students_list_length /2:
+        verified_arguments = True
+    if args.num_group is None and constants.DEFAULT_NUMGRP <= students_list_length /2:
         verified_arguments = True
     if args.file is constants.NONE:
         verified_arguments = False

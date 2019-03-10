@@ -49,19 +49,28 @@ if __name__ == "__main__":  # pragma: no cover
 
         # generate the groups and display them
         # pylint: disable=bad-continuation
+        logging.info("Num_group is " + str(GG_ARGUMENTS.num_group))
+        logging.info("Group_size is " + str(GG_ARGUMENTS.group_size))
         if (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-            and GG_ARGUMENTS.num_group is constants.DEFAULT_NUMGRP
+            and GG_ARGUMENTS.num_group is None and GG_ARGUMENTS.group_size is not None
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
             )
         elif (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-            and GG_ARGUMENTS.num_group is not constants.DEFAULT_NUMGRP
+            and GG_ARGUMENTS.group_size is None and GG_ARGUMENTS.num_group is not None
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
+            )
+        elif (
+            GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
+            and GG_ARGUMENTS.group_size is None and GG_ARGUMENTS.num_group is None
+        ):
+            GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
+                SHUFFLED_STUDENT_IDENTIFIERS, constants.DEFAULT_NUMGRP
             )
         elif (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_GRAPH
