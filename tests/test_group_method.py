@@ -12,6 +12,8 @@ from gatorgrouper.utils import group_rrobin
 
 #TODO: add new tests for random sorting with conflicts
 
+# test case for calculating num of groups based off of group size input
+
 def test_group_random1():
     """Testing that the group_random() function creates the
         appropriate number of groups with the appropriate number"""
@@ -135,6 +137,10 @@ def test_group_random():
     assert len(returned_groups) == 3
     assert len(returned_groups1[0]) == 2
 
+# test case for generic random groups with conflicts
+
+# test case to ensure that the random groups with conflicts is not the worst
+# possible groupings possible
 
 def test_shuffle():
     """Checking the shuffle_students method for appropriate ouput"""
