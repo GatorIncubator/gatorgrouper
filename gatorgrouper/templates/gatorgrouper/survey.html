@@ -1,18 +1,20 @@
 {% extends "gatorgrouper/base.html" %}
 {% block content %}
-  <main role="main" class="container">
-      <div class="content-section">
-        <form method="post">
-          {% csrf_token %} <!--must have this line for forms-->
-          <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Student Survey</legend>
-            <!-- Adds a section for question one. -->
-            <form action="/action_page.php">
-              <div class="form-group">
-                <label for="Question One">Question One:</label>
-                <input type="text" class="form-control" placeholder="Enter Yes or No" name="question-answer">
-              </div>
-            </form>
+<main role="main" class="container">
+    <div class="content-section">
+      <form method="post">
+        {% csrf_token %} <!--must have this line for forms-->
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Student Survey</legend>
+          <!-- Adds a section for question one. -->
+          <form action="/action_page.php">
+            <div class="form-group">
+              <label for="Question One">Question One:</label>
+              <label for="Question One">Enter Yes or No: </label>
+              <input type="radio" name = "optradio" checked> Yes </label>
+              <input type="radio" name = "optradio" checked> No </label>
+            </div>
+          </form>
             <!-- Adds a section for question two. -->
             <form action="/action_page.php">
               <div class="form-group">
