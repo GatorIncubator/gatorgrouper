@@ -2,7 +2,7 @@
 {% block content %}
 
       <div class="class-container">
-
+{% if classes|length > 0 %}
       {% for class in all_classes %}
       <div class="class-item">
       <h2>{{ class }}</h2>
@@ -20,5 +20,8 @@
         </div>
         </div>
       {% endfor %}
+{% else %}
+  <p> Please Add a Class and Create Assignments to view them in your profile</p>
+{% endif %}
       </div>
 {% endblock %}
