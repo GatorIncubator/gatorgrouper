@@ -32,20 +32,23 @@ class Test_UserManager:
         "Undocumented"
         with pytest.raises(ValueError):
             User = get_user_model()
-            User.objects.create_superuser(email='superuser@user.com', password='super', is_superuser=False)
+            User.objects.create_superuser(email='superuser@user.com',
+                                          password='super', is_superuser=False)
 
     def test_is_staff_exception(self):
         "Undocumented"
         with pytest.raises(ValueError):
             User = get_user_model()
-            User.objects.create_superuser(email='superuser@user.com', password='super', is_staff=False)
+            User.objects.create_superuser(email='superuser@user.com',
+                                          password='super', is_staff=False)
 
     def test_email_exception(self):
         "Undocumented"
         with pytest.raises(ValueError):
             User = get_user_model()
             # pylint: disable=W0212
-            User.objects._create_user(email=None, password='super', is_superuser=False)
+            User.objects._create_user(email=None, password='super',
+                                      is_superuser=False)
 
 
 class Test_Professor:
