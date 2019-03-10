@@ -118,7 +118,7 @@ def group_graph_partition(
     return groups
 
 
-if __name__ == "__main__":
+def main():
     students = [
         ["one", 0, 0],
         ["two", 0, 0.5],
