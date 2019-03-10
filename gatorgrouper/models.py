@@ -77,10 +77,10 @@ class Semester_Class(models.Model):
 
 class Assignment(models.Model):
     """ This is undocumented """
-
+    assignment_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
-    assignment_id = models.CharField(max_length=20, primary_key=True)
-    description = models.CharField(max_length=250, blank=True)
+    assignment_name = models.CharField(max_length=30, default="Group Project")
+    description = models.CharField(max_length=350, blank=True)
 
     def __str__(self):
         return "{}".format(self.assignment_id)
