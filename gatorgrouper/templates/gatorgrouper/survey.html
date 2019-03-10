@@ -58,7 +58,10 @@
           </fieldset>
           <!-- Adds the create and cancel buttons. -->
           <div class="form-group">
-            <button type="submit" name="button" class="btn btn-outline-info">Submit</button>
+            <!-- Submit button needs to be linked to where data will be stored in database-->
+            <form action="">
+              <button type="submit">Submit</button>
+            </form>
             <!-- The Cancel button sends the user back to the Home page of the site -->
             <form action="http://127.0.0.1:8000/">
               <button type="submit">Cancel</button>
