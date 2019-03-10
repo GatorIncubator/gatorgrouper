@@ -14,6 +14,8 @@ def group_random_group_size(
 ) -> Union[List[List[List[Union[str, bool]]]], List[List[str]]]:
     """ group responses using randomization approach """
 
+    #TODO: calculate number of groups from group size
+
     # use itertools to chunk the students into groups
     iterable = iter(responses)
     groups = list(iter(lambda: list(itertools.islice(iterable, grpsize)), []))
@@ -45,6 +47,9 @@ def group_random_group_size(
 
 def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     """ group responses using randomization approach """
+
+    #TODO: store-optimal option from multiple iterations
+
     # number of students placed into a group
     stunum = 0
     iterable = iter(responses)
@@ -65,6 +70,9 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         stunum = stunum + 1
 
     # scoring and return
+
+    #TODO: calculate conflict scores
+
     scores, ave = [], 0
     scores, ave = group_scoring.score_groups(groups)
     logging.info("scores: %d", scores)

@@ -10,6 +10,8 @@ from gatorgrouper.utils import group_random
 from gatorgrouper.utils import group_rrobin
 
 
+#TODO: add new tests for random sorting with conflicts
+
 def test_group_random1():
     """Testing that the group_random() function creates the
         appropriate number of groups with the appropriate number"""
