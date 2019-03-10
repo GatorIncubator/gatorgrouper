@@ -11,7 +11,7 @@ from .models import Assignment, Grouped_Student
 
 
 # Create your views here.
-def index(request):
+def profile(request):
     """ This is undocumented """
     current_professor = request.user
     classes = list(Semester_Class.objects.filter(professor_id = current_professor))
@@ -20,7 +20,7 @@ def index(request):
         print(item)
     return render(
         request,
-        "gatorgrouper/index.html",
+        "gatorgrouper/profile.html",
         {"all_classes": classes, "all_assignments": assignments},
     )
 
@@ -45,7 +45,7 @@ def create_classes(request):
             stock.professor_id = request.user
             stock.save()
 
-            return redirect('Gatorgrouper-home')
+            return redirect('profile')
     else:
         formset = ClassFormSet()
 
@@ -61,7 +61,7 @@ def assignments(request):
         formset = AssignmentFormSet(request.POST)
         if formset.is_valid():
             formset.save()
-            return redirect('Gatorgrouper-home')
+            return redirect('profile')
     else:
         formset = AssignmentFormSet()
 
