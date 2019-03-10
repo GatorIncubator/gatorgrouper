@@ -21,4 +21,5 @@ urlpatterns = [
     re_path(r"", include("gatorgrouper.urls")),
     re_path(r"^gatorgrouper/", include("gatorgrouper.urls")),
     re_path(r"^auth/", include("social_django.urls", namespace="social")),
+    
 ]
