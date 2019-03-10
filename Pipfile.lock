@@ -16,10 +16,10 @@
     "default": {
         "certifi": {
             "hashes": [
-                "sha256:47f9c83ef4c0c621eaef743f133f09fa8a74a9b75f037e8624f83bd1b6626cb7",
-                "sha256:993f830721089fef441cdfeb4b2c8c9df86f0c63239f06bd025a76a7daddb033"
+                "sha256:59b7658e26ca9c7339e00f8f4636cdfe59d34fa37b9b04f6f9e9926b3cece1a5",
+                "sha256:b26104d6835d1f5e49452a26eb2ff87fe7090b89dfcaee5ea2212697e1e1d7ae"
             ],
-            "version": "==2018.11.29"
+            "version": "==2019.3.9"
         },
         "chardet": {
             "hashes": [
@@ -208,10 +208,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:47f9c83ef4c0c621eaef743f133f09fa8a74a9b75f037e8624f83bd1b6626cb7",
-                "sha256:993f830721089fef441cdfeb4b2c8c9df86f0c63239f06bd025a76a7daddb033"
+                "sha256:59b7658e26ca9c7339e00f8f4636cdfe59d34fa37b9b04f6f9e9926b3cece1a5",
+                "sha256:b26104d6835d1f5e49452a26eb2ff87fe7090b89dfcaee5ea2212697e1e1d7ae"
             ],
-            "version": "==2018.11.29"
+            "version": "==2019.3.9"
         },
         "chardet": {
             "hashes": [
@@ -345,12 +345,12 @@
         },
         "hypothesis": {
             "hashes": [
-                "sha256:24981f561fdce632699c14cba907b3f78624d40dab61d612000b6299c61d35d4",
-                "sha256:2f2f8d798fdddf676c0ff266265c580a65e42b14a57c1f9852ac768ec6ae0af1",
-                "sha256:a24bca99f9e8dc39527cadbdda7bca299906da0c8717e6b69773fa22b847ce4c"
+                "sha256:139aacadb54c6cd61fd2df68c538f86eb486a3560b026f32f0f736ec3a3f09de",
+                "sha256:ab76c1c0d3d10b96d8cddc8ab99126b8645a7de27c6f4981c5b0779684fec75f",
+                "sha256:c9e310a9908cbc96f3b5cebd04699fa884d88f20a8e80e0df135190b8e26217a"
             ],
             "index": "pypi",
-            "version": "==4.8.0"
+            "version": "==4.9.0"
         },
         "idna": {
             "hashes": [
