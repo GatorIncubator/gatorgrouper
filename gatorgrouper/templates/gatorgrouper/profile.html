@@ -2,7 +2,7 @@
 {% block content %}
 
       <div class="class-container">
-{% if classes|length > 0 %}
+{% if all_classes|length > 0 %}
       {% for class in all_classes %}
       <div class="class-item">
       <h2>{{ class }}</h2>
@@ -12,7 +12,7 @@
         {% for assignment in all_assignments %}
           {% if assignment.class_id == class  %}
 
-            <h5>{{ assignment }}</h5>
+            <h5>{{ assignment.assignment_name }}</h5>
             <p>{{ assignment.description }}</p>
 
           {% endif %}
