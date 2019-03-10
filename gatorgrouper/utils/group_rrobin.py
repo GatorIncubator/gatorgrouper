@@ -56,6 +56,7 @@ def group_rrobin_num_group(responses, numgrps):
 
     # setup target groups
     groups = list()  # // integer div
+    responsesToRemove = list()
     logging.info("target groups: %d", numgrps)
     for _ in range(numgrps):
         groups.append(list())
@@ -63,20 +64,25 @@ def group_rrobin_num_group(responses, numgrps):
     # setup cyclical group target
     indices = list(range(0, numgrps))
     target_group = itertools.cycle(indices)
+    priorityColumn = random.randint(1,len(responses[0])-1)
+    logging.info("column priority: %d", priorityColumn)
 
     # randomize the order in which the columns will be drained
-    columns = list()
-    for col in range(1, len(responses[0])):
-        columns.append(col)
-    random.shuffle(columns)
-    logging.info("column priority: %d", columns)
+    logging.info("column priority: %d", priorityColumn)
 
     # iterate through the response columns
-    for col in columns:
-        for response in responses:
-            if response[col] is True:
-                groups[target_group.__next__()].append(response)
-                responses.remove(response)
+    for response in responses:
+        logging.info("Responses looks like: " + str(responses))
+        logging.info("Response looks like: " + str(response))
+        if response[priorityColumn] is True:
+            logging.info("Value for response at column " + str(priorityColumn) + " is true")
+            logging.info("Groups looked like " + str(groups))
+            groups[target_group.__next__()].append(response)
+            logging.info("Groups now looks like " + str(groups))
+            responsesToRemove.append(response)
+
+    responses = [x for x in responses if x not in responsesToRemove]
+    logging.info("Responses culled, looks like: " + str(responses))
 
     # disperse anyone not already grouped
     while responses:
@@ -86,6 +92,6 @@ def group_rrobin_num_group(responses, numgrps):
     # scoring and return
     scores, ave = [], 0
     scores, ave = group_scoring.score_groups(groups)
-    logging.info("scores: %d", scores)
-    logging.info("average: %d", ave)
+    logging.info("scores: %s", scores)
+    logging.info("average: %s", ave)
     return groups
