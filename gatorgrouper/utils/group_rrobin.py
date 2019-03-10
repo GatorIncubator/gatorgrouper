@@ -28,15 +28,23 @@ def group_rrobin_group_size(responses, grpsize):
     random.shuffle(columns)
     logging.info("column priority: %d", columns[0])
 
-    # iterate through the response columns
-    for col in columns:
-        for response in responses:
-            if response[col] is True:
-                groups[target_group.__next__()].append(response)
-                responses.remove(response)
+    # iterate through the response column
+    for response in responses:
+        logging.info("Responses looks like: " + str(responses))
+        logging.info("Response looks like: " + str(response))
+        if response[columns[0]] is True:
+            logging.info("Value for response at column " + str(columns[0]) + " is true")
+            logging.info("Groups looked like " + str(groups))
+            groups[target_group.__next__()].append(response)
+            logging.info("Groups now looks like " + str(groups))
+            responsesToRemove.append(response)
 
+    responses = [x for x in responses if x not in responsesToRemove]
+    logging.info("Responses culled, looks like: " + str(responses))
     # disperse anyone not already grouped
     while responses:
+        logging.info("Responses looks like: " + str(responses))
+        logging.info("Response looks like: " + str(responses[0]))
         groups[target_group.__next__()].append(responses[0])
         responses.remove(responses[0])
 
