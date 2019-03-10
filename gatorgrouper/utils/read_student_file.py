@@ -1,7 +1,6 @@
 """ Reads CSV data file """
 
 import csv
-
 from pathlib import Path
 
 
@@ -29,6 +28,8 @@ def read_csv_data(filepath):
                     temp.append(True)
                 elif value.lower() == "false":
                     temp.append(False)
+                else:
+                    temp.append(float(value))
             responses.append(temp)
     else:
         for record in csvdata:
@@ -39,5 +40,7 @@ def read_csv_data(filepath):
                     temp.append(True)
                 elif value.lower() == "false":
                     temp.append(False)
+                else:
+                    temp.append(float(value))
             responses.append(temp)
     return responses
