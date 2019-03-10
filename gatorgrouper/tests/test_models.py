@@ -2,9 +2,29 @@
 
 import pytest
 from mixer.backend.django import mixer
+from models import Professor
+
 
 pytestmark = pytest.mark.django_db
 
+
+class Test_UserManager:
+    """test UserManager class"""
+
+    def test_create_user(self):
+        "undocumented"
+        Professor.objects.create_user(email="test@test.test",
+                                      password="testpassword")
+        user = Professor.objects.get(email="test@test.test")
+        assert user.is_superuser is False
+        # assert user == ""
+
+    def test_create_superuser(self):
+        "undocumented"
+        Professor.objects.create_superuser(email="test@test.test",
+                                           password="testpassword")
+        user = Professor.objects.get(email="test@test.test")
+        assert user.is_superuser is False
 
 class Test_Professor:
     """test professor class"""
@@ -13,9 +33,10 @@ class Test_Professor:
     def test_model(self):
         """test professor model by creating a professor instance and assert
         that there is one in the database"""
-        obj = mixer.blend("gatorgrouper.Professor")
-        # it creates a professor instance
-        assert obj.pk == 1
+        Professor.objects.create_user(email="test@test.test",
+                                      password="testpassword")
+    # it creates a professor instance
+        assert Professor.pk == 1
 
     # pylint: disable=R0201
     def test_str(self):
