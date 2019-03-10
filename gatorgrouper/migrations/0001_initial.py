@@ -11,76 +11,168 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ('auth', '0011_update_proxy_permissions'),
-    ]
+    dependencies = [("auth", "0011_update_proxy_permissions")]
 
     operations = [
         migrations.CreateModel(
-            name='Professor',
+            name="Professor",
             fields=[
-                ('password', models.CharField(max_length=128, verbose_name='password')),
-                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
-                ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
-                ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
-                ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
-                ('email', models.EmailField(max_length=200, unique=True)),
-                ('professor_id', models.AutoField(primary_key=True, serialize=False)),
-                ('first_name', models.CharField(max_length=25)),
-                ('last_name', models.CharField(max_length=25)),
-                ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.Group', verbose_name='groups')),
-                ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.Permission', verbose_name='user permissions')),
+                ("password", models.CharField(max_length=128, verbose_name="password")),
+                (
+                    "last_login",
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="last login"
+                    ),
+                ),
+                (
+                    "is_superuser",
+                    models.BooleanField(
+                        default=False,
+                        help_text="Designates that this user has all permissions without explicitly assigning them.",
+                        verbose_name="superuser status",
+                    ),
+                ),
+                (
+                    "is_staff",
+                    models.BooleanField(
+                        default=False,
+                        help_text="Designates whether the user can log into this admin site.",
+                        verbose_name="staff status",
+                    ),
+                ),
+                (
+                    "is_active",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Designates whether this user should be treated as active. Unselect this instead of deleting accounts.",
+                        verbose_name="active",
+                    ),
+                ),
+                (
+                    "date_joined",
+                    models.DateTimeField(
+                        default=django.utils.timezone.now, verbose_name="date joined"
+                    ),
+                ),
+                ("email", models.EmailField(max_length=200, unique=True)),
+                ("professor_id", models.AutoField(primary_key=True, serialize=False)),
+                ("first_name", models.CharField(max_length=25)),
+                ("last_name", models.CharField(max_length=25)),
+                (
+                    "groups",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="The groups this user belongs to. A user will get all permissions granted to each of their groups.",
+                        related_name="user_set",
+                        related_query_name="user",
+                        to="auth.Group",
+                        verbose_name="groups",
+                    ),
+                ),
+                (
+                    "user_permissions",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="Specific permissions for this user.",
+                        related_name="user_set",
+                        related_query_name="user",
+                        to="auth.Permission",
+                        verbose_name="user permissions",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'user',
-                'verbose_name_plural': 'users',
-                'abstract': False,
+                "verbose_name": "user",
+                "verbose_name_plural": "users",
+                "abstract": False,
             },
-            managers=[
-                ('objects', gatorgrouper.models.UserManager()),
+            managers=[("objects", gatorgrouper.models.UserManager())],
+        ),
+        migrations.CreateModel(
+            name="Assignment",
+            fields=[
+                (
+                    "assignment_id",
+                    models.CharField(max_length=20, primary_key=True, serialize=False),
+                ),
+                ("description", models.CharField(blank=True, max_length=250)),
             ],
         ),
         migrations.CreateModel(
-            name='Assignment',
+            name="Semester_Class",
             fields=[
-                ('assignment_id', models.CharField(max_length=20, primary_key=True, serialize=False)),
-                ('description', models.CharField(blank=True, max_length=250)),
+                (
+                    "semester",
+                    models.CharField(
+                        choices=[("S19", "Spring, 2019"), ("F19", "Fall, 2019")],
+                        default="---------",
+                        max_length=3,
+                    ),
+                ),
+                ("class_id", models.AutoField(primary_key=True, serialize=False)),
+                ("department", models.CharField(max_length=10)),
+                ("class_number", models.CharField(max_length=10)),
+                ("class_section", models.CharField(max_length=10)),
+                ("domain_name", models.CharField(blank=True, max_length=100)),
+                (
+                    "professor_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Semester_Class',
+            name="Student",
             fields=[
-                ('semester', models.CharField(choices=[('S19', 'Spring, 2019'), ('F19', 'Fall, 2019')], default='---------', max_length=3)),
-                ('class_id', models.AutoField(primary_key=True, serialize=False)),
-                ('department', models.CharField(max_length=10)),
-                ('class_number', models.CharField(max_length=10)),
-                ('class_section', models.CharField(max_length=10)),
-                ('domain_name', models.CharField(blank=True, max_length=100)),
-                ('professor_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ("student_id", models.AutoField(primary_key=True, serialize=False)),
+                ("first_name", models.CharField(max_length=30)),
+                ("last_name", models.CharField(max_length=30)),
+                (
+                    "class_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="gatorgrouper.Semester_Class",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Student',
+            name="Grouped_Student",
             fields=[
-                ('student_id', models.AutoField(primary_key=True, serialize=False)),
-                ('first_name', models.CharField(max_length=30)),
-                ('last_name', models.CharField(max_length=30)),
-                ('class_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gatorgrouper.Semester_Class')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Grouped_Student',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('group_id', models.CharField(max_length=40)),
-                ('assignment_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gatorgrouper.Assignment')),
-                ('student_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gatorgrouper.Student')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("group_id", models.CharField(max_length=40)),
+                (
+                    "assignment_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="gatorgrouper.Assignment",
+                    ),
+                ),
+                (
+                    "student_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="gatorgrouper.Student",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='assignment',
-            name='class_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gatorgrouper.Semester_Class'),
+            model_name="assignment",
+            name="class_id",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="gatorgrouper.Semester_Class",
+            ),
         ),
     ]

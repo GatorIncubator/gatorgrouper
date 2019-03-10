@@ -2,6 +2,7 @@
 
 import pytest
 from mixer.backend.django import mixer
+
 # from models import Professor
 from django.contrib.auth import get_user_model
 
@@ -16,15 +17,17 @@ class Test_UserManager:
     def test_create_user(self):
         "Undocumented"
         User = get_user_model()
-        user = User.objects.create_user(email='normaluser@user.com', password='normal')
-        assert user.email == 'normaluser@user.com'
+        user = User.objects.create_user(email="normaluser@user.com", password="normal")
+        assert user.email == "normaluser@user.com"
         assert user.is_superuser is False
 
     # pylint: disable=R0201
     def test_create_superuser(self):
         "Undocumented"
         User = get_user_model()
-        user = User.objects.create_superuser(email='superuser@user.com', password='super')
+        user = User.objects.create_superuser(
+            email="superuser@user.com", password="super"
+        )
         assert user.is_staff is True
         assert user.is_superuser is True
 
@@ -32,23 +35,24 @@ class Test_UserManager:
         "Undocumented"
         with pytest.raises(ValueError):
             User = get_user_model()
-            User.objects.create_superuser(email='superuser@user.com',
-                                          password='super', is_superuser=False)
+            User.objects.create_superuser(
+                email="superuser@user.com", password="super", is_superuser=False
+            )
 
     def test_is_staff_exception(self):
         "Undocumented"
         with pytest.raises(ValueError):
             User = get_user_model()
-            User.objects.create_superuser(email='superuser@user.com',
-                                          password='super', is_staff=False)
+            User.objects.create_superuser(
+                email="superuser@user.com", password="super", is_staff=False
+            )
 
     def test_email_exception(self):
         "Undocumented"
         with pytest.raises(ValueError):
             User = get_user_model()
             # pylint: disable=W0212
-            User.objects._create_user(email=None, password='super',
-                                      is_superuser=False)
+            User.objects._create_user(email=None, password="super", is_superuser=False)
 
 
 class Test_Professor:
