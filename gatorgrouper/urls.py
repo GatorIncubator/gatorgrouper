@@ -8,7 +8,7 @@ from . import views
 
 urlpatterns = [
     path("index/", views.index, name="index"),
-    path('', views.home, name="Gatorgrouper-home"),
+    path("", views.home, name="Gatorgrouper-home"),
     path("classes/", views.create_classes, name="Gatorgrouper-classes"),
     path("assignments/", views.assignments, name="Gatorgrouper-assignments"),
     path("survey/", views.survey, name="Gatorgrouper-survey"),
