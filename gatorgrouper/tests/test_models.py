@@ -12,13 +12,14 @@ pytestmark = pytest.mark.django_db
 class Test_UserManager:
     """test UserManager class"""
 
+    # pylint: disable=R0201
     def test_create_user(self):
         User = get_user_model()
         user = User.objects.create_user(email='normaluser@user.com', password='normal')
         assert user.email == 'normaluser@user.com'
         assert user.is_superuser is False
 
-
+    # pylint: disable=R0201
     def test_create_superuser(self):
         User = get_user_model()
         user = User.objects.create_superuser(email='superuser@user.com', password='super')
