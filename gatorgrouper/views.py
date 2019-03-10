@@ -26,7 +26,8 @@ def register(request):
             return redirect('login')
     else:
         form = CustomUserCreationForm()
-    return render(request, "gatorgrouper/register.html", {'form':form})
+    return render(request, "gatorgrouper/register.html", {"title": "Register",'form':form})
+
 
 @login_required
 def profile(request):
@@ -39,7 +40,7 @@ def profile(request):
     return render(
         request,
         "gatorgrouper/profile.html",
-        {"all_classes": classes, "all_assignments": assignments},
+        {"title": "Profile", "all_classes": classes, "all_assignments": assignments},
     )
 
 
@@ -48,8 +49,9 @@ def home(request):
     if request.user.__str__() != 'AnonymousUser':
         print(request.user.email)
         print("Hello")
-    return render(request, "gatorgrouper/home.html")
+    return render(request, "gatorgrouper/home.html", {"title": "Home"})
     # return HttpResponse
+
 
 @login_required
 def create_classes(request):
@@ -62,7 +64,7 @@ def create_classes(request):
             stock = formset.save(commit=False)
             stock.professor_id = request.user
             stock.save()
-
+            messages.success(request, f'Class Added')
             return redirect('profile')
     else:
         formset = ClassFormSet()
@@ -74,11 +76,12 @@ def create_classes(request):
 @login_required
 def assignments(request):
     """ Create assignments view """
-    AssignmentFormSet = modelform_factory(Assignment, fields=("class_id","assignment_id","description"))
+    AssignmentFormSet = modelform_factory(Assignment, fields=("class_id","assignment_name","description"))
     if request.method == "POST":
         formset = AssignmentFormSet(request.POST)
         if formset.is_valid():
             formset.save()
+            messages.success(request, f'Assignment Successfully Created')
             return redirect('profile')
     else:
         formset = AssignmentFormSet()
@@ -87,10 +90,12 @@ def assignments(request):
         request, "gatorgrouper/assignments.html", {"title": "Create Assignments",'formset': formset}
     )
 
+
 @login_required
 def survey(request):
     """ Student's grouping preference? """
     return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
+
 
 @login_required
 def groupResult(request):
