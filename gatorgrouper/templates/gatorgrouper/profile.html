@@ -1,0 +1,24 @@
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+
+      <div class="class-container">
+
+      {% for class in all_classes %}
+      <div class="class-item">
+      <h2>{{ class }}</h2>
+      <div class="assignments">
+
+
+        {% for assignment in all_assignments %}
+          {% if assignment.class_id == class  %}
+
+            <h5>{{ assignment }}</h5>
+            <p>{{ assignment.description }}</p>
+
+          {% endif %}
+        {% endfor %}
+        </div>
+        </div>
+      {% endfor %}
+      </div>
+{% endblock %}
