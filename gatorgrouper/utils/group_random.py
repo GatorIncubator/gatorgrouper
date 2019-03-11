@@ -14,7 +14,7 @@ def group_random_group_size(responses: str, grpsize: int) -> List[List[str]]:
     # number of groups = number of students / minimum students per group
     numgrp = int(len(responses) / grpsize)
 
-    group_random_num_group(responses, numgrp)
+    return group_random_num_group(responses, numgrp)
 
 
 def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:

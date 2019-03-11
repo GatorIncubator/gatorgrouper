@@ -1,7 +1,7 @@
 """Testing random grouping"""
-from utils import group_random
-from utils import group_rrobin
-from utils import gatorgrouper
+from gatorgrouper.utils import group_random
+from gatorgrouper.utils import group_rrobin
+import gatorgrouper_cli
 
 
 def test_group_random1():
@@ -75,7 +75,7 @@ def test_shuffle():
         "Jesse",
         "Maria",
     ]
-    shuffled_students = gatorgrouper.shuffle_students(student_identifiers)
+    shuffled_students = group_random.shuffle_students(student_identifiers)
     for i in range(0, len(shuffled_students)):
         assert (student_identifiers[i] in shuffled_students) is True
     assert (student_identifiers == shuffled_students) is False
@@ -126,32 +126,3 @@ def test_random():
     actual_output = group_random.group_random_group_size(lst, group_size)
     assert len(actual_output) == 3
     assert len(actual_output[0]) == 4
-
-def test_conflict_sort():
-    """ Testing the conflict sorting to assure it sorts properly """
-    lst = [
-        ["Dan", True, True, True],
-        ["Jesse", True, True, True],
-        ["Austin", True, True, True],
-        ["Nick", False, False, False],
-        ["Nikki", False, False, False],
-        ["Maria", False, False, False],
-    ]
-    conlst = [
-        [4, 2, 3],
-        [3],
-        [0,5],
-        [0,1],
-        [0],
-        [2],
-    ]
-    expected_output  = [
-        ["Dan", True, True, True],
-        ["Austin", True, True, True],
-        ["Nick", False, False, False],
-        ["Jesse", True, True, True],
-        ["Nikki", False, False, False],
-        ["Maria", False, False, False],
-    ]
-    actual_output = group_rrobin.conflict_sorting(lst, conlst)
-    assert actual_output == expected_output
