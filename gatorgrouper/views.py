@@ -20,7 +20,15 @@ def upload_csv(request):
             else:
                 preferences = None
             numgrp = form.cleaned_data["numgrp"]
-            groups = group_graph_partition(responses, numgrp, preferences=preferences)
+            preferences_weight = form.cleaned_data["preferences_weight"]
+            preferences_weight_match = form.cleaned_data["preferences_weight_match"]
+            groups = group_graph_partition(
+                responses,
+                numgrp,
+                preferences=preferences,
+                preferences_weight=preferences_weight,
+                preferences_weight_match=preferences_weight_match,
+            )
             return render(
                 request, "gatorgrouper/viewing-groups.html", {"groups": groups}
             )

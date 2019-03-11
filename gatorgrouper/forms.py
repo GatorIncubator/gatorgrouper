@@ -16,3 +16,13 @@ class UploadCSVForm(forms.Form):
         coerce=int,
         label="Number of groups to create",
     )
+    preferences_weight = forms.FloatField(
+        label="Importance of an unmatched preference",
+        initial=1.1,
+        min_value=1.0
+    )
+    preferences_weight_match = forms.FloatField(
+        label="Importance of a matched preference",
+        initial=1.25,
+        min_value=1.0
+    )
