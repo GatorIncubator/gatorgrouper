@@ -173,8 +173,8 @@ def test_round_robin():
     assert len(actual_output) == 4
     assert len(actual_output[0]) == group_size
     assert ["Dan", True, True, True] in actual_output[0]
-    assert ["Jesse", True, True, True] in actual_output[2]
-    assert ["Austin", True, True, True] in actual_output[1]
+    assert ["Jesse", True, True, True] in actual_output[1]
+    assert ["Austin", True, True, True] in actual_output[2]
 
 
 def test_rrobin_responses():
@@ -198,8 +198,8 @@ def test_rrobin_responses():
     assert len(response_output[0]) == 3
     assert len(response_output) == numgrps
     assert ["Dan", True, True, True] in response_output[0]
-    assert ["Jesse", True, True, True] in response_output[2]
-    assert ["Austin", True, True, True] in response_output[1]
+    assert ["Jesse", True, True, True] in response_output[1]
+    assert ["Austin", True, True, True] in response_output[2]
 
 
 def test_random():
