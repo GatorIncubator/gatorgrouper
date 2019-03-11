@@ -21,29 +21,21 @@ def group_rrobin_group_size(responses, grpsize):
     # column to distribute students by
     indices = list(range(0, numgrps))
     target_group = itertools.cycle(indices)
-    priorityColumn = random.randint(1,len(responses[0])-1)
+    priorityColumn = random.randint(1, len(responses[0]) - 1)
     logging.info("column priority: %d", priorityColumn)
 
     # iterate through the responses and check if the priority column is true
     # if it is, add that response to the next group
     for response in responses:
-        logging.info("Responses looks like: " + str(responses))
-        logging.info("Response looks like: " + str(response))
         if response[priorityColumn] is True:
-            logging.info("Value for response at column " + str(priorityColumn) + " is true")
-            logging.info("Groups looked like " + str(groups))
             groups[target_group.__next__()].append(response)
-            logging.info("Groups now looks like " + str(groups))
             responsesToRemove.append(response)
 
     # remove the responses that were already added to a group
     responses = [x for x in responses if x not in responsesToRemove]
-    logging.info("Responses culled, looks like: " + str(responses))
 
     # disperse anyone not already grouped
     while responses:
-        logging.info("Responses looks like: " + str(responses))
-        logging.info("Response looks like: " + str(responses[0]))
         groups[target_group.__next__()].append(responses[0])
         responses.remove(responses[0])
 
@@ -69,7 +61,7 @@ def group_rrobin_num_group(responses, numgrps):
     # column to distribute students by
     indices = list(range(0, numgrps))
     target_group = itertools.cycle(indices)
-    priorityColumn = random.randint(1,len(responses[0])-1)
+    priorityColumn = random.randint(1, len(responses[0]) - 1)
     logging.info("column priority: %d", priorityColumn)
 
     # iterate through the responses and check if the priority column is true
@@ -79,17 +71,12 @@ def group_rrobin_num_group(responses, numgrps):
     # iterate through the responses and check if the priority column is true
     # if it is, add that response to the next group
     for response in responses:
-        logging.info("Responses looks like: " + str(responses))
-        logging.info("Response looks like: " + str(response))
         if response[priorityColumn] is True:
-            logging.info("Value for response at column " + str(priorityColumn) + " is true")
-            logging.info("Groups looked like " + str(groups))
             groups[target_group.__next__()].append(response)
-            logging.info("Groups now looks like " + str(groups))
             responsesToRemove.append(response)
 
+    # remove the responses that were already added to a group
     responses = [x for x in responses if x not in responsesToRemove]
-    logging.info("Responses culled, looks like: " + str(responses))
 
     # disperse anyone not already grouped
     while responses:

@@ -49,8 +49,6 @@ if __name__ == "__main__":  # pragma: no cover
 
         # generate the groups and display them
         # pylint: disable=bad-continuation
-        logging.info("Num_group is " + str(GG_ARGUMENTS.num_group))
-        logging.info("Group_size is " + str(GG_ARGUMENTS.group_size))
         # If user wanted to sort by round robin and provided a group size
         # but did not provide the number of groups
         if (

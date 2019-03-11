@@ -96,13 +96,12 @@ def check_valid(args, students_list):
     """Verify the command-line arguments"""
     verified_arguments = False
     students_list_length = len(students_list)
-    logging.info("Group size is " + str(args.group_size))
-    logging.info("Num group is " + str(args.num_group))
     if args.group_size is not None and args.group_size <= students_list_length / 2:
         verified_arguments = True
     if args.num_group is not None and args.num_group <= students_list_length / 2:
         verified_arguments = True
-    if args.group_size is None and args.num_group is None and constants.DEFAULT_NUMGRP <= students_list_length /2:
+    if (args.group_size is None and args.num_group is None and
+        constants.DEFAULT_NUMGRP <= students_list_length /2):
         verified_arguments = True
     if args.file is constants.NONE:
         verified_arguments = False
