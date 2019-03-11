@@ -24,6 +24,7 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     # Intensity is the value that represents the number of attempts made to group
     optimized_groups = list()
     # Optimized Groups holds the groups after scoring maximization
+    top_ave = -10000000
     while (intensity > 0):
         # number of students placed into a group
         stunum = 0
@@ -52,6 +53,10 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         logging.info("scores: %d", scores)
         logging.info("average: %d", ave)
         intensity -= 1
+
+        if (ave > top_ave):
+            # TODO: Account for conflict score with average
+            top_ave = ave
 
     return groups
 
