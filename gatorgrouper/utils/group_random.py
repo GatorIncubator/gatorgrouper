@@ -7,36 +7,13 @@ from random import shuffle
 from .group_scoring import score_groups
 
 
-def group_random_group_size(responses, grpsize):
-    """ group responses using randomization approach """
+# pylint: disable=bad-continuation
+def group_random_group_size(responses: str, grpsize: int) -> List[List[str]]:
+    """ Calculate number of groups based on desired students per group """
+    # number of groups = number of students / minimum students per group
+    numgrp = int(len(responses) / grpsize)
 
-    # use itertools to chunk the students into groups
-    iterable = iter(responses)
-    groups = list(iter(lambda: list(itertools.islice(iterable, grpsize)), []))
-
-    # deal with the last, potentially partial group
-    last_group_index = len(groups) - 1
-    if len(groups[last_group_index]) < grpsize:
-
-        # distribute them throughout the other groups
-        logging.info("Partial group identified; distributing across other groups.")
-        lastgroup = groups[last_group_index]
-        outliers = copy.deepcopy(lastgroup)
-        groups.remove(lastgroup)
-        while outliers:
-            for group in groups:
-                if outliers:
-                    group.append(outliers[0])
-                    outliers = outliers[1:]
-                else:
-                    break
-
-    # scoring and return
-    scores, ave = [], 0
-    scores, ave = score_groups(groups)
-    logging.info("scores: %d", scores)
-    logging.info("average: %d", ave)
-    return groups
+    group_random_num_group(responses, numgrp)
 
 
 def group_random_num_group(responses, numgrp):
