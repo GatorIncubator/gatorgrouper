@@ -66,7 +66,7 @@ def assignments(request):
 
 def users(request):
     """ Create user view"""
-    return render( request)
+    return render(request)
 
 def survey(request, class_id = None):
     """ POST and GET requests for handling student survey """
