@@ -19,6 +19,7 @@ pytest-django = "*"
 mixer = "*"
 pylint = "*"
 hypothesis = "*"
+pandas = "*"
 
 [packages]
 pathlib = "*"
