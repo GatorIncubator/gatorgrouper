@@ -24,16 +24,21 @@ def test_recursive_kl():
     # assert i in groups is True
 
 
-# def test_total_cut_size():
-#     """ Test if sums computed match actual sum of weights of all edges between different subsets in the partition"""
-#     weights = [[0, 0], [0, 0.5], [0.5, 0], [0.75, 0.75], [0.8, 0.1], [0, 1], [1, 0], [1, 1]]
-#     cut = 0.0
-#     G = Graph()
-#     G.add_nodes_from(vertex_weight_pairs)
-#     expected_output = [cut += cut_size(graph, subset1, T=subset2)]
-#     assert expected_output == sum(weights)
-#
-#
+input = [(2, 2)]
+@pytest.mark.parametrize("a,b", output)
+# @pytest.mark.parametrize("input, expected_output", [(input, 4)])
+def test_total_cut_size(input):
+    """ Test if sums computed match actual sum of weights of all edges between different subsets in the partition"""
+    output = group_graph.total_cut_size(input)
+    assert output = expected_output
+
+
+    # partition: List[int]
+    # G = Graph()
+    # input = [G, partition]
+    # expected_output = cutsize(graph, subset1, T=subset2)
+    # assert
+
 #
 # def test_compatability_raises():
 #     """Raises exception for unequal tuples"""
