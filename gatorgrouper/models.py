@@ -122,7 +122,6 @@ class Student_Conflict(models.Model):
     FIVE = "5"
     SEVERITY_CHOICES = ((ONE, "1"), (TWO, "2"), (THREE, "3"), (FOUR, "4"), (FIVE, "5"))
     conflict_id = models.AutoField(primary_key=True)
-<<<<<<< Updated upstream
     student1 = models.ForeignKey(
         Student, on_delete=models.CASCADE, related_name="id1", blank=True
     )
@@ -130,9 +129,4 @@ class Student_Conflict(models.Model):
         Student, on_delete=models.CASCADE, related_name="id2", blank=True
     )
     severity_rank = models.CharField(max_length=1, choices=SEVERITY_CHOICES, blank=True)
-=======
-    student1 = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='id1',blank=True)
-    student2 = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='id2',blank=True)
-    severity_rank = models.CharField(max_length = 1, choices=SEVERITY_CHOICES, blank=True)
->>>>>>> Stashed changes
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE, blank=True)

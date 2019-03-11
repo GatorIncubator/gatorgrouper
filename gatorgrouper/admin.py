@@ -4,10 +4,7 @@ from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 from .models import Professor, Semester_Class, Student, Grouped_Student, Assignment
 from .models import Student_Conflict
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 
 # Register your models here.
 
