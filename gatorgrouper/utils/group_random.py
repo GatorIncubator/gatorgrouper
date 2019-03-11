@@ -1,8 +1,6 @@
 """ Promotes diversity by grouping using randomization approach. """
 
-import copy
 import logging
-import itertools
 import random
 from typing import List, Union
 from gatorgrouper.utils import group_scoring
@@ -25,7 +23,7 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     optimized_groups = list()
     # Optimized Groups holds the groups after scoring maximization
     top_ave = -10000000
-    while (intensity > 0):
+    while intensity > 0:
         # number of students placed into a group
         stunum = 0
         iterable = iter(responses)
@@ -46,7 +44,7 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
             stunum = stunum + 1
 
         # scoring and return
-        #TODO: calculate conflict scores
+        # TODO: calculate conflict scores
 
         scores, ave = [], 0
         scores, ave = group_scoring.score_groups(groups)
@@ -54,7 +52,7 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         logging.info("average: %d", ave)
         intensity -= 1
 
-        if (ave > top_ave):
+        if ave > top_ave:
             # TODO: Account for conflict score with average
             top_ave = ave
             optimized_groups = groups
@@ -62,7 +60,6 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     return optimized_groups
 
 
-# pylint: disable=bad-continuation
 def shuffle_students(
     responses: Union[str, List[List[Union[str, bool]]]]
 ) -> List[List[Union[str, bool]]]:
