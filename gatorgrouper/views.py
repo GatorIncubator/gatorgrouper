@@ -52,9 +52,7 @@ def profile(request):
 
 def home(request):
     """ Homepage view """
-    if request.user.__str__() != "AnonymousUser":
-        print(request.user.email)
-        print("Hello")
+
     return render(request, "gatorgrouper/home.html", {"title": "Home"})
     # return HttpResponse
 
