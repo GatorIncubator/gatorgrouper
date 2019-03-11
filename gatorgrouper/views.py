@@ -35,12 +35,13 @@ def profile(request):
     current_professor = request.user
     classes = list(Semester_Class.objects.filter(professor_id = current_professor))
     assignments = list(Assignment.objects.all())
+    students = list(Student.objects.all())
     for item in classes:
         print(item)
     return render(
         request,
         "gatorgrouper/profile.html",
-        {"title": "Profile", "all_classes": classes, "all_assignments": assignments},
+        {"title": "Profile", "all_classes": classes, "all_assignments": assignments, "all_students": students },
     )
 
 
@@ -102,4 +103,23 @@ def groupResult(request):
     """ Group result view """
     return render(
         request, "gatorgrouper/viewing-groups.html", {"title": "Group Result"}
+    )
+
+
+@login_required
+def add_students(request):
+    """ Used to display current students in roster and provides option to add students """
+    # Probably won't need class_id
+    # gonna try to add that automatically.
+    StudentFormSet = modelform_factory(Student, fields=("class_id", "first_name", "last_name"))
+    if request.method == "POST":
+        formset = StudentFormSet(request.POST)
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, f'Student Successfully Created')
+            return redirect('add-students')
+    else:
+        formset = StudentFormSet()
+    return render(
+        request, "gatorgrouper/add-students.html", {"title": "Add a Student", "formset": formset}
     )
