@@ -83,7 +83,7 @@ class Assignment(models.Model):
     description = models.CharField(max_length=350, blank=True)
 
     def __str__(self):
-        return "{}".format(self.assignment_id)
+        return "{}: {}".format(self.class_id, self.assignment_name)
 
 
 class Student(models.Model):
@@ -106,4 +106,4 @@ class Grouped_Student(models.Model):
     group_id = models.CharField(max_length=40)
 
     def __str__(self):
-        return "{}: {}".format(self.assignment_id, self.group_id)
+        return "Group: {} - {}".format(self.group_id, self.student_id)
