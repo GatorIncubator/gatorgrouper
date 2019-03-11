@@ -17,13 +17,15 @@ def group_rrobin_group_size(responses, grpsize):
     for _ in range(numgrps):
         groups.append(list())
 
-    # setup cyclical group target
+    # choose a random column from the student responses as the priority
+    # column to distribute students by
     indices = list(range(0, numgrps))
     target_group = itertools.cycle(indices)
     priorityColumn = random.randint(1,len(responses[0])-1)
     logging.info("column priority: %d", priorityColumn)
 
-    # iterate through the response column
+    # iterate through the responses and check if the priority column is true
+    # if it is, add that response to the next group
     for response in responses:
         logging.info("Responses looks like: " + str(responses))
         logging.info("Response looks like: " + str(response))
@@ -34,8 +36,10 @@ def group_rrobin_group_size(responses, grpsize):
             logging.info("Groups now looks like " + str(groups))
             responsesToRemove.append(response)
 
+    # remove the responses that were already added to a group
     responses = [x for x in responses if x not in responsesToRemove]
     logging.info("Responses culled, looks like: " + str(responses))
+
     # disperse anyone not already grouped
     while responses:
         logging.info("Responses looks like: " + str(responses))
@@ -61,16 +65,19 @@ def group_rrobin_num_group(responses, numgrps):
     for _ in range(numgrps):
         groups.append(list())
 
-    # setup cyclical group target
+    # choose a random column from the student responses as the priority
+    # column to distribute students by
     indices = list(range(0, numgrps))
     target_group = itertools.cycle(indices)
     priorityColumn = random.randint(1,len(responses[0])-1)
     logging.info("column priority: %d", priorityColumn)
 
-    # randomize the order in which the columns will be drained
+    # iterate through the responses and check if the priority column is true
+    # if it is, add that response to the next group
     logging.info("column priority: %d", priorityColumn)
 
-    # iterate through the response columns
+    # iterate through the responses and check if the priority column is true
+    # if it is, add that response to the next group
     for response in responses:
         logging.info("Responses looks like: " + str(responses))
         logging.info("Response looks like: " + str(response))
