@@ -6,11 +6,11 @@ import csv
 import math
 import logging
 import gspread
-import pandas as pd
 from oauth2client.service_account import ServiceAccountCredentials
+import pandas as pd
 
-from genetic_algorithm import Student
-import config
+from group_genetic import Student
+import constants
 
 
 EMAIL_COL = None
