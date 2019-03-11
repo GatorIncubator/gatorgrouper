@@ -15,4 +15,5 @@ urlpatterns = [
     path("survey/", views.survey, name="Gatorgrouper-survey"),
     path("group-result/", views.groupResult, name="Gatorgrouper-groups"),
     path("add-students/", views.add_students, name="add-students"),
+    path("create-groups/", views.create_groups, name="create-groups")
 ]
