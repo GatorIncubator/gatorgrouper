@@ -7,10 +7,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("index/", views.index, name="index"),
+    path("profile/", views.profile, name="profile"),
+    path("register/", views.register, name="register"),
     path('', views.home, name="Gatorgrouper-home"),
     path("classes/", views.create_classes, name="Gatorgrouper-classes"),
     path("assignments/", views.assignments, name="Gatorgrouper-assignments"),
     path("survey/", views.survey, name="Gatorgrouper-survey"),
     path("group-result/", views.groupResult, name="Gatorgrouper-groups"),
+    path("add-students/", views.add_students, name="add-students"),
+    path("create-groups/", views.create_groups, name="create-groups")
 ]

@@ -135,4 +135,42 @@ a.article-title:hover {
 
 .dropdown a:hover {background-color: #ddd;}
 
+.class-container {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: beige;
+  flex-wrap: wrap;
+  min-height: 15em
+
+}
+
+.student-container {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #87b5ff;
+  flex-wrap: wrap;
+  min-height: 20em
+
+}
+
+.class-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 10px 15px 15px;
+}
+
+.assignments {
+  display: flex;
+  flex-direction: column;
+}
+
+.students {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 .show {display: block;}

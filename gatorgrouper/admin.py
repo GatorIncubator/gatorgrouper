@@ -29,6 +29,7 @@ class UserAdmin(DjangoUserAdmin):
     ordering = ('email',)
 
 admin.site.register(Semester_Class)
-admin.site.register(Student)
-admin.site.register(Grouped_Student)
-admin.site.register(Assignment)
+admin.site.register(Students)
+admin.site.register(Grouped_Students)
+admin.site.register(Assignments)
+admin.site.register(Student_Conflicts)
