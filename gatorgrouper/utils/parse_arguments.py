@@ -94,6 +94,7 @@ def check_valid(args, students_list):
         verified_arguments = True
     if args.num_group is not None and args.num_group <= students_list_length / 2:
         verified_arguments = True
+    # pylint: disable=bad-continuation
     if (
         args.group_size is None
         and args.num_group is None
