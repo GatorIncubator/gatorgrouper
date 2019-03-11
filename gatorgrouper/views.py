@@ -104,7 +104,6 @@ def home(request):
 @login_required
 def create_classes(request):
     """ Create classes view """
-
     ClassFormSet = modelform_factory(
         Semester_Class,
         fields=("semester", "department", "class_number", "class_section"),
@@ -119,6 +118,11 @@ def create_classes(request):
             return redirect("profile")
     else:
         formset = ClassFormSet()
+
+
+def users(request):
+    """ Create user view"""
+    return render( request)
 
     return render(
         request,
