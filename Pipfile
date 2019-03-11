@@ -27,6 +27,7 @@ django = "*"
 networkx = "*"
 social-auth-app-django = "*"
 numpy = "*"
+ansicolors = "*"
 
 [pipenv]
 allow_prereleases = true
