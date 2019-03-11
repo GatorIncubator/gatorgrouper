@@ -135,7 +135,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
-AUTH_USER_MODEL = 'gatorgrouper.Professor'
+AUTH_USER_MODEL = "gatorgrouper.Professor"
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
@@ -167,6 +167,6 @@ STATIC_URL = "/static/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-LOGIN_REDIRECT_URL = 'Gatorgrouper-home'
+LOGIN_REDIRECT_URL = "Gatorgrouper-home"
 
-LOGIN_URL = 'login'
+LOGIN_URL = "login"

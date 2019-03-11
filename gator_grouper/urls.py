@@ -21,7 +21,14 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("gatorgrouper.urls")),
     re_path(r"^auth/", include("social_django.urls", namespace="social")),
-    path('login/', auth_views.LoginView.as_view(template_name='gatorgrouper/login.html'), name = 'login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='gatorgrouper/logout.html'), name = 'logout')
-
+    path(
+        "login/",
+        auth_views.LoginView.as_view(template_name="gatorgrouper/login.html"),
+        name="login",
+    ),
+    path(
+        "logout/",
+        auth_views.LogoutView.as_view(template_name="gatorgrouper/logout.html"),
+        name="logout",
+    ),
 ]

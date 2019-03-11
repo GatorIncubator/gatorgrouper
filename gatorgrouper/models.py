@@ -11,7 +11,7 @@ class UserManager(BaseUserManager):
     def _create_user(self, email, password, **extra_fields):
         """Create and save a User with the given email and password."""
         if not email:
-            raise ValueError('The given email must be set')
+            raise ValueError("The given email must be set")
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
@@ -20,33 +20,35 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
         """Create and save a regular User with the given email and password."""
-        extra_fields.setdefault('is_staff', False)
-        extra_fields.setdefault('is_superuser', False)
+        extra_fields.setdefault("is_staff", False)
+        extra_fields.setdefault("is_superuser", False)
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
         """Create and save a SuperUser with the given email and password."""
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
 
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser must have is_staff=True.')
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser must have is_superuser=True.')
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError("Superuser must have is_staff=True.")
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError("Superuser must have is_superuser=True.")
 
         return self._create_user(email, password, **extra_fields)
 
+
 class Professor(AbstractUser):
     """ This is undocumented """
-    REQUIRED_FIELDS = ('first_name','last_name')
-    USERNAME_FIELD = 'email'
+
+    REQUIRED_FIELDS = ("first_name", "last_name")
+    USERNAME_FIELD = "email"
     username = None
     email = models.EmailField(max_length=200, unique=True)
     professor_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     if not email:
-        raise ValueError('Users must have an email address')
+        raise ValueError("Users must have an email address")
     objects = UserManager()
 
     def __str__(self):
@@ -77,6 +79,7 @@ class Semester_Class(models.Model):
 
 class Assignment(models.Model):
     """ This is undocumented """
+
     assignment_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
     assignment_name = models.CharField(max_length=30, default="Group Project")
@@ -109,7 +112,7 @@ class Grouped_Student(models.Model):
         return "Group {}: {}".format(self.group_id, self.assignment_id)
 
 
-class Student_Conflicts(models.Model):
+class Student_Conflict(models.Model):
     """ This is undocumented """
 
     ONE = "1"
@@ -117,9 +120,13 @@ class Student_Conflicts(models.Model):
     THREE = "3"
     FOUR = "4"
     FIVE = "5"
-    SEVERITY_CHOICES = ((ONE, "1"),(TWO, "2"),(THREE,"3"),(FOUR, "4"),(FIVE, "5"))
+    SEVERITY_CHOICES = ((ONE, "1"), (TWO, "2"), (THREE, "3"), (FOUR, "4"), (FIVE, "5"))
     conflict_id = models.AutoField(primary_key=True)
-    student1 = models.ForeignKey(Students, on_delete=models.CASCADE, related_name='id1',blank=True)
-    student2 = models.ForeignKey(Students, on_delete=models.CASCADE, related_name='id2',blank=True)
-    severity_rank = models.CharField(max_length = 1, choices=SEVERITY_CHOICES, blank=True)
+    student1 = models.ForeignKey(
+        Student, on_delete=models.CASCADE, related_name="id1", blank=True
+    )
+    student2 = models.ForeignKey(
+        Student, on_delete=models.CASCADE, related_name="id2", blank=True
+    )
+    severity_rank = models.CharField(max_length=1, choices=SEVERITY_CHOICES, blank=True)
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE, blank=True)
