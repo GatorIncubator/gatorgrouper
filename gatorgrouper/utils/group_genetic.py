@@ -97,7 +97,7 @@ def create():
 
 
 def evolve(
-    population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
+        population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
 ):
     """population_size: int, mutation_rate: float, crossover_rate: float, fitness,
         mutations, create"""
