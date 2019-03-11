@@ -186,7 +186,8 @@ def crossover(individual_one, individual_two):
 
     # print("added equals: {}".format(offspring))
 
-    # step through groupings one and two, adding a whole group when possible to offspring. alternate between groupings after every successful addition
+    # step through groupings one and two, adding a whole group when possible to offspring.
+    # Alternate between groupings after every successful addition
     on_one = True
     index_one = 0
     index_two = 0
@@ -272,6 +273,7 @@ def spawn(
         crossover_rate: float,
         mutations,
 ):
+    """Spawn new population"""
     count = len(prev_population)
 
     next_population = list()
@@ -388,7 +390,7 @@ def calculate_fitness(grouping: List[List[Student]]):
     preferences_value = preferences_respected / preferences_count  # 0 to 1
 
     # SKILL BALANCE, measured by the coefficient of variation of skills across group
-    # Reference: http://www.statisticshowto.com/probability-and-statistics/how-to-find-a-coefficient-of-variation/
+    # Reference: https://bit.ly/2Hh1LXI
     # e.g. group = [[1, 2, 3, 4, 5],
     #               [1, 2, 3, 4, 5]]
     #  group_skills = [1, 2, 3, 4, 5]
