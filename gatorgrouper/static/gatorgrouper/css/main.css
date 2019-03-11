@@ -145,6 +145,16 @@ a.article-title:hover {
 
 }
 
+.student-container {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #87b5ff;
+  flex-wrap: wrap;
+  height: 20em
+
+}
+
 .class-item{
   display: flex;
   justify-content: center;
@@ -154,6 +164,11 @@ a.article-title:hover {
 }
 
 .assignments {
+  display: flex;
+  flex-direction: column;
+}
+
+.students {
   display: flex;
   flex-direction: column;
 }
