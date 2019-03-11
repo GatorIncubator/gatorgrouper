@@ -1,0 +1,12 @@
+<html>
+    <body>
+        {% for group in groups %}
+            <h2>Group {{ forloop.counter }}</h2>
+            <ul>
+            {% for student in group %}
+                <li>{{ student | first }}</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    </body>
+</html>

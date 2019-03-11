@@ -11,11 +11,12 @@ ignore=CVS
 
 # Add files or directories matching the regex patterns to the blacklist. The
 # regex matches against base names, not paths.
-ignore-patterns=
+ignore-patterns=manage.py, gatorgrouper.py, secret_key.py
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
-#init-hook=
+# the utils folder must be in the PYTHONPATH
+init-hook='import sys; sys.path.append("./gatorgrouper/utils")'
 
 # Use multiple processes to speed up Pylint.
 jobs=1

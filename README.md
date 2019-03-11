@@ -1,44 +1,28 @@
 # GatorGrouper
 
+![logo](.github/gatorgrouper_logo.png "GatorGrouper")
+
 [![Build Status](https://api.travis-ci.org/GatorEducator/gatorgrouper.svg?branch=master)](https://travis-ci.org/GatorEducator/gatorgrouper)
 [![codecov.io](http://codecov.io/github/GatorEducator/gatorgrouper/coverage.svg?branch=master)](http://codecov.io/github/GatorEducator/gatorgrouper?branch=master)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
 
-GatorGrouper is a Python 3 program that assigns a list of students to groups of
-a specified size. The output of this program could then be communicated to the
-students in a specific class. Then, if a course instructor is using [GitHub
-Classroom](https://classroom.github.com/), you can ask the students in your
-class to create and join their assigned group.
+Designed for use with [GitHub](https://github.com/), [GitHub Classroom](https://classroom.github.com/),
+and [Travis CI](https://travis-ci.com/), GatorGrouper is an online group creation
+tool to help facilitate group assignment in an educational setting.
+While other group management tools create random groups, GatorGrouper
+supports random and round robin style grouping with the option to specify
+absentees. With creative implementation through a web application,
+users can return to the site and update or re-group using previously
+entered data.
+
+GatorGrouper was created mainly in [Python 3](https://www.python.org/) and
+utilizes the [Django](https://www.djangoproject.com/) web framework. Upon access
+to the site, users are able to input student names and assign them to groups of
+a specified size and method. The output of this program can be communicated to
+the students in the class. If a course instructor is using [GitHub Classroom](https://classroom.github.com/),
+they can invite the students in the class to create and join their assigned group.
 
 ## Installation
-
-As a Python 3 program, GatorGrouper relies on
-[pip](https://pip.pypa.io/en/stable/installing/) for installation. To ensure
-that all of the dependencies are installed correctly, please type
-the following commands before running GatorGrouper.
-
-```shell
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
-```
-
-Note that you may have Python 3 setup in different ways on your computer. For
-instance, you may prefer to install GatorGrouper's dependencies in a site-wide
-location and then you would have to type `sudo pip install -r
-requirements.txt`. Alternatively, you may choose to install the dependencies by
-typing `pip install --user -r requirements.txt`.
-
-GatorGrouper was developed to easily run in conjunction with a [venv-based
-Python 3 virtual environment](https://docs.python.org/3/library/venv.html). This
-means that if you are in the directory that contains `gatorgrouper`
-then you could type `python3 -m venv gatorgrouper` to create all of
-the components of a venv-based virtual environment in the `gatorgrouper`
-directory. Once you complete this step, you can type the command `source
-gatorgrouper/bin/activate` to activate the venv-based virtual environment.
-Interested in learning more about the basics of virtual environments in Python
-3? You can read this
-[article](http://www.cs.allegheny.edu/sites/gkapfham/programming/research/idea/2017/07/14/Virtual-Environments/)
-to further develop your understanding of this topic.
 
 GatorGrouper requires users to use Python 3. You can type `python --version`
 into the terminal window to check the current version of Python on your
@@ -78,52 +62,80 @@ After you finish this process, you should be able
 to type `python --version` and get `Python 3.7.2` or other version after
 `Python 3.6.8` in your terminal.
 
-## Initial Setup
+As a Python 3 program, GatorGrouper relies on
+[Pipenv](https://github.com/pypa/pipenv) for the installation of the libraries that
+it depends on and the creation of the virtual environments in which it
+runs. To install GatorGrouper, you should first follow Pipenv's installation
+instructions. You should also ensure that you have installed Git on your
+computer and that you can run Git commands in a terminal window. Then, you can
+type the following command in your terminal window to clone GatorGrouper's GitHub
+repository:
 
-Ensure that you have installed gspread and oauth2client in the root
-directory of the repository. In the terminal use the command:
-
-```shell
-python3 -m pip install --user gspread oauth2client
+```
+git clone git@github.com:GatorEducator/gatorgrouper.git
 ```
 
-Create a Google Sheets spreadsheet and a Google Form in Google Drive. In the
-Form, create yes or no questions to measure the capabilities and skills of the
-students that you wish to group.  After you have at least one submission of the
-Form, you can go to the responses tab and click on the green icon with the white
-cross through it.  This will enable you to link the Sheet to the Form. You can
-either create a new Sheet or link to a preexisting one. If you need to change
-the destination, you can click on the three dot icon menu to the right of the
-green icon and select "Select response destination".
+If you plan to develop new features for GatorGrouper or if you want to run the
+tool's test suite in [Pytest](https://github.com/pytest-dev/pytest), then you should
+install the developer dependencies by running `pipenv install --dev`
+in the directory that was cloned. If you only want to use GatorGrouper,
+then you can type `pipenv install` instead. Once these commands complete
+successfully, that's all you have to do to install GatorGrouper!
 
-Open the `.json` file in the `gatorgrouper` repository and find the `"client-email"`.
-Copy the quoted text that looks like an email address. Return to the Sheet and
-open the sharing options.  Paste the address and click send. Alternatively, if
-you would like to create your own service account for confidentiality and
-security, follow the tutorial found at [www.twolio.com](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
-to create a personal service account.
+## Testing GatorGrouper
 
-Within `defaults.py`, update the `DEFAULT_WORKBOOK` constant to the name of your
-Sheet.
+GatorGrouper uses [Pytest](https://docs.pytest.org/en/latest/) for testing.
+Depending on your goals, there are several different configurations in which you
+can run the provided test suite. If you want to run the test suite to see if all
+of the test cases are correctly passing, then you can type the following
+command in your terminal window:
+
+```
+pipenv run pytest
+```
+
+Please note that you must preface the execution of the test suite with the
+command `pipenv run` if you want to ensure that the tests run with the correct
+access to their Python packages and in the desired virtual environment. The
+provided command runs `pytest` explicitly. If you are using GatorGrouper and you
+find that a test fails in your development environment, please raise an issue in
+GatorGrouper's issue tracker. With that said, if you are developing new features
+for Pytest and you want it to produce console output and stop when it runs the
+first failing test, you can type:
+
+```
+pipenv run pytest -x -s
+```
 
 ---
 
 ## Usage
 
 GatorGrouper accepts command line arguments and then generates output in your
-terminal window. Using the defaults of storing your student identifiers in the
-file called `students.csv` and creating groups of two students means that you
-will run GatorGrouper with this command:
+terminal window. The program requires user to provide an input `.csv` file.
+This will create groups of three students means that you will run GatorGrouper
+with this command:
 
 ```shell
-python3 gatorgrouper.py
+pipenv run python3 gatorgrouper_cli.py --file filepath
 ```
 
 In order to see all the possible commands and their descriptions, enter
 the following command:
 
 ```shell
-python3 gatorgrouper.py -h
+pipenv run python3 gatorgrouper_cli.py -h
+```
+
+### Details with Importing Input File
+
+Since input file is required, use the `--file` flag to let GatorGrouper know
+the path of the file you are using. Please make sure the input file has more than
+six students. Otherwise you should change both group size and number of groups
+to a value larger than 1 and smaller than half of the total number of students.
+
+```shell
+pipenv run python3 gatorgrouper_cli.py --file filepath
 ```
 
 ### Group Size
@@ -131,12 +143,13 @@ python3 gatorgrouper.py -h
 To specify the size of the groups, use the flag `--group-size`.
 
 ```shell
-python3 gatorgrouper.py --group-size 4
+pipenv run python3 gatorgrouper_cli.py --file filepath --group-size 4
 ```
 
 This indicates that groups should each contain 4 members.  The provided group
-size should be greater than 1 and equal to or less than half the total number of
-students.  If the group size is not specified, the default group size is 3.
+size should be greater than or equal to 2 and equal to or less than half the total
+number of students.  If the group size is not specified, the default group size
+is 3.
 
 ### Number of groups
 
@@ -144,21 +157,20 @@ To specify the number of groups the students should be placed in, use the flag
 `--num-groups`.
 
 ```shell
-python3 gatorgrouper.py --num-groups 4
+pipenv run python3 gatorgrouper_cli.py --file filepath --num-groups 4
 ```
 
 This indicates that the students should be divided into 4 groups. The number of
-groups should be at minimum 1 and at maximum the number of students to be placed
-into groups. If the number of groups is not specified or is specified as '0' the
-flag is ignored. This flag can be used along side `--absentees`, `--random`, and
-`--round-robin`.
+groups should be at minimum 2 and at maximum the number of half of the students to
+be placed into groups. This flag can be used along side `--absentees`, `--random`,
+and `--round-robin`.
 
 ### Random Grouping Method
 
 To randomly group the students, use the flag `--random`.
 
 ```shell
-python3 gatorgrouper.py --random
+pipenv run python3 gatorgrouper_cli.py --file filepath --random
 ```
 
 This will randomly group the list of students you have provided, and is the
@@ -173,7 +185,7 @@ small discussion groups, or peer editing.
 To group students using the round-robin method, use the flag `--round-robin`.
 
 ```shell
-python3 gatorgrouper.py --round-robin
+pipenv run python3 gatorgrouper_cli.py --file filepath --round-robin
 ```
 
 The round-robin method takes the responses from the Sheet into account when
@@ -208,7 +220,7 @@ average: 3
 ```
 
 In this case, the average score is the same as with the random grouping method,
-but all the groups have atleast one student willing to be a team leader. This
+but all the groups have at least one student willing to be a team leader. This
 has the potential to make the assignment more effective by maximizing team
 effectiveness.
 
@@ -218,10 +230,7 @@ To indicate which students are absent so they are not grouped, use the
 flag `--absentees`.  The arguments can be entered in the following ways:
 
 ```shell
-
-python3 gatorgrouper.py --absentees student1 student2
-python3 gatorgrouper.py --absentees 'student1' 'student2'
-python3 gatorgrouper.py --absentees "student1" "student2"
+pipenv run python3 gatorgrouper_cli.py --file filepath --absentees "student1" "student2"
 ```
 
 Note that the absent students' names must be separated by spaces, not quotes.
@@ -230,30 +239,20 @@ The names can be surrounded by single or double quotes if desired.
 If no absentees are indicated with this flag, then the program will assume that
 there are no students absent.
 
-### Specify File Containing List of Students
-
-To bypass the Google Forms integration and instead supply a list of students
-directly to the program, use the `--students-file` flag.
-
-```shell
-python3 gatorgrouper.py --students-file "file_name.csv"
-python3 gatorgrouper.py --students-file file_name.csv
-```
-
 ### Monitoring GatorGrouper
 
 To see detailed general output to monitor progress, use the flag `-v` or
 `--verbose`.
 
 ```shell
-python3 gatorgrouper.py --verbose
+pipenv run python3 gatorgrouper_cli.py --verbose
 ```
 
 To see detailed technical output to diagnose problems, use the flag `-d` or
 `--debug`.
 
 ```shell
-python3 gatorgrouper.py --debug
+pipenv run python3 gatorgrouper_cli.py --debug
 ```
 
 If neither of these flags are set, logging will only be shown if an error occurs.
@@ -261,10 +260,11 @@ If neither of these flags are set, logging will only be shown if an error occurs
 ### Full Example
 
 ```shell
-$ python3 gatorgrouper.py --group-size 3 --absentees becky george --random
+$ pipenv run python3 gatorgrouper_cli.py --file /home/w/wuj/cs203S2019/lab/students.csv
+--absentees becky george --random
 
 GatorGrouper: Automatically Assign Students to Groups
-https://github.com/gkapfham/gatorgrouper
+https://github.com/GatorEducator/gatorgrouper
 
 Successfully placed 9 students into 3 groups
 
@@ -288,63 +288,66 @@ Each of the previous commands were run on an Ubuntu 16.04 workstation running
 Python 3.5.2. However, GatorGrouper should run correctly on a wide variety of
 operating systems that support Python version 3.
 
----
+## Django
 
-## Testing
+Django is a free and open source web application framework that is written in
+Python and helps to implement websites in a convenient manner. With the collection
+of modules embedded within its framework, development is made easier and one
+would not have to work on creating the website from scratch but just use the
+components that are already built within which saves a lot of time. Acknowledging
+the fact that we have a short span of time to work on the GatorGrouper project,
+we decided to use Django as it provides the developer with simpler tools to grasp
+the project's structure. In addition to this, it supports Object-Relational
+Mapping, which allows the user to create a bridge between the data model and the
+database engine, and supports a large set of database systems including SQLite.
 
-### Functions Tested
+### Running
 
-The test suite is designed to test the different functions of `gatorgrouper.py`.
-The first function the test suites test is to make sure that there are the
-correct amount of students in each group. The test suite also makes sure that
-the shuffle function is working correctly. There are also test cases to make
-sure that the professor has the option to mark students absent, and these
-students will not get grouped. Lastly, the test suite test checks to see if
-students are being correctly grouped based on category.
-
-### Running the Test Suite
-
-The test suite requires `pytest-flake8`, which can be installed with the
-following command:
+In order to run the application, type in this command in the terminal:
 
 ```shell
-pip3 install --user pytest-flake8
+pipenv run python manage.py runserver
 ```
 
-From the root directory, the test suite can be ran with the following command:
+To check if your server is set up and running, open up your browser and
+type:
 
 ```shell
-python3 -m pytest tests
+localhost:8000
 ```
 
-### Automatic Linting
+### Testing Django Framework
 
-For any future issues with linting, you can install an autolinting tool with:
+In order to run the testing, type in this command in the terminal:
 
 ```shell
-pip3 install --user autopep8
+pipenv run pytest tests --cov-config pytest.cov --cov
 ```
 
-To run the tool, type the following into the main directory.
+### Design and Configuration
 
-```shell
-autopep8 --in-place --aggressive *.py
-```
+The web applications in Django have access to the data and manage it through
+objects in Python which are referred to as models. A model is a special type of
+object that is saved in the database. It defines the structure of the stored data,
+includes the field types along with their size if possible, and contains behaviors
+of the data that is being stored. After creating the model structure for the
+project, Django handles all the communication that goes within it.
 
-If there are any linting issues that were not fixed by the tool, the error
-message from the test suite will direct you to where the issue is and tell you
-what it is in order for you to fix it.
+The Django web framework comes with a built-in object-relational mapping module,
+ORM, which allows interaction with the database in an object-oriented setup. It
+allows the users to have access to the stored data in the database. This technique
+builds a bridge between the data tables, field, and the Python objects. ORM allows
+the developer to work with Python code instead of SQL to work with the data schemas
+in their database. This approach allows the developers to work with a database in
+a programming language they prefer instead of a database management language.
 
-## Test Coverage
-
-Test coverage reporting is handled with `pytest-coverage`.  The following
-commands will install and run `pytest-coverage`.
-
-```shell
-pip install pytest-cov
-coverage run --source tests -m py.test
-coverage report
-```
+Prior to dealing with ORM, we define model classes that translate to data tables
+and the relation between them. For the GatorGrouper project, we created six classes
+entitled as: Professor, Classes, Assignment, Students, Traits, and Grouped
+Students. In order to establish a relationship between these classes, we define
+foreign keys using `django.db.models.ForeignKey`. The different entities within
+the classes are linked by a means one-to-many, many-to-one, and many-to-many
+relationship.
 
 ## Problems or Praise
 

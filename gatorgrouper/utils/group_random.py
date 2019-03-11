@@ -1,10 +1,11 @@
-""" group using randomization approach """
+""" Promotes diversity by grouping using randomization approach. """
 
 import copy
 import logging
 import itertools
-from random import shuffle
-from .group_scoring import score_groups
+import random
+from typing import List, Union
+from gatorgrouper.utils import group_scoring
 
 
 # pylint: disable=bad-continuation
@@ -16,8 +17,11 @@ def group_random_group_size(responses: str, grpsize: int) -> List[List[str]]:
     group_random_num_group(responses, numgrp)
 
 
-def group_random_num_group(responses, numgrp):
+def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     """ group responses using randomization approach """
+
+    #TODO: store-optimal option from multiple iterations
+
     # number of students placed into a group
     stunum = 0
     iterable = iter(responses)
@@ -38,15 +42,21 @@ def group_random_num_group(responses, numgrp):
         stunum = stunum + 1
 
     # scoring and return
+
+    #TODO: calculate conflict scores
+
     scores, ave = [], 0
-    scores, ave = score_groups(groups)
+    scores, ave = group_scoring.score_groups(groups)
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
     return groups
 
 
-def shuffle_students(responses):
+# pylint: disable=bad-continuation
+def shuffle_students(
+    responses: Union[str, List[List[Union[str, bool]]]]
+) -> List[List[Union[str, bool]]]:
     """ Shuffle the responses """
     shuffled_responses = responses[:]
-    shuffle(shuffled_responses)
+    random.shuffle(shuffled_responses)
     return shuffled_responses
