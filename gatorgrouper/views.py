@@ -163,5 +163,7 @@ def create_groups(request):
     # don't forget to import gatherConflicts and Grouped_students,
     # removed those imports for flake8 test
     return render(
-        request, "gatorgrouper/create-groups.html", {"title": "Create Groups", "formset":formset}
+        request,
+        "gatorgrouper/create-groups.html",
+        {"title": "Create Groups", "formset": formset},
     )
