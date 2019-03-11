@@ -17,6 +17,27 @@ def test_recursive_kl():
     assert i in groups is True
 
 
+def test_compatability_raises():
+    """Raises exception for unequal tuples"""
+    # len(a) != len(b)
+    with pytest.raises(Exception) as excinfo:
+        a: ["one", 0, 0]
+        b: ["two", 0, 0.5]
+        group_graph .compatibility(a, b)
+    exception_msg = group_graph.compatibility.value.args[0]
+    assert exception_msg == "Tuples passed to compatibility() must have same size"
+
+def test_compatability_measure():
+    """ Test whether scores measured return true or false"""
+    a = Tuple[int]
+    b = Tuple[int]
+    scores = [0.25, 0.25, 0.5, 0.75, 1.0, 1.0, 0.45, 0.7, 0.7000000000000001,
+    1.2, 0.5, 0.75, 0.75, 1.25, 0.9500000000000001, 0.5, 0.75, 0.75, 1.25,
+    0.9500000000000001, 1.0, 1.0, 1.25, 1.25, 1.75, 1.4500000000000002, 1.5, 1.5]
+    for i in a and b:
+        check = measure()
+
+
 def test_main():
     students = [
         ["one", 0, 0],
