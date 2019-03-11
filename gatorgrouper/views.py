@@ -34,6 +34,9 @@ def create_classes(request):
     return render(request, "gatorgrouper/classes.html", {"title": "Create Classes"})
     # return HttpResponse('<h1>Blog Picture</h1>')
 
+def users(request):
+    """ Create user view"""
+    return render( request)
 
 def assignments(request):
     """ Create assignments view """
