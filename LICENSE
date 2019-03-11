@@ -673,8 +673,8 @@ the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
 
-Notice that `group_genetic.py` is from
-https://github.com/yeeunmariakim/gatorgrouper/blob/master/genetic_algorithm.py
+Notice that `group_genetic.py` and `workbook.py` is from
+https://github.com/yeeunmariakim/gatorgrouper/blob/master
 under MIT license:
 
 MIT License
