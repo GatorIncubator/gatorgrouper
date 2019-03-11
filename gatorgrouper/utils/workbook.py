@@ -40,7 +40,7 @@ def get(group_size):
     client = gspread.authorize(creds)
 
     logging.info("Opening spreadsheet...")
-    sheet = client.open(config.WORKBOOK).sheet1
+    sheet = client.open(constants.WORKBOOK).sheet1
 
     logging.info("Extracting data from spreadsheet...")
     records = sheet.get_all_records()
@@ -75,7 +75,7 @@ def get(group_size):
     # PREFERENCES_COL = 1
     # SKILLS_COLS = [2, 3, 4, 5, 6]
 
-    DATA = pd.read_csv(config.WORKBOOK_CSV, header=None)
+    DATA = pd.read_csv(constants.WORKBOOK_CSV, header=None)
 
     EMAILS = DATA.iloc[:, EMAIL_COL]
 
