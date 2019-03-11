@@ -33,17 +33,11 @@ def parse_arguments(args):
     )
 
     gg_parser.add_argument(
-        "--group-size",
-        help="Number of students in a group",
-        type=int,
-        required=False,
+        "--group-size", help="Number of students in a group", type=int, required=False
     )
 
     gg_parser.add_argument(
-        "--num-group",
-        help="Number of groups",
-        type=int,
-        required=False,
+        "--num-group", help="Number of groups", type=int, required=False
     )
 
     gg_parser.add_argument(
@@ -100,8 +94,11 @@ def check_valid(args, students_list):
         verified_arguments = True
     if args.num_group is not None and args.num_group <= students_list_length / 2:
         verified_arguments = True
-    if (args.group_size is None and args.num_group is None and
-        constants.DEFAULT_NUMGRP <= students_list_length /2):
+    if (
+        args.group_size is None
+        and args.num_group is None
+        and constants.DEFAULT_NUMGRP <= students_list_length / 2
+    ):
         verified_arguments = True
     if args.file is constants.NONE:
         verified_arguments = False

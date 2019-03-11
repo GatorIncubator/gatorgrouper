@@ -53,7 +53,8 @@ if __name__ == "__main__":  # pragma: no cover
         # but did not provide the number of groups
         if (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-            and GG_ARGUMENTS.num_group is None and GG_ARGUMENTS.group_size is not None
+            and GG_ARGUMENTS.num_group is None
+            and GG_ARGUMENTS.group_size is not None
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
@@ -62,7 +63,8 @@ if __name__ == "__main__":  # pragma: no cover
         # groups but did not provide the size of the groups
         elif (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-            and GG_ARGUMENTS.group_size is None and GG_ARGUMENTS.num_group is not None
+            and GG_ARGUMENTS.group_size is None
+            and GG_ARGUMENTS.num_group is not None
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
@@ -72,7 +74,8 @@ if __name__ == "__main__":  # pragma: no cover
         # default number of groups
         elif (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-            and GG_ARGUMENTS.group_size is None and GG_ARGUMENTS.num_group is None
+            and GG_ARGUMENTS.group_size is None
+            and GG_ARGUMENTS.num_group is None
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, constants.DEFAULT_NUMGRP
@@ -88,17 +91,13 @@ if __name__ == "__main__":  # pragma: no cover
             )
         # If the user did not specify a sorting algorithm and provided the size of groups
         # but did not provide the number of groups
-        elif (
-            GG_ARGUMENTS.num_group is None and GG_ARGUMENTS.group_size is not None
-        ):
+        elif GG_ARGUMENTS.num_group is None and GG_ARGUMENTS.group_size is not None:
             GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_group_size(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
             )
         # IF the user did not specificy a sorting algorithm and provided the number of
         # groups but did not specificy the size of the groups
-        elif(
-            GG_ARGUMENTS.group_size is None and GG_ARGUMENTS.num_group is not None
-        ):
+        elif GG_ARGUMENTS.group_size is None and GG_ARGUMENTS.num_group is not None:
             GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
             )
