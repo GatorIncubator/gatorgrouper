@@ -109,8 +109,6 @@ def groupResult(request):
 @login_required
 def add_students(request):
     """ Used to display current students in roster and provides option to add students """
-    # Probably won't need class_id
-    # gonna try to add that automatically.
     StudentFormSet = modelform_factory(Student, fields=("class_id", "first_name", "last_name"))
     if request.method == "POST":
         formset = StudentFormSet(request.POST)
@@ -122,4 +120,13 @@ def add_students(request):
         formset = StudentFormSet()
     return render(
         request, "gatorgrouper/add-students.html", {"title": "Add a Student", "formset": formset}
+    )
+
+
+@login_required
+def create_groups(request):
+    """ Created groups using gatorgrouper functions """
+    
+    return render(
+        request, "gatorgrouper/create-groups.html", {"title": "Create Groups"}
     )
