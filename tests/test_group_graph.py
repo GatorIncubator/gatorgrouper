@@ -49,6 +49,16 @@ def test_main():
         ["seven", 1, 0],
         ["eight", 1, 1],
     ]
+    group = []
     weights = [[0, 0], [0, 0.5], [0.5, 0], [0.75, 0.75], [0.8, 0.1], [0, 1], [1, 0], [1, 1]]
-    groups = group_graph.group_graph_partition(students, 4)
-    assert weights in groups
+    output = group_graph.group_graph_partition(students[1:])
+    # assert output == None
+    # set(group) == set(students)
+    # for item in output:
+    #     group += item
+    # assert group == students
+
+    if set(group) == set(students):
+        check = all(elem == group[0] for elem in group)
+        assert check == True
+        assert group == students
