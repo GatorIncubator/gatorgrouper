@@ -77,6 +77,7 @@ best_fitness = Fitness(0, 0, 0)
 
 
 def create():
+    """Create the groups of student"""
     students_to_group = workbook.STUDENTS[:]
     random.shuffle(students_to_group)
 
@@ -102,6 +103,9 @@ def evolve(
     population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
 ):
 
+    """population_size: int, mutation_rate: float, crossover_rate: float, fitness,
+        mutations, create"""
+    # pylint: disable=global-statement
     global best_grouping
     global best_fitness
 
@@ -159,6 +163,7 @@ def evolve(
 
 
 def crossover(individual_one, individual_two):
+    """Add smaller groupings of students to the larger groups"""
 
     grouping_one = individual_one.grouping[:]
     grouping_two = individual_two.grouping[:]
@@ -366,7 +371,7 @@ def select(population: List[Individual]):
 
 
 def calculate_fitness(grouping: List[List[Student]]):
-
+    """Calculate compatibility between students"""
     global best_grouping
     global best_fitness
 
@@ -451,6 +456,7 @@ def calculate_fitness(grouping: List[List[Student]]):
 
 
 def print_grouping(grouping):
+    """Print out the groups"""
     for index, group in enumerate(grouping):
         print("Group " + str(index) + "\n")
         for student in group:
