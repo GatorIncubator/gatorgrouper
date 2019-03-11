@@ -62,8 +62,9 @@ def get(group_size):
                 formatted_entry.append(response)
         formatted_records.append(formatted_entry)
 
-    logging.debug("Writing formatted records to " + config.WORKBOOK_CSV + "...")
-    with open(config.WORKBOOK_CSV, "w") as output:
+    # pylint: disable=W1201
+    logging.debug("Writing formatted records to " + constants.WORKBOOK_CSV + "...")
+    with open(constants.WORKBOOK_CSV, "w") as output:
         writer = csv.writer(output, quoting=csv.QUOTE_ALL)
         for item in formatted_records:
             writer.writerow(item)
