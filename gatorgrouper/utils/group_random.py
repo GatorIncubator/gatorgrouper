@@ -20,35 +20,39 @@ def group_random_group_size(responses: str, grpsize: int) -> List[List[str]]:
 def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     """ group responses using randomization approach """
 
-    #TODO: store-optimal option from multiple iterations
-
-    # number of students placed into a group
-    stunum = 0
-    iterable = iter(responses)
-    # number of students in each group (without overflow)
-    grpsize = int(len(responses) / numgrp)
-    groups = list()
-    for _ in range(0, numgrp):
-        group = list()
-        while len(group) is not grpsize and stunum < len(responses):
-            group.append(next(iterable))
+    intensity = 1000
+    # Intensity is the value that represents the number of attempts made to group
+    optimized_groups = list()
+    # Optimized Groups holds the groups after scoring maximization
+    while (intensity > 0):
+        # number of students placed into a group
+        stunum = 0
+        iterable = iter(responses)
+        # number of students in each group (without overflow)
+        grpsize = int(len(responses) / numgrp)
+        groups = list()
+        for _ in range(0, numgrp):
+            group = list()
+            while len(group) is not grpsize and stunum < len(responses):
+                group.append(next(iterable))
+                stunum = stunum + 1
+            groups.append(group)
+        # deal with the last remaining students
+        if len(responses) % stunum != 0:
+            logging.info("Overflow students identified; distributing into groups.")
+        for _x in range(0, len(responses) % stunum):
+            groups[_x].append(next(iterable))
             stunum = stunum + 1
-        groups.append(group)
-    # deal with the last remaining students
-    if len(responses) % stunum != 0:
-        logging.info("Overflow students identified; distributing into groups.")
-    for _x in range(0, len(responses) % stunum):
-        groups[_x].append(next(iterable))
-        stunum = stunum + 1
 
-    # scoring and return
+        # scoring and return
+        #TODO: calculate conflict scores
 
-    #TODO: calculate conflict scores
+        scores, ave = [], 0
+        scores, ave = group_scoring.score_groups(groups)
+        logging.info("scores: %d", scores)
+        logging.info("average: %d", ave)
+        intensity -= 1
 
-    scores, ave = [], 0
-    scores, ave = group_scoring.score_groups(groups)
-    logging.info("scores: %d", scores)
-    logging.info("average: %d", ave)
     return groups
 
 
