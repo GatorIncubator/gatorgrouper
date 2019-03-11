@@ -2,10 +2,8 @@
 
 import pytest
 from mixer.backend.django import mixer
-
-# from models import Professor
 from django.contrib.auth import get_user_model
-
+from gatorgrouper import models
 
 pytestmark = pytest.mark.django_db
 
