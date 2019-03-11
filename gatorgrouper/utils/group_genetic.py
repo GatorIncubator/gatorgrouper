@@ -58,7 +58,7 @@ class Fitness:
         self.preference = preference
         self.balance = balance
         self.fairness = fairness
-        # FIXME: Can give weights to each variable
+        # Need to do: Can give weights to each variable
         self.value = 0.5 * preference + 3.0 * balance + 1.5 * fairness
 
     def __gt__(self, other):
