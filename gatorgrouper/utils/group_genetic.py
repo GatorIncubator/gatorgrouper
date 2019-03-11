@@ -369,6 +369,7 @@ def select(population: List[Individual]):
 
 
 def calculate_fitness(grouping: List[List[Student]]):
+    # pylint: disable=R0914
     """Calculate compatibility between students"""
     # pylint: disable=global-statement
     global best_grouping
