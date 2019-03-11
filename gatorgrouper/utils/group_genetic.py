@@ -96,13 +96,9 @@ def create():
     return grouping
 
 
-"""population_size: int, mutation_rate: float, crossover_rate: float, fitness, mutations, create"""
-
-
 def evolve(
-    population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
+        population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
 ):
-
     """population_size: int, mutation_rate: float, crossover_rate: float, fitness,
         mutations, create"""
     # pylint: disable=global-statement
@@ -269,12 +265,12 @@ def mutate(mutations, grouping: List[List[Student]]):
 
 
 def spawn(
-    prev_population: List[Individual],
-    mutation_rate: float,
-    elitism_rate: float,
-    create_rate: float,
-    crossover_rate: float,
-    mutations,
+        prev_population: List[Individual],
+        mutation_rate: float,
+        elitism_rate: float,
+        create_rate: float,
+        crossover_rate: float,
+        mutations,
 ):
     count = len(prev_population)
 
@@ -372,6 +368,7 @@ def select(population: List[Individual]):
 
 def calculate_fitness(grouping: List[List[Student]]):
     """Calculate compatibility between students"""
+    # pylint: disable=global-statement
     global best_grouping
     global best_fitness
 
