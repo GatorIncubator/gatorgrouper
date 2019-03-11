@@ -57,8 +57,9 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         if (ave > top_ave):
             # TODO: Account for conflict score with average
             top_ave = ave
+            optimized_groups = groups
 
-    return groups
+    return optimized_groups
 
 
 # pylint: disable=bad-continuation
