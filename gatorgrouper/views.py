@@ -67,6 +67,7 @@ def handle_uploaded_file(csvfile):
         responses.append(temp)
     return responses
 
+
 def home(request):
     """ Homepage view """
     if request.user.__str__() != "AnonymousUser":
