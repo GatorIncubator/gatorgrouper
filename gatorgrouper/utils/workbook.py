@@ -23,7 +23,7 @@ GROUPING_SIZE = None
 
 def get(group_size):
     """Retrieve data from Google Sheets and write to a CSV file."""
-
+    # pylint: disable=global-statement
     global EMAIL_COL
     global PREFERENCES_COL
     global SKILLS_COLS
