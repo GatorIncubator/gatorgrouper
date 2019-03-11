@@ -89,7 +89,7 @@ def create():
     for index, student in enumerate(students_to_group):
         grouping[index % workbook.GROUPING_SIZE].append(student)
 
-    if len(grouping) < 1:
+    if grouping < 1:
         print("CREATED TOO SMALL GROUPING")
 
     # print("CREATED GROUPNG: " + str(grouping))
@@ -399,11 +399,11 @@ def calculate_fitness(grouping: List[List[Student]]):
     #  group_skill_std = 1.41
     #  group_skills_coef = 1.41 / 3 = 0.47
 
-    if len(grouping) < 1:
+    if grouping < 1:
         print("GROUPING IS TOO SMALL")
         print(grouping)
     for group in grouping:
-        if len(group) < 1:
+        if group < 1:
             print("GROUP IS TOO SMALL")
             print(grouping)
 
