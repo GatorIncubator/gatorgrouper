@@ -10,13 +10,9 @@ def test_recursive_kl():
     # vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
     G = Graph()
     with pytest.raises(ValueError) as excinfo:
-        group_graph.recursive_kl(G,numgrp = 1)
+        group_graph.recursive_kl(G,numgrp=1)
         exception_msg = excinfo.value.args[0]
         assert exception_msg == "numgrp must be a power of 2 and at least 2."
-
-
-
-
 
 
     # G = Graph()
