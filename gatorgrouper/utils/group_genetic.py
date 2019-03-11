@@ -97,7 +97,7 @@ def create():
 
 
 def evolve(
-        population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
+    population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
 ):
     """population_size: int, mutation_rate: float, crossover_rate: float, fitness,
         mutations, create"""
@@ -266,12 +266,12 @@ def mutate(mutations, grouping: List[List[Student]]):
 
 
 def spawn(
-        prev_population: List[Individual],
-        mutation_rate: float,
-        elitism_rate: float,
-        create_rate: float,
-        crossover_rate: float,
-        mutations,
+    prev_population: List[Individual],
+    mutation_rate: float,
+    elitism_rate: float,
+    create_rate: float,
+    crossover_rate: float,
+    mutations,
 ):
     """Spawn new population"""
     count = len(prev_population)
