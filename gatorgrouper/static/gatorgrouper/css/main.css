@@ -141,7 +141,7 @@ a.article-title:hover {
   align-items: flex-start;
   background-color: beige;
   flex-wrap: wrap;
-  height: 20em
+  min-height: 15em
 
 }
 
@@ -151,7 +151,7 @@ a.article-title:hover {
   align-items: flex-start;
   background-color: #87b5ff;
   flex-wrap: wrap;
-  height: 20em
+  min-height: 20em
 
 }
 
@@ -171,5 +171,6 @@ a.article-title:hover {
 .students {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 .show {display: block;}
