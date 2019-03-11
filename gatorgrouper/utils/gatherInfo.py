@@ -1,8 +1,10 @@
 """Gather user Info"""
 
 from django.db.models import Q
+
+# pylint: disable=import-error
 # pylint: disable=no-name-in-module
-from gatorgrouper.models import Student, Student_Conflict  # pylint: disable=import-error
+from gatorgrouper.models import Student, Student_Conflict
 
 
 # given a professor and class, make a list of students
