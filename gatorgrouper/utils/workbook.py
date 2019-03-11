@@ -20,6 +20,7 @@ SKILLS_COLS = set()
 STUDENTS = None
 GROUPING_SIZE = None
 
+
 def get(group_size):
     """Retrieve data from Google Sheets and write to a CSV file."""
 
@@ -27,12 +28,15 @@ def get(group_size):
     global PREFERENCES_COL
     global SKILLS_COLS
 
-    logging.info(
-        "Authenticating to Google Sheets...")
+    logging.info("Authenticating to Google Sheets...")
 
-    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+    scope = [
+        "https://spreadsheets.google.com/feeds",
+        "https://www.googleapis.com/auth/drive",
+    ]
     creds = ServiceAccountCredentials.from_json_keyfile_name(
-        'client_secret.json', scope)
+        "client_secret.json", scope
+    )
     client = gspread.authorize(creds)
 
     logging.info("Opening spreadsheet...")
@@ -45,8 +49,10 @@ def get(group_size):
     for entry in records:
         formatted_entry = list()
         for index, (question, response) in enumerate(entry.items()):
-            if question == 'Email Address':
-                EMAIL_COL = index - 1  # subtracting one because timestamp column not collected
+            if question == "Email Address":
+                EMAIL_COL = (
+                    index - 1
+                )  # subtracting one because timestamp column not collected
                 formatted_entry.append(response)
             elif "prefer" in question:
                 PREFERENCES_COL = index - 1
@@ -57,7 +63,7 @@ def get(group_size):
         formatted_records.append(formatted_entry)
 
     logging.debug("Writing formatted records to " + config.WORKBOOK_CSV + "...")
-    with open(config.WORKBOOK_CSV, 'w') as output:
+    with open(config.WORKBOOK_CSV, "w") as output:
         writer = csv.writer(output, quoting=csv.QUOTE_ALL)
         for item in formatted_records:
             writer.writerow(item)

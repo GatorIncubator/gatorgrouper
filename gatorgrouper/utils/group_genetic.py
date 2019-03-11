@@ -99,7 +99,12 @@ def create():
 def evolve(
     # pylint: disable = C0330
     # Black would reformat the code in the way that does not pass pylint
-    population_size, mutation_rate, elitism_rate, create_rate, crossover_rate, mutations
+    population_size,
+    mutation_rate,
+    elitism_rate,
+    create_rate,
+    crossover_rate,
+    mutations,
 ):
     """population_size: int, mutation_rate: float, crossover_rate: float, fitness,
         mutations, create"""
