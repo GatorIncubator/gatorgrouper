@@ -20,7 +20,7 @@ def group_random_group_size(responses: str, grpsize: int) -> List[List[str]]:
 def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     """ group responses using randomization approach """
 
-    intensity = 1000
+    intensity = 100
     # Intensity is the value that represents the number of attempts made to group
     optimized_groups = list()
     # Optimized Groups holds the groups after scoring maximization
