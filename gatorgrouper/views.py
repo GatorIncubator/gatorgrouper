@@ -54,7 +54,7 @@ def parse_uploaded_csv(csvfile, as_dict=False):
             elif value.lower() == "false":
                 temp.append(False)
             elif re.match(
-                r"[+-]?([0-9]*[.])?[0-9]+", value
+                r"[+-]?([0-9]*[.])?[0-9]+", value # pylint: disable=bad-continuation
             ):  # Match a float with regex
                 temp.append(float(value))
             else:  # Keep the value as a string if no other type matches
