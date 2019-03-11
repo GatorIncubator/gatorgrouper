@@ -14,15 +14,13 @@ def upload_csv(request):
         if form.is_valid():
             responses = parse_uploaded_csv(request.FILES["student_data"])
             if request.FILES.get("student_preferences"):
-                preferences = parse_uploaded_csv(request.FILES["student_preferences"], as_dict=True)
+                preferences = parse_uploaded_csv(
+                    request.FILES["student_preferences"], as_dict=True
+                )
             else:
                 preferences = None
             numgrp = form.cleaned_data["numgrp"]
-            groups = group_graph_partition(
-                responses,
-                numgrp,
-                preferences=preferences
-            )
+            groups = group_graph_partition(responses, numgrp, preferences=preferences)
             return render(
                 request, "gatorgrouper/viewing-groups.html", {"groups": groups}
             )
@@ -55,7 +53,9 @@ def parse_uploaded_csv(csvfile, as_dict=False):
                 temp.append(True)
             elif value.lower() == "false":
                 temp.append(False)
-            elif re.match(r"[+-]?([0-9]*[.])?[0-9]+", value):  # Match a float with regex
+            elif re.match(
+                r"[+-]?([0-9]*[.])?[0-9]+", value
+            ):  # Match a float with regex
                 temp.append(float(value))
             else:  # Keep the value as a string if no other type matches
                 temp.append(value)
