@@ -38,8 +38,8 @@ def group_random_group_size(
     # scoring and return
     scores, ave = [], 0
     scores, ave = group_scoring.score_groups(groups)
-    logging.info("scores: %d", scores)
-    logging.info("average: %d", ave)
+    logging.info("scores: %s", scores)
+    logging.info("average: %s", ave)
     return groups
 
 
@@ -67,8 +67,8 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     # scoring and return
     scores, ave = [], 0
     scores, ave = group_scoring.score_groups(groups)
-    logging.info("scores: %d", scores)
-    logging.info("average: %d", ave)
+    logging.info("scores: %s", scores)
+    logging.info("average: %s", ave)
     return groups
 
 
