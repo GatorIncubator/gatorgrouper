@@ -3,7 +3,6 @@
 import pytest
 from mixer.backend.django import mixer
 from django.contrib.auth import get_user_model
-from gatorgrouper import models
 
 pytestmark = pytest.mark.django_db
 
@@ -63,10 +62,6 @@ class Test_Professor:
         obj = mixer.blend("gatorgrouper.Professor")
         # it creates a professor instance
         assert obj.pk == 1
-
-    # def test_model_exception(self):
-    #     with pytest.raises(ValueError):
-    #         obj = mixer.blend("gatorgrouper.Professor", email=None)
 
     # pylint: disable=R0201
     def test_str(self):
