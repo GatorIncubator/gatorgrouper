@@ -62,3 +62,4 @@ def test_main():
         check = all(elem == group[0] for elem in group)
         assert check == True
         assert group == students
+#         ["four", 0.75, 0.75],
