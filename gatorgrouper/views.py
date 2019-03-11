@@ -54,7 +54,7 @@ def home(request):
 
 def create_classes(request):
     """ Create classes view """
-    return render(request, "gatorgrouper/classes.html", {"title": "Create Classes"})
+    return render(request, "gatorgrouper/chttps://docs.djangoproject.com/en/2.1/ref/databases/lasses.html", {"title": "Create Classes"})
     # return HttpResponse
 
 
@@ -64,6 +64,9 @@ def assignments(request):
         request, "gatorgrouper/assignments.html", {"title": "Create Assignments"}
     )
 
+def users(request):
+    """ Create user view"""
+    return render( request)
 
 def survey(request, class_id = None):
     """ POST and GET requests for handling student survey """
@@ -72,7 +75,7 @@ def survey(request, class_id = None):
     # TODO: populate formset with existing compatibility responses
     # TODO: validate formset
     # TODO: save to db
-    
+
     # Verify that the class exists
     try:
         Semester_Class.objects.get(class_id = class_id)
