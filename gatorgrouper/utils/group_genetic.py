@@ -3,10 +3,10 @@ This code is under MIT license from
 https://github.com/yeeunmariakim/gatorgrouper/blob/master/genetic_algorithm.py"""
 from typing import List
 import random
-from colors import bold
-import numpy as np
-import workbook
 import math
+import numpy as np
+from colors import bold
+import workbook
 
 
 class Student:
