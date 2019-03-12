@@ -449,7 +449,7 @@ def calculate_fitness(grouping: List[List[Student]]):
     #       grouping_coef_avg = 0.396
 
     # transpose the list of lists
-    skills_by_group_transposed = list(map(list, zip(*skills_by_group)))
+    skills_by_group_transposed = list(map(list, skills_by_group))
     skills_coef_by_grouping = list()
     for skills in skills_by_group_transposed:
         skills_coef_by_grouping.append(np.std(skills) / np.mean(skills))
