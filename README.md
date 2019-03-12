@@ -379,11 +379,12 @@ C:\>%HOMEPATH%\eb-virt\Scripts\activate
 (eb-virt) C:\>
 ```
 
-You will see (eb-virt) prepended to your command prompt, indicating that you're in a virtual
-environment.
+You will see (eb-virt) prepended to your command prompt, indicating that you're
+in a virtual environment.
     Note:
-    The remainder of these instructions show the Linux command prompt in your home directory ~$. On
-    Windows this is C:\Users\USERNAME>, where USERNAME is your Windows login name.
+    The remainder of these instructions show the Linux command prompt in your home
+    directory ~$. On Windows this is C:\Users\USERNAME>, where USERNAME is your
+    Windows login name.
 
 Step 3: Use pip to install Django.
 
@@ -392,12 +393,13 @@ Step 3: Use pip to install Django.
 ```
 
     Note:
-    The Django version you install must be compatible with the Python version on the Elastic
-    Beanstalk Python configuration that you choose for deploying your application. For deployment
-    details, see Deploy Your Site With the EB CLI in this topic.
-    For details on current Python configurations, see Python in the AWS Elastic Beanstalk Platforms
-    document.
-    For Django version compatibility with Python, see What Python version can I use with Django?
+    The Django version you install must be compatible with the Python version on
+    the Elastic Beanstalk Python configuration that you choose for deploying your
+    application. For deployment details, see Deploy Your Site With the EB CLI in
+    this topic. For details on current Python configurations, see Python in the
+    AWS Elastic Beanstalk Platforms document.
+    For Django version compatibility with Python, see What Python version can I
+    use with Django?
 
 Step 4: To verify that Django has been installed, type:
 
@@ -407,8 +409,9 @@ Django==2.1.1
 ...
 ```
 
-This command lists all of the packages installed in your virtual environment. Later you will use
-the output of this command to configure your project for use with Elastic Beanstalk.
+This command lists all of the packages installed in your virtual environment.
+Later you will use the output of this command to configure your project for use
+with Elastic Beanstalk.
 
 ### Configure Your Django Application for Elastic Beanstalk
 
