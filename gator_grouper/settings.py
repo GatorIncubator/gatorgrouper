@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "UYAByKh_6d2lIEDB-Uu2G6_5"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com"
 SOCIAL_AUTH_GITHUB_KEY = "87f5d68b5651aa790c68"
 SOCIAL_AUTH_GITHUB_SECRET = ""
