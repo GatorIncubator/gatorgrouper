@@ -1,6 +1,7 @@
 """ Test group graph algorithm"""
 from networkx import Graph
 import pytest
+import itertools
 from gatorgrouper.utils import group_graph
 
 
@@ -16,18 +17,28 @@ def test_recursive_kl_error():
 def test_recursive_kl_two():
     """ Test if recursive Kernighan-Lin algorithm returns two groups recursively """
     G = Graph()
-    student1 = [(1, 4)]
-    student2 = [(2, 3)]
-    input = [(1, 4), (2, 3)]
-    G.add_edges_from([(1, 4), (2, 3)])
+    student1 = (1, 4)
+    student2 = (2, 3)
+    G.add_edge(student1, student2)
     actual_output = group_graph.recursive_kl(G, 2)
     print(actual_output)
-    assert actual_output == [{2, 3}, {1, 4}] or actual_output == [{1, 4}, {2, 3}]
+    assert actual_output == [{student2}, {student1}] or actual_output == [{student1}, {student2}]
 
 
 def test_recursive_kl_multi():
     """ Test if recursive Kernighan-Lin algorithm returns more than two groups """
-
+    G = Graph()
+    student1 = (1, 4)
+    student2 = (2, 3)
+    student3 = (5, 7)
+    student4 = (6, 8)
+    students = [student1, student2, student3, student4]
+    input = list(itertools.combinations(students,2))
+    G.add_edges_from(input)
+    actual_output = group_graph.recursive_kl(G, 2)
+    assert len(actual_output) == 2
+    assert len(actual_output[0]) == 2
+    assert len(actual_output[1]) == 2
 
 
 def test_total_cut_size():
