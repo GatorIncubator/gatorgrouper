@@ -24,13 +24,14 @@ def test_recursive_kl():
     # assert i in groups is True
 
 
-@pytest.mark.parametrize("2, 2")
-# @pytest.mark.parametrize("input, expected_output", [(input, 4)])
-def test_total_cut_size(2, 2, expected_output):
+def test_total_cut_size():
     """ Test if sums computed match actual sum of weights of all edges between different subsets in the partition"""
-    G =  Graph()
-    expected_output = group_graph.total_cut_size(G, input[2,2])
-    assert output = expected_output
+    G = Graph()
+    G.add_edges_from([(1, 4), (2, 3)])
+    partition = ([(1, 2), (3, 4)])
+    output = group_graph.total_cut_size(G, partition)
+    expected_output = 2
+    assert output == expected_output
 
 
     # partition: List[int]
