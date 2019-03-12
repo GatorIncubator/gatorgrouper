@@ -9,8 +9,8 @@ def read_csv_data(filepath):
 
     # handle nonexistant files
     if Path(filepath).is_file() is False:
-        return "filenotfound"
-
+        print("filenotfound")
+        return ""
     # read the raw CSV data
     with open(filepath, "r") as csvfile:
         has_header = csv.Sniffer().has_header(csvfile.read(1024))
@@ -24,19 +24,23 @@ def read_csv_data(filepath):
             temp = list()
             temp.append(record[0].replace('"', ""))
             for value in record[1:]:
-                if value == "True":
+                if value.lower() == "true":
                     temp.append(True)
-                elif value == "False":
+                elif value.lower() == "false":
                     temp.append(False)
+                else:
+                    temp.append(float(value))
             responses.append(temp)
     else:
         for record in csvdata:
             temp = list()
             temp.append(record[0].replace('"', ""))
             for value in record[1:]:
-                if value == "True":
+                if value.lower() == "true":
                     temp.append(True)
-                elif value == "False":
+                elif value.lower() == "false":
                     temp.append(False)
+                else:
+                    temp.append(float(value))
             responses.append(temp)
     return responses

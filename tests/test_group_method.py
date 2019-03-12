@@ -179,7 +179,7 @@ def test_round_robin():
         ["Dan", True, True, True],
         ["Jesse", True, True, True],
         ["Austin", True, True, True],
-        ["Nick", False, False, False],
+        ["Nick", True, True, True],
         ["Nikki", False, False, False],
         ["Maria", False, False, False],
         ["Jeff", False, False, False],
@@ -193,9 +193,42 @@ def test_round_robin():
     actual_output = group_rrobin.group_rrobin_group_size(lst, group_size)
     assert len(actual_output) == 4
     assert len(actual_output[0]) == group_size
-    assert ["Dan", True, True, True] in actual_output[0]
-    assert ["Jesse", True, True, True] in actual_output[2]
-    assert ["Austin", True, True, True] in actual_output[1]
+    assert actual_output[0][0][1] is True
+    assert actual_output[1][0][1] is True
+    assert actual_output[2][0][1] is True
+    assert actual_output[3][0][1] is True
+
+
+def test_round_robin_uneven():
+    """Testing the round robin function to assure proper output"""
+    lst = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", False, False, False],
+        ["Nick", True, True, True],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False],
+    ]
+    group_size = 3
+    actual_output = group_rrobin.group_rrobin_group_size(lst, group_size)
+    assert len(actual_output) == 4
+    assert len(actual_output[0]) == group_size
+    counter = 0
+    if actual_output[0][0][1] is True:
+        counter += 1
+    if actual_output[1][0][1] is True:
+        counter += 1
+    if actual_output[2][0][1] is True:
+        counter += 1
+    if actual_output[3][0][1] is True:
+        counter += 1
+    assert counter == 3
 
 
 def test_rrobin_responses():
@@ -204,7 +237,7 @@ def test_rrobin_responses():
         ["Dan", True, True, True],
         ["Jesse", True, True, True],
         ["Austin", True, True, True],
-        ["Nick", False, False, False],
+        ["Nick", True, True, True],
         ["Nikki", False, False, False],
         ["Maria", False, False, False],
         ["Jeff", False, False, False],
@@ -218,9 +251,9 @@ def test_rrobin_responses():
     response_output = group_rrobin.group_rrobin_num_group(lst, numgrps)
     assert len(response_output[0]) == 3
     assert len(response_output) == numgrps
-    assert ["Dan", True, True, True] in response_output[0]
-    assert ["Jesse", True, True, True] in response_output[2]
-    assert ["Austin", True, True, True] in response_output[1]
+    assert response_output[0][0][1] is True
+    assert response_output[1][0][1] is True
+    assert response_output[2][0][1] is True
 
 
 def test_random():
