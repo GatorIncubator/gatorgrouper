@@ -254,9 +254,10 @@ def test_hypothesis_round_robin(grpsize):
     actual_output = group_rrobin.group_rrobin_group_size(lst, grpsize)
     assert len(actual_output) == expected_output
     assert len(actual_output[0]) == grpsize
-    assert ["Dan", True, True, True] in actual_output[0]
-    assert ["Jesse", True, True, True] in actual_output[2]
-    assert ["Austin", True, True, True] in actual_output[1]
+    assert actual_output[0][0][1] is True
+    assert actual_output[1][0][1] is True
+    assert actual_output[2][0][1] is True
+    assert actual_output[3][0][1] is True
 
 
 def test_rrobin_responses():
@@ -307,9 +308,9 @@ def test_hypothesis_rrobin_responses(numgrps):
     response_output = group_rrobin.group_rrobin_num_group(lst, numgrps)
     assert len(response_output[0]) == grpsize
     assert len(response_output) == numgrps
-    assert ["Dan", True, True, True] in response_output[0]
-    assert ["Jesse", True, True, True] in response_output[2]
-    assert ["Austin", True, True, True] in response_output[1]
+    assert response_output[0][0][1] is True
+    assert response_output[1][0][1] is True
+    assert response_output[2][0][1] is True
 
 
 
