@@ -32,7 +32,6 @@ def test_compatibility_length():
         exception_msg = excinfo.value.args[0]
         assert exception_msg == "Tuples passed to compatibility() must have same size."
 
-# Run objective_weights test case using None
 
 def test_compatibility_objective_weights():
     """ Test if objective_weights returns the objective weights of students """
