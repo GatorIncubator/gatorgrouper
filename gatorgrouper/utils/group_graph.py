@@ -58,7 +58,7 @@ def compatibility(
     If no measures are specified, "avg" is used as a default.
     """
     if not len(a) == len(b):
-        raise Exception("Tuples passed to compatibility() must have same size")
+        raise Exception("Tuples passed to compatibility() must have same size.")
     if objective_weights is None:
         objective_weights = [1] * len(a)
     if objective_measures is None:
