@@ -1,5 +1,13 @@
 """Testing random grouping"""
-from utils import group_creation
+from hypothesis import given
+from hypothesis import settings
+from hypothesis import Verbosity
+from hypothesis.strategies import integers
+
+
+import pytest
+from gatorgrouper.utils import group_creation
+
 
 
 def test_group_random1():
@@ -39,6 +47,37 @@ def test_group_random1():
     assert len(actual_output4[0]) == 2
 
 
+@given(group_size=integers(min_value=1, max_value=3))
+@settings(verbosity=Verbosity.verbose, deadline=None)
+@pytest.mark.hypothesisworks
+def hypothesis_test_group_random1(group_size):
+    """this hypothesis test can generate the group numbers and test if it pass
+        the requirements"""
+    lst = [
+        "Austin",
+        "Dan",
+        "Angie",
+        "Cullen",
+        "Chase",
+        "Vinny",
+        "Nick",
+        "Jeff",
+        "James",
+        "Kelly",
+        "Nikki",
+        "Robert",
+    ]
+    lst2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
+    size_count = group_size
+    actual_output = group_random.group_random_group_size(lst, group_size)
+    actual_output2 = group_random.group_random_group_size(lst2, group_size)
+
+    assert len(actual_output) == 12 // size_count
+    assert len(actual_output[0]) == size_count
+    assert len(actual_output2) == 6 // size_count
+    assert len(actual_output2[0]) == size_count
+
+
 def test_group_random_extra():
     """Testing the random type of grouping with a group of extra people not assigned
      to their own group"""
@@ -57,6 +96,24 @@ def test_group_random_extra():
     assert grpsize == 2
     assert len(returned_groups1) == 2
     assert num_group == 2
+
+
+@given(grpsize=integers(min_value=1, max_value=3))
+@settings(verbosity=Verbosity.verbose)
+@pytest.mark.hypothesisworks
+def test_group_random2(grpsize):
+    """This hypothesis test will test the group_random_group_size method"""
+    responses = [
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Nick", True, False, True, False],
+        ["Dan", False, True, False, True],
+    ]
+    returned_groups = group_random.group_random_group_size(responses, grpsize)
+    size_count = grpsize
+    assert len(returned_groups[0]) == size_count
 
 
 def test_group_random():
@@ -101,7 +158,33 @@ def test_round_robin():
         ["Dan", True, True, True],
         ["Jesse", True, True, True],
         ["Austin", True, True, True],
-        ["Nick", False, False, False],
+        ["Nick", True, True, True],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False],
+    ]
+    group_size = 3
+    actual_output = group_rrobin.group_rrobin_group_size(lst, group_size)
+    assert len(actual_output) == 4
+    assert len(actual_output[0]) == group_size
+    assert actual_output[0][0][1] is True
+    assert actual_output[1][0][1] is True
+    assert actual_output[2][0][1] is True
+    assert actual_output[3][0][1] is True
+
+
+def test_round_robin_uneven():
+    """Testing the round robin function to assure proper output"""
+    lst = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", False, False, False],
+        ["Nick", True, True, True],
         ["Nikki", False, False, False],
         ["Maria", False, False, False],
         ["Jeff", False, False, False],
@@ -115,9 +198,16 @@ def test_round_robin():
     actual_output = group_creation.group_rrobin_group_size(lst, group_size)
     assert len(actual_output) == 4
     assert len(actual_output[0]) == group_size
-    assert ["Dan", True, True, True] in actual_output[0]
-    assert ["Jesse", True, True, True] in actual_output[2]
-    assert ["Austin", True, True, True] in actual_output[1]
+    counter = 0
+    if actual_output[0][0][1] is True:
+        counter += 1
+    if actual_output[1][0][1] is True:
+        counter += 1
+    if actual_output[2][0][1] is True:
+        counter += 1
+    if actual_output[3][0][1] is True:
+        counter += 1
+    assert counter == 3
 
 
 def test_rrobin_responses():
@@ -126,7 +216,7 @@ def test_rrobin_responses():
         ["Dan", True, True, True],
         ["Jesse", True, True, True],
         ["Austin", True, True, True],
-        ["Nick", False, False, False],
+        ["Nick", True, True, True],
         ["Nikki", False, False, False],
         ["Maria", False, False, False],
         ["Jeff", False, False, False],
@@ -140,9 +230,9 @@ def test_rrobin_responses():
     response_output = group_creation.group_rrobin_num_group(lst, numgrps)
     assert len(response_output[0]) == 3
     assert len(response_output) == numgrps
-    assert ["Dan", True, True, True] in response_output[0]
-    assert ["Jesse", True, True, True] in response_output[2]
-    assert ["Austin", True, True, True] in response_output[1]
+    assert response_output[0][0][1] is True
+    assert response_output[1][0][1] is True
+    assert response_output[2][0][1] is True
 
 
 def test_random():
