@@ -55,7 +55,7 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         logging.info("conflict average : " + str(conflict_ave))
         intensity -= 1
 
-        if top_ave < conflict_ave:
+        if top_ave > conflict_ave:
             # TODO: Account for conflict score with average
             top_ave = conflict_ave
             optimized_groups = groups
