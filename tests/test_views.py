@@ -7,6 +7,6 @@ from django.test import SimpleTestCase
 from django.urls import reverse
 
 
-# def test_home_page_status_code(self):
-#     response = self.client.get('/')
-#     assert response.status_code == 200
+def test_upload_csv(self):
+    response = self.client.get('/')
+    assert response.status_code == 200

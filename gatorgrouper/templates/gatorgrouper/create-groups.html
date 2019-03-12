@@ -1,0 +1,9 @@
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+ <form class="content-section" action="#" method="post">
+   {% csrf_token %}
+   {{ formset.as_p }}
+   <button type="submit" name="button" class="btn btn-outline-info">Make Group</button>
+
+ </form>
+{% endblock %}

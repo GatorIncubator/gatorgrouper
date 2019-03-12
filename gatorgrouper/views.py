@@ -2,14 +2,17 @@
 import csv
 from io import StringIO
 from django.shortcuts import render, redirect
-from django.template import loader
 from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .forms import CustomUserCreationForm
+
 
 # from django.http import HttpResponse
 # from django.http import Http404
-from .models import Professor, Semester_Class, Student
-from .models import Assignment, Grouped_Student
+from .models import Semester_Class, Student
+from .models import Assignment
+from .utils.gatherInfo import gatherStudents
 
 from .utils.group_rrobin import group_rrobin_num_group
 from .forms import UploadCSVForm
@@ -32,17 +35,39 @@ def upload_csv(request):
 
 
 # Create your views here.
-def index(request):
+def register(request):
+    """ This view loads the register page and handles the form """
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            first_name = form.cleaned_data.get("first_name")
+            last_name = form.cleaned_data.get("last_name")
+            messages.success(request, f"Account created for {first_name} {last_name}")
+            return redirect("login")
+    else:
+        form = CustomUserCreationForm()
+    return render(
+        request, "gatorgrouper/register.html", {"title": "Register", "form": form}
+    )
+
+
+@login_required
+def profile(request):
     """ This is undocumented """
     current_professor = request.user
     classes = list(Semester_Class.objects.filter(professor_id=current_professor))
-    assignments = list(Assignment.objects.all())
-    for item in classes:
-        print(item)
+    assignment_list = list(Assignment.objects.all())
+    students = list(Student.objects.all())
     return render(
         request,
-        "gatorgrouper/index.html",
-        {"all_classes": classes, "all_assignments": assignments},
+        "gatorgrouper/profile.html",
+        {
+            "title": "Profile",
+            "all_classes": classes,
+            "all_assignments": assignment_list,
+            "all_students": students,
+        },
     )
 
 
@@ -70,10 +95,8 @@ def handle_uploaded_file(csvfile):
 
 def home(request):
     """ Homepage view """
-    if request.user.__str__() != "AnonymousUser":
-        print(request.user.email)
-        print("Hello")
-    return render(request, "gatorgrouper/home.html")
+
+    return render(request, "gatorgrouper/home.html", {"title": "Home"})
     # return HttpResponse
 
 
@@ -91,8 +114,8 @@ def create_classes(request):
             stock = formset.save(commit=False)
             stock.professor_id = request.user
             stock.save()
-
-            return redirect("Gatorgrouper-home")
+            messages.success(request, f"Class Added")
+            return redirect("profile")
     else:
         formset = ClassFormSet()
 
@@ -108,13 +131,14 @@ def create_classes(request):
 def assignments(request):
     """ Create assignments view """
     AssignmentFormSet = modelform_factory(
-        Assignment, fields=("class_id", "assignment_id", "description")
+        Assignment, fields=("class_id", "assignment_name", "description")
     )
     if request.method == "POST":
         formset = AssignmentFormSet(request.POST)
         if formset.is_valid():
             formset.save()
-            return redirect("Gatorgrouper-home")
+            messages.success(request, f"Assignment Successfully Created")
+            return redirect("profile")
     else:
         formset = AssignmentFormSet()
 
@@ -136,4 +160,51 @@ def groupResult(request):
     """ Group result view """
     return render(
         request, "gatorgrouper/viewing-groups.html", {"title": "Group Result"}
+    )
+
+
+@login_required
+def add_students(request):
+    """ Used to display current students in roster and provides option to add students """
+    StudentFormSet = modelform_factory(
+        Student, fields=("class_id", "first_name", "last_name")
+    )
+    if request.method == "POST":
+        formset = StudentFormSet(request.POST)
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, f"Student Successfully Created")
+            return redirect("add-students")
+    else:
+        formset = StudentFormSet()
+    return render(
+        request,
+        "gatorgrouper/add-students.html",
+        {"title": "Add a Student", "formset": formset},
+    )
+
+
+@login_required
+def create_groups(request):
+    """ Created groups using gatorgrouper functions """
+    AssignmentFormSet = modelform_factory(
+        Assignment, fields=("class_id", "assignment_id")
+    )
+    if request.method == "POST":
+        formset = AssignmentFormSet(request.POST)
+        if formset.is_valid():
+            class_id_num = formset.cleaned_data.get("class_id")
+            student_list = gatherStudents(class_id_num)
+            for student in student_list:
+                print(student)
+    else:
+        formset = AssignmentFormSet(request.POST)
+    # conflict_list = gatherConflicts(request)
+
+    # don't forget to import gatherConflicts and Grouped_students,
+    # removed those imports for flake8 test
+    return render(
+        request,
+        "gatorgrouper/create-groups.html",
+        {"title": "Create Groups", "formset": formset},
     )

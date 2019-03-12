@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 from .models import Professor, Semester_Class, Student, Grouped_Student, Assignment
+from .models import Student_Conflict
 
 
 # Register your models here.
@@ -41,3 +42,4 @@ admin.site.register(Semester_Class)
 admin.site.register(Student)
 admin.site.register(Grouped_Student)
 admin.site.register(Assignment)
+admin.site.register(Student_Conflict)
