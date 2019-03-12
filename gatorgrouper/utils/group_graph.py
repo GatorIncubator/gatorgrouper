@@ -155,6 +155,5 @@ def group_creator():
     print(student_groups)
 
 
-
 if __name__ == "__main__":
     group_creator()
