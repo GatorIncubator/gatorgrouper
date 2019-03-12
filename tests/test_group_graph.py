@@ -47,7 +47,7 @@ def test_compatibility_objective_weights():
 
 
 def test_compatibility_objective_measures():
-    """ Test if objective measures  """
+    """ Test if objective_measures returns the objective measure of students """
     a = [0, 1]
     b = [0.75, 0.75]
     objective_measures = ("avg", "match")
