@@ -2,7 +2,7 @@
 import csv
 from io import StringIO
 from django.shortcuts import render
-from .utils.group_rrobin import group_rrobin_num_group
+from .utils.group_creation import group_rrobin_num_group
 from .forms import UploadCSVForm
 
 
