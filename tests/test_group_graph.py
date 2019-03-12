@@ -36,8 +36,8 @@ def test_recursive_kl_multi():
     student3 = (5, 7)
     student4 = (6, 8)
     students = [student1, student2, student3, student4]
-    input = list(itertools.combinations(students,2))
-    G.add_edges_from(input)
+    group_list = list(itertools.combinations(students, 2))
+    G.add_edges_from(group_list)
     actual_output = group_graph.recursive_kl(G, 2)
     assert len(actual_output) == 2
     assert len(actual_output[0]) == 2
