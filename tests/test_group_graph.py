@@ -27,15 +27,36 @@ def test_total_cut_size():
 
 def test_compatibility_length():
     """ Test if exception message is raised by unequal students scores """
-    a = 2
-    b = 1
+    a = (1.0, "python")
+    b = (2.0, "java")
     with pytest.raises(Exception) as excinfo:
         group_graph.compatibility(a, b)
         exception_msg = excinfo.value.args[0]
         assert exception_msg == "Tuples passed to compatibility() must have same size."
 
+# Run objective_weights test case using None
 
-def test_compatibility():
-    """ Test compatibility between students """
-    a = (2)
-    b = (2)
+def test_compatibility_objective_weights():
+    """ Test if objective_weights is empty """
+    a = [1, 1]
+    b = [0, 0.5]
+    objective_weights = (2.0, 1.0)
+    output = group_graph.compatibility(a, b, objective_weights)
+    expected_output = 1.75
+    assert output == expected_output
+
+
+# def test_compatibility_objective_measures():
+#     """ Test if objective measures  """
+# def test_compatibility_measure():
+#     """ Test compatibility between students """
+#     a_score = 2
+#     b_score = 2
+#     output = group_graph.compatibility(a_score, b_score)
+#     expected_output = something #whatever measure is called
+#     assert output == expected_output
+#
+# # Need test cases for every branch of compatibility function
+#
+#
+# def
