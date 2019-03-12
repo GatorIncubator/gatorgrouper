@@ -10,7 +10,7 @@ from networkx.algorithms.cuts import cut_size
 
 def recursive_kl(graph: Graph, numgrp=2) -> List[Set[int]]:
     """
-    Recursively use Kernighan-Lin algorithm to create a k-way graph partition
+    Recursively use the Kernighan-Lin algorithm to create a k-way graph partition
     """
     power = log(numgrp, 2)
     if power != int(power) or power < 1:
