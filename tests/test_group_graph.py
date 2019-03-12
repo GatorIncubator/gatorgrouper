@@ -1,7 +1,7 @@
 """ Test group graph algorithm"""
+import itertools
 from networkx import Graph
 import pytest
-import itertools
 from gatorgrouper.utils import group_graph
 
 
