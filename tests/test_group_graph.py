@@ -24,8 +24,10 @@ def test_recursive_kl_two():
     print(actual_output)
     assert actual_output == [{2, 3}, {1, 4}] or actual_output == [{1, 4}, {2, 3}]
 
-# def test_recursive_kl_multi():
-#     """ Test if recursive Kernighan-Lin algorithm returns more than two groups """
+
+def test_recursive_kl_multi():
+    """ Test if recursive Kernighan-Lin algorithm returns more than two groups """
+
 
 
 def test_total_cut_size():
