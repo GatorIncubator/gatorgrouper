@@ -147,8 +147,8 @@ def test_hypothesis_group_random(grpsize):
         ["Michael", True, True, False, False],
     ]
     num_group = len(responses) // grpsize
-    returned_groups = group_random.group_random_group_size(responses, grpsize)
-    returned_groups1 = group_random.group_random_num_group(responses, num_group)
+    returned_groups = group_creation.group_random_group_size(responses, grpsize)
+    returned_groups1 = group_creation.group_random_num_group(responses, num_group)
     assert len(returned_groups) == num_group
     assert len(returned_groups1[0]) == grpsize
 
@@ -218,7 +218,7 @@ def test_hypothesis_round_robin(grpsize):
         ["Jacob", False, False, False],
     ]
     expected_output = len(lst) / grpsize
-    actual_output = group_rrobin.group_rrobin_group_size(lst, grpsize)
+    actual_output = group_creation.group_rrobin_group_size(lst, grpsize)
     assert len(actual_output) == expected_output
     assert len(actual_output[0]) == grpsize
     if grpsize == 2:
@@ -310,7 +310,7 @@ def test_hypothesis_rrobin_responses(numgrps):
         ["Jacob", False, False, False],
     ]
     grpsize = len(lst) // numgrps
-    response_output = group_rrobin.group_rrobin_num_group(lst, numgrps)
+    response_output = group_creation.group_rrobin_num_group(lst, numgrps)
     assert len(response_output[0]) == grpsize
     assert len(response_output) == numgrps
     assert response_output[0][0][1] is True
@@ -364,8 +364,8 @@ def test_hypothesis_random(grpsize):
         ["Jacob", False, False, False],
     ]
     num_group = len(lst) // grpsize
-    actual_output = group_random.group_random_group_size(lst, grpsize)
-    actual_output1 = group_random.group_random_num_group(lst, num_group)
+    actual_output = group_creation.group_random_group_size(lst, grpsize)
+    actual_output1 = group_creation.group_random_num_group(lst, num_group)
     assert len(actual_output) == num_group
     assert len(actual_output[0]) == grpsize
     assert len(actual_output1) == num_group
