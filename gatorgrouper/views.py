@@ -8,6 +8,7 @@ from .models import Professor, Semester_Class
 
 
 # Create your views here.
+
 def index(request):
     """ This is undocumented """
     professors = Professor.objects.all()
