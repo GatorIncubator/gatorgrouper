@@ -56,8 +56,11 @@ def register(request):
 def profile(request):
     """ This is undocumented """
     current_professor = request.user
+    # pylint: disable=no-member
     classes = list(Semester_Class.objects.filter(professor_id=current_professor))
+    # pylint: disable=no-member
     assignment_list = list(Assignment.objects.all())
+    # pylint: disable=no-member
     students = list(Student.objects.all())
     return render(
         request,
