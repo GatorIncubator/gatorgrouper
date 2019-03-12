@@ -23,6 +23,8 @@ def test_recursive_kl():
     #     groups.extend(recursive_kl(subgraph, numgrp=next_numgrp))
     # assert i in groups is True
 
+# Need to parametrize test_total_cut_size because it would, but should not, handle
+# groups of 1
 
 def test_total_cut_size():
     """ Test if cut size of subsets in partition match """
