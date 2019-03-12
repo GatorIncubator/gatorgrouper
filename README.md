@@ -368,6 +368,16 @@ Step 2:
 ###Configure
 
 ###Deploy
+To create an environment and deploy your Django application:
+
+Step 1: Initialize your EB CLI repository with the eb init command:
+
+```
+~/ebdjango$ eb init -p python-3.6 django-tutorial
+Application django-tutorial has been created.
+```
+This command creates a new application named django-tutorial and configures your local repository to create environments with the latest Python 3.6 platform version. 
+
 
 
 ## Problems or Praise
