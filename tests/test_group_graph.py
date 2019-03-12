@@ -36,30 +36,16 @@ def test_total_cut_size():
     assert output == expected_output
 
 
-def test_compatibility():
+def test_compatibility_length():
     """ Test if compatibility score equates to summ of scaled scores """
-# def test_compatability_raises():
-#     """Raises exception for unequal tuples"""
-#     # len(a) != len(b)
-#     with pytest.raises(Exception) as excinfo:
-#         a: ["one", 0, 0]
-#         b: ["two", 0, 0.5]
-#         group_graph .compatibility(a, b)
-    # exception_msg = group_graph.compatibility.value.args[0]
-    # assert exception_msg == "Tuples passed to compatibility() must have same size"
-#
-#
-# def test_compatability_measure():
-#     """ Test whether scores measured return true or false"""
-#     a = Tuple[int]
-#     b = Tuple[int]
-#     scores = [0.25, 0.25, 0.5, 0.75, 1.0, 1.0, 0.45, 0.7, 0.7000000000000001,
-#     1.2, 0.5, 0.75, 0.75, 1.25, 0.9500000000000001, 0.5, 0.75, 0.75, 1.25,
-#     0.9500000000000001, 1.0, 1.0, 1.25, 1.25, 1.75, 1.4500000000000002, 1.5, 1.5]
-#     for i in a and b:
-#         check = measure()
-#
-#
+    a = (2)
+    b = (1)
+    with pytest.raises(Exception) as excinfo:
+        group_graph.compatibility(a, b)
+        exception_msg = excinfo.value.args[0]
+        assert exception_msg == "Tuples passed to compatibility() must have same size."
+
+
 # def test_main():
 #     students = [
 #         ["one", 0, 0],
