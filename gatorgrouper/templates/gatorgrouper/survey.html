@@ -6,38 +6,36 @@
         {% csrf_token %} <!--must have this line for forms-->
         <fieldset class="form-group">
           <legend class="border-bottom mb-4">Student Survey</legend>
-          <!-- Adds a section for question one. -->
+          <!-- Adds in the form. -->
           <form action="/action_page.php">
             <div class="form-group">
+              <!-- Adds in a section for question one -->
               <label for="Question One">Question One:</label> <br>
               <label for="Question One">Enter Yes or No: </label> <br>
               <input type="radio" name = "optradio" checked> Yes</label><br>
               <input type="radio" name = "optradio" checked> No</label><br><br>
-
+              <!-- Adds in a section for question two -->
               <label for="Question Two">Question Two:</label><br>
               <label for="Question Two">Enter Yes or No: </label><br>
               <input type="radio" name = "optradio" checked> Yes </label><br>
               <input type="radio" name = "optradio" checked> No </label><br><br>
-
+              <!-- Adds in a section for question three -->
               <label for="Question Two">Question Three:</label><br>
               <label for="Question Two">Enter Yes or No: </label><br>
               <input type="radio" name = "optradio" checked> Yes </label><br>
               <input type="radio" name = "optradio" checked> No </label><br><br>
-
+              <!-- Adds in a section for question four -->
               <label for="Question Two">Question Four:</label><br>
               <label for="Question Two">Enter Yes or No: </label><br>
               <input type="radio" name = "optradio" checked> Yes </label><br>
               <input type="radio" name = "optradio" checked> No </label><br><br>
-
+              <!-- Adds in a section for question five -->
               <label for="Question Five">Question Five:</label><br>
               <label for="Question Five">Enter Your own question</label><br>
               <input type="radio" name = "optradio" checked> Yes </label><br>
               <input type="radio" name = "optradio" checked> No </label><br><br>
-
             </div>
           </form>
-
-
 
           </fieldset>
           <!-- Adds the create and cancel buttons. -->
