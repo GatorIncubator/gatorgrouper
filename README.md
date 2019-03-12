@@ -365,6 +365,10 @@ C:\> virtualenv %HOMEPATH%\eb-virt
 
 Step 2:
 
+###Configure
+
+###Deploy
+
 
 ## Problems or Praise
 
