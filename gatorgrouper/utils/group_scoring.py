@@ -32,7 +32,7 @@ def score_groups(
     return scores, ave
 
 
-#def score_group_conflicts(student_indentifiers):
+# def score_group_conflicts(student_indentifiers):
 #    """ conflict score single group """
 #    conflict score = 0
 #    for student in student_identifiers:
@@ -48,4 +48,6 @@ def score_group_conflicts(student_groups):
         conflict_scores.append(score_group_conflict(group))
         conflict_ave += score_group_conflict(group)
     conflict_ave = int(ave / len(student_groups))
+
+
 return conflict_scores, conflict_ave
