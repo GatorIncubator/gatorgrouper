@@ -363,7 +363,25 @@ On Windows, enter the following command:
 C:\> virtualenv %HOMEPATH%\eb-virt
 ```
 
-Step 2:
+Step 2: Activate the virtual environment.
+On Unix-based systems, enter the following command:
+
+```
+~$ source ~/eb-virt/bin/activate
+(eb-virt) ~$
+```
+
+On Windows, enter the following command:
+
+```
+C:\>%HOMEPATH%\eb-virt\Scripts\activate
+(eb-virt) C:\>
+```
+
+You will see (eb-virt) prepended to your command prompt, indicating that you're in a virtual
+environment.
+
+
 
 ###Configure
 
