@@ -61,4 +61,4 @@ def test_compatibility_objective_weights():
 #
 # def
 def test_group_graph_partition():
-    
+    """ Tests that the output of the group_graph_partition is correct """
