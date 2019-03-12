@@ -251,6 +251,36 @@ def test_rrobin_responses():
     assert ["Austin", True, True, True] in response_output[1]
 
 
+@given(numgrps=integers(min_value=3, max_value=4))
+@settings(verbosity=Verbosity.verbose)
+@pytest.mark.hypothesisworks
+def test_hypothesis_rrobin_responses(numgrps):
+    """Testing the grouping function according to responses with hypothesis"""
+    lst = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", True, True, True],
+        ["Nick", False, False, False],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False],
+    ]
+    grpsize = len(lst) // numgrps
+    response_output = group_rrobin.group_rrobin_num_group(lst, numgrps)
+    assert len(response_output[0]) == grpsize
+    assert len(response_output) == numgrps
+    assert ["Dan", True, True, True] in response_output[0]
+    assert ["Jesse", True, True, True] in response_output[2]
+    assert ["Austin", True, True, True] in response_output[1]
+
+
+
+
 def test_random():
     """Testing the random grouping function to assure proper output"""
     lst = [
