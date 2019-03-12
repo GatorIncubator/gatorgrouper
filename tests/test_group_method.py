@@ -199,6 +199,42 @@ def test_round_robin():
     assert actual_output[3][0][1] is True
 
 
+@given(grpsize=integers(min_value=2, max_value=3))
+@settings(verbosity=Verbosity.verbose)
+@pytest.mark.hypothesisworks
+def test_hypothesis_round_robin(grpsize):
+    """Testing the random round robin with hypothesis if grpsize is greater than
+     3 index becomes out of bounds"""
+    lst = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", True, True, True],
+        ["Nick", False, False, False],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False],
+    ]
+    expected_output = len(lst)/grpsize
+    actual_output = group_rrobin.group_rrobin_group_size(lst, grpsize)
+    assert len(actual_output) == expected_output
+    assert len(actual_output[0]) == grpsize
+    if grpsize == 2:
+        assert actual_output[0][0][1] is False
+        assert actual_output[1][0][1] is True
+        assert actual_output[2][0][1] is True
+        assert actual_output[3][0][1] is False
+    if grpsize == 3:
+        assert actual_output[0][0][1] is True
+        assert actual_output[1][0][1] is True
+        assert actual_output[2][0][1] is True
+        assert actual_output[3][0][1] is False
+
+
 def test_round_robin_uneven():
     """Testing the round robin function to assure proper output"""
     lst = [
@@ -229,35 +265,6 @@ def test_round_robin_uneven():
     if actual_output[3][0][1] is True:
         counter += 1
     assert counter == 3
-
-
-@given(grpsize=integers(min_value=2, max_value=4))
-@settings(verbosity=Verbosity.verbose)
-@pytest.mark.hypothesisworks
-def test_hypothesis_round_robin(grpsize):
-    """Testing the random round robin with hypothesis"""
-    lst = [
-        ["Dan", True, True, True],
-        ["Jesse", True, True, True],
-        ["Austin", True, True, True],
-        ["Nick", False, False, False],
-        ["Nikki", False, False, False],
-        ["Maria", False, False, False],
-        ["Jeff", False, False, False],
-        ["Simon", False, False, False],
-        ["Jon", False, False, False],
-        ["Angie", False, False, False],
-        ["Izaak", False, False, False],
-        ["Jacob", False, False, False],
-    ]
-    expected_output = len(lst)/grpsize
-    actual_output = group_rrobin.group_rrobin_group_size(lst, grpsize)
-    assert len(actual_output) == expected_output
-    assert len(actual_output[0]) == grpsize
-    assert actual_output[0][0][1] is True
-    assert actual_output[1][0][1] is True
-    assert actual_output[2][0][1] is True
-    assert actual_output[3][0][1] is True
 
 
 def test_rrobin_responses():
