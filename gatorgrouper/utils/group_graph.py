@@ -136,7 +136,7 @@ def group_graph_partition(
     return groups
 
 
-def group_graph():
+def group_creator():
     """
     Create student groups of 4 using list of list containing student names
     and their weights.
@@ -156,4 +156,4 @@ def group_graph():
 
 
 if __name__ == "__main__":
-    group_graph()
+    group_creator()
