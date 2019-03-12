@@ -49,7 +49,7 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         conflict_scores, conflict_ave = group_scoring.score_groups(groups)
         scores, ave = [], 0
         scores, ave = group_scoring.score_groups(groups)
-        logging.info("scores: %d", scores)
+        logging.info("scores: %d", str(scores))
         logging.info("average: %d", ave)
         logging.info("conflict scores : " + str(conflict_scores))
         logging.info("conflict average : " + str(conflict_ave))
