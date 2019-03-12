@@ -18,7 +18,7 @@ def test_parse_arguments1(no_arguments, capsys):
 
 def test_parse_arguments2(generate_csv):
     """Testing specfied arguments"""
-    args = ["--debug", "--file", generate_csv, "--random"]
+    args = ["--debug", "--file", generate_csv, "--method=random"]
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.logging_level == logging.DEBUG
     assert "csvNg.csv" in parsed_args.file
@@ -27,7 +27,7 @@ def test_parse_arguments2(generate_csv):
 
 def test_parse_gatorgrouper_arguments3(generate_csv):
     """Testing specfied arguments"""
-    args = ["--verbose", "--file", generate_csv, "--rrobin"]
+    args = ["--verbose", "--file", generate_csv, "--method=rrobin"]
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.logging_level == logging.INFO
     assert parsed_args.method == constants.ALGORITHM_ROUND_ROBIN
@@ -40,7 +40,7 @@ def test_parse_arguments4(generate_csv):
         "maria",
         "--file",
         generate_csv,
-        "--rrobin",
+        "--method=rrobin",
         "--group-size",
         "3",
     ]
