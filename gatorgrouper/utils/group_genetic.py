@@ -9,6 +9,7 @@ from colors import bold
 import workbook
 
 
+
 class Student:
     """Represent student."""
 
@@ -166,6 +167,11 @@ def evolve(
 
 
 def crossover(individual_one, individual_two):
+
+    # pylint: disable=too-many-branches
+    # pylint: disable=too-many-statements
+    # pylint: disable=too-many-locals
+
     """Add smaller groupings of students to the larger groups"""
 
     grouping_one = individual_one.grouping[:]
