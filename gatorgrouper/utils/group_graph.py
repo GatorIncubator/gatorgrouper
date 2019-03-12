@@ -153,9 +153,5 @@ def group_graph():
     student_groups = group_graph_partition(students, 4)
     print(student_groups)
 
-
-def init():
-    if __name__ == "__main__":
-        exit(main())
-
-init()
+if __name__ == "__main__":
+    group_graph()
