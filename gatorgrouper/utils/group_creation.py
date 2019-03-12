@@ -1,4 +1,4 @@
-"""Contains all of the gorup creation algorithms"""
+"""Contains all of the group creation algorithms"""
 
 import copy
 import logging
