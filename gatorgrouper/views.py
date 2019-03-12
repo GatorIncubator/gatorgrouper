@@ -56,6 +56,12 @@ def register(request):
     )
 
 
+def index(request):
+    """ This is undocumented """
+    professors = Professor.objects.all()
+    classes = Semester_Class.objects.all()
+
+
 @login_required
 def profile(request):
     """ This is undocumented """
