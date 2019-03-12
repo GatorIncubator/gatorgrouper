@@ -446,7 +446,26 @@ Step 4: When the environment creation process completes, find the domain name of
 ~/ebdjango$ eb status
 ```
 
-Step 5: Edit the settings.py file in the ebdjango directory, locate the ALLOWED_HOSTS setting, and then add your application's domain name that you found in the previous step to the setting's value. If you can't find this setting in the file, add it to a new line. 
+Step 5: Edit the settings.py file in the ebdjango directory, locate the ALLOWED_HOSTS setting, and then add your application's domain name that you found in the previous step to the setting's value. If you can't find this setting in the file, add it to a new line.
+
+```
+...
+ALLOWED_HOSTS = ['eb-django-app-dev.elasticbeanstalk.com']
+```
+
+Step 6: Save the file, and then deploy your application by running eb deploy. When you run eb deploy, the EB CLI bundles up the contents of your project directory and deploys it to your environment.
+
+```
+~/ebdjango$ eb deploy
+```
+
+Step 7: When the environment update process completes, open your web site with eb open:
+
+```
+~/ebdjango$ eb open
+```
+
+This will open a browser window using the domain name created for your application. You should see the same Django website that you created and tested locally.
 
 
 
