@@ -135,11 +135,23 @@ a.article-title:hover {
 
 .dropdown a:hover {background-color: #ddd;}
 
+.class-header {
+  display:flex;
+  justify-content: flex-start;
+  background-color: #FFF59D;
+}
+
+.student-header {
+  display:flex;
+  justify-content: flex-start;
+  background-color: #87b5ff;
+}
+
 .class-container {
   display:flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: beige;
+  background-color: #FFF59D;
   flex-wrap: wrap;
   min-height: 15em
 
@@ -156,11 +168,26 @@ a.article-title:hover {
 }
 
 .class-item{
+  background-color: #E0E0E0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 10px 10px 15px 15px;
+  -moz-box-shadow:    3px 3px 5px 6px #E0E0E0;
+  -webkit-box-shadow: 3px 3px 5px 6px #E0E0E0;
+  box-shadow:         3px 3px 5px 6px #E0E0E0;
+}
+
+.student-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 10px 15px 15px;
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
 }
 
 .assignments {
