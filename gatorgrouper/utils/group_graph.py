@@ -135,7 +135,11 @@ def group_graph_partition(
     return groups
 
 
-def main():
+def group_graph():
+    """
+    Create student groups using list of list containing student names
+    and their weights.
+    """
     students = [
         ["one", 0, 0],
         ["two", 0, 0.5],
