@@ -25,7 +25,7 @@ def test_recursive_kl():
 
 
 def test_total_cut_size():
-    """ Test if sums computed match actual sum of weights of all edges between different subsets in the partition"""
+    """ Test if cut size of subsets in partition match"""
     G = Graph()
     G.add_edges_from([(1, 4), (2, 3)])
     partition = ([(1, 2), (3, 4)])
