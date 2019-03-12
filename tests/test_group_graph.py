@@ -5,7 +5,7 @@ from gatorgrouper.utils import group_graph
 
 
 def test_recursive_kl():
-    """ Test if groups made match recursion """
+    """ Test if groups made match recursion from Kernighan-Lin algorithm """
     G = Graph()
     with pytest.raises(ValueError) as excinfo:
         group_graph.recursive_kl(G, numgrp=1)
