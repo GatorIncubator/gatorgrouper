@@ -9,7 +9,6 @@ import pytest
 from gatorgrouper.utils import group_creation
 
 
-
 def test_group_random1():
     """Testing that the group_random() function creates the
         appropriate number of groups with the appropriate number"""
