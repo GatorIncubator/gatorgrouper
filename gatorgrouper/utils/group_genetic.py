@@ -279,6 +279,10 @@ def mutate(mutations, grouping: List[List[Student]]):
 
 
 def spawn(
+
+        # pylint: disable=too-many-branches
+        # pylint: disable=too-many-statements
+        # pylint: disable=too-many-locals
     # pylint: disable = C0330
     # Black would reformat the code in the way that does not pass pylint
     prev_population: List[Individual],
