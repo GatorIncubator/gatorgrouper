@@ -150,7 +150,6 @@ def test_hypothesis_group_random(grpsize):
     num_group = len(responses) // grpsize
     returned_groups = group_random.group_random_group_size(responses, grpsize)
     returned_groups1 = group_random.group_random_num_group(responses, num_group)
-    size_count = grpsize
     assert len(returned_groups) == num_group
     assert len(returned_groups1[0]) == grpsize
 
@@ -219,7 +218,7 @@ def test_hypothesis_round_robin(grpsize):
         ["Izaak", False, False, False],
         ["Jacob", False, False, False],
     ]
-    expected_output = len(lst)/grpsize
+    expected_output = len(lst) / grpsize
     actual_output = group_rrobin.group_rrobin_group_size(lst, grpsize)
     assert len(actual_output) == expected_output
     assert len(actual_output[0]) == grpsize
@@ -320,8 +319,6 @@ def test_hypothesis_rrobin_responses(numgrps):
     assert response_output[2][0][1] is True
 
 
-
-
 def test_random():
     """Testing the random grouping function to assure proper output"""
     lst = [
@@ -352,25 +349,25 @@ def test_random():
 @settings(verbosity=Verbosity.verbose)
 @pytest.mark.hypothesisworks
 def test_hypothesis_random(grpsize):
-   """Testing the random grouping function to assure proper output"""
-   lst = [
-       ["Dan", True, True, True],
-       ["Jesse", True, True, True],
-       ["Austin", True, True, True],
-       ["Nick", False, False, False],
-       ["Nikki", False, False, False],
-       ["Maria", False, False, False],
-       ["Jeff", False, False, False],
-       ["Simon", False, False, False],
-       ["Jon", False, False, False],
-       ["Angie", False, False, False],
-       ["Izaak", False, False, False],
-       ["Jacob", False, False, False],
-   ]
-   num_group = len(lst) // grpsize
-   actual_output = group_random.group_random_group_size(lst, grpsize)
-   actual_output1 = group_random.group_random_num_group(lst, num_group)
-   assert len(actual_output) == num_group
-   assert len(actual_output[0]) == grpsize
-   assert len(actual_output1) == num_group
-   assert len(actual_output1[0]) == grpsize
+    """Testing the random grouping function to assure proper output"""
+    lst = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", True, True, True],
+        ["Nick", False, False, False],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False],
+    ]
+    num_group = len(lst) // grpsize
+    actual_output = group_random.group_random_group_size(lst, grpsize)
+    actual_output1 = group_random.group_random_num_group(lst, num_group)
+    assert len(actual_output) == num_group
+    assert len(actual_output[0]) == grpsize
+    assert len(actual_output1) == num_group
+    assert len(actual_output1[0]) == grpsize
