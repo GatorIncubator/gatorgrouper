@@ -68,3 +68,16 @@ def test_compatibility_objective_measures():
 #
 #
 # def
+def test_group_graph_partition():
+    """ Tests that the output of the group_graph_partition is correct """
+    students = [
+        ["one", 0, 0],
+        ["two", 0, 0.5],
+        ["three", 0.5, 0],
+        ["four", 0.75, 0.75],
+        ["five", 0.8, 0.1],
+        ["six", 0, 1],
+        ["seven", 1, 0],
+        ["eight", 1, 1],
+    ]
+    assert group_graph.group_graph_partition(students, 4)

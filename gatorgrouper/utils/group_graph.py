@@ -153,7 +153,7 @@ def group_creator():
     ]
     student_groups = group_graph_partition(students, 4)
     print(student_groups)
-    
+
 
 
 if __name__ == "__main__":
