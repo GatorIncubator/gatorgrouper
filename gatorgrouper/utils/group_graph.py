@@ -138,7 +138,7 @@ def group_graph_partition(
 
 def group_graph():
     """
-    Create student groups using list of list containing student names
+    Create student groups of 4 using list of list containing student names
     and their weights.
     """
     students = [
