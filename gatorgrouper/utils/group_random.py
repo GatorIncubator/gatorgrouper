@@ -15,6 +15,7 @@ def group_random_group_size(responses: str, grpsize: int) -> List[List[str]]:
     return group_random_num_group(responses, numgrp)
 
 
+# pylint: disable=too-many-locals
 def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     """ group responses using randomization approach """
 
@@ -51,12 +52,11 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         scores, ave = group_scoring.score_groups(groups)
         logging.info("scores: %d", scores)
         logging.info("average: %d", ave)
-        logging.info("conflict scores : " + str(conflict_scores))
-        logging.info("conflict average : " + str(conflict_ave))
+        logging.info("conflict scores: %d", conflict_scores)
+        logging.info("conflict average: %d", conflict_ave)
         intensity -= 1
 
         if top_ave > conflict_ave:
-            # TODO: Account for conflict score with average
             top_ave = conflict_ave
             optimized_groups = groups
 
