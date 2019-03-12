@@ -13,6 +13,21 @@ def test_recursive_kl_error():
         assert exception_msg == "numgrp must be a power of 2 and at least 2."
 
 
+def test_recursive_kl_two():
+    """ Test if recursive Kernighan-Lin algorithm returns two groups recursively """
+    G = Graph()
+    student1 = [(1, 4)]
+    student2 = [(2, 3)]
+    input = [(1, 4), (2, 3)]
+    G.add_edges_from([(1, 4), (2, 3)])
+    actual_output = group_graph.recursive_kl(G, 2)
+    print(actual_output)
+    assert actual_output == [{2, 3}, {1, 4}] or actual_output == [{1, 4}, {2, 3}]
+
+# def test_recursive_kl_multi():
+#     """ Test if recursive Kernighan-Lin algorithm returns more than two groups """
+
+
 def test_total_cut_size():
     """ Test if cut size of subsets in partition match """
     G = Graph()
