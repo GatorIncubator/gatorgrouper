@@ -198,6 +198,34 @@ def test_round_robin():
     assert ["Austin", True, True, True] in actual_output[1]
 
 
+@given(grpsize=integers(min_value=2, max_value=4))
+@settings(verbosity=Verbosity.verbose)
+@pytest.mark.hypothesisworks
+def test_hypothesis_round_robin(grpsize):
+    """Testing the random round robin with hypothesis"""
+    lst = [
+        ["Dan", True, True, True],
+        ["Jesse", True, True, True],
+        ["Austin", True, True, True],
+        ["Nick", False, False, False],
+        ["Nikki", False, False, False],
+        ["Maria", False, False, False],
+        ["Jeff", False, False, False],
+        ["Simon", False, False, False],
+        ["Jon", False, False, False],
+        ["Angie", False, False, False],
+        ["Izaak", False, False, False],
+        ["Jacob", False, False, False],
+    ]
+    expected_output = len(lst)/grpsize
+    actual_output = group_rrobin.group_rrobin_group_size(lst, grpsize)
+    assert len(actual_output) == expected_output
+    assert len(actual_output[0]) == grpsize
+    assert ["Dan", True, True, True] in actual_output[0]
+    assert ["Jesse", True, True, True] in actual_output[2]
+    assert ["Austin", True, True, True] in actual_output[1]
+
+
 def test_rrobin_responses():
     """Testing the grouping function according to responses"""
     lst = [
