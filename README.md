@@ -365,7 +365,68 @@ C:\> virtualenv %HOMEPATH%\eb-virt
 
 Step 2:
 
-###Configure
+### Configure Your Django Application for Elastic Beanstalk
+
+Now that you have a Django-powered site on your local machine, you can configure
+it for deployment with Elastic Beanstalk.
+By default, Elastic Beanstalk looks for a file called application.py to start
+your application. Since this doesn't exist in the Django project that you've
+created, some adjustment of your application's environment is necessary. You
+will also need to set environment variables so that your application's modules
+can be loaded.
+
+To configure your site for Elastic Beanstalk
+Step one Activate your virtual environment.
+  On Linux-based systems, enter the following command:
+
+  ```
+  ~/ebdjango$ source ~/eb-virt/bin/activate
+  ```
+
+  On Windows, enter the following command:
+
+  ```
+  C:\Users\USERNAME\ebdjango>%HOMEPATH%\eb-virt\Scripts\activate
+  ```
+
+Step 2 Run pip freeze and save the output to a file named requirements.txt:
+
+  ```
+  (eb-virt) ~/ebdjango$ pip freeze > requirements.txt
+  ```
+
+Elastic Beanstalk uses requirements.txt to determine which package to install on
+the EC2 instances that run your application.
+
+Step 3 Create a new directory, called .ebextensions:
+
+  ```
+  (eb-virt) ~/ebdjango$ mkdir .ebextensions
+  ```
+
+Step 4 Within the .ebextensions directory, add a configuration file named
+django.config with the following text:
+
+Example ~/ebdjango/.ebextensions/django.config
+
+    ```
+    option_settings:
+  aws:elasticbeanstalk:container:python:
+    WSGIPath: ebdjango/wsgi.py
+    ```
+
+This setting, WSGIPath, specifies the location of the WSGI script that Elastic
+Beanstalk uses to start your application.
+
+Step 5 Deactivate your virtual environment by with the deactivate command:
+
+  ```
+  (eb-virt) ~/ebdjango$ deactivate
+  ```
+
+Reactivate your virtual environment whenever you need to add additional packages
+to your application or run your application locally.
+
 
 ###Deploy
 
