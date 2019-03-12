@@ -33,11 +33,19 @@ def parse_arguments(args):
     )
 
     gg_parser.add_argument(
-        "--group-size", help="Number of students in a group", type=int, required=False
+        "--group-size",
+        help="Number of students in a group",
+        type=int,
+        default=constants.DEFAULT_GRPSIZE,
+        required=False,
     )
 
     gg_parser.add_argument(
-        "--num-group", help="Number of groups", type=int, required=False
+        "--num-group",
+        help="Number of groups",
+        type=int,
+        default=constants.DEFAULT_NUMGRP,
+        required=False,
     )
 
     gg_parser.add_argument(
@@ -90,16 +98,9 @@ def check_valid(args, students_list):
     """Verify the command-line arguments"""
     verified_arguments = False
     students_list_length = len(students_list)
-    if args.group_size is not None and args.group_size <= students_list_length / 2:
+    if args.group_size > 1 and args.group_size <= students_list_length / 2:
         verified_arguments = True
-    if args.num_group is not None and args.num_group <= students_list_length / 2:
-        verified_arguments = True
-    # pylint: disable=bad-continuation
-    if (
-        args.group_size is None
-        and args.num_group is None
-        and constants.DEFAULT_NUMGRP <= students_list_length / 2
-    ):
+    if args.num_group > 1 and args.group_size <= students_list_length / 2:
         verified_arguments = True
     if args.file is constants.NONE:
         verified_arguments = False
