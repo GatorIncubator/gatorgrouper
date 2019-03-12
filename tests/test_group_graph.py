@@ -53,18 +53,55 @@ def test_compatibility_objective_measures():
     assert output == expected_output
 
 
-# def test_compatibility_measure():
-#     """ Test compatibility between students """
-#     a_score = 2
-#     b_score = 2
-#     output = group_graph.compatibility(a_score, b_score)
-#     expected_output = something #whatever measure is called
-#     assert output == expected_output
-#
-# # Need test cases for every branch of compatibility function
-#
-#
-# def
+def test_compatability_measure_average():
+    """ Test if measure of different student scores return an average """
+    a = [1, 1]
+    b = [0, 1]
+    output = group_graph.compatibility(a, b)
+    expected_output = 1.5
+    assert output == expected_output
+
+
+def test_compatability_measure_max():
+    """ Test if measure of different student scores return a maximum """
+    a = [1, 0]
+    b = [0, 0.5]
+    objective_measures = ("max", "max")
+    output = group_graph.compatibility(a, b, objective_measures=objective_measures)
+    expected_output = 1.5
+    assert output == expected_output
+
+
+def test_compatability_measure_min():
+    """ Test if measure of different student scores return a minimum """
+    a = [1, 0]
+    b = [0, 0.5]
+    objective_measures = ("min", "min")
+    output = group_graph.compatibility(a, b, objective_measures=objective_measures)
+    expected_output = 0
+    assert output == expected_output
+
+
+def test_compatability_measure_int():
+    """ Test if measure of different student scores are both equal """
+    a = [1, 0]
+    b = [0, 0.5]
+    objective_measures = ("match", "match")
+    output = group_graph.compatibility(a, b, objective_measures=objective_measures)
+    expected_output = 0
+    assert output == expected_output
+
+
+def test_compatability_measure_diff():
+    """ Test if measure of different student scores returns an absolute value difference """
+    a = [1, 0]
+    b = [0, 0.5]
+    objective_measures = ("diff", "diff")
+    output = group_graph.compatibility(a, b, objective_measures=objective_measures)
+    expected_output = 1.5
+    assert output == expected_output
+
+
 def test_group_graph_partition():
     """ Tests that the output of the group_graph_partition is correct """
     students = [
