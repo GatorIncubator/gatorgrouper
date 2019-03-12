@@ -96,7 +96,8 @@ def group_graph_partition(
     preferences_weight_match=1.3,
 ):
     """
-    Form groups using recursive Kernighan-Lin algorithm.
+    Form groups using recursive Kernighan-Lin algorithm by reading in students list
+    and weight list and partitioning the vertices.
     """
     # Read in students list and the weight list
     students = [item[0] for item in inputlist]
