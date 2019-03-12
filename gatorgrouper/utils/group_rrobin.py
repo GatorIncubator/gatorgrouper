@@ -20,6 +20,7 @@ def group_rrobin_group_size(responses, grpsize):
     # choose a random column from the student responses as the priority
     # column to distribute students by
     indices = list(range(0, numgrps))
+    random.shuffle(indices)
     target_group = itertools.cycle(indices)
     priorityColumn = random.randint(1, len(responses[0]) - 1)
     logging.info("column priority: %d", priorityColumn)
@@ -60,6 +61,7 @@ def group_rrobin_num_group(responses, numgrps):
     # choose a random column from the student responses as the priority
     # column to distribute students by
     indices = list(range(0, numgrps))
+    random.shuffle(indices)
     target_group = itertools.cycle(indices)
     priorityColumn = random.randint(1, len(responses[0]) - 1)
     logging.info("column priority: %d", priorityColumn)
