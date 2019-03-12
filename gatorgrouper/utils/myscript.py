@@ -1,4 +1,4 @@
 """ This is my script. """
-import display
+from gatorgrouper.utils import display
 
 display.display_welcome_message()

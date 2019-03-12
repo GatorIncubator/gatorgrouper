@@ -4,6 +4,7 @@
 from typing import List, Tuple, Union
 
 
+# pylint: disable=bad-continuation
 def score_group(
     student_identifers: Union[List[List[Union[str, bool]]], List[str]]
 ) -> int:
@@ -16,6 +17,7 @@ def score_group(
     return score
 
 
+# pylint: disable=bad-continuation
 def score_groups(
     student_groups: Union[List[List[str]], List[List[List[Union[str, bool]]]]]
 ) -> Tuple[List[int], int]:
