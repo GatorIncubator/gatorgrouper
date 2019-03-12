@@ -5,7 +5,7 @@ import pytest
 
 
 def test_recursive_kl():
-    """ Test if groups made match recursion"""
+    """ Test if groups made match recursion """
     # weights = [[0, 0], [0, 0.5], [0.5, 0], [0.75, 0.75], [0.8, 0.1], [0, 1], [1, 0], [1, 1]]
     # vertex_weight_pairs = enumerate([{"weight": w} for w in weights])
     G = Graph()
@@ -25,7 +25,7 @@ def test_recursive_kl():
 
 
 def test_total_cut_size():
-    """ Test if cut size of subsets in partition match"""
+    """ Test if cut size of subsets in partition match """
     G = Graph()
     G.add_edges_from([(1, 4), (2, 3)])
     partition = ([(1, 2), (3, 4)])
@@ -34,13 +34,8 @@ def test_total_cut_size():
     assert output == expected_output
 
 
-    # partition: List[int]
-    # G = Graph()
-    # input = [G, partition]
-    # expected_output = cutsize(graph, subset1, T=subset2)
-    # assert
-
-#
+def test_compatibility():
+    """ Test if compatibility score equates to summ of scaled scores """
 # def test_compatability_raises():
 #     """Raises exception for unequal tuples"""
 #     # len(a) != len(b)
