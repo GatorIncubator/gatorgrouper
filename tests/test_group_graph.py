@@ -37,7 +37,7 @@ def test_compatibility_length():
 # Run objective_weights test case using None
 
 def test_compatibility_objective_weights():
-    """ Test if objective_weights is empty """
+    """ Test if objective_weights returns the objective weights of students """
     a = [1, 1]
     b = [0, 0.5]
     objective_weights = (2.0, 1.0)
