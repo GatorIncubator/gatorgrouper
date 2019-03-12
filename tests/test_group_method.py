@@ -69,8 +69,8 @@ def hypothesis_test_group_random1(group_size):
     ]
     lst2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
     size_count = group_size
-    actual_output = group_random.group_random_group_size(lst, group_size)
-    actual_output2 = group_random.group_random_group_size(lst2, group_size)
+    actual_output = group_creation.group_random_group_size(lst, group_size)
+    actual_output2 = group_creation.group_random_group_size(lst2, group_size)
 
     assert len(actual_output) == 12 // size_count
     assert len(actual_output[0]) == size_count
@@ -111,7 +111,7 @@ def test_group_random2(grpsize):
         ["Nick", True, False, True, False],
         ["Dan", False, True, False, True],
     ]
-    returned_groups = group_random.group_random_group_size(responses, grpsize)
+    returned_groups = group_creation.group_random_group_size(responses, grpsize)
     size_count = grpsize
     assert len(returned_groups[0]) == size_count
 
@@ -169,7 +169,7 @@ def test_round_robin():
         ["Jacob", False, False, False],
     ]
     group_size = 3
-    actual_output = group_rrobin.group_rrobin_group_size(lst, group_size)
+    actual_output = group_creation.group_rrobin_group_size(lst, group_size)
     assert len(actual_output) == 4
     assert len(actual_output[0]) == group_size
     assert actual_output[0][0][1] is True
