@@ -1,7 +1,7 @@
 """ Test group graph algorithm"""
 from networkx import Graph
-from gatorgrouper.utils import group_graph
 import pytest
+from gatorgrouper.utils import group_graph
 
 
 def test_recursive_kl():
