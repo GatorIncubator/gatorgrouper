@@ -34,9 +34,9 @@ def score_groups(
 
 # def score_group_conflicts(student_indentifiers):
 #    """ conflict score single group """
-#    conflict score = 0
+#    conflict_score = 0
 #    for student in student_identifiers:
-#
+#       for conflict
 #    return conflict_score
 
 
