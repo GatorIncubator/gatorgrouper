@@ -6,8 +6,7 @@ from hypothesis.strategies import integers
 
 
 import pytest
-from gatorgrouper.utils import group_random
-from gatorgrouper.utils import group_rrobin
+from gatorgrouper.utils import group_creation
 
 
 def test_group_random1():
@@ -32,10 +31,10 @@ def test_group_random1():
     group_size2 = 2
     num_group = 2
     num_group2 = 3
-    actual_output = group_random.group_random_group_size(lst, group_size)
-    actual_output2 = group_random.group_random_group_size(lst2, group_size2)
-    actual_output3 = group_random.group_random_num_group(lst, num_group)
-    actual_output4 = group_random.group_random_num_group(lst2, num_group2)
+    actual_output = group_creation.group_random_group_size(lst, group_size)
+    actual_output2 = group_creation.group_random_group_size(lst2, group_size2)
+    actual_output3 = group_creation.group_random_num_group(lst, num_group)
+    actual_output4 = group_creation.group_random_num_group(lst2, num_group2)
 
     assert len(actual_output) == 4
     assert len(actual_output[0]) == 3
@@ -69,8 +68,8 @@ def hypothesis_test_group_random1(group_size):
     ]
     lst2 = ["Dan", "Angie", "Austin", "Izaak", "Nick", "Jeff"]
     size_count = group_size
-    actual_output = group_random.group_random_group_size(lst, group_size)
-    actual_output2 = group_random.group_random_group_size(lst2, group_size)
+    actual_output = group_creation.group_random_group_size(lst, group_size)
+    actual_output2 = group_creation.group_random_group_size(lst2, group_size)
 
     assert len(actual_output) == 12 // size_count
     assert len(actual_output[0]) == size_count
@@ -90,8 +89,8 @@ def test_group_random_extra():
     ]
     grpsize = 2
     num_group = 2
-    returned_groups = group_random.group_random_group_size(responses, grpsize)
-    returned_groups1 = group_random.group_random_num_group(responses, num_group)
+    returned_groups = group_creation.group_random_group_size(responses, grpsize)
+    returned_groups1 = group_creation.group_random_num_group(responses, num_group)
     assert len(returned_groups) == 2
     assert grpsize == 2
     assert len(returned_groups1) == 2
@@ -111,7 +110,7 @@ def test_group_random2(grpsize):
         ["Nick", True, False, True, False],
         ["Dan", False, True, False, True],
     ]
-    returned_groups = group_random.group_random_group_size(responses, grpsize)
+    returned_groups = group_creation.group_random_group_size(responses, grpsize)
     size_count = grpsize
     assert len(returned_groups[0]) == size_count
 
@@ -128,8 +127,8 @@ def test_group_random():
     ]
     grpsize = 2
     num_group = 3
-    returned_groups = group_random.group_random_group_size(responses, grpsize)
-    returned_groups1 = group_random.group_random_num_group(responses, num_group)
+    returned_groups = group_creation.group_random_group_size(responses, grpsize)
+    returned_groups1 = group_creation.group_random_num_group(responses, num_group)
     assert len(returned_groups) == 3
     assert len(returned_groups1[0]) == 2
 
@@ -166,7 +165,7 @@ def test_shuffle():
         "Jesse",
         "Maria",
     ]
-    shuffled_students = group_random.shuffle_students(student_identifiers)
+    shuffled_students = group_creation.shuffle_students(student_identifiers)
     for i in range(0, len(shuffled_students)):
         assert student_identifiers[i] in shuffled_students
     assert student_identifiers != shuffled_students
@@ -189,7 +188,7 @@ def test_round_robin():
         ["Jacob", False, False, False],
     ]
     group_size = 3
-    actual_output = group_rrobin.group_rrobin_group_size(lst, group_size)
+    actual_output = group_creation.group_rrobin_group_size(lst, group_size)
     assert len(actual_output) == 4
     assert len(actual_output[0]) == group_size
     assert actual_output[0][0][1] is True
@@ -251,7 +250,7 @@ def test_round_robin_uneven():
         ["Jacob", False, False, False],
     ]
     group_size = 3
-    actual_output = group_rrobin.group_rrobin_group_size(lst, group_size)
+    actual_output = group_creation.group_rrobin_group_size(lst, group_size)
     assert len(actual_output) == 4
     assert len(actual_output[0]) == group_size
     counter = 0
@@ -283,7 +282,7 @@ def test_rrobin_responses():
         ["Jacob", False, False, False],
     ]
     numgrps = 4
-    response_output = group_rrobin.group_rrobin_num_group(lst, numgrps)
+    response_output = group_creation.group_rrobin_num_group(lst, numgrps)
     assert len(response_output[0]) == 3
     assert len(response_output) == numgrps
     assert response_output[0][0][1] is True
@@ -337,8 +336,8 @@ def test_random():
     ]
     group_size = 4
     num_group = 3
-    actual_output = group_random.group_random_group_size(lst, group_size)
-    actual_output1 = group_random.group_random_num_group(lst, num_group)
+    actual_output = group_creation.group_random_group_size(lst, group_size)
+    actual_output1 = group_creation.group_random_num_group(lst, num_group)
     assert len(actual_output) == 3
     assert len(actual_output[0]) == 4
     assert len(actual_output1) == 3
