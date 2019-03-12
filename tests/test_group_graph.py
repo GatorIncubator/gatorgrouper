@@ -4,8 +4,8 @@ import pytest
 from gatorgrouper.utils import group_graph
 
 
-def test_recursive_kl():
-    """ Test if groups made match recursion from Kernighan-Lin algorithm """
+def test_recursive_kl_error():
+    """ Test if ValueError is called if numgrp is not a power of 2 and not at least 2 """
     G = Graph()
     with pytest.raises(ValueError) as excinfo:
         group_graph.recursive_kl(G, numgrp=1)
