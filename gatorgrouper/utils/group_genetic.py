@@ -279,16 +279,17 @@ def mutate(mutations, grouping: List[List[Student]]):
 
 
 def spawn(
-        # pylint: disable=too-many-branches
-        # pylint: disable=too-many-statements
-        # pylint: disable=too-many-locals
-        # pylint: disable = W0613
-        # pylint: disable = C0330
+    # pylint: disable=C0330
+    # pylint: disable=too-many-branches
+    # pylint: disable=too-many-statements
+    # pylint: disable=too-many-locals
     # Black would reformat the code in the way that does not pass pylint
+
     prev_population: List[Individual],
     mutation_rate: float,
     elitism_rate: float,
     create_rate: float,
+    # pylint: disable = W0613
     crossover_rate: float,
     mutations,
 ):
