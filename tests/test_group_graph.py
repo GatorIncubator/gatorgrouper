@@ -1,11 +1,11 @@
 """ Test group graph algorithm"""
-from gatorgrouper.utils import group_graph
 from networkx import Graph
 import pytest
+from gatorgrouper.utils import group_graph
 
 
 def test_recursive_kl():
-    """ Test if groups made match recursion """
+    """ Test if groups made match recursion from Kernighan-Lin algorithm """
     G = Graph()
     with pytest.raises(ValueError) as excinfo:
         group_graph.recursive_kl(G, numgrp=1)
@@ -19,7 +19,7 @@ def test_total_cut_size():
     """ Test if cut size of subsets in partition match """
     G = Graph()
     G.add_edges_from([(1, 4), (2, 3)])
-    partition = ([(1, 2), (3, 4)])
+    partition = [(1, 2), (3, 4)]
     output = group_graph.total_cut_size(G, partition)
     expected_output = 2
     assert output == expected_output
@@ -27,8 +27,8 @@ def test_total_cut_size():
 
 def test_compatibility_length():
     """ Test if exception message is raised by unequal students scores """
-    a = (2)
-    b = (1)
+    a = 2
+    b = 1
     with pytest.raises(Exception) as excinfo:
         group_graph.compatibility(a, b)
         exception_msg = excinfo.value.args[0]

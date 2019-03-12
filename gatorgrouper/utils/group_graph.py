@@ -10,7 +10,7 @@ from networkx.algorithms.cuts import cut_size
 
 def recursive_kl(graph: Graph, numgrp=2) -> List[Set[int]]:
     """
-    Recursively use Kernighan-Lin algorithm to create a k-way graph partition
+    Recursively use the Kernighan-Lin algorithm to create a k-way graph partition
     """
     power = log(numgrp, 2)
     if power != int(power) or power < 1:
@@ -96,7 +96,8 @@ def group_graph_partition(
     preferences_weight_match=1.3,
 ):
     """
-    Form groups using recursive Kernighan-Lin algorithm.
+    Form groups using recursive Kernighan-Lin algorithm by reading in students list
+    and weight list and partitioning the vertices.
     """
     # Read in students list and the weight list
     students = [item[0] for item in inputlist]
@@ -135,9 +136,9 @@ def group_graph_partition(
     return groups
 
 
-def group_graph():
+def group_creator():
     """
-    Create student groups using list of list containing student names
+    Create student groups of 4 using list of list containing student names
     and their weights.
     """
     students = [
@@ -154,5 +155,6 @@ def group_graph():
     print(student_groups)
     
 
+
 if __name__ == "__main__":
-    group_graph()
+    group_creator()
