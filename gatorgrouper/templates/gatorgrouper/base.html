@@ -41,10 +41,10 @@
       <ul class="nav ml-auto">
         {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="btn btn-md btn-google btn-space" href="{% url 'profile' %}">Profile</a>
+                <a class="btn btn-md btn-warning btn-space" href="{% url 'profile' %}" style="color: white">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-md btn-google btn-space" href="{% url 'logout' %}">Log Out</a>
+                <a class="btn btn-md btn-danger btn-space" href="{% url 'logout' %}">Log Out</a>
             </li>
             <li class="nav-item">
               <div class="dropdown">
