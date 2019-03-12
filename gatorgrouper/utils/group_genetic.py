@@ -9,7 +9,6 @@ from colors import bold
 import workbook
 
 
-
 class Student:
     """Represent student."""
 
@@ -37,6 +36,7 @@ class Student:
 
 
 class Individual:
+    # pylint: disable=too-few-public-methods
     """Represent individual."""
 
     def __init__(self, grouping: List[List[Student]], fitness):
@@ -279,11 +279,11 @@ def mutate(mutations, grouping: List[List[Student]]):
 
 
 def spawn(
-
         # pylint: disable=too-many-branches
         # pylint: disable=too-many-statements
         # pylint: disable=too-many-locals
-    # pylint: disable = C0330
+        # pylint: disable = W0613
+        # pylint: disable = C0330
     # Black would reformat the code in the way that does not pass pylint
     prev_population: List[Individual],
     mutation_rate: float,
@@ -390,6 +390,7 @@ def select(population: List[Individual]):
 def calculate_fitness(grouping: List[List[Student]]):
     # pylint: disable=R0914
     """Calculate compatibility between students"""
+    # pylint: disable=too-many-branches
     # pylint: disable=global-statement
     global best_grouping
     global best_fitness
