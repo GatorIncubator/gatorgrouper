@@ -60,3 +60,5 @@ def test_compatibility_objective_weights():
 #
 #
 # def
+def test_group_graph_partition():
+    
