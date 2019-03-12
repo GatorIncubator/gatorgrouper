@@ -181,15 +181,15 @@ def crossover(individual_one, individual_two):
         for two in grouping_two:
             if set(one) == set(two):
                 dupl = False
-                for group in offspring:
-                    for student in one:
-                        if student in group:
-                            dupl = True
-                            break
-                    if dupl:
+            for group in offspring:
+                for student in one:
+                    if student in group:
+                        dupl = True
                         break
-                if not dupl:
-                    offspring.append(one)
+                if dupl:
+                    break
+            if not dupl:
+                offspring.append(one)
 
     # print("added equals: {}".format(offspring))
 
