@@ -477,6 +477,60 @@ to your application or run your application locally.
 
 
 ###Deploy
+To create an environment and deploy your Django application:
+
+Step 1: Initialize your EB CLI repository with the eb init command:
+
+```
+~/ebdjango$ eb init -p python-3.6 django-tutorial
+Application django-tutorial has been created.
+```
+This command creates a new application named django-tutorial and configures your local repository to create environments with the latest Python 3.6 platform version.
+
+Step 2: (optional) Run eb init again to configure a default keypair so that you can connect to the EC2 instance running your application with SSH:
+
+```
+~/ebdjango$ eb init
+Do you want to set up SSH for your instances?
+(y/n): y
+Select a keypair.
+1) my-keypair
+2) [ Create new KeyPair ]
+```
+
+Step 3: Create an environment and deploy you application to it with eb create:
+
+```
+~/ebdjango$ eb create django-env
+```
+
+Step 4: When the environment creation process completes, find the domain name of your new environment by running eb status:
+
+```
+~/ebdjango$ eb status
+```
+
+Step 5: Edit the settings.py file in the ebdjango directory, locate the ALLOWED_HOSTS setting, and then add your application's domain name that you found in the previous step to the setting's value. If you can't find this setting in the file, add it to a new line.
+
+```
+...
+ALLOWED_HOSTS = ['eb-django-app-dev.elasticbeanstalk.com']
+```
+
+Step 6: Save the file, and then deploy your application by running eb deploy. When you run eb deploy, the EB CLI bundles up the contents of your project directory and deploys it to your environment.
+
+```
+~/ebdjango$ eb deploy
+```
+
+Step 7: When the environment update process completes, open your web site with eb open:
+
+```
+~/ebdjango$ eb open
+```
+
+This will open a browser window using the domain name created for your application. You should see the same Django website that you created and tested locally.
+
 
 
 ## Problems or Praise
