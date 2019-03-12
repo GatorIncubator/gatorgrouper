@@ -2,7 +2,7 @@
 import logging
 from utils import parse_arguments
 from utils import defaults
-from utils import group_creation
+from utils import group_random
 from utils import constants
 
 
@@ -13,9 +13,7 @@ def test_parse_arguments1():
     assert parsed_args.logging_level == logging.ERROR
     assert parsed_args.group_size == defaults.DEFAULT_GRPSIZE
     assert parsed_args.students_file == defaults.DEFAULT_CSVFILE
-    # The following line may need to be changed
-    # Unsure of the group_creation references
-    assert (parsed_args.grouping_method == group_creation) is False
+    assert (parsed_args.grouping_method == group_random) is False
 
 
 def test_parse_arguments2():
