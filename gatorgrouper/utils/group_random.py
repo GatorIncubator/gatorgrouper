@@ -44,12 +44,14 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
             stunum = stunum + 1
 
         # scoring and return
-        # TODO: calculate conflict scores
-
+        conflict_scores, conflict_ave = [], 0
+        conflict_scores, conflict_ave = score_groups(groups)
         scores, ave = [], 0
         scores, ave = group_scoring.score_groups(groups)
         logging.info("scores: %d", scores)
         logging.info("average: %d", ave)
+        logging.info("conflict scores : " + str(conflict_scores))
+        logging.info("conflict average : " + str(conflict_ave))
         intensity -= 1
 
         if ave > top_ave:
