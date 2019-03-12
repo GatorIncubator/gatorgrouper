@@ -55,7 +55,7 @@ def parse_arguments(args):
     gg_parser.add_argument(
         "--method",
         type=str,
-        help="Use graph grouping method",
+        help="Grouping algorithm",
         choices=[
             constants.ALGORITHM_GRAPH,
             constants.ALGORITHM_ROUND_ROBIN,
