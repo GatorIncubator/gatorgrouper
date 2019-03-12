@@ -46,8 +46,16 @@ def test_compatibility_objective_weights():
     assert output == expected_output
 
 
-# def test_compatibility_objective_measures():
-#     """ Test if objective measures  """
+def test_compatibility_objective_measures():
+    """ Test if objective measures  """
+    a = [0, 1]
+    b = [0.75, 0.75]
+    objective_measures = ("avg", "match")
+    output = group_graph.compatibility(a, b, objective_measures=objective_measures)
+    expected_output = 0.375
+    assert output == expected_output
+
+
 # def test_compatibility_measure():
 #     """ Test compatibility between students """
 #     a_score = 2
