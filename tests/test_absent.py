@@ -1,4 +1,5 @@
 """Testing if absent.py correctly handles being absent"""
+
 from gatorgrouper.utils import remove_absent_students
 
 
