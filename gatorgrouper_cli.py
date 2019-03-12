@@ -40,7 +40,6 @@ if __name__ == "__main__":  # pragma: no cover
         SHUFFLED_STUDENT_IDENTIFIERS = group_random.shuffle_students(
             STUDENT_IDENTIFIERS
         )
-        COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
         logging.info("GatorGrouper randomly ordered the students:")
         logging.info(
             "\n %s",
@@ -49,65 +48,40 @@ if __name__ == "__main__":  # pragma: no cover
 
         # generate the groups and display them
         # pylint: disable=bad-continuation
-        # If user wanted to sort by round robin and provided a group size
-        # but did not provide the number of groups
         if (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-            and GG_ARGUMENTS.num_group is None
-            and GG_ARGUMENTS.group_size is not None
+            and GG_ARGUMENTS.num_group is constants.DEFAULT_NUMGRP
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_group_size(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
             )
-        # If the user wanted to sort by round robin and provided the number of
-        # groups but did not provide the size of the groups
         elif (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-            and GG_ARGUMENTS.group_size is None
-            and GG_ARGUMENTS.num_group is not None
+            and GG_ARGUMENTS.num_group is not constants.DEFAULT_NUMGRP
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
             )
-        # If the user wanted to sort by round robin and did not provide either
-        # the number of groups or the size of the groups, group using the
-        # default number of groups
-        elif (
-            GG_ARGUMENTS.grouping_method == constants.ALGORITHM_ROUND_ROBIN
-            and GG_ARGUMENTS.group_size is None
-            and GG_ARGUMENTS.num_group is None
-        ):
-            GROUPED_STUDENT_IDENTIFIERS = group_rrobin.group_rrobin_num_group(
-                SHUFFLED_STUDENT_IDENTIFIERS, constants.DEFAULT_NUMGRP
-            )
-        # If the user wanted to sort using the graph algorithm and provided the
-        # number of groups
         elif (
             GG_ARGUMENTS.grouping_method == constants.ALGORITHM_GRAPH
-            and GG_ARGUMENTS.num_group is not None
+            and GG_ARGUMENTS.num_group is not constants.DEFAULT_NUMGRP
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_graph.group_graph_partition(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
             )
-        # If the user did not specify a sorting algorithm and provided the size of groups
-        # but did not provide the number of groups
-        elif GG_ARGUMENTS.num_group is None and GG_ARGUMENTS.group_size is not None:
+        elif (
+            GG_ARGUMENTS.num_group is constants.DEFAULT_NUMGRP
+        ):  # default to random method
             GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_group_size(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.group_size
             )
-        # IF the user did not specificy a sorting algorithm and provided the number of
-        # groups but did not specificy the size of the groups
-        elif GG_ARGUMENTS.group_size is None and GG_ARGUMENTS.num_group is not None:
+        else:
             GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
             )
-        else:
-            GROUPED_STUDENT_IDENTIFIERS = group_random.group_random_num_group(
-                SHUFFLED_STUDENT_IDENTIFIERS, constants.DEFAULT_NUMGRP
-            )
-
         # report grouping results
         COUNT_GROUPS = len(GROUPED_STUDENT_IDENTIFIERS)
+        COUNT_STUDENTS = len(SHUFFLED_STUDENT_IDENTIFIERS)
         logging.info(
             "Successfully placed %d students into %d groups ",
             COUNT_STUDENTS,
