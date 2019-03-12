@@ -349,6 +349,23 @@ foreign keys using `django.db.models.ForeignKey`. The different entities within
 the classes are linked by a means one-to-many, many-to-one, and many-to-many
 relationship.
 
+###Set Up a Python Virtual Environment with Django
+Step 1: Create a virtual environment named eb-virt.
+On Unix-based systems, such as Linux or OS X, enter the following command:
+
+```
+~$ virtualenv ~/eb-virt
+```
+
+On Windows, enter the following command:
+
+```
+C:\> virtualenv %HOMEPATH%\eb-virt
+```
+
+Step 2:
+
+
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
