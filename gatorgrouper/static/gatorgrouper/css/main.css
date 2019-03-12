@@ -99,12 +99,6 @@ a.article-title:hover {
 }
 
 .dropbtn {
-  background-color: #007BFF;
-  color: white;
-  padding: 11px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
 }
 
 .dropbtn:hover, .dropbtn:focus {
