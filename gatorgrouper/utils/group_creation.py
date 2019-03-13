@@ -70,10 +70,6 @@ def group_rrobin_num_group(responses, numgrps):
 
     # iterate through the responses and check if the priority column is true
     # if it is, add that response to the next group
-    logging.info("column priority: %d", priorityColumn)
-
-    # iterate through the responses and check if the priority column is true
-    # if it is, add that response to the next group
     for response in responses:
         if response[priorityColumn] is True:
             groups[target_group.__next__()].append(response)

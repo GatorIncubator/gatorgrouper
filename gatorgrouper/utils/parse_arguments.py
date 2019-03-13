@@ -79,7 +79,7 @@ def check_valid(args, students_list):
     """Verify the command-line arguments"""
     verified_arguments = False
     students_list_length = len(students_list)
-    if args.num_group > 1 and args.group_size <= students_list_length / 2:
+    if args.num_group > 1 and args.num_group <= students_list_length / 2:
         verified_arguments = True
     if args.file is constants.NONE:
         verified_arguments = False
