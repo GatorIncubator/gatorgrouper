@@ -104,10 +104,11 @@ class Grouped_Student(models.Model):
 
     assignment_id = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
-    group_id = models.CharField(max_length=40)
+    id = models.AutoField(primary_key=True)
+    group_name = models.CharField(max_length=30, default="group #")
 
     def __str__(self):
-        return "Group {}: {}".format(self.group_id, self.assignment_id)
+        return "{}: {}".format(self.group_name, self.student_id)
 
 
 class Student_Conflict(models.Model):
