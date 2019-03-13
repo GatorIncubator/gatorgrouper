@@ -32,6 +32,9 @@ ul {
   background-color: #5f788a;
 }
 
+.assignments a{
+  font-size: 26px;
+}
 .carousel-item {
   height: 65vh;
   min-height: 350px;
