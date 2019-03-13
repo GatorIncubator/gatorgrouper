@@ -53,7 +53,7 @@ def home(request):
 
 def create_classes(request):
     """ Create classes view """
-    return render(request, "gatorgrouper/chttps://docs.djangoproject.com/en/2.1/ref/databases/lasses.html", {"title": "Create Classes"})
+    return render(request, "gatorgrouper/classes.html", {"title": "Create Classes"})
     # return HttpResponse
 
 
@@ -69,25 +69,25 @@ def users(request):
 
 def survey(request, class_id = None):
     """ POST and GET requests for handling student survey """
-    
+
     # Verify that the class exists
     try:
         Semester_Class.objects.get(class_id = class_id)
     except Semester_Class.DoesNotExist:
         raise Http404("Class not found")
-    
+
     # get students in class
     enrolled_students = Students.objects.filter(class_id = class_id)
-    
+
     # make formset with a compatibility form for each student
     if request.method == "POST":
         formset = StudentCompatibilityFormSet(request.POST)
-    
+
         # validate formset
         if formset.is_valid():
             # TODO: populate formset with existing compatibility responses
             student_reviews = Student_Reviews()
-            
+
             student_reviews.option1 = formset.cleaned_data['option1']
             student_reviews.option2 = formset.cleaned_data['option2']
             student_reviews.option3 = formset.cleaned_data['option3']
@@ -96,7 +96,7 @@ def survey(request, class_id = None):
 
             print(formset.cleaned_data)
             # TODO: save to db
-            student_reviews.save() 
+            student_reviews.save()
             return render(request, "gatorgrouper/survey.html")
     else:
         # TODO: ensure logged in user is enrolled as student
