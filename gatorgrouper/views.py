@@ -6,6 +6,7 @@ from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CustomUserCreationForm
+from django.db import IntegrityError
 
 
 # from django.http import HttpResponse
@@ -161,8 +162,26 @@ def survey(request):
 @login_required
 def groupResult(request):
     """ Group result view """
+    GroupedStudentFormSet = modelform_factory(
+        Grouped_Student, fields=("assignment_id",)
+    )
+    group_list = []
+    groupNames = []
+    assignment_obj = None
+    if request.method == "POST":
+        formset = GroupedStudentFormSet(request.POST)
+        if formset.is_valid():
+            assignment_obj = formset.cleaned_data.get("assignment_id")
+            group_list = list(Grouped_Student.objects.filter(assignment_id=assignment_obj))
+            groupNames = []
+            for g in group_list:
+                if g.group_name not in groupNames:
+                    groupNames.append(g.group_name)
+    else:
+        formset = GroupedStudentFormSet()
+
     return render(
-        request, "gatorgrouper/viewing-groups.html", {"title": "Group Result"}
+        request, "gatorgrouper/viewing-groups.html", {"title": "Group Result", "formset": formset, "groups":group_list, "assignment":assignment_obj, "groupNames":groupNames}
     )
 
 
@@ -212,8 +231,13 @@ def create_groups(request):
                     # get student object and then save and then we're done!
                     group_name = "Group " + str(counter)
                     for student in group:
-                        s = Grouped_Student(assignment_id=assignment_obj, student_id=student_list_dict[student], group_name=group_name)
-                        s.save()
+                        try:
+                            s = Grouped_Student(assignment_id=assignment_obj, student_id=student_list_dict[student], group_name=group_name)
+                            s.save()
+                        except(IntegrityError):
+                            messages.error(request, f"This assignment already has a group associated with it.\nPlease Try again")
+                            return redirect("create-groups")
+
                     counter += 1
                 messages.success(request, f"The groups for this assignment have been saved. To see them, visit the view groups page")
     else:
