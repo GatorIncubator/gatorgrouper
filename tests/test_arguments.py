@@ -18,7 +18,7 @@ def test_parse_arguments1(no_arguments, capsys):
 
 def test_parse_arguments2(generate_csv):
     """Testing specfied arguments"""
-    args = ["--debug", "--file", generate_csv, "--method=random"]
+    args = ["--debug", "--file", generate_csv, "--method=random", "--num-group=2"]
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.logging_level == logging.DEBUG
     assert "csvNg.csv" in parsed_args.file
@@ -27,7 +27,7 @@ def test_parse_arguments2(generate_csv):
 
 def test_parse_gatorgrouper_arguments3(generate_csv):
     """Testing specfied arguments"""
-    args = ["--verbose", "--file", generate_csv, "--method=rrobin"]
+    args = ["--verbose", "--file", generate_csv, "--method=rrobin", "--num-group=2"]
     parsed_args = parse_arguments.parse_arguments(args)
     assert parsed_args.logging_level == logging.INFO
     assert parsed_args.method == constants.ALGORITHM_ROUND_ROBIN
@@ -41,11 +41,11 @@ def test_parse_arguments4(generate_csv):
         "--file",
         generate_csv,
         "--method=rrobin",
-        "--group-size",
+        "--num-group",
         "3",
     ]
     parsed_args = parse_arguments.parse_arguments(args)
-    assert parsed_args.group_size == 3
+    assert parsed_args.num_group == 3
     assert parsed_args.method == constants.ALGORITHM_ROUND_ROBIN
     assert parsed_args.absentees == ["maria"]
 
@@ -59,7 +59,7 @@ def test_parse_arguments5(generate_csv):
 
 def test_file_argument_verifiable(generate_csv):
     """Check that valid file arguments will verify correctly"""
-    correct_arguments = ["--file", generate_csv]
+    correct_arguments = ["--file", generate_csv, "--num-group=2"]
     parsed_arguments = parse_arguments.parse_arguments(correct_arguments)
     input_list = read_student_file.read_csv_data(parsed_arguments.file)
     checker = parse_arguments.check_valid(parsed_arguments, input_list)
@@ -68,7 +68,7 @@ def test_file_argument_verifiable(generate_csv):
 
 def test_file_argument_invalid():
     """Check that invalid file arguments will not verify correctly"""
-    wrong_arguments = ["--file", "x"]
+    wrong_arguments = ["--file", "x", "--num-group=2"]
     parsed_arguments = parse_arguments.parse_arguments(wrong_arguments)
     input_list = read_student_file.read_csv_data(parsed_arguments.file)
     checker = parse_arguments.check_valid(parsed_arguments, input_list)
@@ -77,25 +77,16 @@ def test_file_argument_invalid():
 
 def test_file_argument_empty():
     """Check that invalid file arguments will not verify correctly"""
-    wrong_arguments = ["--file", ""]
+    wrong_arguments = ["--file", "", "--num-group=2"]
     parsed_arguments = parse_arguments.parse_arguments(wrong_arguments)
     input_list = read_student_file.read_csv_data(parsed_arguments.file)
     checker = parse_arguments.check_valid(parsed_arguments, input_list)
     assert checker is False
 
 
-def test_valid_size(generate_csv):
-    """Check that valid size arguments will not verify correctly"""
-    correct_arguments = ["--file", generate_csv, "--group-size", "3"]
-    parsed_arguments = parse_arguments.parse_arguments(correct_arguments)
-    input_list = read_student_file.read_csv_data(parsed_arguments.file)
-    checker = parse_arguments.check_valid(parsed_arguments, input_list)
-    assert checker is True
-
-
 def test_invalid_input(generate_csv):
     """Check that invalid size and number arguments will not verify correctly"""
-    wrong_arguments = ["--file", generate_csv, "--group-size", "7", "--num-group", "7"]
+    wrong_arguments = ["--file", generate_csv, "--num-group", "7"]
     parsed_arguments = parse_arguments.parse_arguments(wrong_arguments)
     input_list = read_student_file.read_csv_data(parsed_arguments.file)
     checker = parse_arguments.check_valid(parsed_arguments, input_list)
