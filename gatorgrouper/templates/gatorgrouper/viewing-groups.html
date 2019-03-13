@@ -1,22 +1,28 @@
 {% extends "gatorgrouper/base.html" %}
 {% block content %}
 
-  <body>
-
+<form class="content-section" action="" method="post">
+  {% csrf_token %}
+  {{ formset.as_p}}
+  <button type="submit" name="button" value="show"class="btn btn-outline-info">View Assignment Groups</button>
+</form>
 <!-- Creates team grouping lists -->
+
+{% if groups|length > 0 %}
 <div class="container">
-  <h2>Team Groupings</h2>
+    <h2 class="list-group-item-heading">{{assignment.assignment_name}} Groups</h2>
   <div class="list-group">
-      {% for group in groups %}
-      <h4 class="list-group-item-heading">Team #{{ forloop.counter }}</h4>
-      <ul>
-        {% for student in group %}
-        <li class="list-group-item-text">{{ student | first }}</li>
+      {% for name in groupNames %}
+        <h4>{{ name }}</h4>
+        {% for group in groups %}
+        {% if group.group_name == name %}
+
+        <p class="list-group-item-text">{{ group.student_id }}</p>
+        {% endif %}
         {% endfor %}
-      </ul>
       {% endfor %}
+
   </div>
 </div>
-
-  </body>
+{% endif %}
 {% endblock %}
