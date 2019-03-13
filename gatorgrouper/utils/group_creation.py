@@ -1,6 +1,5 @@
 """Contains all of the group creation algorithms"""
 
-import copy
 import logging
 import itertools
 import random
@@ -9,7 +8,6 @@ from gatorgrouper.utils import group_scoring
 
 
 # group_random.py
-# pylint: disable=bad-continuation
 def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
     """ group responses using randomization approach """
     # number of students placed into a group

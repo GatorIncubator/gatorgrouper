@@ -84,6 +84,7 @@ def test_group_random_extra():
     assert len(returned_groups1) == 2
     assert num_group == 2
 
+
 # Test uses now deleted group_size dependent functions, must be rewritten or deleted
 # @given(grpsize=integers(min_value=1, max_value=3))
 # @settings(verbosity=Verbosity.verbose)
@@ -133,7 +134,7 @@ def test_hypothesis_group_random(numgrp):
     ]
     num_group = numgrp
     returned_groups1 = group_creation.group_random_num_group(responses, num_group)
-    assert len(returned_groups1[0]) == len(responses)/num_group
+    assert len(returned_groups1[0]) == len(responses) / num_group
 
 
 def test_shuffle():
@@ -152,6 +153,7 @@ def test_shuffle():
     for i in range(0, len(shuffled_students)):
         assert student_identifiers[i] in shuffled_students
     assert student_identifiers != shuffled_students
+
 
 # Test uses now deleted group_size dependent functions, must be rewritten or deleted
 # @given(grpsize=integers(min_value=2, max_value=3))
@@ -319,4 +321,4 @@ def test_hypothesis_random(numgrp):
     num_group = numgrp
     actual_output1 = group_creation.group_random_num_group(lst, num_group)
     assert len(actual_output1) == num_group
-    assert len(actual_output1[0]) == len(lst)/numgrp
+    assert len(actual_output1[0]) == len(lst) / numgrp
