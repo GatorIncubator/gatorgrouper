@@ -187,17 +187,14 @@ a.article-title:hover {
 .class-bigbox {
   background-color: #FFFFFF;
   margin: 20px;
-  border: 0px solid #FFFFFF;
-  border-radius: 2px;
+  padding: 5px 5px;
 }
 
 .class-bigbox:nth-child(6n+1) {
     background-color: #D9534F;
-    border: 0px solid #D9534F;
 }
 .class-bigbox:nth-child(6n+2) {
     background-color: #87B5FF;
-    border: 0px solid #87B5FF;
 }
 
 .student-container {
@@ -248,9 +245,7 @@ a.article-title:hover {
 table {
   color: #333;
   width: 100%;
-  border: solid #777;
-  border-width: 1pt 0 0 1pt;
-  border-spacing: 0;
+
   margin: 0px;
   padding: 5px 5px 5px 5px;
 }
