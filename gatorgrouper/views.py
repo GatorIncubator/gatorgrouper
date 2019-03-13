@@ -2,8 +2,11 @@
 import csv
 from io import StringIO
 from django.shortcuts import render
+from django.http import Http404
 from .utils.group_rrobin import group_rrobin_num_group
-from .forms import UploadCSVForm
+from .forms import UploadCSVForm, StudentCompatibilityFormSet
+from .models import Semester_Class
+from .models import Student_Reviews
 
 
 def upload_csv(request):
@@ -63,9 +66,43 @@ def assignments(request):
     )
 
 
-def survey(request):
-    """ Student's grouping preference? """
-    return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
+def survey(request, class_id = None):
+    """ POST and GET requests for handling student survey """
+    
+    # Verify that the class exists
+    try:
+        Semester_Class.objects.get(class_id = class_id)
+    except Semester_Class.DoesNotExist:
+        raise Http404("Class not found")
+    
+    # get students in class
+    enrolled_students = Students.objects.filter(class_id = class_id)
+    
+    # make formset with a compatibility form for each student
+    if request.method == "POST":
+        formset = StudentCompatibilityFormSet(request.POST)
+    
+        # validate formset
+        if formset.is_valid():
+            # TODO: populate formset with existing compatibility responses
+            student_reviews = Student_Reviews()
+            
+            student_reviews.option1 = formset.cleaned_data['option1']
+            student_reviews.option2 = formset.cleaned_data['option2']
+            student_reviews.option3 = formset.cleaned_data['option3']
+            student_reviews.option4 = formset.cleaned_data['option4']
+            student_reviews.option5 = formset.cleaned_data['option5']
+
+            print(formset.cleaned_data)
+            # TODO: save to db
+            student_reviews.save() 
+            return render(request, "gatorgrouper/survey.html")
+    else:
+        # TODO: ensure logged in user is enrolled as student
+        formset = StudentCompatibilityFormSet()
+    
+    print(formset)
+    return render(request, "gatorgrouper/survey.html", {"form": formset})
 
 
 def groupResult(request):

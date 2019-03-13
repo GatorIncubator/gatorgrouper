@@ -50,7 +50,6 @@ class Assignments(models.Model):
 
 class Students(models.Model):
     """ This is undocumented """
-
     users = models.OneToOneField(User, on_delete=models.CASCADE)
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
     student_id = models.AutoField(primary_key=True)
@@ -70,3 +69,17 @@ class Grouped_Students(models.Model):
 
     def __str__(self):
         return "{}: {}".format(self.assignment_id, self.group_id)
+
+class Student_Reviews(models.Model):
+    """ 
+    Model containing the data from the survey form
+    given after a grouping has completed
+    """
+
+    #TODO: set up model to accept data from form
+    option1 = models.AutoField()
+    option2 = models.AutoField()
+    option3 = models.AutoField()
+    option4 = models.AutoField()
+    option5 = models.AutoField()
+
