@@ -4,8 +4,12 @@ body {
   margin-top: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h4, h5, h6 {
   color: #444444;
+}
+
+h3 {
+  background-color: rgba(0,0,0,.5);
 }
 
 ul {
@@ -24,6 +28,10 @@ ul {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.carousel-item p {
+  background-color: rgba(0,0,0,.5);
 }
 
 .site-header .navbar-nav .nav-link {
