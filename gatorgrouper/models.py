@@ -109,8 +109,11 @@ class Grouped_Student(models.Model):
 
     def __str__(self):
         return "{}: {}".format(self.group_name, self.student_id)
+
+    # pylint: disable=too-few-public-methods
     class Meta:
-        unique_together = ('assignment_id', 'student_id',)
+        """ will be used to enforce unique contraint between assignment_id and student_id """
+        unique_together = ("assignment_id", "student_id")
 
 
 class Student_Conflict(models.Model):

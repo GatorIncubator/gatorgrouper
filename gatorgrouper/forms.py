@@ -39,6 +39,7 @@ class UploadCSVForm(forms.Form):
 
 class CreateGroupForm(forms.Form):
     """ Form enabling the creation of a group """
+
     numgrp = forms.IntegerField(
         min_value=2, max_value=25, label="Number of groups to create"
     )
