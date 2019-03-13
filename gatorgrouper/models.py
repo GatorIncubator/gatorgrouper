@@ -1,6 +1,6 @@
 """ This is undocumented """
 from django.db import models
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Professor(models.Model):
@@ -51,6 +51,7 @@ class Assignments(models.Model):
 class Students(models.Model):
     """ This is undocumented """
 
+    users = models.OneToOneField(User, on_delete=models.CASCADE)
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
     student_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=30)
