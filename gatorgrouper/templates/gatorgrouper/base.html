@@ -47,18 +47,16 @@
                 <a class="btn btn-md btn-danger btn-space" href="{% url 'logout' %}">Log Out</a>
             </li>
             <li class="nav-item">
-              <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn btn-md btn btn-primary btn-space">|||</button>
-                <div id="myDropdown" class="dropdown-content">
-                  <a href="{% url 'Gatorgrouper-home' %}">Home</a>
-                  <a href="{% url 'Gatorgrouper-assignments' %}">Create an Assignment</a>
-                  <a href="{% url 'Gatorgrouper-classes' %}">Add a Class</a>
-                  <a href="{% url 'Gatorgrouper-survey' %}">View Survey</a>
-                  <a href="{% url 'Gatorgrouper-groups' %}">Viewing Groups</a>
-                  <a href="{% url 'add-students' %}">Add a Student</a>
-                </div>
-              </div>
+                <button type="button" class="dropbtn btn-md btn btn-primary btn-space" data-toggle="collapse" data-target="#menu">MENU</button>
             </li>
+            <div id="menu" class="collapse" style="">
+              <a href="{% url 'Gatorgrouper-home' %}">Home</a>
+              <a href="{% url 'Gatorgrouper-assignments' %}">Create an Assignment</a>
+              <a href="{% url 'Gatorgrouper-classes' %}">Add a Class</a>
+              <a href="{% url 'Gatorgrouper-survey' %}">View Survey</a>
+              <a href="{% url 'Gatorgrouper-groups' %}">Viewing Groups</a>
+              <a href="{% url 'add-students' %}">Add a Student</a>
+            </div>
         {% else %}
             <li class="nav-item">
                 <a class="btn btn-md btn-google btn-space" href="{% url 'login' %}">Log In</a>
@@ -71,27 +69,7 @@
             </li>
         {% endif %}
 
-          <script>
-          /* When the user clicks on the button,
-          toggle between hiding and showing the dropdown content */
-          function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-          }
 
-          // Close the dropdown if the user clicks outside of it
-          window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-              var dropdowns = document.getElementsByClassName("dropdown-content");
-              var i;
-              for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                  openDropdown.classList.remove('show');
-                }
-              }
-            }
-          }
-        </script>
         </li>
       </ul>
     </div>
@@ -113,8 +91,30 @@
   <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!--bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
   </body>
 </html>
