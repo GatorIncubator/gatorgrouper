@@ -135,7 +135,10 @@ def test_compatability_measure_diff():
 
 
 def test_group_graph_partition():
-    """ Tests that the output of the group_graph_partition is correct """
+    """
+    Test for using recursive Kernighan-Lin algorithm that checks the output of
+    the group_graph_partition function
+    """
     students = [
         ["one", 0, 0],
         ["two", 0, 0.5],
@@ -146,4 +149,15 @@ def test_group_graph_partition():
         ["seven", 1, 0],
         ["eight", 1, 1],
     ]
-    assert group_graph.group_graph_partition(students, 4)
+    preference = {
+        "one": "one",
+        "two": "three",
+        "three": "two",
+        "four": "four",
+        "five": "six",
+        "six": "five",
+        "seven": "fix",
+        "eight": "seven",
+    }
+    output = group_graph.group_graph_partition(students, 4, preferences=preference)
+    assert len(output[0]) == 2
