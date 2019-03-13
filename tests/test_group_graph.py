@@ -146,4 +146,3 @@ def test_group_graph_partition():
         ["seven", 1, 0],
         ["eight", 1, 1],
     ]
-    assert group_graph.group_graph_partition(students, 4)
