@@ -77,9 +77,9 @@ class Student_Reviews(models.Model):
     """
 
     #TODO: set up model to accept data from form
-    option1 = models.AutoField()
-    option2 = models.AutoField()
-    option3 = models.AutoField()
-    option4 = models.AutoField()
-    option5 = models.AutoField()
+    #option1 = models.AutoField()
+    #option2 = models.AutoField()
+    #option3 = models.AutoField()
+    #option4 = models.AutoField()
+    #option5 = models.AutoField()
 
