@@ -8,20 +8,27 @@
       <div class="class-container">
 {% if all_classes|length > 0 %}
       {% for class in all_classes %}
-      <div class="class-item">
+      <div class="class-bigbox">
       <h2>{{ class }}</h2>
-      <div class="assignments">
-
+      <table>
+        <tr>
+          <th>Projects:</th>
+        </tr>
 
         {% for assignment in all_assignments %}
           {% if assignment.class_id == class  %}
-
-            <a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a>
-            <p>{{ assignment.description }}</p>
+        <tr>
+          <td><a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a></td>
+        </tr>
 
           {% endif %}
         {% endfor %}
-        </div>
+        <tr>
+          <td><a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a></td> 
+        </tr>
+      </table>
+
+
         </div>
       {% endfor %}
 {% else %}
