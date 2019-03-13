@@ -5,9 +5,7 @@ from django.shortcuts import render
 from django.http import Http404
 from .utils.group_rrobin import group_rrobin_num_group
 from .forms import UploadCSVForm, StudentCompatibilityFormSet
-from .models import Semester_Class
-from .models import Student_Reviews
-
+from .models import Semester_Class, Student_Reviews
 
 def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
@@ -55,7 +53,7 @@ def home(request):
 
 def create_classes(request):
     """ Create classes view """
-    return render(request, "gatorgrouper/classes.html", {"title": "Create Classes"})
+    return render(request, "gatorgrouper/chttps://docs.djangoproject.com/en/2.1/ref/databases/lasses.html", {"title": "Create Classes"})
     # return HttpResponse
 
 
@@ -65,6 +63,9 @@ def assignments(request):
         request, "gatorgrouper/assignments.html", {"title": "Create Assignments"}
     )
 
+def users(request):
+    """ Create user view"""
+    return render( request)
 
 def survey(request, class_id = None):
     """ POST and GET requests for handling student survey """
@@ -100,7 +101,6 @@ def survey(request, class_id = None):
     else:
         # TODO: ensure logged in user is enrolled as student
         formset = StudentCompatibilityFormSet()
-    
     print(formset)
     return render(request, "gatorgrouper/survey.html", {"form": formset})
 
