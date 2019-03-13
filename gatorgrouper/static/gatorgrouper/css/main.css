@@ -255,7 +255,7 @@ table {
   padding: 5px 5px 5px 5px;
 }
 td, th {
-  background-color: grey;
+  background-color: #bcbcbc;
   height: 30px;
   transition: all 0.3s;
 }
@@ -265,6 +265,6 @@ th {
 td {
   text-align: center;
 }
-tr:nth-child(even) td { background: #FC827F; }
-tr:nth-child(odd) td { background: #FFADAB; }
-tr td:hover { background: #BE2F2B; color: #BE2F2B; }
+tr:nth-child(even) td { background: #FFFFFF; }
+tr:nth-child(odd) td { background: #EAEAEA; }
+tr td:hover { background: #919191; }
