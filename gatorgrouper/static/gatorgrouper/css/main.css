@@ -3,6 +3,22 @@ body {
   color: #333333;
   margin-top: 0;
 }
+body {
+  counter-reset: section;
+}
+
+.group-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 10px 15px 15px;
+}
+
+.group-item h2::before {
+  counter-increment: section;
+  content: "Group " counter(section) ": ";
+}
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
