@@ -6,7 +6,11 @@ from gatorgrouper.utils import read_student_file
 from gatorgrouper.utils import constants
 
 
-def parse_arguments(args):
+from argparse import Namespace
+from typing import List, Union
+
+
+def parse_arguments(args: List[str]) -> Namespace:
     """ Parses the arguments provided on the command-line """
 
     gg_parser = argparse.ArgumentParser(

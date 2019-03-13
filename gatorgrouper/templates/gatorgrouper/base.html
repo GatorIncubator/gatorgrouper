@@ -62,6 +62,8 @@
             <li class="nav-item">
                 <a class="btn-md btn btn-primary btn-space" href="{% url 'register' %}">Register</a>
             </li>
+	    <li>
+		<a class="btn btn-md btn-social btn-google btn-space" href="{% url 'social:begin' 'google-oauth2' %}"> <span class="fab fa-google img-fluid"></span> Log In With Google</a>
         {% endif %}
       </ul>
       <!-- collapsable list-->

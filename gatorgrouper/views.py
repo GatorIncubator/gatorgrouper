@@ -4,11 +4,13 @@ from io import StringIO
 from django.shortcuts import render, redirect
 from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
+from django.contrib import messages, admin
+from django.template import loader
 from django.db import IntegrityError
+from django.http import HttpResponse
+from django.http import Http404
 
-
-from .models import Semester_Class, Student
+from .models import Semester_Class, Professor, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
 from .utils.group_rrobin import group_rrobin_num_group
@@ -31,6 +33,12 @@ def upload_csv(request):
         form = UploadCSVForm()
     return render(request, "gatorgrouper/upload_csv.html", {"form": form})
 
+# Create your views here.
+
+def index(request):
+    """ This is undocumented """
+    professors = Professor.objects.all()
+    classes = Semester_Class.objects.all()
 
 # Create your views here.
 def register(request):
@@ -127,6 +135,9 @@ def create_classes(request):
     )
     # return HttpResponse
 
+def users(request):
+    """ Create user view"""
+    return render( request)
 
 @login_required
 def assignments(request):
