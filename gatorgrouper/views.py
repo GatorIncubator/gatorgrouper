@@ -11,11 +11,11 @@ from .forms import CustomUserCreationForm
 # from django.http import HttpResponse
 # from django.http import Http404
 from .models import Semester_Class, Student
-from .models import Assignment
+from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
 
 from .utils.group_rrobin import group_rrobin_num_group
-from .forms import UploadCSVForm
+from .forms import UploadCSVForm, CreateGroupForm
 
 
 def upload_csv(request):
@@ -190,18 +190,35 @@ def add_students(request):
 @login_required
 def create_groups(request):
     """ Created groups using gatorgrouper functions """
-    AssignmentFormSet = modelform_factory(
-        Assignment, fields=("class_id", "assignment_id")
+    GroupedStudentFormSet = modelform_factory(
+        Grouped_Student, fields=("assignment_id",)
     )
+    groups = []
     if request.method == "POST":
-        formset = AssignmentFormSet(request.POST)
-        if formset.is_valid():
-            class_id_num = formset.cleaned_data.get("class_id")
-            student_list = gatherStudents(class_id_num)
-            for student in student_list:
-                print(student)
+        formset = GroupedStudentFormSet(request.POST)
+        groupNum = CreateGroupForm(request.POST)
+        if groupNum.is_valid() and formset.is_valid():
+            assignment_obj = formset.cleaned_data.get("assignment_id")
+            class_id_num = assignment_obj.class_id.class_id
+            num_of_groups = groupNum.cleaned_data.get("numgrp")
+            student_list_dict = gatherStudents(class_id_num)
+            student_list = []
+            for name, obj in student_list_dict.items():
+                student_list.append(name)
+            groups = group_rrobin_num_group(student_list, num_of_groups)
+            if request.POST['button'] == 'save':
+                counter = 1
+                for group in groups:
+                    # get student object and then save and then we're done!
+                    group_name = "Group " + str(counter)
+                    for student in group:
+                        s = Grouped_Student(assignment_id=assignment_obj, student_id=student_list_dict[student], group_name=group_name)
+                        s.save()
+                    counter += 1
+                messages.success(request, f"The groups for this assignment have been saved. To see them, visit the view groups page")
     else:
-        formset = AssignmentFormSet(request.POST)
+        formset = GroupedStudentFormSet()
+        groupNum = CreateGroupForm()
     # conflict_list = gatherConflicts(request)
 
     # don't forget to import gatherConflicts and Grouped_students,
@@ -209,5 +226,5 @@ def create_groups(request):
     return render(
         request,
         "gatorgrouper/create-groups.html",
-        {"title": "Create Groups", "formset": formset},
+        {"title": "Create Groups", "formset": formset, "group_list": groups, "groupNum": groupNum},
     )
