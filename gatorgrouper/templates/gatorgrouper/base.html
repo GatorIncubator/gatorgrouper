@@ -37,8 +37,8 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="nav ml-auto">
+    <div class="collapse navbar-collapse align-middle" id="navbarResponsive">
+      <ul class="nav ml-auto" style="margin-right: 0px">
         {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="btn btn-md btn-warning btn-space" href="{% url 'profile' %}" style="color: white">Profile</a>
@@ -49,14 +49,6 @@
             <li class="nav-item">
                 <button type="button" class="dropbtn btn-md btn btn-primary btn-space" data-toggle="collapse" data-target="#menu">MENU</button>
             </li>
-            <div id="menu" class="collapse" style="">
-              <a href="{% url 'Gatorgrouper-home' %}">Home</a>
-              <a href="{% url 'Gatorgrouper-assignments' %}">Create an Assignment</a>
-              <a href="{% url 'Gatorgrouper-classes' %}">Add a Class</a>
-              <a href="{% url 'Gatorgrouper-survey' %}">View Survey</a>
-              <a href="{% url 'Gatorgrouper-groups' %}">Viewing Groups</a>
-              <a href="{% url 'add-students' %}">Add a Student</a>
-            </div>
         {% else %}
             <li class="nav-item">
                 <a class="btn btn-md btn-google btn-space" href="{% url 'login' %}">Log In</a>
@@ -68,11 +60,17 @@
                 <a class="btn-md btn btn-primary btn-space" href="{% url 'register' %}">Register</a>
             </li>
         {% endif %}
-
-
-        </li>
       </ul>
+      <div id="menu" class="collapse btn-group-sm " style="margin-top: 10px;">
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-home' %}">Home</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-assignments' %}">Create an Assignment</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-classes' %}">Add a Class</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-survey' %}">View Survey</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-groups' %}">Viewing Groups</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'add-students' %}">Add a Student</a>
+      </div>
     </div>
+
   </div>
 </nav>
 
