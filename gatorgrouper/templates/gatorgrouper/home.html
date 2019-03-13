@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     {% if user.is_authenticated %}
-    <h1>Welcome {{user.first_name}}</h1>
+    <h1 class="container">Welcome {{user.first_name}} !</h1>
     {% endif %}
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
