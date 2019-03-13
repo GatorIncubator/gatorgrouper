@@ -113,6 +113,7 @@ class Grouped_Student(models.Model):
     # pylint: disable=too-few-public-methods
     class Meta:
         """ will be used to enforce unique contraint between assignment_id and student_id """
+
         unique_together = ("assignment_id", "student_id")
 
 

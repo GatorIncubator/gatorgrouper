@@ -12,7 +12,7 @@ def gatherStudents(current_class):
     students = list(Student.objects.filter(class_id=current_class))
     student_list = {}
     for student in students:
-        student_list[student.first_name + " " + student.last_name, ] = student
+        student_list[student.first_name + " " + student.last_name,] = student
     return student_list
 
 

@@ -215,7 +215,7 @@ def add_students(request):
 
 
 @login_required
-def create_groups(request): # pylint: disable=too-many-locals
+def create_groups(request):  # pylint: disable=too-many-locals
     """ Created groups using gatorgrouper functions """
     GroupedStudentFormSet = modelform_factory(
         Grouped_Student, fields=("assignment_id",)
