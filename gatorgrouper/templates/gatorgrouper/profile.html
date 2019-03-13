@@ -23,12 +23,9 @@
 
           {% endif %}
         {% endfor %}
-        <tr>
-          <td><a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a></td> 
-        </tr>
+        
       </table>
-
-
+      <a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a>
         </div>
       {% endfor %}
 {% else %}
