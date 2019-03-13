@@ -18,6 +18,9 @@
   <!--CSS for our program-->
   <link rel="stylesheet" href="{% static 'gatorgrouper/css/main.css' %}">
 
+  <!-- for favicon-->
+  <link rel="shortcut icon" href="{%static "gatorgrouper/images/favicon.ico" type="image/x-icon"  %}">
+
 
     <meta charset="utf-8">
     {% if title %}
@@ -61,6 +64,7 @@
             </li>
         {% endif %}
       </ul>
+      <!-- collapsable list-->
       <div id="menu" class="collapse btn-group-sm " style="margin-top: 10px;">
         <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-home' %}">Home</a>
         <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-assignments' %}">Create an Assignment</a>
@@ -93,6 +97,7 @@
   <!--bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+
   <script>
   /* When the user clicks on the button,
   toggle between hiding and showing the dropdown content */
