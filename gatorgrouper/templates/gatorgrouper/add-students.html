@@ -1,0 +1,18 @@
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+  <main role="main" class="container">
+      <div class="content-section">
+        <form method="post">
+          {% csrf_token %} <!--must have this line for forms-->
+          {{ formset.as_p }}
+          <div class="form-group">
+            <button type="submit" name="button" class="btn btn-outline-info">Add Student</button>
+              <a class="btn btn-outline-info" href="{% url 'profile'%}">Cancel</a>
+            <small class="text-muted">Back to Profile</small>
+          </div>
+        </form>
+        <div class="border-top pt-3">
+        </div>
+      </div>
+    </main>
+{% endblock %}
