@@ -125,12 +125,10 @@ class Test_Assignments:
             "gatorgrouper.Semester_Class",
             department="CS",
             class_number="201",
-            class_section="00"
+            class_section="00",
         )
         obj = mixer.blend(
-            "gatorgrouper.Assignment",
-            class_id=semester_obj,
-            assignment_name="Group 1"
+            "gatorgrouper.Assignment", class_id=semester_obj, assignment_name="Group 1"
         )
         expected_output = ""
         assert str(obj) != expected_output
