@@ -162,15 +162,15 @@ pipenv run python3 gatorgrouper_cli.py --file filepath --num-groups 4
 
 This indicates that the students should be divided into 4 groups. The number of
 groups should be at minimum 2 and at maximum the number of half of the students to
-be placed into groups. This flag can be used along side `--absentees`, `--random`,
+be placed into groups. This flag can be used along side `--absentees`, `--method=random`,
 and `--round-robin`.
 
 ### Random Grouping Method
 
-To randomly group the students, use the flag `--random`.
+To randomly group the students, use the flag `--method=random`.
 
 ```shell
-pipenv run python3 gatorgrouper_cli.py --file filepath --random
+pipenv run python3 gatorgrouper_cli.py --file filepath --method=random
 ```
 
 This will randomly group the list of students you have provided, and is the
@@ -261,7 +261,7 @@ If neither of these flags are set, logging will only be shown if an error occurs
 
 ```shell
 $ pipenv run python3 gatorgrouper_cli.py --file /home/w/wuj/cs203S2019/lab/students.csv
---absentees becky george --random
+--absentees becky george --method=random
 
 GatorGrouper: Automatically Assign Students to Groups
 https://github.com/GatorEducator/gatorgrouper
