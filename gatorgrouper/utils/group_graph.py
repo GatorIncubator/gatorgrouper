@@ -64,10 +64,13 @@ def compatibility(
     If no measures are specified, "avg" is used as a default.
     """
     if not len(a) == len(b):
+        # Raise an exception notice if student tuples don't match
         raise Exception("Tuples passed to compatibility() must have same size.")
     if objective_weights is None:
+        # Return length
         objective_weights = [1] * len(a)
     if objective_measures is None:
+        # Default to return average if set equal to None
         objective_measures = ["avg"] * len(a)
     scores = []
     for a_score, b_score, weight, measure in zip(
