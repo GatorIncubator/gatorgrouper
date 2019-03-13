@@ -10,7 +10,10 @@ def gatherStudents(current_class):
     """ gathers list of students in given class """
     # pylint: disable=no-member
     students = list(Student.objects.filter(class_id=current_class))
-    return students
+    student_list = {}
+    for student in students:
+        student_list[student.first_name + " " + student.last_name,] = student
+    return student_list
 
 
 def gatherConflicts(current_class):
