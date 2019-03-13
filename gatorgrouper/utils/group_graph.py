@@ -10,14 +10,18 @@ from networkx.algorithms.cuts import cut_size
 
 def recursive_kl(graph: Graph, numgrp=2) -> List[Set[int]]:
     """
-    Recursively use the Kernighan-Lin algorithm to create a k-way graph partition
+    Recursively use the Kernighan-Lin algorithm to create a k-way graph partition.
+    This function will either return two groups or more than two depending on the
+    value of numgrp. Each group generated is different from the previous.
     """
     power = log(numgrp, 2)
     if power != int(power) or power < 1:
         raise ValueError("numgrp must be a power of 2 and at least 2.")
+    # For a group of two bisect it and return two groups
     if numgrp == 2:
         # Base case for recursion: use Kernighan-Lin to create 2 groups
         return list(kernighan_lin_bisection(graph))
+    # For the next group of two divide numgrp by 2
     next_numgrp = numgrp / 2
     groups = []
     for subset in kernighan_lin_bisection(graph):
