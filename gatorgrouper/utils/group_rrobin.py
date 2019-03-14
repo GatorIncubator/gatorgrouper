@@ -41,7 +41,7 @@ def group_rrobin_group_size(responses, grpsize):
 
     # scoring and return
     scores, ave = [], 0
-    scores, ave = group_scoring.score_groups(groups)
+    scores, ave = group_scoring.calculate_avg(groups)
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
     return groups
@@ -81,7 +81,7 @@ def group_rrobin_num_group(responses, numgrps):
 
     # scoring and return
     scores, ave = [], 0
-    scores, ave = group_scoring.score_groups(groups)
+    scores, ave = group_scoring.calculate_avg(groups)
     logging.info("scores: %d", scores)
     logging.info("average: %d", ave)
     return groups

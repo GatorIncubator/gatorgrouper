@@ -53,20 +53,18 @@ def parse_arguments(args):
     )
 
     gg_parser.add_argument(
-        "--random",
-        help="Use random grouping method",
-        action="store_const",
-        dest="grouping_method",
-        const=constants.ALGORITHM_RANDOM,
+        "--method",
+        type=str,
+        help="Grouping algorithm",
+        choices=[
+            constants.ALGORITHM_GRAPH,
+            constants.ALGORITHM_ROUND_ROBIN,
+            constants.ALGORITHM_RANDOM,
+        ],
+        default=constants.DEFAULT_METHOD,
+        required=False,
     )
 
-    gg_parser.add_argument(
-        "--rrobin",
-        help="Use round-robin grouping method",
-        action="store_const",
-        dest="grouping_method",
-        const=constants.ALGORITHM_ROUND_ROBIN,
-    )
     gg_parser.add_argument(
         "--absentees",
         help="Student that is absent",
