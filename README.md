@@ -267,6 +267,16 @@ This grouping method allows for a systematic approach and balanced number of stu
 groups capable of tackling different types of work. Students should enter student name,
 number of groups, objective weights (optional), objective_measures(optional), students preferred to work with (optional), preference weight(optional), and preferences_weight_match(optional). Note that number of groups must be at least 2
 and be a power of 2, i.e. 2, 4, 8...
+
+NOTE: `--method graph` and `--num-group` are required to create groups.
+
+It is required to use the graph argument to generate groups through the graph partitioning.
+To generate groups using the Kernighan-Lin grouping algorithm use the flag `--method graph`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group NUMBER
+```
+
 ### Full Example
 
 ```shell
