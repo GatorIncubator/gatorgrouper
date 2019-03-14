@@ -14,29 +14,29 @@
       <div>
         <!-- Start of class table -->
         <div>
-        <table class="inLineTable">
-          <tr>
-            <th>Projects:</th>
-          </tr>
+          <table class="inLineTable">
+            <tr>
+              <th>Projects:</th>
+            </tr>
 
-          {% for assignment in all_assignments %}
-          {% if assignment.class_id == class  %}
-          <tr>
-            <td><a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a></td>
-          </tr>
+            {% for assignment in all_assignments %}
+            {% if assignment.class_id == class  %}
+            <tr>
+              <td><a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a></td>
+            </tr>
 
-          {% endif %}
-          {% endfor %}
+            {% endif %}
+            {% endfor %}
 
-          <tr>
-            <td>
-              <a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a>
-            </td>
-          </tr>
+            <tr>
+              <td>
+                <a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a>
+              </td>
+            </tr>
 
-        </table>
-      </div>
-      <!-- End of Class Table -->
+          </table>
+        </div>
+        <!-- End of Class Table -->
 
       </div>
       <!-- End of Class asspect -->
@@ -45,32 +45,32 @@
       <div>
         {% if all_classes|length > 0 %}
         {% for class in all_classes %}
-      <!-- Start of Student Table  -->
-      <div>
-        <table class="inLineTable">
-          <tr>
-            <th>Students</th>
-          </tr>
+        <!-- Start of Student Table  -->
+        <div>
+          <table class="inLineTable">
+            <tr>
+              <th>Students</th>
+            </tr>
 
-          {% for student in all_students %}
-          {% if student.class_id == class  %}
-          <tr>
-            <td>
-              <p>{{ student.first_name }} {{ student.last_name }}</p>
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
+            {% for student in all_students %}
+            {% if student.class_id == class  %}
+            <tr>
+              <td>
+                <p>{{ student.first_name }} {{ student.last_name }}</p>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
 
-          <tr>
-            <td>
-              <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
-            </td>
-          </tr>
+            <tr>
+              <td>
+                <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
+              </td>
+            </tr>
 
-        </table>
-      </div>
-      <!-- End of Student Table -->
+          </table>
+        </div>
+        <!-- End of Student Table -->
 
       </div>
       <!-- End of Student asspect -->
