@@ -138,19 +138,6 @@ to a value larger than 1 and smaller than half of the total number of students.
 pipenv run python3 gatorgrouper_cli.py --file filepath
 ```
 
-### Group Size
-
-To specify the size of the groups, use the flag `--group-size`.
-
-```shell
-pipenv run python3 gatorgrouper_cli.py --file filepath --group-size 4
-```
-
-This indicates that groups should each contain 4 members.  The provided group
-size should be greater than or equal to 2 and equal to or less than half the total
-number of students.  If the group size is not specified, the default group size
-is 3.
-
 ### Number of groups
 
 To specify the number of groups the students should be placed in, use the flag
@@ -163,7 +150,7 @@ pipenv run python3 gatorgrouper_cli.py --file filepath --num-groups 4
 This indicates that the students should be divided into 4 groups. The number of
 groups should be at minimum 2 and at maximum the number of half of the students to
 be placed into groups. This flag can be used along side `--absentees`, `--method=random`,
-and `--round-robin`.
+and `--method=rrobin`.
 
 ### Random Grouping Method
 
@@ -182,10 +169,10 @@ small discussion groups, or peer editing.
 
 ### Round-robin Grouping Method
 
-To group students using the round-robin method, use the flag `--round-robin`.
+To group students using the round-robin method, use the flag `--method=rrobin`.
 
 ```shell
-pipenv run python3 gatorgrouper_cli.py --file filepath --round-robin
+pipenv run python3 gatorgrouper_cli.py --file filepath --method=rrobin
 ```
 
 The round-robin method takes the responses from the Sheet into account when
