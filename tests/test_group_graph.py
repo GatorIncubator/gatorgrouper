@@ -21,7 +21,7 @@ def test_recursive_kl_two():
     student2 = (2, 3)
     G.add_edge(student1, student2)
     actual_output = group_graph.recursive_kl(G, 2)
-    print(actual_output)
+
     assert actual_output in ([{student2}, {student1}], [{student1}, {student2}])
     # assert actual_output == [{student2}, {student1}] or actual_output == [
     #     {student1},
