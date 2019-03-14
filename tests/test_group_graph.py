@@ -160,6 +160,16 @@ def test_compatability_measure_diff():
     assert output == expected_output
 
 
+def test_compatibility_measure_error():
+    """ Test if wrong measure raises Exception error """
+    a = tuple([1.0, 0.8])
+    b = tuple([2.0, 0.5])
+    with pytest.raises(Exception) as excinfo:
+        group_graph.compatibility(a, b, objective_measures=["su", "mu"])
+    exception_msg = excinfo.value.args[0]
+    assert exception_msg == "Invalid measure"
+
+
 def test_group_graph_partition():
     """
     Test for using recursive Kernighan-Lin algorithm that checks the output of
