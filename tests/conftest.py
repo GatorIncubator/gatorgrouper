@@ -135,3 +135,32 @@ def generate_csv_float_no_header(tmpdir_factory):
 def no_arguments():
     """Return no command-line arguments"""
     return []
+
+
+@pytest.fixture(scope="session")
+def generate_csv_file(tmpdir_factory):
+    """ Generate a tempory sample csv """
+    fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
+    headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
+    with open(str(fn), "w") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=headers)
+        writer.writeheader()
+        writer.writerow(
+            {
+                "NAME": "delgrecoj",
+                "Q1": "True",
+                "Q2": "True",
+                "Q3": "False",
+                "Q4": "True",
+            }
+        )
+        writer.writerow(
+            {
+                "NAME": "delgrecoj2",
+                "Q1": "True",
+                "Q2": "True",
+                "Q3": "False",
+                "Q4": "True",
+            }
+        )
+    return fn
