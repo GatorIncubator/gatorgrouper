@@ -58,12 +58,13 @@ def find_oauth_secret_key():
         from secret_key import OAUTH_KEY as key
 
         return key
+
     raise Exception("Couldn't find the oauth key")
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
+# pragma: no cover
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = find_oauth_secret_key()
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
     "453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com"
