@@ -57,12 +57,13 @@ def test_total_cut_size():
 
 def test_compatibility_length():
     """ Test if exception message is raised by unequal students' scores """
-    a = (1.0, )
-    b = (2.0, 0.5)
+    a = tuple([1.0])
+    b = tuple([2.0, 0.5])
     with pytest.raises(Exception) as excinfo:
         group_graph.compatibility(a, b)
-        exception_msg = excinfo.value.args[0]
-        assert exception_msg == "Tuples passed to compatibility() must have same size."
+    exception_msg = excinfo.value.args[0]
+    assert exception_msg == "Tuples passed to compatibility() must have same size."
+
 
 
 def test_compatibility_objective_weights():
