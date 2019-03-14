@@ -97,12 +97,19 @@ def generate_csv_no_header(tmpdir_factory):
 def generate_csv_float(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
-    headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
+    headers = ["NAME", "Q1", "Q2", "Q3", "Q4", "Q5"]
     with open(str(fn), "w") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=headers)
         writer.writeheader()
         writer.writerow(
-            {"NAME": "delgrecoj", "Q1": "1.2", "Q2": "1.1", "Q3": "0.9", "Q4": "2.3"}
+            {
+                "NAME": "delgrecoj",
+                "Q1": "1.2",
+                "Q2": "1.1",
+                "Q3": "0.9",
+                "Q4": "2.3",
+                "Q5": "Name",
+            }
         )
     return str(fn)
 
@@ -113,8 +120,8 @@ def generate_csv_float_no_header(tmpdir_factory):
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
     data = [
         # optionally include headers as the first entry
-        ["delgrecoj", "1.2", "0.7", "1.1", "0.2"],
-        ["delgrecoj2", "0.1", "0.5", "0.8", "0.6"],
+        ["delgrecoj", "1.2", "0.7", "1.1", "0.2", "Name"],
+        ["delgrecoj2", "0.1", "0.5", "0.8", "0.6", "Name"],
     ]
     csv_string = ""
     for entry in data:
@@ -128,3 +135,32 @@ def generate_csv_float_no_header(tmpdir_factory):
 def no_arguments():
     """Return no command-line arguments"""
     return []
+
+
+@pytest.fixture(scope="session")
+def generate_csv_file(tmpdir_factory):
+    """ Generate a tempory sample csv """
+    fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
+    headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
+    with open(str(fn), "w") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=headers)
+        writer.writeheader()
+        writer.writerow(
+            {
+                "NAME": "delgrecoj",
+                "Q1": "True",
+                "Q2": "True",
+                "Q3": "False",
+                "Q4": "True",
+            }
+        )
+        writer.writerow(
+            {
+                "NAME": "delgrecoj2",
+                "Q1": "True",
+                "Q2": "True",
+                "Q3": "False",
+                "Q4": "True",
+            }
+        )
+    return fn
