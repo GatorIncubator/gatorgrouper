@@ -13,6 +13,7 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 def find_oauth_key():
     """
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
@@ -69,6 +70,7 @@ def find_or_create_secret_key():
     from secret_key import SECRET_KEY as key
 
     return key
+
 
 # Make this unique, and do not share it with anybody.
 SECRET_KEY = find_or_create_secret_key()
