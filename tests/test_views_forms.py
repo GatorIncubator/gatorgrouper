@@ -6,6 +6,7 @@ from gatorgrouper import views, models
 from django.http import HttpRequest
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.messages.storage.fallback import FallbackStorage
 from mixer.backend.django import mixer
 from django.test.client import Client
 from gatorgrouper.forms import CustomUserCreationForm, CustomUserChangeForm, UploadCSVForm, CreateGroupForm
@@ -87,8 +88,16 @@ class TestView:
     def test_register_method(self):
         """undocumented"""
         # need to test form.isvalid()
-        request = self.factory.get(path='/register')
-        request.method = "POST"
+        request = self.factory.get(path='/register', REQUEST_METHOD="POST")
+        # request = self.factory.post()
+        request.POST = {
+            "email": "testuserl@test.com",
+            "first_name": "Spencer",
+            "last_name": "Huang",
+            "password1": "testpassword1",
+            "password2": "testpassword1",
+        }
+        # messages = FallbackStorage(request)
         response = views.register(request)
         assert response.status_code == 200
 
