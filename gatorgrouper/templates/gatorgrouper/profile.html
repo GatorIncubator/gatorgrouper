@@ -46,19 +46,19 @@
           <tr>
             <th>Students</th>
           </tr>
-            <td>
+
         {% for student in all_students %}
           {% if student.class_id == class  %}
-
-            <p>{{ student.first_name }} {{ student.last_name }}</p>
-
+          <tr>
+            <td>
+             <p>{{ student.first_name }} {{ student.last_name }}</p>
            </td>
+         </tr>
            {% endif %}
          {% endfor %}
-         </tr>
 
       </table>
-      <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Student</a>
+      <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
         </div>
         </div>
       {% endfor %}
