@@ -169,6 +169,7 @@ a.article-title:hover {
 }
 
 .class-container {
+  width: 90%
   display:flex;
   justify-content: center;
   align-items: flex-start;
@@ -255,6 +256,9 @@ a.article-title:hover {
 }
 .show {display: block;}
 
+.inLineTable {
+  display: inline-block;
+}
 table {
   color: #333;
   width: 100%;
