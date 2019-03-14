@@ -66,6 +66,46 @@ def parse_arguments(args):
         required=False,
     )
 
+    gg_parser.add_argument(
+        "--preferences",
+        help="Preferences of students for graph algorithm",
+        type=str,
+        default=constants.DEFAULT_PREFERENCES,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--preferences-weight",
+        help="Prefered weights",
+        type=float,
+        default=constants.DEFAULT_PREFERENCES_WEIGHT,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--preferences-weight-match",
+        help="Prefered matching weights",
+        type=float,
+        default=constants.DEFAULT_PREFERENCES_WEIGHT_MATCH,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--objective-weights",
+        help="Objective weights for compatibility input csv file",
+        type=list,
+        default=constants.DEFAULT_OBJECTIVE_WEIGHTS,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--objective-measures",
+        help="Objective measures for compatibility input csv file: sum, avg, max, min, match, diff",
+        type=list,
+        default=constants.DEFAULT_OBJECTIVE_MEASURES,
+        required=False,
+    )
+
     gg_arguments_finished = gg_parser.parse_args(args)
 
     logging.basicConfig(
