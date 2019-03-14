@@ -8,7 +8,7 @@ from django.test import TestCase
 from django.urls import reverse
 from mixer.backend.django import mixer
 from django.test.client import Client
-from gatorgrouper.forms import CustomUserCreationForm, UploadCSVForm
+from gatorgrouper.forms import CustomUserCreationForm, UploadCSVForm, CreateGroupForm
 
 pytestmark = pytest.mark.django_db
 
@@ -34,6 +34,13 @@ class TestUploadCSVForm:
         # assert form.is_valid() is True
 
         assert form.fields['file'].label == "Student data CSV file"
+        assert form.fields['numgrp'].label == "Number of groups to create"
+
+class TestCreateGroupForm:
+    def test_valid_data(self, generate_csv):
+        form = CreateGroupForm({
+            "numgrp": 3,
+        })
         assert form.fields['numgrp'].label == "Number of groups to create"
 
 class TestView:
