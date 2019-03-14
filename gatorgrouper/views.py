@@ -14,6 +14,7 @@ from .utils.gatherInfo import gatherStudents
 from .utils.group_rrobin import group_rrobin_num_group
 from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
+from .forms import AssignmentForm
 
 
 def upload_csv(request):
@@ -131,17 +132,14 @@ def create_classes(request):
 @login_required
 def assignments(request):
     """ Create assignments view """
-    AssignmentFormSet = modelform_factory(
-        Assignment, fields=("class_id", "assignment_name", "description")
-    )
     if request.method == "POST":
-        formset = AssignmentFormSet(request.POST)
+        formset = AssignmentForm(request.user, request.POST)
         if formset.is_valid():
             formset.save()
             messages.success(request, f"Assignment Successfully Created")
             return redirect("profile")
     else:
-        formset = AssignmentFormSet()
+        formset = AssignmentForm(request.user)
 
     return render(
         request,
