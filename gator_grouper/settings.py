@@ -13,6 +13,7 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 def find_or_create_secret_key():
     """
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
@@ -57,9 +58,8 @@ def find_oauth_secret_key():
         from secret_key import OAUTH_KEY as key
 
         return key
-    else:
-        raise Exception("Couldn't find the oauth key")
-        
+    raise Exception("Couldn't find the oauth key")
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
