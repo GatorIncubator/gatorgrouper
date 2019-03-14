@@ -1,0 +1,32 @@
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+ <form class="content-section" action="" method="post">
+   {% csrf_token %}
+   {{ formset.as_p }}
+   {{ groupNum.as_p}}
+   <button type="submit" name="button" value="show"class="btn btn-outline-info">Make Group</button>
+   <button type="submit" name="button" value="save" class="btn btn-outline-info">Save Group</button>
+
+ </form>
+ <div class="class-container">
+ {% if group_list|length > 0 %}
+       {% for group in group_list %}
+       <div class="group-item">
+       <h2></h2>
+       <div class="assignments">
+
+
+         {% for name in group %}
+         {% for i in name %}
+             <p>{{ i }}</p>
+            {% endfor %}
+         {% endfor %}
+         </div>
+         </div>
+       {% endfor %}
+
+ {% else %}
+   <p> Create a group</p>
+ {% endif %}
+  </div>
+{% endblock %}
