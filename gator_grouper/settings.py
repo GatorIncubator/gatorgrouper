@@ -13,19 +13,6 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com"
-SOCIAL_AUTH_GITHUB_KEY = "87f5d68b5651aa790c68"
-SOCIAL_AUTH_GITHUB_SECRET = ""
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "Gatorgrouper-survey"
-LOGOUT_REDIRECT_URL = "Gatorgrouper-home"
-
-
 def find_or_create_secret_key():
     """
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
@@ -55,6 +42,37 @@ def find_or_create_secret_key():
 
     return key
 
+
+def find_oauth_secret_key():
+    """
+    Look for secret_key.py and return the OAUTH_KEY entry in it if the file exists.
+    Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
+    """
+    SECRET_KEY_DIR = os.path.dirname(__file__)
+    SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, "secret_key.py")
+    sys.path.insert(1, SECRET_KEY_DIR)
+
+    if os.path.isfile(SECRET_KEY_FILEPATH):
+        # pylint: disable=import-error
+        from secret_key import OAUTH_KEY as key
+
+        return key
+    else:
+        raise Exception("Couldn't find the oauth key")
+        
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = find_oauth_secret_key()
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
+    "453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com"
+)
+SOCIAL_AUTH_GITHUB_KEY = "87f5d68b5651aa790c68"
+SOCIAL_AUTH_GITHUB_SECRET = ""
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "Gatorgrouper-survey"
+LOGOUT_REDIRECT_URL = "Gatorgrouper-home"
 
 # Make this unique, and do not share it with anybody.
 SECRET_KEY = find_or_create_secret_key()
