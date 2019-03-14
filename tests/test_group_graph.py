@@ -23,10 +23,6 @@ def test_recursive_kl_two():
     actual_output = group_graph.recursive_kl(G, 2)
 
     assert actual_output in ([{student2}, {student1}], [{student1}, {student2}])
-    # assert actual_output == [{student2}, {student1}] or actual_output == [
-    #     {student1},
-    #     {student2},
-    # ]
 
 
 def test_recursive_kl_multi():
