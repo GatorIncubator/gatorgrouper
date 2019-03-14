@@ -59,6 +59,22 @@ class AssignmentForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super(AssignmentForm, self).__init__(*args, **kwargs)
         self.fields['class_id'].queryset = Semester_Class.objects.filter(professor_id=user)
+
+
+class StudentForm(forms.ModelForm):
+    """ This form overrides the current __init__ method
+    used when creating a ModelForm so that a user can
+    only access their Classes when adding students """
+
+    class Meta:
+        model = Student
+        fields = ("class_id", "first_name", "last_name")
+
+    def __init__(self, user, *args, **kwargs):
+        super(StudentForm, self).__init__(*args, **kwargs)
+        self.fields['class_id'].queryset = Semester_Class.objects.filter(professor_id=user)
+
+
 class GroupForm(forms.ModelForm):
     """ This form is used to create and retrieve groups.
     It overrides the ModelForm __init__ method and restricts
