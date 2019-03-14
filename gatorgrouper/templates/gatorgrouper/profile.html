@@ -23,7 +23,7 @@
 
           {% endif %}
         {% endfor %}
-        
+
       </table>
       <a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a>
         </div>
@@ -39,17 +39,26 @@
       <div class="student-container">
 {% if all_classes|length > 0 %}
       {% for class in all_classes %}
-      <div class="student-item">
+      <div class="student-bigbox">
       <h2>{{ class }}</h2>
       <div class="students">
-
+        <table>
+          <tr>
+            <th>Students</th>
+          </tr>
+            <td>
         {% for student in all_students %}
           {% if student.class_id == class  %}
 
             <p>{{ student.first_name }} {{ student.last_name }}</p>
 
-          {% endif %}
-        {% endfor %}
+           </td>
+           {% endif %}
+         {% endfor %}
+         </tr>
+
+      </table>
+      <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Student</a>
         </div>
         </div>
       {% endfor %}

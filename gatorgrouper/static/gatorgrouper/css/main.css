@@ -191,11 +191,23 @@ a.article-title:hover {
     background-color: #87B5FF;
 }
 
+.student-bigbox {
+  background-color: #FFFFFF;
+  margin: 20px;
+  padding: 5px 5px;
+}
+.student-bigbox:nth-child(6n+1) {
+    background-color: #D9534F;
+}
+.student-bigbox:nth-child(6n+2) {
+    background-color: #87B5FF;
+}
+
 .student-container {
   display:flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: #87b5ff;
+  background-color: #FFFFFF;
   flex-wrap: wrap;
   min-height: 20em
 
