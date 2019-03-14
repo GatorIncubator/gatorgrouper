@@ -67,7 +67,11 @@ if __name__ == "__main__":  # pragma: no cover
             and GG_ARGUMENTS.num_group is not constants.DEFAULT_NUMGRP
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_graph.group_graph_partition(
-                SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group, preferences=preference, preferences_weight=GG_ARGUMENTS.preferences_weight, preferences_weight_match=GG_ARGUMENTS.preferences_weight_match
+                SHUFFLED_STUDENT_IDENTIFIERS,
+                GG_ARGUMENTS.num_group,
+                preferences=preference,
+                preferences_weight=GG_ARGUMENTS.preferences_weight,
+                preferences_weight_match=GG_ARGUMENTS.preferences_weight_match,
             )
         elif (
             GG_ARGUMENTS.num_group is constants.DEFAULT_NUMGRP
