@@ -114,7 +114,7 @@ def test_compatibility_objective_measures():
     assert output == expected_output
 
 
-def test_compatability_measure_average():
+def test_compatibility_measure_average():
     """ Test if measure of different student scores return an average """
     a = [1, 1]
     b = [0, 1]
@@ -123,7 +123,7 @@ def test_compatability_measure_average():
     assert output == expected_output
 
 
-def test_compatability_measure_max():
+def test_compatibility_measure_max():
     """ Test if measure of different student scores return a maximum """
     a = [1, 0]
     b = [0, 0.5]
@@ -133,7 +133,7 @@ def test_compatability_measure_max():
     assert output == expected_output
 
 
-def test_compatability_measure_min():
+def test_compatibility_measure_min():
     """ Test if measure of different student scores return a minimum """
     a = [1, 0]
     b = [0, 0.5]
@@ -143,7 +143,7 @@ def test_compatability_measure_min():
     assert output == expected_output
 
 
-def test_compatability_measure_match():
+def test_compatibility_measure_match():
     """ Test if measure of different student scores are both equal """
     a = [1, 0]
     b = [1, 0.5]
@@ -152,7 +152,7 @@ def test_compatability_measure_match():
     assert output == sum([1, 0])
 
 
-def test_compatability_measure_diff():
+def test_compatibility_measure_diff():
     """ Test if measure of different student scores returns an absolute value difference """
     a = [1, 0]
     b = [0, 0.5]
