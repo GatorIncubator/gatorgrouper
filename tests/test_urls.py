@@ -14,7 +14,38 @@ class TestUrl:
         self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
         self.client.login(email="superuser@user.com", password="super")
 
-
-    def test_view_profile(self):
+    def test_profile_url(self):
         url = reverse('profile')
         assert url == "/profile/"
+
+    def test_register_url(self):
+        url = reverse('register')
+        assert url == "/register/"
+
+    def test_home_url(self):
+        url = reverse('Gatorgrouper-home')
+        assert url == "/register/"
+
+    def test_classes_url(self):
+        url = reverse('register')
+        assert url == "/register/"
+
+    def test_assignments_url(self):
+        url = reverse('register')
+        assert url == "/register/"
+
+    def test_survey_url(self):
+        url = reverse('register')
+        assert url == "/register/"
+
+    def test_groupresults_url(self):
+        url = reverse('register')
+        assert url == "/register/"
+
+    def test_add_students_url(self):
+        url = reverse('register')
+        assert url == "/register/"
+
+    def test_create_groups_url(self):
+        url = reverse('register')
+        assert url == "/register/"
