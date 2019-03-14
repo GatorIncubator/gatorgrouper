@@ -2,15 +2,15 @@
 {% block content %}
 
 <h1>{{user.first_name}}'s Profile</h1>
-      <div class="class-header">
-        <h3>Class + Projects</h3>
-      </div>
+
       <div class="class-container">
 {% if all_classes|length > 0 %}
       {% for class in all_classes %}
+      <div>
       <div class="class-bigbox">
       <h2>{{ class }}</h2>
-      <table>
+      <div>
+      <table class="inLineTable">
         <tr>
           <th>Projects:</th>
         </tr>
@@ -24,46 +24,79 @@
           {% endif %}
         {% endfor %}
 
+        <tr>
+         <td>
+          <a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a>
+         </td>
+        </tr>
+
       </table>
-      <a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a>
         </div>
+        <div>
+          {% if all_classes|length > 0 %}
+                {% for class in all_classes %}
+
+                  <table class="inLineTable">
+                    <tr>
+                      <th>Students</th>
+                    </tr>
+
+                  {% for student in all_students %}
+                    {% if student.class_id == class  %}
+                    <tr>
+                      <td>
+                       <p>{{ student.first_name }} {{ student.last_name }}</p>
+                     </td>
+                   </tr>
+                     {% endif %}
+                   {% endfor %}
+
+                  <tr>
+                   <td>
+                    <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
+                   </td>
+                  </tr>
+                </table>
+                  </div>
+                  </div>
+                {% endfor %}
+          {% else %}
+            <p> Please Add a Class and Create Students to view them in your profile</p>
+          {% endif %}
+        </div>
+      </div>
       {% endfor %}
 {% else %}
   <p> Please Add a Class and Create Assignments to view them in your profile</p>
 {% endif %}
       </div>
+    </div>
+    <div>
+      {% if all_classes|length > 0 %}
+            {% for class in all_classes %}
 
-      <div class="student-header">
-        <h3>Students</h3>
-      </div>
-      <div class="student-container">
-{% if all_classes|length > 0 %}
-      {% for class in all_classes %}
-      <div class="student-bigbox">
-      <h2>{{ class }}</h2>
-      <div class="students">
-        <table>
-          <tr>
-            <th>Students</th>
-          </tr>
+              <table class="inLineTable">
+                <tr>
+                  <th>Students</th>
+                </tr>
 
-        {% for student in all_students %}
-          {% if student.class_id == class  %}
-          <tr>
-            <td>
-             <p>{{ student.first_name }} {{ student.last_name }}</p>
-           </td>
-         </tr>
-           {% endif %}
-         {% endfor %}
+              {% for student in all_students %}
+                {% if student.class_id == class  %}
+                <tr>
+                  <td>
+                   <p>{{ student.first_name }} {{ student.last_name }}</p>
+                 </td>
+               </tr>
+                 {% endif %}
+               {% endfor %}
 
-      </table>
-      <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
-        </div>
-        </div>
-      {% endfor %}
-{% else %}
-  <p> Please Add a Class and Create Students to view them in your profile</p>
-{% endif %}
-      </div>
+            </table>
+            <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
+              </div>
+              </div>
+            {% endfor %}
+      {% else %}
+        <p> Please Add a Class and Create Students to view them in your profile</p>
+      {% endif %}
+    </div>
 {% endblock %}
