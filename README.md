@@ -313,6 +313,15 @@ pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group
 --objective_measures LIST --objective_weights LIST
 ```
 
+A command line of all agruments would be:
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group NUMBER
+--preferences filepath --preferences-weight PREFERENCES_WEIGHT --preferences-weight-match
+PREFERENCES_WEIGHT_MATCH --objective-measures LIST --objective-weights LIST
+```
+
+
 ### Full Example
 
 ```shell
