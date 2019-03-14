@@ -28,8 +28,11 @@ class TestLoginView:
         self.factory = RequestFactory()
         self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
 
-    def test_profile(self):
+
+
+    def test_assignments_views(self):
         self.client.login(email="superuser@user.com", password="super")
-        request = self.client.get('/profile', follow=True)
-        response = views.profile(request)
+        request = self.client.get('/assignments', follow=True)
+        response = views.assignments(request)
         assert response.status_code == 200
+        
