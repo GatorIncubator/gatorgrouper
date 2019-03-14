@@ -244,6 +244,75 @@ pipenv run python3 gatorgrouper_cli.py --debug
 
 If neither of these flags are set, logging will only be shown if an error occurs.
 
+### Kernighan-Lin Grouping Method
+
+The Kernighan-Lin algorithm creates a k-way graph partition that determines the
+grouping of students based on their preferences for working with other students
+and compatibility with other classmates. The graph recognizes student compatibility
+through numerical weights (indicators of student positional relationship on the graph).
+This grouping method allows for a systematic approach and balanced number of student
+groups capable of tackling different types of work. Students should enter student
+name, number of groups, objective weights (optional), objective_measures(optional),
+students preferred to work with (optional), preference weight(optional),
+and preferences_weight_match(optional). Note that number of groups must be at
+least 2 and be a power of 2, i.e. 2, 4, 8...
+
+NOTE: `--method graph` and `--num-group` are required to create groups.
+
+It is required to use the graph argument to generate groups through the graph
+partitioning. To generate groups using the Kernighan-Lin grouping algorithm use
+the flag `--method graph`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph
+--num-group NUMBER
+```
+
+To load student preferences, a preference weight, use the flag `--preferences`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph
+--num-group NUMBER --preferences filepath
+```
+
+To indicate student preference weight use the flag `--preferences_weight`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph
+--num-group NUMBER --preferences filepath --preferences_weight PREFERENCES_WEIGHT
+```
+
+To indicate preference weight match use the flag `--preferences_weight_match`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph
+--num-group NUMBER --preferences filepath --preferences_weight PREFERENCES_WEIGHT
+--preferences_weight_match PREFERENCES_WEIGHT_MATCH
+```
+
+To add objective measures use the flag `--objective_measures`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph
+--num-group NUMBER --objective_measures LIST --objective_weights LIST
+```
+
+To add objective weights use the flag `--objective_weights`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph
+--num-group NUMBER --objective_measures LIST --objective_weights LIST
+```
+
+A command line of all agruments would be:
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph
+--num-group NUMBER --preferences filepath --preferences-weight PREFERENCES_WEIGHT
+--preferences-weight-match PREFERENCES_WEIGHT_MATCH --objective-measures LIST
+--objective-weights LIST
+```
+
 ### Full Example
 
 ```shell
