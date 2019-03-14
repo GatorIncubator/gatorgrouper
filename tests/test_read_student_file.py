@@ -32,15 +32,15 @@ def test_read_student_file_no_header(generate_csv_no_header):
 
 def test_read_student_file_float(generate_csv_float):
     """ Test read_student_file """
-    expectedoutput = [["delgrecoj", 1.2, 1.1, 0.9, 2.3]]
+    expectedoutput = [["delgrecoj", 1.2, 1.1, 0.9, 2.3, "Name"]]
     assert read_student_file.read_csv_data(generate_csv_float) == expectedoutput
 
 
 def test_read_student_file_no_header_float(generate_csv_float_no_header):
     """ Test read_student_file """
     expectedoutput = [
-        ["delgrecoj", 1.2, 0.7, 1.1, 0.2],
-        ["delgrecoj2", 0.1, 0.5, 0.8, 0.6],
+        ["delgrecoj", 1.2, 0.7, 1.1, 0.2, "Name"],
+        ["delgrecoj2", 0.1, 0.5, 0.8, 0.6, "Name"],
     ]
     assert (
         read_student_file.read_csv_data(generate_csv_float_no_header) == expectedoutput
