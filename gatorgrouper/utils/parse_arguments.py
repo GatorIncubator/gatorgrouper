@@ -1,16 +1,14 @@
 """ Parses command-line arguments """
 
+from typing import List
 import argparse
 import logging
 from gatorgrouper.utils import read_student_file
 from gatorgrouper.utils import constants
 
 
-from argparse import Namespace
-from typing import List, Union
 
-
-def parse_arguments(args: List[str]) -> Namespace:
+def parse_arguments(args: List[str]) -> argparse.Namespace:
     """ Parses the arguments provided on the command-line """
 
     gg_parser = argparse.ArgumentParser(
@@ -87,39 +85,11 @@ def parse_arguments(args: List[str]) -> Namespace:
     return gg_arguments_finished
 
 
-def check_valid_num_group(
-    numgrp: int, students_list: Union[List[List[Union[str, bool]]], str]
-) -> bool:
-    """Checking if valid num group"""
-    if students_list == "filenotfound":
-        logging.info("Skipping group size check; file must not exist.")
-        return True
+def check_valid(args, students_list):
+    """Verify the command-line arguments"""
+    verified_arguments = False
     students_list_length = len(students_list)
-    if numgrp > students_list_length:
-        logging.error("Number of groups: %d", numgrp)
-        logging.error("Number of students: %d", students_list_length)
-        logging.error(
-            "Number of groups must be less than or equal to "
-            "the number of students to be grouped. "
-        )
-        return False
-    logging.info("Number of groups: %d", numgrp)
-    logging.info("Number of students: %d", students_list_length)
-    logging.info("Valid number of groups.")
-    return True
-
-
-def check_valid_group_size(
-    group_size: int, students_list: Union[List[List[Union[str, bool]]], str]
-) -> bool:
-    """ Checks if group size is valid """
-    if students_list == "filenotfound":
-        logging.info("Skipping group size check; file must not exist.")
-        return True
-    students_list_length = len(students_list)
-    if args.group_size > 1 and args.group_size <= students_list_length / 2:
-        verified_arguments = True
-    if args.num_group > 1 and args.group_size <= students_list_length / 2:
+    if args.num_group > 1 and args.num_group <= students_list_length / 2:
         verified_arguments = True
     if args.file is constants.NONE:
         verified_arguments = False
