@@ -27,8 +27,20 @@ class TestView:
         response = views.register(request)
         assert response.status_code == 200
 
+    def test_register_method(self):
+        request = self.factory.get(path='/register')
+        request.method = "POST"
+        response = views.register(request)
+        assert response.status_code == 200
+
     def test_uploadcsv(self):
         request = self.factory.get(path='/upload_csv')
+        response = views.upload_csv(request)
+        assert response.status_code == 200
+
+    def test_uploadcsv_method(self):
+        request = self.factory.get(path='/upload_csv')
+        request.method = "POST"
         response = views.upload_csv(request)
         assert response.status_code == 200
 
