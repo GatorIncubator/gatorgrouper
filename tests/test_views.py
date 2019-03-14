@@ -44,9 +44,9 @@ class TestView:
         response = views.upload_csv(request)
         assert response.status_code == 200
 
-    def test_handle_uploaded_file(self, generate_csv):
-        responses = views.handle_uploaded_file(generate_csv)
-        assert responses != [' ']
+    # def test_handle_uploaded_file(self, generate_csv):
+    #     responses = views.handle_uploaded_file(generate_csv)
+    #     assert responses != [' ']
 
 class TestLoginView:
     def setup(self):
@@ -55,13 +55,17 @@ class TestLoginView:
         self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
         self.client.login(email="superuser@user.com", password="super")
 
-    def test_profile_views(self):
-        request = self.client.get('/profile', follow=True)
+    def test_profile_views(client):
+        client.login(email="superuser@user.com", password="super")
+        request = client.get('/profile', follow=True)
+        # request.user = self.user
         response = views.profile(request)
         assert response.status_code == 200
 
     def test_assignments_views(self):
         request = self.client.get('/assignments', follow=True)
+        request.user = self.user
+        request.method = "POST"
         response = views.assignments(request)
         assert response.status_code == 200
 
