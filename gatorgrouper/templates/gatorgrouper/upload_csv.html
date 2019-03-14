@@ -4,8 +4,11 @@
       <div class="content-section">
 
           <fieldset class="form-group">
-          <legend class="border-bottom mb-4">Create a New Assignment</legend>
-          <form action="/group/" method="post" enctype="multipart/form-data">
+          <legend class="border-bottom mb-4">Create Groups</legend>
+          <p>
+          GatorGrouper supports creating groups via an uploaded CSV file. To save your data and groups across multiple sessions, create an account today!
+          </p>
+          <form action="/upload-csv/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.student_data.label_tag }}

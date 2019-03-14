@@ -41,7 +41,7 @@ def upload_csv(request):
                 preferences_weight_match=preferences_weight_match,
             )
             return render(
-                request, "gatorgrouper/viewing-groups.html", {"groups": groups}
+                request, "gatorgrouper/viewing-groups-csv.html", {"groups": groups}
             )
     else:
         form = UploadCSVForm()
@@ -243,13 +243,14 @@ def add_students(request):
     )
 
 
-@login_required
 def create_groups(request):  # pylint: disable=too-many-locals
     """ Created groups using gatorgrouper functions """
     GroupedStudentFormSet = modelform_factory(
         Grouped_Student, fields=("assignment_id",)
     )
     groups = []
+    if not request.user.is_authenticated:
+        return redirect("upload-csv")
     # pylint: disable=too-many-nested-blocks
     if request.method == "POST":
         formset = GroupedStudentFormSet(request.POST)
