@@ -299,6 +299,13 @@ pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group
 PREFERENCES_WEIGHT_MATCH
 ```
 
+To add objective measures use the flag `--objective_measures`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group NUMBER
+--objective_measures LIST --objective_weights LIST
+```
+
 ### Full Example
 
 ```shell
