@@ -24,28 +24,28 @@ class TestUrl:
 
     def test_home_url(self):
         url = reverse('Gatorgrouper-home')
-        assert url == "/register/"
+        assert url == "/"
 
     def test_classes_url(self):
-        url = reverse('register')
-        assert url == "/register/"
+        url = reverse('Gatorgrouper-classes')
+        assert url == "/classes/"
 
     def test_assignments_url(self):
-        url = reverse('register')
-        assert url == "/register/"
+        url = reverse('Gatorgrouper-assignments')
+        assert url == "/assignments/"
 
     def test_survey_url(self):
-        url = reverse('register')
-        assert url == "/register/"
+        url = reverse('Gatorgrouper-survey')
+        assert url == "/survey/"
 
     def test_groupresults_url(self):
-        url = reverse('register')
-        assert url == "/register/"
+        url = reverse('Gatorgrouper-groups')
+        assert url == "/group-result/"
 
     def test_add_students_url(self):
-        url = reverse('register')
-        assert url == "/register/"
+        url = reverse('add-students')
+        assert url == "/add-students/"
 
     def test_create_groups_url(self):
-        url = reverse('register')
-        assert url == "/register/"
+        url = reverse('create-groups')
+        assert url == "/create-groups/"
