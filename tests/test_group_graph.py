@@ -67,6 +67,7 @@ def test_compatibility_length():
 
 def test_compatibility_measure_callable():
     """ Gives a callable measure to compatibility and tests if it is used """
+
     def score(a, b):
         return a + b
 
@@ -75,8 +76,9 @@ def test_compatibility_measure_callable():
     output = group_graph.compatibility(a, b, objective_measures=[score, score])
     assert output == sum([1, 1.5])
 
+
 def test_compatibility_measure_preset():
-    """ """
+    """ Test all preset measures """
     a = [1, 1]
     b = [0, 0.5]
 
