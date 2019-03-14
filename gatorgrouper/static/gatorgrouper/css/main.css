@@ -184,11 +184,14 @@ a.article-title:hover {
   padding: 5px 5px;
 }
 
-.class-bigbox:nth-child(6n+1) {
-    background-color: #D9534F;
+.class-bigbox:nth-child(3n+1) {
+    background-color: #ffc107;
 }
-.class-bigbox:nth-child(6n+2) {
-    background-color: #87B5FF;
+.class-bigbox:nth-child(3n+2) {
+    background-color: #dc3545;
+}
+.class-bigbox:nth-child(3n+3) {
+    background-color: #007bff;
 }
 
 .student-bigbox {
@@ -196,11 +199,14 @@ a.article-title:hover {
   margin: 20px;
   padding: 5px 5px;
 }
-.student-bigbox:nth-child(6n+1) {
-    background-color: #D9534F;
+.student-bigbox:nth-child(3n+1) {
+    background-color: #ffc107;
 }
-.student-bigbox:nth-child(6n+2) {
-    background-color: #87B5FF;
+.student-bigbox:nth-child(3n+2) {
+    background-color: #dc3545;
+}
+.student-bigbox:nth-child(3n+3) {
+    background-color: #007bff;
 }
 
 .student-container {
