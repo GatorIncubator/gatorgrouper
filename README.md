@@ -277,6 +277,13 @@ To generate groups using the Kernighan-Lin grouping algorithm use the flag `--me
 pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group NUMBER
 ```
 
+To load student preferences, a preference weight, use the flag `--preferences`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group NUMBER
+--preferences filepath
+```
+
 ### Full Example
 
 ```shell
