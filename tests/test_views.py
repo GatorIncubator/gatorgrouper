@@ -8,9 +8,21 @@ from django.test import TestCase
 from django.urls import reverse
 from mixer.backend.django import mixer
 from django.test.client import Client
+from gatorgrouper.forms import CustomUserCreationForm
 
 pytestmark = pytest.mark.django_db
 
+
+class TestCustomUserCreationForm:
+    def test_valid_data(self):
+        form = CustomUserCreationForm({
+            "email": "testuserl@test.com",
+            "first_name": "Spencer",
+            "last_name": "Huang",
+            "password1": "testpassword1",
+            "password2": "testpassword1",
+        })
+        assert form.is_valid() is True
 
 class TestView:
     def setup(self):
