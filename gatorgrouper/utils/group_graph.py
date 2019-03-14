@@ -120,6 +120,8 @@ def group_graph_partition(
     # Add edges between distinct vertices, weighted by compatibility score
     for i, w1 in enumerate(weights):
         for j, w2 in enumerate(weights[:i]):
+            print("w1:", w1)
+            print("w2:", w2)
             score = compatibility(
                 w1,
                 w2,
