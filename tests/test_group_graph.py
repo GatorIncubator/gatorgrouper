@@ -175,7 +175,7 @@ def test_compatibility_measure_error():
 def test_group_graph_partition():
     """
     Test for using recursive Kernighan-Lin algorithm that checks the output of
-    the group_graph_partition function
+    the group_graph_partition function with preferences as input
     """
     students = [
         ["one", 0, 0],
