@@ -46,12 +46,14 @@ class TestUploadCSVForm:
         assert form.fields['file'].label == "Student data CSV file"
         assert form.fields['numgrp'].label == "Number of groups to create"
 
+
 class TestCreateGroupForm:
     def test_valid_data(self, generate_csv):
         form = CreateGroupForm({
             "numgrp": 3,
         })
         assert form.fields['numgrp'].label == "Number of groups to create"
+
 
 class TestView:
     def setup(self):
@@ -92,33 +94,22 @@ class TestView:
     #     responses = views.handle_uploaded_file(generate_csv)
     #     assert responses != [' ']
 
+
 class TestLoginView():
     # fixtures = ['user.json']
 
     def setup(self):
         self.user = models.Professor.objects.create_user(email="testuser@user.com", password="testuser")
         # self.response = self.user.login(username='testuser',
-                                        # password='testpassword')
+        # password='testpassword')
         self.client = Client()
         # self.factory = RequestFactory()
         # self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
         # self.client.login(email="superuser@user.com", password="super")
-
-
-
     def test_survey_test(self):
         self.response = self.client.get('/survey', follow=True)
         assert self.response.status_code == 200
 
-    # def test_survey_views_admin(self):
-
-    #     response = self.user.get('/survey', follow=True)
-    #     assert response.status_code == 200
-    #     data = {
-    #         "title": "Survey"}
-
-    #     response = self.user.post('/survey', data=data, follow=True)
-    #     assert response.status_code == 200
     def test_profile_login(self):
         # cover profile
         self.response = self.client.get('/profile', follow=True)
