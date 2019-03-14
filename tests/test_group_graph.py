@@ -186,14 +186,14 @@ def test_group_graph_partition():
         ["eight", 1, 1],
     ]
     preference = {
-        "one": "one",
-        "two": "three",
-        "three": "two",
-        "four": "four",
-        "five": "six",
-        "six": "five",
-        "seven": "fix",
-        "eight": "seven",
+        "one": {"seven", "five"},
+        "two": {"three", "six"},
+        "three": {"two", "four"},
+        "four": {"four", "three"},
+        "five": {"six", "one"},
+        "six": {"five"},
+        "seven": {"six"},
+        "eight": {"seven"},
     }
     output = group_graph.group_graph_partition(students, 4, preferences=preference)
     assert len(output[0]) == 2
