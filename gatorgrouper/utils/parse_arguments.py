@@ -52,6 +52,7 @@ def parse_arguments(args):
             constants.ALGORITHM_GRAPH,
             constants.ALGORITHM_ROUND_ROBIN,
             constants.ALGORITHM_RANDOM,
+            constants.ALGORITHM_GENETIC,
         ],
         default=constants.DEFAULT_METHOD,
         required=False,

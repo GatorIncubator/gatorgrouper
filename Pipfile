@@ -29,6 +29,7 @@ py = "*"
 django = "*"
 networkx = "*"
 social-auth-app-django = "*"
+pandas = "*"
 
 [pipenv]
 allow_prereleases = true

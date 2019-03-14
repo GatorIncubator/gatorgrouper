@@ -5,7 +5,9 @@ from typing import List
 import random
 import math
 import numpy as np
-from colors import bold
+from gatorgrouper.utils import constants
+from gatorgrouper.utils import workbook
+# from colors import bold
 
 
 class Student:
@@ -78,16 +80,17 @@ best_fitness = Fitness(0, 0, 0)
 
 def create():
     """Create the groups of student"""
-    students_to_group = workbook.STUDENTS[:]
+
+    students_to_group = ["a","b","c","d"]
     random.shuffle(students_to_group)
 
     grouping = list()
 
-    for _ in range(workbook.GROUPING_SIZE):
+    for _ in range(DEFAULT_GRPSIZE):
         grouping.append(list())
 
     for index, student in enumerate(students_to_group):
-        grouping[index % workbook.GROUPING_SIZE].append(student)
+        grouping[index % DEFAULT_GRPSIZE].append(student)
 
     if grouping < 1:
         print("CREATED TOO SMALL GROUPING")

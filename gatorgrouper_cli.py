@@ -10,6 +10,8 @@ from gatorgrouper.utils import group_creation
 from gatorgrouper.utils import group_graph
 from gatorgrouper.utils import display
 from gatorgrouper.utils import constants
+from gatorgrouper.utils import group_genetic
+from gatorgrouper.utils import mutations
 
 
 if __name__ == "__main__":  # pragma: no cover
@@ -62,6 +64,8 @@ if __name__ == "__main__":  # pragma: no cover
                 objective_weights=GG_ARGUMENTS.objective_weights,
                 objective_measures=GG_ARGUMENTS.objective_measures,
             )
+        elif GG_ARGUMENTS.method == constants.ALGORITHM_GENETIC:
+            GROUPED_STUDENT_IDENTIFIERS = group_genetic.evolve(60, 0.33, 0.16, 0.18, 0.66, mutations.get())
         else:
             GROUPED_STUDENT_IDENTIFIERS = group_creation.group_random_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
