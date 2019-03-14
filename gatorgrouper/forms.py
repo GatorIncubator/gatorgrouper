@@ -5,7 +5,7 @@ our custom User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 from django import forms
-from .models import Assignment, Semester_Class
+from .models import Assignment, Semester_Class, Student, Grouped_Student
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -46,10 +46,11 @@ class CreateGroupForm(forms.Form):
     )
 
 
+
 class AssignmentForm(forms.ModelForm):
     """ This form overrides the current __init__ method
-    used when creating a ModelForm so that a Professor
-    can only access their Classes and Assignments"""
+    used when creating a ModelForm so that a user
+    can only access their Classes when adding Assignments"""
 
     class Meta:
         model = Assignment
