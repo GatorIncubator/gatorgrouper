@@ -22,6 +22,16 @@ class TestView:
         response = views.home(request)
         assert response.status_code == 200
 
+    def test_register(self):
+        request = self.factory.get(path='/register')
+        response = views.register(request)
+        assert response.status_code == 200
+
+    def test_uploadcsv(self):
+        request = self.factory.get(path='/upload_csv')
+        response = views.upload_csv(request)
+        assert response.status_code == 200
+
 class TestLoginView:
     def setup(self):
         self.client = Client()
