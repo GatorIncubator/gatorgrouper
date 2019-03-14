@@ -73,7 +73,7 @@ if __name__ == "__main__":  # pragma: no cover
                 preferences_weight=GG_ARGUMENTS.preferences_weight,
                 preferences_weight_match=GG_ARGUMENTS.preferences_weight_match,
                 objective_weights=GG_ARGUMENTS.objective_weights,
-                objective_measures=GG_ARGUMENTS.objective_measures
+                objective_measures=GG_ARGUMENTS.objective_measures,
             )
         elif (
             GG_ARGUMENTS.num_group is constants.DEFAULT_NUMGRP
