@@ -3,100 +3,68 @@
 
 <h1>{{user.first_name}}'s Profile</h1>
 
-      <div class="class-container">
-{% if all_classes|length > 0 %}
-      {% for class in all_classes %}
-      <div>
-      <div class="class-bigbox">
-      <h2>{{ class }}</h2>
-      <div>
-      <table class="inLineTable">
-        <tr>
-          <th>Projects:</th>
-        </tr>
-
-        {% for assignment in all_assignments %}
-          {% if assignment.class_id == class  %}
-        <tr>
-          <td><a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a></td>
-        </tr>
-
-          {% endif %}
-        {% endfor %}
-
-        <tr>
-         <td>
-          <a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a>
-         </td>
-        </tr>
-
-      </table>
-        </div>
-        <div>
-          {% if all_classes|length > 0 %}
-                {% for class in all_classes %}
-
-                  <table class="inLineTable">
-                    <tr>
-                      <th>Students</th>
-                    </tr>
-
-                  {% for student in all_students %}
-                    {% if student.class_id == class  %}
-                    <tr>
-                      <td>
-                       <p>{{ student.first_name }} {{ student.last_name }}</p>
-                     </td>
-                   </tr>
-                     {% endif %}
-                   {% endfor %}
-
-                  <tr>
-                   <td>
-                    <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
-                   </td>
-                  </tr>
-                </table>
-                  </div>
-                  </div>
-                {% endfor %}
-          {% else %}
-            <p> Please Add a Class and Create Students to view them in your profile</p>
-          {% endif %}
-        </div>
-      </div>
-      {% endfor %}
-{% else %}
-  <p> Please Add a Class and Create Assignments to view them in your profile</p>
-{% endif %}
-      </div>
-    </div>
+<div class="class-container">
+  {% if all_classes|length > 0 %}
+  {% for class in all_classes %}
+  <div class="class-bigbox">
+    <h2>{{ class }}</h2>
     <div>
-      {% if all_classes|length > 0 %}
-            {% for class in all_classes %}
+      <!-- Start of class table -->
+      <div>
+        <table class="inLineTable">
+          <tr>
+            <th>Projects:</th>
+          </tr>
 
-              <table class="inLineTable">
-                <tr>
-                  <th>Students</th>
-                </tr>
+          {% for assignment in all_assignments %}
+          {% if assignment.class_id == class  %}
+          <tr>
+            <td><a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a></td>
+          </tr>
 
-              {% for student in all_students %}
-                {% if student.class_id == class  %}
-                <tr>
-                  <td>
-                   <p>{{ student.first_name }} {{ student.last_name }}</p>
-                 </td>
-               </tr>
-                 {% endif %}
-               {% endfor %}
+          {% endif %}
+          {% endfor %}
 
-            </table>
-            <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
-              </div>
-              </div>
-            {% endfor %}
-      {% else %}
-        <p> Please Add a Class and Create Students to view them in your profile</p>
-      {% endif %}
+          <tr>
+            <td>
+              <a href="{% url 'Gatorgrouper-assignments' %}" class="btn btn-danger btn-block">Add Assignment</a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+      <!-- End of Class Table -->
+
+      <!-- Start of student asspect -->
+      <!-- Start of Student Table  -->
+      <div>
+        <table class="inLineTable">
+          <tr>
+            <th>Students</th>
+          </tr>
+
+          {% for student in all_students %}
+          {% if student.class_id == class  %}
+          <tr>
+            <td>
+              <p>{{ student.first_name }} {{ student.last_name }}</p>
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+
+          <tr>
+            <td>
+              <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- End of Student Table -->
     </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p> Please add a class and create students to view them in your profile</p>
+</div>
 {% endblock %}
