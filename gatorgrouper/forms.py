@@ -5,6 +5,7 @@ our custom User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 from django import forms
+from .models import Assignment, Semester_Class
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -43,3 +44,17 @@ class CreateGroupForm(forms.Form):
     numgrp = forms.IntegerField(
         min_value=2, max_value=25, label="Number of groups to create"
     )
+
+
+class AssignmentForm(forms.ModelForm):
+    """ This form overrides the current __init__ method
+    used when creating a ModelForm so that a Professor
+    can only access their Classes and Assignments"""
+
+    class Meta:
+        model = Assignment
+        fields = ("class_id", "assignment_name", "description")
+
+    def __init__(self, user, *args, **kwargs):
+        super(AssignmentForm, self).__init__(*args, **kwargs)
+        self.fields['class_id'].queryset = Semester_Class.objects.filter(professor_id=user)
