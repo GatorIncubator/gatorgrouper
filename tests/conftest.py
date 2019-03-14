@@ -102,7 +102,14 @@ def generate_csv_float(tmpdir_factory):
         writer = csv.DictWriter(csvfile, fieldnames=headers)
         writer.writeheader()
         writer.writerow(
-            {"NAME": "delgrecoj", "Q1": "1.2", "Q2": "1.1", "Q3": "0.9", "Q4": "2.3", "Q5": "Name"}
+            {
+                "NAME": "delgrecoj",
+                "Q1": "1.2",
+                "Q2": "1.1",
+                "Q3": "0.9",
+                "Q4": "2.3",
+                "Q5": "Name",
+            }
         )
     return str(fn)
 

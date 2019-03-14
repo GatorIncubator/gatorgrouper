@@ -2,7 +2,6 @@
 
 import csv
 import re
-import string
 from pathlib import Path
 
 
@@ -30,7 +29,7 @@ def read_csv_data(filepath):
                     temp.append(True)
                 elif value.lower() == "false":
                     temp.append(False)
-                elif re.match("^\d+?\.\d+?$", value) or value.isdigit():
+                elif re.match(r"^\d+?\.\d+?$", value) or value.isdigit():
                     temp.append(float(value))
                 else:
                     temp.append(value)
@@ -44,7 +43,7 @@ def read_csv_data(filepath):
                     temp.append(True)
                 elif value.lower() == "false":
                     temp.append(False)
-                elif re.match("^\d+?\.\d+?$", value) or value.isdigit():
+                elif re.match(r"^\d+?\.\d+?$", value) or value.isdigit():
                     temp.append(float(value))
                 else:
                     temp.append(value)
