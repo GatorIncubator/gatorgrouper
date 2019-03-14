@@ -45,3 +45,9 @@ class TestLoginView:
         request = self.client.get('/survey', follow=True)
         response = views.survey(request)
         assert response.status_code == 200
+
+    def test_groupresults_views(self):
+        self.client.login(email="superuser@user.com", password="super")
+        request = self.client.get('/viewing-groups', follow=True)
+        response = views.groupResult(request)
+        assert response.status_code == 200
