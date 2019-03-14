@@ -14,6 +14,7 @@ pytestmark = pytest.mark.django_db
 
 
 class TestCustomUserCreationForm:
+    # pylint: disable=too-few-public-methods
     def test_valid_data(self):
         form = CustomUserCreationForm({
             "email": "testuserl@test.com",
@@ -26,6 +27,7 @@ class TestCustomUserCreationForm:
 
 
 class TestCustomUserChangeForm:
+    # pylint: disable=too-few-public-methods
     def test_valid_data(self):
         form = CustomUserChangeForm({
             "email": "testuserl@test.com",
@@ -38,6 +40,7 @@ class TestCustomUserChangeForm:
 
 
 class TestUploadCSVForm:
+    # pylint: disable=too-few-public-methods
     def test_valid_data(self, generate_csv):
         form = UploadCSVForm({
             "file": generate_csv,
@@ -48,6 +51,7 @@ class TestUploadCSVForm:
 
 
 class TestCreateGroupForm:
+    # pylint: disable=too-few-public-methods
     def test_valid_data(self, generate_csv):
         form = CreateGroupForm({
             "numgrp": 3,
@@ -96,7 +100,6 @@ class TestView:
 
 
 class TestLoginView():
-    # fixtures = ['user.json']
 
     def setup(self):
         self.user = models.Professor.objects.create_user(email="testuser@user.com", password="testuser")
@@ -106,7 +109,9 @@ class TestLoginView():
         # self.factory = RequestFactory()
         # self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
         # self.client.login(email="superuser@user.com", password="super")
+
     def test_survey_test(self):
+        # pylint: disable=W0201
         self.response = self.client.get('/survey', follow=True)
         assert self.response.status_code == 200
 
