@@ -2,6 +2,7 @@
 
 import argparse
 import logging
+import json
 from gatorgrouper.utils import read_student_file
 from gatorgrouper.utils import constants
 
@@ -71,6 +72,14 @@ def parse_arguments(args):
         nargs="+",
         type=str,
         default=constants.DEFAULT_ABSENT,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--preferences",
+        help="Preferences of students for graph algorithm",
+        type=str,
+        default=constants.DEFAULT_PREFERENCES,
         required=False,
     )
 
