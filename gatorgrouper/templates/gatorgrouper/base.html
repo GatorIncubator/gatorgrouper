@@ -52,9 +52,13 @@
             <li class="nav-item">
                 <button type="button" class="dropbtn btn-md btn btn-primary btn-space" data-toggle="collapse" data-target="#menu">MENU</button>
             </li>
+
         {% else %}
             <li class="nav-item">
                 <a class="btn btn-md btn-google btn-space" href="{% url 'login' %}">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-md btn-social btn-google btn-space" href="{% url 'social:begin' 'google-oauth2' %}"> <span class="fab fa-google img-fluid"></span> Log In With Google</a>
             </li>
             <li class="nav-item">
                 <a class="btn-md btn btn-primary btn-space" href="{% url 'Gatorgrouper-home' %}">Home</a>
@@ -62,6 +66,8 @@
             <li class="nav-item">
                 <a class="btn-md btn btn-primary btn-space" href="{% url 'register' %}">Register</a>
             </li>
+
+
         {% endif %}
       </ul>
       <!-- collapsable list-->
