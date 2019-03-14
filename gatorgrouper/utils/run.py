@@ -11,26 +11,21 @@ from gatorgrouper.utils import constants
 
 
 def run_arguments(GG_ARGUMENTS, preference=None):
+    """ Run different algorithms with input arguments"""
     STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
         GG_ARGUMENTS.absentees, read_student_file.read_csv_data(GG_ARGUMENTS.file)
     )
     logging.info("GatorGrouper will group these students:")
-    logging.info(
-        "\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS)
-    )
+    logging.info("\n %s", display.create_escaped_string_from_list(STUDENT_IDENTIFIERS))
 
     # shuffle the student identifiers
-    SHUFFLED_STUDENT_IDENTIFIERS = group_creation.shuffle_students(
-        STUDENT_IDENTIFIERS
-    )
+    SHUFFLED_STUDENT_IDENTIFIERS = group_creation.shuffle_students(STUDENT_IDENTIFIERS)
     logging.info("GatorGrouper randomly ordered the students:")
     logging.info(
-        "\n %s",
-        display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS),
+        "\n %s", display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS)
     )
 
     # generate the groups and display them
-    # pylint: disable=bad-continuation
     if GG_ARGUMENTS.method == constants.ALGORITHM_ROUND_ROBIN:
         GROUPED_STUDENT_IDENTIFIERS = group_creation.group_rrobin_num_group(
             SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
