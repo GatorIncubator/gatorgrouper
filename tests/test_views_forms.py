@@ -27,8 +27,10 @@ class TestCustomUserCreationForm:
 
 
 class TestCustomUserChangeForm:
+    """undocumented"""
     # pylint: disable=too-few-public-methods
     def test_valid_data(self):
+        """undocumented"""
         form = CustomUserChangeForm({
             "email": "testuserl@test.com",
             "first_name": "Spencer",
@@ -40,8 +42,10 @@ class TestCustomUserChangeForm:
 
 
 class TestUploadCSVForm:
+    """undocumented"""
     # pylint: disable=too-few-public-methods
     def test_valid_data(self, generate_csv):
+        """undocumented"""
         form = UploadCSVForm({
             "file": generate_csv,
             "numgrp": 3,
@@ -51,8 +55,10 @@ class TestUploadCSVForm:
 
 
 class TestCreateGroupForm:
+    """undocumented"""
     # pylint: disable=too-few-public-methods
     def test_valid_data(self, generate_csv):
+        """undocumented"""
         form = CreateGroupForm({
             "numgrp": 3,
         })
@@ -60,7 +66,9 @@ class TestCreateGroupForm:
 
 
 class TestView:
+    """undocumented"""
     def setup(self):
+        """undocumented"""
         self.factory = RequestFactory()
         self.user = models.Professor.objects.create_user(email="normaluser@user.com", password="normal")
 
@@ -71,11 +79,13 @@ class TestView:
         assert response.status_code == 200
 
     def test_register(self):
+        """undocumented"""
         request = self.factory.get(path='/register')
         response = views.register(request)
         assert response.status_code == 200
 
     def test_register_method(self):
+        """undocumented"""
         # need to test form.isvalid()
         request = self.factory.get(path='/register')
         request.method = "POST"
@@ -83,11 +93,13 @@ class TestView:
         assert response.status_code == 200
 
     def test_uploadcsv(self):
+        """undocumented"""
         request = self.factory.get(path='/upload_csv')
         response = views.upload_csv(request)
         assert response.status_code == 200
 
     def test_uploadcsv_method(self):
+        """undocumented"""
         # need to test form.isvalid()
         request = self.factory.get(path='/upload_csv')
         request.method = "POST"
@@ -100,8 +112,9 @@ class TestView:
 
 
 class TestLoginView():
-
+    """undocumented"""
     def setup(self):
+        """undocumented"""
         self.user = models.Professor.objects.create_user(email="testuser@user.com", password="testuser")
         # self.response = self.user.login(username='testuser',
         # password='testpassword')
@@ -111,11 +124,13 @@ class TestLoginView():
         # self.client.login(email="superuser@user.com", password="super")
 
     def test_survey_test(self):
+        """undocumented"""
         # pylint: disable=W0201
         self.response = self.client.get('/survey', follow=True)
         assert self.response.status_code == 200
 
     def test_profile_login(self):
+        """undocumented"""
         # cover profile
         self.response = self.client.get('/profile', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
@@ -131,27 +146,32 @@ class TestLoginView():
         assert response.status_code == 200
 
     def test_create_classes(self):
+        """undocumented"""
         self.response = self.client.get('/classes', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
     def test_assignments_login(self):
+        """undocumented"""
         self.response = self.client.get('/assignments', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         self.response.method = "POST"
         assert self.response.status_code == 200
 
     def test_groupresults_views(self):
+        """undocumented"""
         self.response = self.client.get('/viewing-groups', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
     def test_add_students(self):
+        """undocumented"""
         self.response = self.client.get('/add-students', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
     def test_create_groups(self):
+        """undocumented"""
         self.response = self.client.get('/create-groups', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
