@@ -65,6 +65,32 @@ def test_compatibility_length():
     assert exception_msg == "Tuples passed to compatibility() must have same size."
 
 
+def test_compatibility_measure_callable():
+    """ Gives a callable measure to compatibility and tests if it is used """
+    def score(a, b):
+        return a + b
+
+    a = [1, 1]
+    b = [0, 0.5]
+    output = group_graph.compatibility(a, b, objective_measures=[score, score])
+    assert output == sum([1, 1.5])
+
+def test_compatibility_measure_preset():
+    """ """
+    a = [1, 1]
+    b = [0, 0.5]
+
+    output = group_graph.compatibility(a, b, objective_measures=["avg", "avg"])
+    assert output == sum([0.5, 0.75])
+    output = group_graph.compatibility(a, b, objective_measures=["max", "max"])
+    assert output == sum([1, 1])
+    output = group_graph.compatibility(a, b, objective_measures=["min", "min"])
+    assert output == sum([0, 0.5])
+    output = group_graph.compatibility(a, b, objective_measures=["match", "match"])
+    assert output == sum([0, 0])
+    output = group_graph.compatibility(a, b, objective_measures=["diff", "diff"])
+    assert output == sum([1, 0.5])
+
 
 def test_compatibility_objective_weights():
     """ Test if objective_weights returns the objective weights of students """
