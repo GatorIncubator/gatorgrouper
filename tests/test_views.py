@@ -18,6 +18,7 @@ class TestView:
         self.user = models.Professor.objects.create_user(email="normaluser@user.com", password="normal")
 
     def test_home(self):
+        "cover home"
         request = self.factory.get(path='/home')
         response = views.home(request)
         assert response.status_code == 200
@@ -28,6 +29,7 @@ class TestView:
         assert response.status_code == 200
 
     def test_register_method(self):
+        # need to test form.isvalid()
         request = self.factory.get(path='/register')
         request.method = "POST"
         response = views.register(request)
@@ -39,6 +41,7 @@ class TestView:
         assert response.status_code == 200
 
     def test_uploadcsv_method(self):
+        # need to test form.isvalid()
         request = self.factory.get(path='/upload_csv')
         request.method = "POST"
         response = views.upload_csv(request)
@@ -48,53 +51,64 @@ class TestView:
     #     responses = views.handle_uploaded_file(generate_csv)
     #     assert responses != [' ']
 
-class TestLoginView:
-    fixtures = ['user.json']
+class TestLoginView():
+    # fixtures = ['user.json']
 
     def setup(self):
+        self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
+        # self.response = self.user.login(username='testuser',
+                                        # password='testpassword')
         self.client = Client()
-        self.response = self.client.login(username='testuser',
-                                          password='testpassword')
-        # self.client = Client()
         # self.factory = RequestFactory()
         # self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
         # self.client.login(email="superuser@user.com", password="super")
+
+
+
+    def test_survey_test(self):
+        self.response = self.client.get('/survey', follow=True)
+        assert self.response.status_code == 200
+
+    # def test_survey_views_admin(self):
+
+    #     response = self.user.get('/survey', follow=True)
+    #     assert response.status_code == 200
+    #     data = {
+    #         "title": "Survey"}
+
+    #     response = self.user.post('/survey', data=data, follow=True)
+    #     assert response.status_code == 200
 
     def test_profile_views(self):
         self.response = self.client.get('/profile', follow=True)
         # request.user = self.user
         # response = views.profile(request)
         assert self.response.status_code == 200
+        data = {
+            "title": "Profile",
+            "all_classes": "classes",
+            "all_assignments": "assignment_list",
+            "all_students": "students"}
+        response = self.client.post('/profile', data=data, follow=True)
+        assert response.status_code == 200
+        # self.assertTemplateUsed(self.response, 'gatorgrouper/profile.html')
 
     def test_assignments_views(self):
-        request = self.client.get('/assignments', follow=True)
-        request.user = self.user
-        request.method = "POST"
-        response = views.assignments(request)
-        assert response.status_code == 200
-
-    def test_survey_views(self):
-        request = self.client.get('/survey', follow=True)
-        response = views.survey(request)
-        assert response.status_code == 200
+        self.response = self.client.get('/assignments', follow=True)
+        assert self.response.status_code == 200
 
     def test_groupresults_views(self):
-        request = self.client.get('/viewing-groups', follow=True)
-        response = views.groupResult(request)
-        assert response.status_code == 200
+        self.response = self.client.get('/viewing-groups', follow=True)
+        assert self.response.status_code == 200
 
     def test_create_classes(self):
-        request = self.client.get('/classes', follow=True)
-        response = views.create_classes(request)
-        assert response.status_code == 200
+        self.response = self.client.get('/classes', follow=True)
+        assert self.response.status_code == 200
 
     def test_add_students(self):
-        request = self.client.get('/add-students', follow=True)
-        response = views.add_students(request)
-        assert response.status_code == 200
+        self.response = self.client.get('/add-students', follow=True)
+        assert self.response.status_code == 200
 
     def test_create_groups(self):
-        request = self.client.get('/create-groups', follow=True)
-        request.method == "POST"
-        response = views.create_groups(request)
-        assert response.status_code == 200
+        self.response = self.client.get('/create-groups', follow=True)
+        assert self.response.status_code == 200
