@@ -179,6 +179,7 @@ a.article-title:hover {
 }
 
 .class-bigbox {
+  width: 100%
   background-color: #FFFFFF;
   margin: 20px;
   padding: 5px 5px;
