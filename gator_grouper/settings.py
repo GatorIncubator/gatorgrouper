@@ -22,12 +22,10 @@ def find_oauth_key():
     SECRET_KEY_DIR = os.path.dirname(__file__)
     SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, "secret_key.py")
     sys.path.insert(1, SECRET_KEY_DIR)
-
     if os.path.isfile(SECRET_KEY_FILEPATH):
         # pylint: disable=import-error
         from secret_key import OAUTH_SECRET_KEY as key
-
-        return key
+    return key
 
 
 # Quick-start development settings - unsuitable for production
