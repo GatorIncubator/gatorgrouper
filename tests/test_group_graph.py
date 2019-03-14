@@ -141,14 +141,13 @@ def test_compatability_measure_min():
     assert output == expected_output
 
 
-def test_compatability_measure_int():
+def test_compatability_measure_match():
     """ Test if measure of different student scores are both equal """
     a = [1, 0]
-    b = [0, 0.5]
+    b = [1, 0.5]
     objective_measures = ("match", "match")
     output = group_graph.compatibility(a, b, objective_measures=objective_measures)
-    expected_output = 0
-    assert output == expected_output
+    assert output == sum([1, 0])
 
 
 def test_compatability_measure_diff():
