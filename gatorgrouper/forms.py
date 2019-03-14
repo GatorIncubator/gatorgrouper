@@ -59,3 +59,14 @@ class AssignmentForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super(AssignmentForm, self).__init__(*args, **kwargs)
         self.fields['class_id'].queryset = Semester_Class.objects.filter(professor_id=user)
+class GroupForm(forms.ModelForm):
+    """ This form is used to create and retrieve groups.
+    It overrides the ModelForm __init__ method and restricts
+    access to groups to only the user who made the group"""
+
+    class Meta:
+        model = Grouped_Student
+        fields = ("assignment_id", )
+    def __init__(self, user, *args, **kwargs):
+        super(GroupForm, self).__init__(*args, **kwargs)
+        self.fields['assignment_id'].queryset = Assignment.objects.filter(professor_id=user)
