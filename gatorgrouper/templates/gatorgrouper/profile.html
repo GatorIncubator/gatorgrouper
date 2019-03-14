@@ -8,9 +8,12 @@
   {% for class in all_classes %}
   <div class="class-bigbox">
     <h2>{{ class }}</h2>
+    <!-- Both Tables  -->
     <div>
-      <!-- Start of class table -->
+      <!-- Start of Class asspect -->
       <div>
+        <!-- Start of class table -->
+        <div>
         <table class="inLineTable">
           <tr>
             <th>Projects:</th>
@@ -35,7 +38,13 @@
       </div>
       <!-- End of Class Table -->
 
+      </div>
+      <!-- End of Class asspect -->
+
       <!-- Start of student asspect -->
+      <div>
+        {% if all_classes|length > 0 %}
+        {% for class in all_classes %}
       <!-- Start of Student Table  -->
       <div>
         <table class="inLineTable">
@@ -58,13 +67,25 @@
               <a href="{% url 'add-students' %}" class="btn btn-danger btn-block">Add Student</a>
             </td>
           </tr>
+
         </table>
       </div>
       <!-- End of Student Table -->
+
+      </div>
+      <!-- End of Student asspect -->
+      {% endfor %}
+      {% else %}
+      <p> Please Add a class and Create Assignments to view them in your profile </p>
+      {% endif %}
     </div>
+    <!-- End of Both Tables -->
   </div>
+  <!-- End of Big Box -->
   {% endfor %}
   {% else %}
   <p> Please add a class and create students to view them in your profile</p>
+  {% endif %}
 </div>
+<!-- End of class-container -->
 {% endblock %}
