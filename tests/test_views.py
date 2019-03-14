@@ -44,6 +44,10 @@ class TestView:
         response = views.upload_csv(request)
         assert response.status_code == 200
 
+    def test_handle_uploaded_file(self, generate_csv):
+        responses = views.handle_uploaded_file(generate_csv)
+        assert responses != [' ']
+
 class TestLoginView:
     def setup(self):
         self.client = Client()
