@@ -306,6 +306,13 @@ pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group
 --objective_measures LIST --objective_weights LIST
 ```
 
+To add objective weights use the flag `--objective_weights`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group NUMBER
+--objective_measures LIST --objective_weights LIST
+```
+
 ### Full Example
 
 ```shell
