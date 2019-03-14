@@ -284,6 +284,12 @@ pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group
 --preferences filepath
 ```
 
+To indicate student preference weight use the flag `--preferences_weight`
+
+```shell
+pipenv run python gatorgrouper_cli.py --file filepath --method graph --num-group NUMBER
+--preferences filepath --preferences_weight PREFERENCES_WEIGHT
+```
 ### Full Example
 
 ```shell
