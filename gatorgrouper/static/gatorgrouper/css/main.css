@@ -3,6 +3,22 @@ body {
   color: #333333;
   margin-top: 0;
 }
+body {
+  counter-reset: section;
+}
+
+.group-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 10px 15px 15px;
+}
+
+.group-item h2::before {
+  counter-increment: section;
+  content: "Group " counter(section) ": ";
+}
 
 h1, h2, h4, h5, h6 {
   color: #444444;
@@ -20,6 +36,9 @@ ul {
   background-color: #5f788a;
 }
 
+.assignments a{
+  font-size: 26px;
+}
 .carousel-item {
   height: 65vh;
   min-height: 350px;
@@ -105,3 +124,74 @@ a.article-title:hover {
     margin-right: 15px;
     margin-top: 10px;
 }
+
+.dropbtn {
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 120px;
+  overflow: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,1);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 18px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.class-container {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: beige;
+  flex-wrap: wrap;
+  min-height: 15em
+
+}
+
+.student-container {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #87b5ff;
+  flex-wrap: wrap;
+  min-height: 20em
+
+}
+
+.class-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 10px 15px 15px;
+}
+
+.assignments {
+  display: flex;
+  flex-direction: column;
+}
+
+.students {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.show {display: block;}

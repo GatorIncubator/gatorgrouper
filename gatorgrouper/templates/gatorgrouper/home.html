@@ -1,7 +1,9 @@
-
 {% extends "gatorgrouper/base.html" %}
+{% load static %}
 {% block content %}
-
+    {% if user.is_authenticated %}
+    <h1 class="container">Welcome {{user.first_name}} !</h1>
+    {% endif %}
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -10,46 +12,37 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       <!-- Slide One -->
-      <div class="carousel-item active" style="background-image: url('static/gatorgrouper/images/GGbackground.jpg')">
+      <div class="carousel-item active" style="background-image: url({% static 'gatorgrouper/images/GGbackground.jpg'%})">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="display-4">GatorGrouper</h3>
+          <h3 class="display-4" style="color:white;">GatorGrouper</h3>
           <p class="lead">GatorGrouper was designed with teamwork in mind. The GatorGrouper
 	  tool is capable of splitting large groups in to smaller sub-groups with the goal
 	  of maintaining a productive and healthy work environment.</p>
         </div>
       </div>
       <!-- Slide Two -->
-      <div class="carousel-item" style="background-image: url('static/gatorgrouper/images/Allegheny.jpg')">
+      <div class="carousel-item" style="background-image: url({% static 'gatorgrouper/images/Allegheny.jpg'%})">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="display-4">Developer Story</h3>
+          <h3 class="display-4" style="color:white;">Developer Story</h3>
           <p class="lead">We on the GatorGrouper team are committed to making the school and
 	  workplace a more healthy and productive work environment.</p>
         </div>
       </div>
       <!-- Slide Three  -->
-      <div class="carousel-item" style="background-image: url('static/gatorgrouper/images/groupWork.jpg')">
+      <div class="carousel-item" style="background-image: url('{% static 'gatorgrouper/images/groupWork.jpg'%}')">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="display-4">Teamwork</h3>
+          <h3 class="display-4" style="color:white;">Teamwork</h3>
           <p class="lead">"Teamwork is the ability to work together toward a common vision.
 	  The ability to direct individual accomplishments toward organizational objectives.
 	  It is the fuel that allows common people to attain uncommon results." --Andrew Carnegie.</p>
         </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
   </div>
   <!-- Page Content -->
 <section class="py-5">
     <div class="container">
       <h1 class="font-weight-light">Product Desrcription</h1>
-      
       <p class="lead">GatorGrouper is a tool designed for teachers and project managers
       to organize classrooms or large teams into groups. The grouping method takes in to
       account individual skill level and user feedback on group creation to keep administrators
