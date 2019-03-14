@@ -1,15 +1,14 @@
 """ Run all arguments which were passed in to main program """
 
-import sys
 import logging
 
-from gatorgrouper.utils import parse_arguments
 from gatorgrouper.utils import remove_absent_students
 from gatorgrouper.utils import read_student_file
 from gatorgrouper.utils import group_creation
 from gatorgrouper.utils import group_graph
 from gatorgrouper.utils import display
 from gatorgrouper.utils import constants
+
 
 def run_arguments(GG_ARGUMENTS, preference=None):
     STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(

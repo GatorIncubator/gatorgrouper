@@ -1,7 +1,5 @@
 """Testing run method"""
 
-import pytest
-
 from gatorgrouper.utils import parse_arguments
 from gatorgrouper.utils import read_student_file
 from gatorgrouper.utils import run
@@ -17,7 +15,20 @@ def test_run_random_remove_absent(generate_csv):
 
 def test_run_graph(generate_csv, generate_csv_preference):
     """ Test if the main program can run group graph with preference """
-    command = ["--file", generate_csv, "--num-group", "2", "--method", "graph", "--preferences", generate_csv_preference, "--preferences-weight", "1.1", "--preferences-weight-match", "1.3"]
+    command = [
+        "--file",
+        generate_csv,
+        "--num-group",
+        "2",
+        "--method",
+        "graph",
+        "--preferences",
+        generate_csv_preference,
+        "--preferences-weight",
+        "1.1",
+        "--preferences-weight-match",
+        "1.3",
+    ]
     input_arguments = parse_arguments.parse_arguments(command)
     preference = dict(read_student_file.read_csv_data(input_arguments.preferences))
     output = run.run_arguments(input_arguments, preference)
