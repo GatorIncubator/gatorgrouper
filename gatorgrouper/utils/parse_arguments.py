@@ -83,6 +83,22 @@ def parse_arguments(args):
         required=False,
     )
 
+    gg_parser.add_argument(
+        "--preferences-weight",
+        help="something",
+        type=float,
+        default=constants.DEFAULT_PREFERENCES_WEIGHT,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--preferences-weight-match",
+        help="something",
+        type=float,
+        default=constants.DEFAULT_PREFERENCES_WEIGHT_MATCH,
+        required=False,
+    )
+
     gg_arguments_finished = gg_parser.parse_args(args)
 
     logging.basicConfig(
