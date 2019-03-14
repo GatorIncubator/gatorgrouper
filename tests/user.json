@@ -1,0 +1,17 @@
+[
+    {
+        "model": "models.Professor",
+        "fields": {
+            "professor_id": 1,
+            "username": "testuser",
+            "first_name": "Spencer",
+            "last_name": "Huang",
+            "is_superuser": true,
+            "is_staff": true,
+            "groups": [],
+            "user_permissions": [],
+            "password": "testpassword",
+            "email": "testuserl@test.com",
+        }
+    }
+]
