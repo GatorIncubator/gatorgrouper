@@ -90,13 +90,13 @@ class TestView:
         # need to test form.isvalid()
         request = self.factory.get(path='/register', REQUEST_METHOD="POST")
         # request = self.factory.post()
-        request.POST = {
-            "email": "testuserl@test.com",
-            "first_name": "Spencer",
-            "last_name": "Huang",
-            "password1": "testpassword1",
-            "password2": "testpassword1",
-        }
+        # request.POST = {
+        #     "email": "testuserl@test.com",
+        #     "first_name": "Spencer",
+        #     "last_name": "Huang",
+        #     "password1": "testpassword1",
+        #     "password2": "testpassword1",
+        # }
         # messages = FallbackStorage(request)
         response = views.register(request)
         assert response.status_code == 200
@@ -160,6 +160,14 @@ class TestLoginView():
         """undocumented"""
         # pylint: disable=W0201
         self.response = self.client.get('/classes', follow=True)
+        self.response.method = "POST"
+        self.response.POST = {
+            "email": "testuserl@test.com",
+            "first_name": "Spencer",
+            "last_name": "Huang",
+            "password1": "testpassword1",
+            "password2": "testpassword1",
+        }
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
