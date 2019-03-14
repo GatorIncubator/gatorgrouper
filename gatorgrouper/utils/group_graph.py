@@ -40,7 +40,6 @@ def total_cut_size(graph: Graph, partition: List[int]) -> float:
         for subset2 in partition[i:]:
             # Sum of weights added from all subsets and set equal to cut
             cut += cut_size(graph, subset1, T=subset2)
-            print(subset1, subset2, cut)
     return cut
 
 
