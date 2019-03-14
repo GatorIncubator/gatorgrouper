@@ -114,11 +114,7 @@ class Test_Assignments:
     def test_str(self):
         """test __str__ method by putting varibles into the database and
         expecting the output to be in a specific format"""
-<<<<<<< HEAD
-        obj = mixer.blend("gatorgrouper.Assignment", assignment_id="1")
-=======
         obj = mixer.blend("gatorgrouper.Assignment", assignment_id=1)
->>>>>>> origin/master
         result = str(obj.assignment_id)
         expected = "1"
         assert result == expected

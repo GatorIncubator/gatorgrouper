@@ -56,10 +56,7 @@ def profile(request):
     current_professor = request.user
     # pylint: disable=no-member
     classes = list(Semester_Class.objects.filter(professor_id=current_professor))
-<<<<<<< HEAD
-=======
     # pylint: disable=no-member
->>>>>>> origin/master
     assignment_list = list(Assignment.objects.all())
     # pylint: disable=no-member
     students = list(Student.objects.all())
