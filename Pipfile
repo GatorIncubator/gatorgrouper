@@ -20,7 +20,8 @@ mixer = "*"
 pylint = "*"
 mutmut = "*"
 hypothesis = "*"
-pandas = "*"
+numpy = "*"
+ansicolors = "*"
 
 [packages]
 pathlib = "*"
@@ -28,9 +29,6 @@ py = "*"
 django = "*"
 networkx = "*"
 social-auth-app-django = "*"
-numpy = "*"
-ansicolors = "*"
-
 
 [pipenv]
 allow_prereleases = true
