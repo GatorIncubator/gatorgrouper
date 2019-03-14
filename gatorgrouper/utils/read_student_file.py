@@ -24,9 +24,9 @@ def read_csv_data(filepath):
             temp = list()
             temp.append(record[0].replace('"', ""))
             for value in record[1:]:
-                if value == "True":
+                if value.lower() == "true":
                     temp.append(True)
-                elif value == "False":
+                elif value.lower() == "false":
                     temp.append(False)
                 else:
                     temp.append(float(value))
@@ -36,9 +36,9 @@ def read_csv_data(filepath):
             temp = list()
             temp.append(record[0].replace('"', ""))
             for value in record[1:]:
-                if value == "True":
+                if value.lower() == "true":
                     temp.append(True)
-                elif value == "False":
+                elif value.lower() == "false":
                     temp.append(False)
                 else:
                     temp.append(float(value))

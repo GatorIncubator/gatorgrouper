@@ -5,17 +5,15 @@ from django.shortcuts import render, redirect
 from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CustomUserCreationForm
+from django.db import IntegrityError
 
 
-# from django.http import HttpResponse
-# from django.http import Http404
 from .models import Semester_Class, Student
-from .models import Assignment
+from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
-
 from .utils.group_rrobin import group_rrobin_num_group
-from .forms import UploadCSVForm
+from .forms import UploadCSVForm, CreateGroupForm
+from .forms import CustomUserCreationForm
 
 
 def upload_csv(request):
@@ -56,8 +54,14 @@ def register(request):
 def profile(request):
     """ This is undocumented """
     current_professor = request.user
+    # pylint: disable=no-member
     classes = list(Semester_Class.objects.filter(professor_id=current_professor))
+<<<<<<< HEAD
+=======
+    # pylint: disable=no-member
+>>>>>>> origin/master
     assignment_list = list(Assignment.objects.all())
+    # pylint: disable=no-member
     students = list(Student.objects.all())
     return render(
         request,
@@ -158,8 +162,37 @@ def survey(request):
 @login_required
 def groupResult(request):
     """ Group result view """
+    GroupedStudentFormSet = modelform_factory(
+        Grouped_Student, fields=("assignment_id",)
+    )
+    group_list = []
+    groupNames = []
+    assignment_obj = None
+    if request.method == "POST":
+        formset = GroupedStudentFormSet(request.POST)
+        if formset.is_valid():
+            assignment_obj = formset.cleaned_data.get("assignment_id")
+            group_list = list(
+                # pylint: disable=no-member
+                Grouped_Student.objects.filter(assignment_id=assignment_obj)
+            )
+            groupNames = []
+            for g in group_list:
+                if g.group_name not in groupNames:
+                    groupNames.append(g.group_name)
+    else:
+        formset = GroupedStudentFormSet()
+
     return render(
-        request, "gatorgrouper/viewing-groups.html", {"title": "Group Result"}
+        request,
+        "gatorgrouper/viewing-groups.html",
+        {
+            "title": "Group Result",
+            "formset": formset,
+            "groups": group_list,
+            "assignment": assignment_obj,
+            "groupNames": groupNames,
+        },
     )
 
 
@@ -185,20 +218,56 @@ def add_students(request):
 
 
 @login_required
-def create_groups(request):
+def create_groups(request):  # pylint: disable=too-many-locals
     """ Created groups using gatorgrouper functions """
-    AssignmentFormSet = modelform_factory(
-        Assignment, fields=("class_id", "assignment_id")
+    GroupedStudentFormSet = modelform_factory(
+        Grouped_Student, fields=("assignment_id",)
     )
+    groups = []
+    # pylint: disable=too-many-nested-blocks
     if request.method == "POST":
-        formset = AssignmentFormSet(request.POST)
-        if formset.is_valid():
-            class_id_num = formset.cleaned_data.get("class_id")
-            student_list = gatherStudents(class_id_num)
-            for student in student_list:
-                print(student)
+        formset = GroupedStudentFormSet(request.POST)
+        groupNum = CreateGroupForm(request.POST)
+        if groupNum.is_valid() and formset.is_valid():
+            assignment_obj = formset.cleaned_data.get("assignment_id")
+            class_id_num = assignment_obj.class_id.class_id
+            num_of_groups = groupNum.cleaned_data.get("numgrp")
+            student_list_dict = gatherStudents(class_id_num)
+            # pylint: disable=unused-variable
+            student_list = []
+            for name, obj in student_list_dict.items():
+                student_list.append(name)
+            groups = group_rrobin_num_group(student_list, num_of_groups)
+            if request.POST["button"] == "save":
+                counter = 1
+                for group in groups:
+                    # get student object and then save and then we're done!
+                    group_name = "Group " + str(counter)
+                    for student in group:
+                        try:
+                            s = Grouped_Student(
+                                assignment_id=assignment_obj,
+                                student_id=student_list_dict[student],
+                                group_name=group_name,
+                            )
+                            s.save()
+                        except IntegrityError:
+                            messages.error(
+                                request,
+                                f"This assignment already has a group associated"
+                                + f"with it.\nPlease Try again",
+                            )
+                            return redirect("create-groups")
+
+                    counter += 1
+                messages.success(
+                    request,
+                    f"The groups for this assignment have been saved. To see them,"
+                    + f"visit the view groups page",
+                )
     else:
-        formset = AssignmentFormSet(request.POST)
+        formset = GroupedStudentFormSet()
+        groupNum = CreateGroupForm()
     # conflict_list = gatherConflicts(request)
 
     # don't forget to import gatherConflicts and Grouped_students,
@@ -206,5 +275,10 @@ def create_groups(request):
     return render(
         request,
         "gatorgrouper/create-groups.html",
-        {"title": "Create Groups", "formset": formset},
+        {
+            "title": "Create Groups",
+            "formset": formset,
+            "group_list": groups,
+            "groupNum": groupNum,
+        },
     )

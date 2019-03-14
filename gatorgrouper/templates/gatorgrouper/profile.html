@@ -13,7 +13,7 @@
         {% for assignment in all_assignments %}
           {% if assignment.class_id == class  %}
 
-            <h5>{{ assignment.assignment_name }}</h5>
+            <a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a>
             <p>{{ assignment.description }}</p>
 
           {% endif %}

@@ -4,12 +4,16 @@ our custom User
 """
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
+from django import forms
 
 
 class CustomUserCreationForm(UserCreationForm):
     """ New user creation form without username """
 
+<<<<<<< HEAD
 class CustomUserCreationForm(UserCreationForm):
+=======
+>>>>>>> origin/master
     class Meta(UserCreationForm):
         """ This class is undocumented """
 
@@ -35,3 +39,14 @@ class UploadCSVForm(forms.Form):
     numgrp = forms.IntegerField(
         min_value=2, max_value=25, label="Number of groups to create"
     )
+<<<<<<< HEAD
+=======
+
+
+class CreateGroupForm(forms.Form):
+    """ Form enabling the creation of a group """
+
+    numgrp = forms.IntegerField(
+        min_value=2, max_value=25, label="Number of groups to create"
+    )
+>>>>>>> origin/master
