@@ -4,37 +4,10 @@
       <div class="content-section">
         <form method="post">
           {% csrf_token %} <!--must have this line for forms-->
-          <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Create a New Class</legend>
-            <!-- Adds the option to select the semester and year.  -->
-            <div class="form-group">
-              <label for="class-term">School Year:</label>
-              <select class="form-control" id="class-term" name="school_year">
-                <option>SP 2019</option>
-                <option>FA 2018</option>
-                <option>SP 2018</option>
-                <option>FA 2017</option>
-              </select>
-            </div>
-            <!-- Adds a section for entering the class title. -->
-            <form action="/action_page.php">
-              <div class="form-group">
-                <label for="class-title">Class Title:</label>
-                <input type="text" class="form-control" placeholder="Enter Class Title" name="class-title">
-              </div>
-            </form>
-            <!-- Adds a section for uploading the student list. -->
-            <form action="/action_page.php">
-              <div class="form-group">
-                <label for="student-list">Upload Student List:</label>
-                <input type="file" class="form-control-file border" name="file">
-               </div>
-            </form>
-          </fieldset>
-          <!-- Adds the create and cancel buttons. -->
+          {{ formset.as_p }}
           <div class="form-group">
             <button type="submit" name="button" class="btn btn-outline-info">Create</button>
-            <button type="submit" name="button" class="btn btn-outline-info">Cancel</button>
+              <a class="btn btn-outline-info" href="{% url 'Gatorgrouper-home'%}">Cancel</a>
             <small class="text-muted">Back to Dashboard</small>
           </div>
         </form>

@@ -1,0 +1,50 @@
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+
+<h1>{{user.first_name}}'s Profile</h1>
+      <div class="class-container">
+{% if all_classes|length > 0 %}
+      {% for class in all_classes %}
+      <div class="class-item">
+      <h2>{{ class }}</h2>
+      <div class="assignments">
+
+
+        {% for assignment in all_assignments %}
+          {% if assignment.class_id == class  %}
+
+            <a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a>
+            <p>{{ assignment.description }}</p>
+
+          {% endif %}
+        {% endfor %}
+        </div>
+        </div>
+      {% endfor %}
+{% else %}
+  <p> Please Add a Class and Create Assignments to view them in your profile</p>
+{% endif %}
+      </div>
+
+      <div class="student-container">
+{% if all_classes|length > 0 %}
+      {% for class in all_classes %}
+      <div class="class-item">
+      <h2>{{ class }}</h2>
+      <div class="students">
+
+        {% for student in all_students %}
+          {% if student.class_id == class  %}
+
+            <p>{{ student.first_name }} {{ student.last_name }}</p>
+
+          {% endif %}
+        {% endfor %}
+        </div>
+        </div>
+      {% endfor %}
+{% else %}
+  <p> Please Add a Class and Create Students to view them in your profile</p>
+{% endif %}
+      </div>
+{% endblock %}
