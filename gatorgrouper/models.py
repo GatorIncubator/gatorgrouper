@@ -77,7 +77,7 @@ class Semester_Class(models.Model):
 
 class Assignment(models.Model):
     """ This is undocumented """
-
+    professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
     assignment_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
     assignment_name = models.CharField(max_length=30, default="Group Project")
