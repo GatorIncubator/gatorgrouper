@@ -51,10 +51,7 @@ if __name__ == "__main__":  # pragma: no cover
             GROUPED_STUDENT_IDENTIFIERS = group_creation.group_rrobin_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
             )
-        elif (
-            GG_ARGUMENTS.method == constants.ALGORITHM_GRAPH
-            and GG_ARGUMENTS.num_group is not constants.DEFAULT_NUMGRP
-        ):
+        elif GG_ARGUMENTS.method == constants.ALGORITHM_GRAPH:
             GROUPED_STUDENT_IDENTIFIERS = group_graph.group_graph_partition(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
             )
