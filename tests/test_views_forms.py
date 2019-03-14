@@ -118,6 +118,7 @@ class TestLoginView():
         self.user = models.Professor.objects.create_user(email="testuser@user.com", password="testuser")
         # self.response = self.user.login(username='testuser',
         # password='testpassword')
+        # pylint: disable=W0201
         self.client = Client()
         # self.factory = RequestFactory()
         # self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
@@ -132,6 +133,7 @@ class TestLoginView():
     def test_profile_login(self):
         """undocumented"""
         # cover profile
+        # pylint: disable=W0201
         self.response = self.client.get('/profile', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         # request.user = self.user
@@ -147,12 +149,14 @@ class TestLoginView():
 
     def test_create_classes(self):
         """undocumented"""
+        # pylint: disable=W0201
         self.response = self.client.get('/classes', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
     def test_assignments_login(self):
         """undocumented"""
+        # pylint: disable=W0201
         self.response = self.client.get('/assignments', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         self.response.method = "POST"
@@ -160,18 +164,21 @@ class TestLoginView():
 
     def test_groupresults_views(self):
         """undocumented"""
+        # pylint: disable=W0201
         self.response = self.client.get('/viewing-groups', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
     def test_add_students(self):
         """undocumented"""
+        # pylint: disable=W0201
         self.response = self.client.get('/add-students', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
     def test_create_groups(self):
         """undocumented"""
+        # pylint: disable=W0201
         self.response = self.client.get('/create-groups', follow=True)
         self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
