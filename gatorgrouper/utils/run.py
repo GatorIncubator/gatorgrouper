@@ -11,8 +11,7 @@ from gatorgrouper.utils import group_graph
 from gatorgrouper.utils import display
 from gatorgrouper.utils import constants
 
-def run_arguments(GG_ARGUMENTS):
-    preference = dict(read_student_file.read_csv_data(GG_ARGUMENTS.preferences))
+def run_arguments(GG_ARGUMENTS, preference=None):
     STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
         GG_ARGUMENTS.absentees, read_student_file.read_csv_data(GG_ARGUMENTS.file)
     )
