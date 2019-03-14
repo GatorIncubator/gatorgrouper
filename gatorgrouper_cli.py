@@ -22,6 +22,7 @@ if __name__ == "__main__":  # pragma: no cover
 
     # read in the student identifiers from the specified file
     input_list = read_student_file.read_csv_data(GG_ARGUMENTS.file)
+    preference = read_student_file.read_csv_data(GG_ARGUMENTS.preferences)
     check_if_arguments_valid = parse_arguments.check_valid(GG_ARGUMENTS, input_list)
     if check_if_arguments_valid is False:
         print("Incorrect command-line arguments.")
@@ -66,7 +67,7 @@ if __name__ == "__main__":  # pragma: no cover
             and GG_ARGUMENTS.num_group is not constants.DEFAULT_NUMGRP
         ):
             GROUPED_STUDENT_IDENTIFIERS = group_graph.group_graph_partition(
-                SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
+                SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group, preferences=preference
             )
         elif (
             GG_ARGUMENTS.num_group is constants.DEFAULT_NUMGRP
