@@ -1,0 +1,17 @@
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+
+<div class="container">
+  <h2>Team Groupings</h2>
+  <div class="list-group">
+      {% for group in groups %}
+      <h4 class="list-group-item-heading">Team #{{ forloop.counter }}</h4>
+      <ul>
+        {% for student in group %}
+        <li class="list-group-item-text">{{ student | first }}</li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}
