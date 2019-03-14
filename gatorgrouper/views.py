@@ -12,8 +12,8 @@ from django.db import IntegrityError
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
-from .utils.group_rrobin import group_rrobin_num_group
 from .utils.group_graph import group_graph_partition
+from .utils.group_rrobin import group_rrobin_num_group
 from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
 
