@@ -37,14 +37,12 @@
           </table>
         </div>
         <!-- End of Class Table -->
-
       </div>
       <!-- End of Class asspect -->
 
       <!-- Start of student asspect -->
       <div>
-        {% if all_classes|length > 0 %}
-        {% for class in all_classes %}
+
         <!-- Start of Student Table  -->
         <div>
           <table class="inLineTable">
@@ -74,10 +72,7 @@
 
       </div>
       <!-- End of Student asspect -->
-      {% endfor %}
-      {% else %}
-      <p> Please Add a class and Create Assignments to view them in your profile </p>
-      {% endif %}
+
     </div>
     <!-- End of Both Tables -->
   </div>
