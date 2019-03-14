@@ -53,27 +53,40 @@ class TestLoginView:
         self.client = Client()
         self.factory = RequestFactory()
         self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
+        self.client.login(email="superuser@user.com", password="super")
 
     def test_profile_views(self):
-        self.client.login(email="superuser@user.com", password="super")
         request = self.client.get('/profile', follow=True)
         response = views.profile(request)
         assert response.status_code == 200
 
     def test_assignments_views(self):
-        self.client.login(email="superuser@user.com", password="super")
         request = self.client.get('/assignments', follow=True)
         response = views.assignments(request)
         assert response.status_code == 200
 
     def test_survey_views(self):
-        self.client.login(email="superuser@user.com", password="super")
         request = self.client.get('/survey', follow=True)
         response = views.survey(request)
         assert response.status_code == 200
 
     def test_groupresults_views(self):
-        self.client.login(email="superuser@user.com", password="super")
         request = self.client.get('/viewing-groups', follow=True)
         response = views.groupResult(request)
+        assert response.status_code == 200
+
+    def test_create_classes(self):
+        request = self.client.get('/classes', follow=True)
+        response = views.create_classes(request)
+        assert response.status_code == 200
+
+    def test_add_students(self):
+        request = self.client.get('/add-students', follow=True)
+        response = views.add_students(request)
+        assert response.status_code == 200
+
+    def test_create_groups(self):
+        request = self.client.get('/create-groups', follow=True)
+        request.method == "POST"
+        response = views.create_groups(request)
         assert response.status_code == 200
