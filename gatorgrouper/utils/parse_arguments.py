@@ -36,7 +36,6 @@ def parse_arguments(args):
         "--num-group",
         help="Number of groups",
         type=int,
-        default=constants.DEFAULT_NUMGRP,
         required=True,
     )
 
