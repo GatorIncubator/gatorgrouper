@@ -107,17 +107,25 @@ class TestView:
         response = views.upload_csv(request)
         assert response.status_code == 200
 
-    def test_uploadcsv_method(self):
+    def test_uploadcsv_method(self, generate_csv_file):
         """undocumented"""
         # need to test form.isvalid()
         request = self.factory.get(path='/upload_csv')
         request.method = "POST"
+        request.POST = {
+            "email": "testuserl@test.com",
+            "first_name": "Spencer",
+            "last_name": "Huang",
+            "password1": "testpassword1",
+            "password2": "testpassword1",
+        }
+        # request.FILES = generate_csv_file
         response = views.upload_csv(request)
         assert response.status_code == 200
 
-    # def test_handle_uploaded_file(self, generate_csv):
-    #     responses = views.handle_uploaded_file(generate_csv)
-    #     assert responses != [' ']
+    def test_handle_uploaded_file(self, generate_csv_file):
+        responses = views.handle_uploaded_file(generate_csv_file)
+        assert responses != [' ']
 
 
 class TestLoginView():
