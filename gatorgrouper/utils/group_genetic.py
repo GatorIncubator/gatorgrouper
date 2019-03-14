@@ -283,7 +283,6 @@ def spawn(
     # pylint: disable=too-many-statements
     # pylint: disable=too-many-locals
     # Black would reformat the code in the way that does not pass pylint
-
     prev_population: List[Individual],
     mutation_rate: float,
     elitism_rate: float,
