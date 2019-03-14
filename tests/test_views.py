@@ -55,7 +55,7 @@ class TestLoginView():
     # fixtures = ['user.json']
 
     def setup(self):
-        self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
+        self.user = models.Professor.objects.create_user(email="testuser@user.com", password="testuser")
         # self.response = self.user.login(username='testuser',
                                         # password='testpassword')
         self.client = Client()
@@ -79,8 +79,9 @@ class TestLoginView():
     #     response = self.user.post('/survey', data=data, follow=True)
     #     assert response.status_code == 200
     def test_profile_login(self):
+        # cover profile
         self.response = self.client.get('/profile', follow=True)
-        self.client.login(email="superuser@user.com", password="super")
+        self.client.login(email="testuser@user.com", password="testuser")
         # request.user = self.user
         # response = views.profile(request)
         assert self.response.status_code == 200
@@ -92,27 +93,28 @@ class TestLoginView():
         response = self.client.post('/profile', data=data, follow=True)
         assert response.status_code == 200
 
+    def test_create_classes(self):
+        self.response = self.client.get('/classes', follow=True)
+        self.client.login(email="testuser@user.com", password="testuser")
+        assert self.response.status_code == 200
+
     def test_assignments_login(self):
         self.response = self.client.get('/assignments', follow=True)
-        self.client.login(email="superuser@user.com", password="super")
+        self.client.login(email="testuser@user.com", password="testuser")
+        self.response.method = "POST"
         assert self.response.status_code == 200
 
     def test_groupresults_views(self):
         self.response = self.client.get('/viewing-groups', follow=True)
-        self.client.login(email="superuser@user.com", password="super")
-        assert self.response.status_code == 200
-
-    def test_create_classes(self):
-        self.response = self.client.get('/classes', follow=True)
-        self.client.login(email="superuser@user.com", password="super")
+        self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
     def test_add_students(self):
         self.response = self.client.get('/add-students', follow=True)
-        self.client.login(email="superuser@user.com", password="super")
+        self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
 
     def test_create_groups(self):
         self.response = self.client.get('/create-groups', follow=True)
-        self.client.login(email="superuser@user.com", password="super")
+        self.client.login(email="testuser@user.com", password="testuser")
         assert self.response.status_code == 200
