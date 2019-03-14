@@ -4,7 +4,7 @@ from django.test import RequestFactory
 import pytest
 from gatorgrouper import views, models
 from django.http import HttpRequest
-from django.test import SimpleTestCase
+from django.test import TestCase
 from django.urls import reverse
 from mixer.backend.django import mixer
 from django.test.client import Client
@@ -49,18 +49,22 @@ class TestView:
     #     assert responses != [' ']
 
 class TestLoginView:
+    fixtures = ['user.json']
+
     def setup(self):
         self.client = Client()
-        self.factory = RequestFactory()
-        self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
-        self.client.login(email="superuser@user.com", password="super")
+        self.response = self.client.login(username='testuser',
+                                          password='testpassword')
+        # self.client = Client()
+        # self.factory = RequestFactory()
+        # self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
+        # self.client.login(email="superuser@user.com", password="super")
 
-    def test_profile_views(client):
-        client.login(email="superuser@user.com", password="super")
-        request = client.get('/profile', follow=True)
+    def test_profile_views(self):
+        self.response = self.client.get('/profile', follow=True)
         # request.user = self.user
-        response = views.profile(request)
-        assert response.status_code == 200
+        # response = views.profile(request)
+        assert self.response.status_code == 200
 
     def test_assignments_views(self):
         request = self.client.get('/assignments', follow=True)
