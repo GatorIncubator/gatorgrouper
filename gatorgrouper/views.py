@@ -1,10 +1,4 @@
 """ This is undocumented """
-from django.shortcuts import render
-from django.template import loader
-from django.contrib import admin
-# from django.http import HttpResponse
-# from django.http import Http404
-from .models import Professor, Semester_Class
 import csv
 from io import StringIO
 from django.shortcuts import render, redirect
@@ -12,7 +6,6 @@ from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import IntegrityError
-
 
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
@@ -54,12 +47,6 @@ def register(request):
     return render(
         request, "gatorgrouper/register.html", {"title": "Register", "form": form}
     )
-
-
-def index(request):
-    """ This is undocumented """
-    professors = Professor.objects.all()
-    classes = Semester_Class.objects.all()
 
 
 @login_required
@@ -130,11 +117,6 @@ def create_classes(request):
             return redirect("profile")
     else:
         formset = ClassFormSet()
-
-
-def users(request):
-    """ Create user view"""
-    return render( request)
 
     return render(
         request,
