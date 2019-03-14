@@ -2,7 +2,6 @@
 
 import argparse
 import logging
-import json
 from gatorgrouper.utils import read_student_file
 from gatorgrouper.utils import constants
 
