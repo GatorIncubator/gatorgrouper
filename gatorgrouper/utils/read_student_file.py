@@ -1,7 +1,7 @@
 """ Reads CSV data file """
 
 import csv
-import string
+import re
 from pathlib import Path
 
 
@@ -29,7 +29,7 @@ def read_csv_data(filepath):
                     temp.append(True)
                 elif value.lower() == "false":
                     temp.append(False)
-                elif value.isdigit():
+                elif re.match("^\d+?\.\d+?$", value) is True:
                     temp.append(float(value))
                 else:
                     temp.append(value)
@@ -43,7 +43,7 @@ def read_csv_data(filepath):
                     temp.append(True)
                 elif value.lower() == "false":
                     temp.append(False)
-                elif value.isdigit():
+                elif re.match("^\d+?\.\d+?$", value) is True:
                     temp.append(float(value))
                 else:
                     temp.append(value)
