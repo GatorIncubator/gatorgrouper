@@ -84,7 +84,6 @@ def parse_arguments(args):
 
     gg_parser.add_argument(
         "--preferences-weight",
-        help="something",
         help="Prefered weights",
         type=float,
         default=constants.DEFAULT_PREFERENCES_WEIGHT,
@@ -93,10 +92,25 @@ def parse_arguments(args):
 
     gg_parser.add_argument(
         "--preferences-weight-match",
-        help="something",
         help="Prefered matching weights",
         type=float,
         default=constants.DEFAULT_PREFERENCES_WEIGHT_MATCH,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--objective-weights",
+        help="Objective weights for compatibility input csv file",
+        type=list,
+        default=constants.DEFAULT_OBJECTIVE_WEIGHTS,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--objective-measures",
+        help="Objective measures for compatibility input csv file: sum, avg, max, min, match, diff",
+        type=list,
+        default=constants.DEFAULT_OBJECTIVE_MEASURES,
         required=False,
     )
 
