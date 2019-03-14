@@ -78,9 +78,9 @@ class TestLoginView():
 
     #     response = self.user.post('/survey', data=data, follow=True)
     #     assert response.status_code == 200
-
-    def test_profile_views(self):
+    def test_profile_login(self):
         self.response = self.client.get('/profile', follow=True)
+        self.client.login(email="superuser@user.com", password="super")
         # request.user = self.user
         # response = views.profile(request)
         assert self.response.status_code == 200
@@ -91,24 +91,28 @@ class TestLoginView():
             "all_students": "students"}
         response = self.client.post('/profile', data=data, follow=True)
         assert response.status_code == 200
-        # self.assertTemplateUsed(self.response, 'gatorgrouper/profile.html')
 
-    def test_assignments_views(self):
+    def test_assignments_login(self):
         self.response = self.client.get('/assignments', follow=True)
+        self.client.login(email="superuser@user.com", password="super")
         assert self.response.status_code == 200
 
     def test_groupresults_views(self):
         self.response = self.client.get('/viewing-groups', follow=True)
+        self.client.login(email="superuser@user.com", password="super")
         assert self.response.status_code == 200
 
     def test_create_classes(self):
         self.response = self.client.get('/classes', follow=True)
+        self.client.login(email="superuser@user.com", password="super")
         assert self.response.status_code == 200
 
     def test_add_students(self):
         self.response = self.client.get('/add-students', follow=True)
+        self.client.login(email="superuser@user.com", password="super")
         assert self.response.status_code == 200
 
     def test_create_groups(self):
         self.response = self.client.get('/create-groups', follow=True)
+        self.client.login(email="superuser@user.com", password="super")
         assert self.response.status_code == 200
