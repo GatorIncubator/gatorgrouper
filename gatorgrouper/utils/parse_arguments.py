@@ -85,6 +85,7 @@ def parse_arguments(args):
     gg_parser.add_argument(
         "--preferences-weight",
         help="something",
+        help="Prefered weights",
         type=float,
         default=constants.DEFAULT_PREFERENCES_WEIGHT,
         required=False,
@@ -93,6 +94,7 @@ def parse_arguments(args):
     gg_parser.add_argument(
         "--preferences-weight-match",
         help="something",
+        help="Prefered matching weights",
         type=float,
         default=constants.DEFAULT_PREFERENCES_WEIGHT_MATCH,
         required=False,
