@@ -88,6 +88,8 @@ def compatibility(
             compat = int(a_score == b_score)
         elif measure == "diff":
             compat = abs(a_score - b_score)
+        else:
+            raise Exception("Invalid measure")
 
         # Scale the compatibility of a[i] and b[i] using the i-th objective weight
         scores.append(compat * weight)
