@@ -246,7 +246,7 @@ class TestLoginView:
         response = views.create_groups(request)
         assert response.status_code == 200
 
-    @pytest.mark.xfail
+    # @pytest.mark.xfail
     def test_create_groups_post_is_valid(self):
         """undocumented"""
         obj_assignment = mixer.blend("gatorgrouper.Assignment")
