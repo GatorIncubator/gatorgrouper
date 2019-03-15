@@ -236,6 +236,7 @@ def create_groups(request):  # pylint: disable=too-many-locals
             num_of_groups = groupNum.cleaned_data.get("numgrp")
             student_list_dict = gatherStudents(class_id_num)
             # pylint: disable=unused-variable
+            # Dictionary to hold student object and student names
             student_list = []
             for name, obj in student_list_dict.items():
                 student_list.append(name)
