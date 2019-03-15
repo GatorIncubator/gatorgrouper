@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import IntegrityError
 
-
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
@@ -23,6 +22,7 @@ def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
     if request.method == "POST":
         form = UploadCSVForm(request.POST, request.FILES)
+        # print(request.FILES)
         if form.is_valid():
             responses = parse_uploaded_csv(request.FILES["student_data"])
             if request.FILES.get("student_preferences"):
@@ -93,6 +93,8 @@ def register(request):
             form.save()
             first_name = form.cleaned_data.get("first_name")
             last_name = form.cleaned_data.get("last_name")
+            # message = "Account created for " + first_name + " " + last_name
+            # messages.success(request, message=message)
             messages.success(request, f"Account created for {first_name} {last_name}")
             return redirect("login")
     else:
@@ -124,6 +126,30 @@ def profile(request):
     )
 
 
+def handle_uploaded_file(csvfile):
+    """
+        Transform uploded CSV data into list of student responses:
+        [["student name", True, False, ...]]
+    """
+    # get rid of decode because it's already default in python3
+    # f = StringIO(csvfile.read().decode("utf-8"))
+    f = StringIO(csvfile.read())
+    csvdata = list(csv.reader(f, delimiter=","))
+
+    # transform into desired output
+    responses = list()
+    for record in csvdata:
+        temp = list()
+        temp.append(record[0].replace('"', ""))
+        for value in record[1:]:
+            if value.lower() == "true":
+                temp.append(True)
+            elif value.lower() == "false":
+                temp.append(False)
+        responses.append(temp)
+    return responses
+
+
 def home(request):
     """ Homepage view """
 
@@ -134,7 +160,6 @@ def home(request):
 @login_required
 def create_classes(request):
     """ Create classes view """
-
     ClassFormSet = modelform_factory(
         Semester_Class,
         fields=("semester", "department", "class_number", "class_section"),
