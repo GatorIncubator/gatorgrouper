@@ -1,4 +1,4 @@
-""" This document contains all of the views used for our custom user"""
+""" This file allows us to write our own custom views for our HTML templates"""
 import csv
 from io import StringIO
 from django.shortcuts import render, redirect
@@ -277,7 +277,7 @@ def create_groups(request):  # pylint: disable=too-many-locals
                     f"The groups for this assignment have been saved. To see them,"
                     + f"visit the view groups page",
                 )
-    # condition to pass the empty forms at the beginning
+    # condition to pass the empty form at the beginning
     else:
         formset = GroupForm(request.user)
         groupNum = CreateGroupForm()
