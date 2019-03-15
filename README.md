@@ -405,6 +405,201 @@ foreign keys using `django.db.models.ForeignKey`. The different entities within
 the classes are linked by a means one-to-many, many-to-one, and many-to-many
 relationship.
 
+### Set Up a Python Virtual Environment with Django
+
+Step 1: Create a virtual environment named eb-virt.
+On Unix-based systems, such as Linux or OS X, enter the following command:
+
+```
+~$ virtualenv ~/eb-virt
+```
+
+On Windows, enter the following command:
+
+```
+C:\> virtualenv %HOMEPATH%\eb-virt
+```
+
+Step 2: Activate the virtual environment.
+On Unix-based systems, enter the following command:
+
+```
+~$ source ~/eb-virt/bin/activate
+(eb-virt) ~$
+```
+
+On Windows, enter the following command:
+
+```
+C:\>%HOMEPATH%\eb-virt\Scripts\activate
+(eb-virt) C:\>
+```
+
+You will see (eb-virt) prepended to your command prompt, indicating that you're
+in a virtual environment.
+Note:
+The remainder of these instructions show the Linux command prompt in your home
+directory ~$. On Windows this is C:\Users\USERNAME>, where USERNAME is your
+Windows login name.
+
+Step 3: Use pip to install Django.
+
+```
+(eb-virt)~$ pip install django==2.1.1
+```
+
+Note:
+The Django version you install must be compatible with the Python version on
+the Elastic Beanstalk Python configuration that you choose for deploying your
+application. For deployment details, see Deploy Your Site With the EB CLI in
+this topic. For details on current Python configurations, see Python in the
+AWS Elastic Beanstalk Platforms document.
+For Django version compatibility with Python, see What Python version can I
+use with Django?
+
+Step 4: To verify that Django has been installed, type:
+
+```
+(eb-virt)~$ pip freeze
+Django==2.1.1
+...
+```
+
+This command lists all of the packages installed in your virtual environment.
+Later you will use the output of this command to configure your project for use
+with Elastic Beanstalk.
+
+### Configure Your Django Application for Elastic Beanstalk
+
+Now that you have a Django-powered site on your local machine, you can configure
+it for deployment with Elastic Beanstalk.
+By default, Elastic Beanstalk looks for a file called application.py to start
+your application. Since this doesn't exist in the Django project that you've
+created, some adjustment of your application's environment is necessary. You
+will also need to set environment variables so that your application's modules
+can be loaded.
+
+To configure your site for Elastic Beanstalk
+Step 1: Activate your virtual environment.
+On Linux-based systems, enter the following command:
+
+```
+~/ebdjango$ source ~/eb-virt/bin/activate
+```
+
+  On Windows, enter the following command:
+
+```
+C:\Users\USERNAME\ebdjango>%HOMEPATH%\eb-virt\Scripts\activate
+```
+
+Step 2: Run pip freeze and save the output to a file named requirements.txt:
+
+```
+(eb-virt) ~/ebdjango$ pip freeze > requirements.txt
+```
+
+Elastic Beanstalk uses requirements.txt to determine which package to install on
+the EC2 instances that run your application.
+
+Step 3: Create a new directory, called .ebextensions:
+
+```
+(eb-virt) ~/ebdjango$ mkdir .ebextensions
+```
+
+Step 4: Within the .ebextensions directory, add a configuration file named
+django.config with the following text:
+
+Example ~/ebdjango/.ebextensions/django.config
+
+```
+option_settings:
+aws:elasticbeanstalk:container:python:
+WSGIPath: ebdjango/wsgi.py
+```
+
+This setting, WSGIPath, specifies the location of the WSGI script that Elastic
+Beanstalk uses to start your application.
+
+Step 5: Deactivate your virtual environment by with the deactivate command:
+
+```
+(eb-virt) ~/ebdjango$ deactivate
+```
+
+Reactivate your virtual environment whenever you need to add additional packages
+to your application or run your application locally.
+
+### Deploy
+
+To create an environment and deploy your Django application:
+
+Step 1: Initialize your EB CLI repository with the eb init command:
+
+```
+~/ebdjango$ eb init -p python-3.6 django-tutorial
+Application django-tutorial has been created.
+```
+
+This command creates a new application named django-tutorial and configures your
+local repository to create environments with the latest Python 3.6 platform
+version.
+
+Step 2: (optional) Run eb init again to configure a default keypair so that you
+can connect to the EC2 instance running your application with SSH:
+
+```
+~/ebdjango$ eb init
+Do you want to set up SSH for your instances?
+(y/n): y
+Select a keypair.
+1) my-keypair
+2) [ Create new KeyPair ]
+```
+
+Step 3: Create an environment and deploy you application to it with eb create:
+
+```
+~/ebdjango$ eb create django-env
+```
+
+Step 4: When the environment creation process completes, find the domain name of
+your new environment by running eb status:
+
+```
+~/ebdjango$ eb status
+```
+
+Step 5: Edit the settings.py file in the ebdjango directory, locate the
+ALLOWED_HOSTS setting, and then add your application's domain name that you
+found in the previous step to the setting's value. If you can't find this
+setting in the file, add it to a new line.
+
+```
+...
+ALLOWED_HOSTS = ['eb-django-app-dev.elasticbeanstalk.com']
+```
+
+Step 6: Save the file, and then deploy your application by running eb deploy.
+When you run eb deploy, the EB CLI bundles up the contents of your project
+directory and deploys it to your environment.
+
+```
+~/ebdjango$ eb deploy
+```
+
+Step 7: When the environment update process completes, open your web site with
+eb open:
+
+```
+~/ebdjango$ eb open
+```
+
+This will open a browser window using the domain name created for your
+application. You should see the same Django website that you created and
+tested locally.
+
 ## Problems or Praise
 
 If you have any problems with installing or using GatorGrouper, then please
