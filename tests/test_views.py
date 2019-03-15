@@ -98,10 +98,12 @@ class TestLoginView:
 
     def test_create_classes_post(self):
         """undocumented"""
-        obj = mixer.blend("gatorgrouper.Semester_Class", department="CS", class_number="CS101", class_section="01")
+        prof_obj = mixer.blend("gatorgrouper.Professor",)
+        obj = mixer.blend("gatorgrouper.Semester_Class", professor_id=prof_obj, semester="S19", department="CS", class_number="CS101", class_section="01")
         testdata = {
+            "professor_id": prof_obj.professor_id,
             "class_id": obj.class_id,
-            "semester": obj.semester,
+            "semester": "S19",
             "department": "CS",
             "class_number": "CS101",
             "class_section": "01",
@@ -112,7 +114,7 @@ class TestLoginView:
         messages = FallbackStorage(request)
         setattr(request, '_messages', messages)
         response = views.create_classes(request)
-        assert response.status_code == 200
+        assert response.status_code == 302
 
     def test_create_classes_get(self):
         """undocumented"""
@@ -192,7 +194,7 @@ class TestLoginView:
 
     def test_add_students_post(self):
         """undocumented"""
-        obj = mixer.blend("gatorgrouper.Student", first_name="test", last_name="user")
+        mixer.blend("gatorgrouper.Student", first_name="test", last_name="user")
         class_obj = mixer.blend("gatorgrouper.Semester_Class")
         testdata = {
             "class_id": class_obj.class_id,
