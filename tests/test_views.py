@@ -1,6 +1,7 @@
 """Testing views"""
 from django.test import RequestFactory
 from django.contrib.messages.storage.fallback import FallbackStorage
+
 # from django.core.files.uploadedfile import SimpleUploadedFile
 import pytest
 from mixer.backend.django import mixer
