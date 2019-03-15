@@ -77,6 +77,23 @@ def generate_csv(tmpdir_factory):
 
 
 @pytest.fixture(scope="session")
+def generate_csv_preference(tmpdir_factory):
+    """ Generate a tempory sample csv """
+    fn = tmpdir_factory.mktemp("data").join("csvNgp.csv")
+    headers = ["NAME", "NAME2"]
+    with open(str(fn), "w") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=headers)
+        writer.writeheader()
+        writer.writerow({"NAME": "delgrecoj", "NAME2": "delgrecoj2"})
+        writer.writerow({"NAME": "delgrecoj2", "NAME2": "delgrecoj"})
+        writer.writerow({"NAME": "delgrecoj3", "NAME2": "delgrecoj4"})
+        writer.writerow({"NAME": "delgrecoj4", "NAME2": "delgrecoj3"})
+        writer.writerow({"NAME": "delgrecoj5", "NAME2": "delgrecoj6"})
+        writer.writerow({"NAME": "delgrecoj6", "NAME2": "delgrecoj5"})
+    return str(fn)
+
+
+@pytest.fixture(scope="session")
 def generate_csv_no_header(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
