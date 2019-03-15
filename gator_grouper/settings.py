@@ -144,6 +144,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "gator_grouper.wsgi.application"
 
+SOCIAL_AUTH_PIPELINE = (
+'social_core.pipeline.social_auth.social_details'
+)
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
