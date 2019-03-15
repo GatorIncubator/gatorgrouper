@@ -25,6 +25,7 @@ def find_oauth_key():  # pylint: disable=R1710
     if os.path.isfile(SECRET_KEY_FILEPATH):
         # pylint: disable=import-error
         from secret_key import OAUTH_SECRET_KEY as key
+
         return key
 
 
