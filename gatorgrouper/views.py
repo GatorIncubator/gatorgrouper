@@ -17,6 +17,7 @@ from .forms import CustomUserCreationForm
 from .forms import AssignmentForm, StudentForm, GroupForm
 
 
+# Collects information from the form and passes it to upload_csv.html
 def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
     if request.method == "POST":
@@ -51,6 +52,8 @@ def register(request):
     )
 
 
+# Collects information regarding the Professor, classes, assignment_list, and Students
+# and passes it to profile.html
 @login_required
 def profile(request):
     """ This is undocumented """
@@ -103,6 +106,8 @@ def home(request):
     # return HttpResponse
 
 
+# Function to view the list of classes provided by the Professor and passed to
+# classes.html
 @login_required
 def create_classes(request):
     """ Create classes view """
@@ -130,6 +135,7 @@ def create_classes(request):
     # return HttpResponse
 
 
+# Allows the user to view the list of assignments
 @login_required
 def assignments(request):
     """ Create assignments view """
@@ -151,12 +157,14 @@ def assignments(request):
     )
 
 
+# Using the survey to get the grouping preference for the students
 @login_required
 def survey(request):
     """ Student's grouping preference? """
     return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
 
 
+# The function works to display the output of the created group of students
 @login_required
 def groupResult(request):
     """ Group result view """
@@ -191,6 +199,7 @@ def groupResult(request):
     )
 
 
+# Function allows displaying current students and add students based on the request
 @login_required
 def add_students(request):
     """ Used to display current students in roster and provides option to add students """
@@ -209,6 +218,7 @@ def add_students(request):
     )
 
 
+# Allows to create a group using the rrobin method
 @login_required
 def create_groups(request):  # pylint: disable=too-many-locals
     """ Created groups using gatorgrouper functions """
