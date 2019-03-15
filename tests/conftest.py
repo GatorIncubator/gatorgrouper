@@ -139,7 +139,7 @@ def no_arguments():
 
 @pytest.fixture(scope="session")
 def generate_csv_file(tmpdir_factory):
-    """ Generate a tempory sample csv """
+    """ Generate a sample csv file that returns the file object """
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
     headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
     with open(str(fn), "w", encoding="utf-8") as csvfile:

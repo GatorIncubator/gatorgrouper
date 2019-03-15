@@ -58,6 +58,7 @@ class TestView:
 
     # pylint: disable=R0201
     def test_handle_uploaded_file(self, generate_csv_file):
+        """undocumented"""
         responses = views.handle_uploaded_file(generate_csv_file.open())
         assert responses != [" "]
 
