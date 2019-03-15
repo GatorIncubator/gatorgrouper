@@ -11,7 +11,7 @@ from gatorgrouper.utils import constants
 
 
 def run_arguments(GG_ARGUMENTS, preference=None):
-    """ Run different algorithms with input arguments"""
+    """ Run different algorithms with input arguments """
     STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
         GG_ARGUMENTS.absentees, read_student_file.read_csv_data(GG_ARGUMENTS.file)
     )
@@ -71,7 +71,5 @@ def input_interface(
             objective_measures=objective_measures,
         )
     else:
-        GROUPED_STUDENT_IDENTIFIERS = group_creation.group_random_num_group(
-            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
-        )
-    return GROUPED_STUDENT_IDENTIFIERS
+        grouped_students = group_creation.group_random_num_group(students_reshuffle, num_group)
+    return grouped_students
