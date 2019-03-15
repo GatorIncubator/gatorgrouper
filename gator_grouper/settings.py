@@ -66,10 +66,6 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 )
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = ["http://gatorgrouper-env.vimdyhzfyw.us-east-2.elasticbeanstalk.com/",
                  "127.0.0.1",
                  ]
