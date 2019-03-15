@@ -177,7 +177,7 @@ class TestLoginView:
         # response = views.create_classes(request)
         request.user = self.user
         response = views.assignments(request)
-        assert response.status_code == 302
+        assert response.status_code == 200
 
     def test_groupresults_views_get(self):
         """undocumented"""
@@ -230,7 +230,7 @@ class TestLoginView:
         messages = FallbackStorage(request)
         setattr(request, "_messages", messages)
         response = views.add_students(request)
-        assert response.status_code == 302
+        assert response.status_code == 200
 
     def test_create_groups_get(self):
         """undocumented"""
