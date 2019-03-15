@@ -13,7 +13,7 @@ from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
 from .utils.group_graph import group_graph_partition
-from .utils.group_creation import group_rrobin_num_group
+from .utils.run import input_interface
 from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
 from .forms import AssignmentForm, StudentForm, GroupForm
@@ -255,7 +255,7 @@ def create_groups(request):  # pylint: disable=too-many-locals
             student_list = []
             for name, obj in student_list_dict.items():
                 student_list.append(name)
-            groups = group_rrobin_num_group(student_list, num_of_groups)
+            groups = input_interface(student_list, "rrobin", num_of_groups)
             if request.POST["button"] == "save":
                 counter = 1
                 for group in groups:
