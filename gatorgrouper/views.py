@@ -222,9 +222,11 @@ def add_students(request):
 # Allows to create a group using the rrobin method
 @login_required
 def create_groups(request):  # pylint: disable=too-many-locals
-    """ Created groups using gatorgrouper functions """
+    """ Finds all the required information, call GatorGrouper with the provided
+       information and displays it to the user and saves it """
     groups = []
     # pylint: disable=too-many-nested-blocks
+    # conditional logic for a 'POST' request
     if request.method == "POST":
         formset = GroupForm(request.user, request.POST)
         groupNum = CreateGroupForm(request.POST)
@@ -238,10 +240,11 @@ def create_groups(request):  # pylint: disable=too-many-locals
             for name, obj in student_list_dict.items():
                 student_list.append(name)
             groups = group_rrobin_num_group(student_list, num_of_groups)
+            # Goes through the submitted group when the 'save' button is in use
             if request.POST["button"] == "save":
                 counter = 1
+                # saving information for student nam
                 for group in groups:
-                    # get student object and then save and then we're done!
                     group_name = "Group " + str(counter)
                     for student in group:
                         try:
@@ -251,10 +254,12 @@ def create_groups(request):  # pylint: disable=too-many-locals
                                 group_name=group_name,
                             )
                             s.save()
+                        # To check if the assignment_id and student_id hold unique
+                        # values
                         except IntegrityError:
                             messages.error(
                                 request,
-                                f"This assignment already has a group associated"
+                                f"This assignment already has a group associated "
                                 + f"with it.\nPlease Try again",
                             )
                             return redirect("create-groups")
@@ -265,13 +270,11 @@ def create_groups(request):  # pylint: disable=too-many-locals
                     f"The groups for this assignment have been saved. To see them,"
                     + f"visit the view groups page",
                 )
+    # condition to pass the empty forms at the beginning
     else:
         formset = GroupForm(request.user)
         groupNum = CreateGroupForm()
-    # conflict_list = gatherConflicts(request)
 
-    # don't forget to import gatherConflicts and Grouped_students,
-    # removed those imports for flake8 test
     return render(
         request,
         "gatorgrouper/create-groups.html",
