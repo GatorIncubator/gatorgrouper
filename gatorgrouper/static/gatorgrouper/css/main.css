@@ -171,12 +171,10 @@ a.article-title:hover {
 .class-container {
   width: 90%
   display:flex;
-  justify-content: center;
   align-items: flex-start;
   background-color: #FFFFFF;
   flex-wrap: wrap;
   min-height: 15em
-
 }
 
 .class-bigbox {
@@ -257,11 +255,10 @@ a.article-title:hover {
 .show {display: block;}
 
 .inLineTable {
-  display: inline-block;
+  display: inline-flex;
 }
 table {
   color: #333;
-  width: 100%;
 
   margin: 0px;
   padding: 5px 5px 5px 5px;
