@@ -54,9 +54,9 @@ class TestView:
         response = views.upload_csv(request)
         assert response.status_code == 200
 
-    def test_uploadcsv_post(self):
+    def test_uploadcsv_post(self, generate_csv_file):
         """undocumented"""
-        request = self.factory.post(path='/upload_csv')
+        request = self.factory.post('/upload_csv', {'file': generate_csv_file})
         response = views.upload_csv(request)
         assert response.status_code == 200
 
