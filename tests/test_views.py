@@ -1,8 +1,8 @@
 """Testing views"""
 from django.test import RequestFactory
 import pytest
-from gatorgrouper import views, models
 from mixer.backend.django import mixer
+from gatorgrouper import views, models
 
 pytestmark = pytest.mark.django_db
 
@@ -12,6 +12,7 @@ class TestView:
 
     def setup(self):
         """undocumented"""
+        # pylint: disable=W0201
         self.factory = RequestFactory()
         self.user = models.Professor.objects.create_user(
             email="normaluser@user.com", password="normal"
@@ -31,9 +32,7 @@ class TestView:
 
     def test_register_method(self):
         """undocumented"""
-        # need to test form.isvalid()
         request = self.factory.get(path="/register", REQUEST_METHOD="POST")
-        # request = self.factory.post()
         # request.POST = {
         #     "email": "testuserl@test.com",
         #     "first_name": "Spencer",
@@ -57,6 +56,7 @@ class TestView:
         response = views.upload_csv(request)
         assert response.status_code == 200
 
+    # pylint: disable=R0201
     def test_handle_uploaded_file(self, generate_csv_file):
         responses = views.handle_uploaded_file(generate_csv_file.open())
         assert responses != [" "]
@@ -67,6 +67,7 @@ class TestLoginView:
 
     def setup(self):
         """undocumented"""
+        # pylint: disable=W0201
         self.user = models.Professor.objects.create_user(
             email="testuser@user.com", password="testuser"
         )
@@ -117,7 +118,8 @@ class TestLoginView:
 
     def test_assignments_login_post_is_valid(self):
         """undocumented"""
-        # obj = mixer.blend("gatorgrouper.Assignment", assignment_id=1, assignment_name="Group Project", description="This is an assignment")
+        # obj = mixer.blend("gatorgrouper.Assignment", assignment_id=1,
+        # assignment_name="Group Project", description="This is an assignment")
         # class_obj = mixer.blend("gatorgrouper.Semester_Class")
         # testdata = {
         #     "assignment_id": obj.assignment_id,
@@ -191,9 +193,9 @@ class TestLoginView:
     def test_create_groups_post_is_valid(self):
         """undocumented"""
         obj_assignment = mixer.blend("gatorgrouper.Assignment")
-        obj_groupedstudents = mixer.blend(
-            "gatorgrouper.Grouped_Student", assignment_id=obj_assignment
-        )
+        # obj_groupedstudents = mixer.blend(
+        #     "gatorgrouper.Grouped_Student", assignment_id=obj_assignment
+        # )
         testdata = {"assignment_id": obj_assignment.assignment_id, "numgrp": 3}
         request = self.factory.post("/create-groups", data=testdata, button="save")
         request.user = self.user

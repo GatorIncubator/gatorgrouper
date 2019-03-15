@@ -1,7 +1,5 @@
 """Testing settings"""
-import pytest
-import settings
-import os
+from gator_grouper import settings
 
 
 def test_find_or_create_secret_key():
