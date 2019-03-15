@@ -33,19 +33,7 @@ def parse_arguments(args):
     )
 
     gg_parser.add_argument(
-        "--group-size",
-        help="Number of students in a group",
-        type=int,
-        default=constants.DEFAULT_GRPSIZE,
-        required=False,
-    )
-
-    gg_parser.add_argument(
-        "--num-group",
-        help="Number of groups",
-        type=int,
-        default=constants.DEFAULT_NUMGRP,
-        required=False,
+        "--num-group", help="Number of groups", type=int, required=True
     )
 
     gg_parser.add_argument(
@@ -53,27 +41,16 @@ def parse_arguments(args):
     )
 
     gg_parser.add_argument(
-        "--random",
-        help="Use random grouping method",
-        action="store_const",
-        dest="grouping_method",
-        const=constants.ALGORITHM_RANDOM,
-    )
-
-    gg_parser.add_argument(
-        "--rrobin",
-        help="Use round-robin grouping method",
-        action="store_const",
-        dest="grouping_method",
-        const=constants.ALGORITHM_ROUND_ROBIN,
-    )
-
-    gg_parser.add_argument(
-        "--graph",
-        help="Use graph grouping method",
-        action="store_const",
-        dest="grouping_method",
-        const=constants.ALGORITHM_GRAPH,
+        "--method",
+        type=str,
+        help="Grouping algorithm",
+        choices=[
+            constants.ALGORITHM_GRAPH,
+            constants.ALGORITHM_ROUND_ROBIN,
+            constants.ALGORITHM_RANDOM,
+        ],
+        default=constants.DEFAULT_METHOD,
+        required=False,
     )
 
     gg_parser.add_argument(
@@ -82,6 +59,46 @@ def parse_arguments(args):
         nargs="+",
         type=str,
         default=constants.DEFAULT_ABSENT,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--preferences",
+        help="Preferences of students for graph algorithm",
+        type=str,
+        default=constants.DEFAULT_PREFERENCES,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--preferences-weight",
+        help="Prefered weights",
+        type=float,
+        default=constants.DEFAULT_PREFERENCES_WEIGHT,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--preferences-weight-match",
+        help="Prefered matching weights",
+        type=float,
+        default=constants.DEFAULT_PREFERENCES_WEIGHT_MATCH,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--objective-weights",
+        help="Objective weights for compatibility input csv file",
+        type=list,
+        default=constants.DEFAULT_OBJECTIVE_WEIGHTS,
+        required=False,
+    )
+
+    gg_parser.add_argument(
+        "--objective-measures",
+        help="Objective measures for compatibility input csv file: sum, avg, max, min, match, diff",
+        type=list,
+        default=constants.DEFAULT_OBJECTIVE_MEASURES,
         required=False,
     )
 
@@ -98,9 +115,7 @@ def check_valid(args, students_list):
     """Verify the command-line arguments"""
     verified_arguments = False
     students_list_length = len(students_list)
-    if args.group_size > 1 and args.group_size <= students_list_length / 2:
-        verified_arguments = True
-    if args.num_group > 1 and args.group_size <= students_list_length / 2:
+    if args.num_group > 1 and args.num_group <= students_list_length / 2:
         verified_arguments = True
     if args.file is constants.NONE:
         verified_arguments = False

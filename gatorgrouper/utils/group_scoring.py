@@ -17,11 +17,10 @@ def score_group(
     return score
 
 
-# pylint: disable=bad-continuation
-def score_groups(
+def calculate_avg(
     student_groups: Union[List[List[str]], List[List[List[Union[str, bool]]]]]
 ) -> Tuple[List[int], int]:
-    """ score multiple groups """
+    """ Utilizes score_group in order to find the mean for all of the groups """
     scores = []
     ave = 0
     for group in student_groups:
