@@ -1,14 +1,8 @@
 """Testing views"""
-from django.contrib.auth.models import AnonymousUser, User
 from django.test import RequestFactory
 import pytest
 from gatorgrouper import views, models
-from django.http import HttpRequest
-from django.test import TestCase
-from django.urls import reverse
-from django.contrib.messages.storage.fallback import FallbackStorage
 from mixer.backend.django import mixer
-from django.test.client import Client
 
 pytestmark = pytest.mark.django_db
 
