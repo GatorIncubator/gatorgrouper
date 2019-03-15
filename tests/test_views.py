@@ -217,3 +217,17 @@ class TestLoginView():
         request.user = self.user
         response = views.create_groups(request)
         assert response.status_code == 200
+
+    @pytest.mark.xfail
+    def test_create_groups_post_is_valid(self):
+        """undocumented"""
+        obj_assignment = mixer.blend("gatorgrouper.Assignment")
+        obj_groupedstudents = mixer.blend("gatorgrouper.Grouped_Student", assignment_id=obj_assignment)
+        testdata = {
+            "assignment_id": obj_assignment.assignment_id,
+            "numgrp": 3
+        }
+        request = self.factory.post('/create-groups', data=testdata, button="save")
+        request.user = self.user
+        response = views.create_groups(request)
+        assert response.status_code == 200

@@ -1,10 +1,10 @@
 import pytest
 
 from django.contrib.admin.sites import AdminSite
-from mixer.backend.djangoimport mixer
+from mixer.backend.django import mixer
 
 pytestmark = pytest.mark.django_db
 
-from .. import admin
+# from .. import admin
 
-class
+# class
