@@ -10,14 +10,18 @@ from networkx.algorithms.cuts import cut_size
 
 def recursive_kl(graph: Graph, numgrp=2) -> List[Set[int]]:
     """
-    Recursively use Kernighan-Lin algorithm to create a k-way graph partition
+    Recursively use the Kernighan-Lin algorithm to create a k-way graph partition.
+    This function will either return two groups or more than two depending on the
+    value of numgrp. Each group generated is different from the previous.
     """
     power = log(numgrp, 2)
     if power != int(power) or power < 1:
         raise ValueError("numgrp must be a power of 2 and at least 2.")
+    # For a group of two bisect it and return two groups
     if numgrp == 2:
         # Base case for recursion: use Kernighan-Lin to create 2 groups
         return list(kernighan_lin_bisection(graph))
+    # For the next group of two divide numgrp by 2
     next_numgrp = numgrp / 2
     groups = []
     for subset in kernighan_lin_bisection(graph):
@@ -31,10 +35,11 @@ def total_cut_size(graph: Graph, partition: List[int]) -> float:
     Computes the sum of weights of all edges between different subsets in the partition
     """
     cut = 0.0
+    # Edges are added from the nodes on the graph, creating subsets
     for i, subset1 in enumerate(partition):
         for subset2 in partition[i:]:
+            # Sum of weights added from all subsets and set equal to cut
             cut += cut_size(graph, subset1, T=subset2)
-            print(subset1, subset2, cut)
     return cut
 
 
@@ -58,10 +63,13 @@ def compatibility(
     If no measures are specified, "avg" is used as a default.
     """
     if not len(a) == len(b):
-        raise Exception("Tuples passed to compatibility() must have same size")
+        # Raise an exception notice if student tuples don't match
+        raise Exception("Tuples passed to compatibility() must have same size.")
     if objective_weights is None:
+        # Return length
         objective_weights = [1] * len(a)
     if objective_measures is None:
+        # Default to return average if set equal to None
         objective_measures = ["avg"] * len(a)
     scores = []
     for a_score, b_score, weight, measure in zip(
@@ -80,6 +88,8 @@ def compatibility(
             compat = int(a_score == b_score)
         elif measure == "diff":
             compat = abs(a_score - b_score)
+        else:
+            raise Exception("Invalid measure")
 
         # Scale the compatibility of a[i] and b[i] using the i-th objective weight
         scores.append(compat * weight)
@@ -96,7 +106,8 @@ def group_graph_partition(
     preferences_weight_match=1.3,
 ):
     """
-    Form groups using recursive Kernighan-Lin algorithm
+    Form groups using recursive Kernighan-Lin algorithm by reading in students list
+    and weight list and partitioning the vertices.
     """
     # Read in students list and the weight list
     students = [item[0] for item in inputlist]
@@ -133,17 +144,3 @@ def group_graph_partition(
     for p in partition:
         groups.append([inputlist[i] for i in p])
     return groups
-
-
-if __name__ == "__main__":
-    student_data = [
-        ["one", 0, 0],
-        ["two", 0, 0.5],
-        ["three", 0.5, 0],
-        ["four", 0.75, 0.75],
-        ["five", 0.8, 0.1],
-        ["six", 0, 1],
-        ["seven", 1, 0],
-        ["eight", 1, 1],
-    ]
-    student_groups = group_graph_partition(student_data, 4)

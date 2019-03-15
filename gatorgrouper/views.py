@@ -1,5 +1,6 @@
 """ This file allows us to write our own custom views for our HTML templates"""
 import csv
+import re
 from io import StringIO
 from django.shortcuts import render, redirect
 from django.forms import modelform_factory
@@ -11,7 +12,8 @@ from django.db import IntegrityError
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
-from .utils.group_rrobin import group_rrobin_num_group
+from .utils.group_graph import group_graph_partition
+from .utils.group_creation import group_rrobin_num_group
 from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
 from .forms import AssignmentForm, StudentForm, GroupForm
@@ -23,18 +25,67 @@ def upload_csv(request):
     if request.method == "POST":
         form = UploadCSVForm(request.POST, request.FILES)
         if form.is_valid():
-            responses = handle_uploaded_file(request.FILES["file"])
+            responses = parse_uploaded_csv(request.FILES["student_data"])
+            if request.FILES.get("student_preferences"):
+                preferences = parse_uploaded_csv(
+                    request.FILES["student_preferences"], as_dict=True
+                )
+            else:
+                preferences = None
             numgrp = form.cleaned_data["numgrp"]
-            groups = group_rrobin_num_group(responses, numgrp)
+            preferences_weight = form.cleaned_data["preferences_weight"]
+            preferences_weight_match = form.cleaned_data["preferences_weight_match"]
+            groups = group_graph_partition(
+                responses,
+                numgrp,
+                preferences=preferences,
+                preferences_weight=preferences_weight,
+                preferences_weight_match=preferences_weight_match,
+            )
             return render(
-                request, "gatorgrouper/viewing-groups.html", {"groups": groups}
+                request, "gatorgrouper/viewing-groups-csv.html", {"groups": groups}
             )
     else:
         form = UploadCSVForm()
     return render(request, "gatorgrouper/upload_csv.html", {"form": form})
 
 
-# Create your views here.
+def parse_uploaded_csv(csvfile, as_dict=False):
+    """
+        Transform uploded CSV data into list of student responses:
+        [["student name", True, False, ...], ...]
+
+        With the as_dict parameter set to True, transforms the CSV data into a dictionary of sets:
+        {"student name": {True, False, ...}, ...}
+    """
+    f = StringIO(csvfile.read().decode("utf-8"))
+    csvdata = list(csv.reader(f, delimiter=","))
+
+    # transform into desired output
+    responses = list()
+    responses_dict = {}
+    for record in csvdata:
+        if as_dict:
+            responses_dict[record[0]] = set()  # Create key in responses dictionary
+        temp = list()
+        temp.append(record[0].replace('"', ""))
+        for value in record[1:]:
+            if value.lower() == "true":
+                temp.append(True)
+            elif value.lower() == "false":
+                temp.append(False)
+            elif re.match(
+                r"[+-]?([0-9]*[.])?[0-9]+", value  # pylint: disable=bad-continuation
+            ):  # Match a float with regex
+                temp.append(float(value))
+            else:  # Keep the value as a string if no other type matches
+                temp.append(value)
+            if as_dict:  # Assign the value to the responses set for this row
+                responses_dict[record[0]].add(value)
+        responses.append(temp)
+    return responses if not as_dict else responses_dict
+
+
 def register(request):
     """ This view loads the register page and handles the form """
     if request.method == "POST":
@@ -225,6 +276,8 @@ def create_groups(request):  # pylint: disable=too-many-locals
     """ Finds all the required information, call GatorGrouper with the provided
        information and displays it to the user and saves it if clicked 'save' """
     groups = []
+    if not request.user.is_authenticated:
+        return redirect("upload-csv")
     # pylint: disable=too-many-nested-blocks
     # conditional logic for a 'POST' request
     if request.method == "POST":
