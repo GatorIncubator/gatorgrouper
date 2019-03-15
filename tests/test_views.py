@@ -41,9 +41,9 @@ class TestView:
             "password2": "testpassword1",
         }
         request = self.factory.post("/register", data=testdata)
-        setattr(request, 'session', 'ssession')
+        setattr(request, "session", "ssession")
         messages = FallbackStorage(request)
-        setattr(request, '_messages', messages)
+        setattr(request, "_messages", messages)
         # request = self.factory.post("/register", data=testdata, messages=messages)
         response = views.register(request)
         assert response.status_code == 302
@@ -57,9 +57,9 @@ class TestView:
     def test_uploadcsv_post(self, generate_csv_file):
         """undocumented"""
         request = self.factory.post("/upload_csv", {"file": generate_csv_file})
-        setattr(request, 'session', 'ssession')
+        setattr(request, "session", "ssession")
         messages = FallbackStorage(request)
-        setattr(request, '_messages', messages)
+        setattr(request, "_messages", messages)
         response = views.upload_csv(request)
         assert response.status_code == 200
 
@@ -98,8 +98,15 @@ class TestLoginView:
 
     def test_create_classes_post(self):
         """undocumented"""
-        prof_obj = mixer.blend("gatorgrouper.Professor",)
-        obj = mixer.blend("gatorgrouper.Semester_Class", professor_id=prof_obj, semester="S19", department="CS", class_number="CS101", class_section="01")
+        prof_obj = mixer.blend("gatorgrouper.Professor")
+        obj = mixer.blend(
+            "gatorgrouper.Semester_Class",
+            professor_id=prof_obj,
+            semester="S19",
+            department="CS",
+            class_number="CS101",
+            class_section="01",
+        )
         testdata = {
             "professor_id": prof_obj.professor_id,
             "class_id": obj.class_id,
@@ -110,9 +117,9 @@ class TestLoginView:
         }
         request = self.factory.post("/classes", data=testdata)
         request.user = self.user
-        setattr(request, 'session', 'ssession')
+        setattr(request, "session", "ssession")
         messages = FallbackStorage(request)
-        setattr(request, '_messages', messages)
+        setattr(request, "_messages", messages)
         response = views.create_classes(request)
         assert response.status_code == 302
 
@@ -139,18 +146,23 @@ class TestLoginView:
 
     def test_assignments_login_post_is_valid(self):
         """undocumented"""
-        obj = mixer.blend("gatorgrouper.Assignment", assignment_id=1, assignment_name="Group Project", description="This is an assignment")
+        obj = mixer.blend(
+            "gatorgrouper.Assignment",
+            assignment_id=1,
+            assignment_name="Group Project",
+            description="This is an assignment",
+        )
         class_obj = mixer.blend("gatorgrouper.Semester_Class")
         testdata = {
             "assignment_id": obj.assignment_id,
             "class_id": class_obj.class_id,
             "assignment_name": "Group Project",
-            "description": "it's lab one"
+            "description": "it's lab one",
         }
-        request = self.factory.post('/assignments', data=testdata)
-        setattr(request, 'session', 'ssession')
+        request = self.factory.post("/assignments", data=testdata)
+        setattr(request, "session", "ssession")
         messages = FallbackStorage(request)
-        setattr(request, '_messages', messages)
+        setattr(request, "_messages", messages)
         # response = views.create_classes(request)
         request.user = self.user
         response = views.assignments(request)
@@ -199,13 +211,13 @@ class TestLoginView:
         testdata = {
             "class_id": class_obj.class_id,
             "first_name": "test",
-            "last_name": "user"
+            "last_name": "user",
         }
         request = self.factory.post("/add-students", data=testdata)
         request.user = self.user
-        setattr(request, 'session', 'ssession')
+        setattr(request, "session", "ssession")
         messages = FallbackStorage(request)
-        setattr(request, '_messages', messages)
+        setattr(request, "_messages", messages)
         response = views.add_students(request)
         assert response.status_code == 302
 
