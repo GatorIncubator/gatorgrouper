@@ -96,7 +96,9 @@ SECRET_KEY = find_or_create_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "http://gatorgrouper-env.vimdyhzfyw.us-east-2.elasticbeanstalk.com/",
+]
 
 # Application definition
 
