@@ -56,9 +56,15 @@ class TestUploadCSVForm:
     def test_valid_data(self, generate_csv):
         """undocumented"""
         form = UploadCSVForm({"file": generate_csv, "numgrp": 3})
-        assert form.fields["preferences_weight"].label == "Importance of an unmatched preference"
+        assert (
+            form.fields["preferences_weight"].label
+            == "Importance of an unmatched preference"
+        )
         assert form.fields["numgrp"].label == "Number of groups to create"
-        assert form.fields["preferences_weight_match"].label == "Importance of a matched preference"
+        assert (
+            form.fields["preferences_weight_match"].label
+            == "Importance of a matched preference"
+        )
 
 
 class TestCreateGroupForm:
