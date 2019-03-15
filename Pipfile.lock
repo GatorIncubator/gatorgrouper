@@ -149,10 +149,10 @@
         },
         "sqlparse": {
             "hashes": [
-                "sha256:ce028444cfab83be538752a2ffdb56bc417b7784ff35bb9a3062413717807dec",
-                "sha256:d9cf190f51cbb26da0412247dfe4fb5f4098edb73db84e02f9fc21fdca31fed4"
+                "sha256:40afe6b8d4b1117e7dff5504d7a8ce07d9a1b15aeeade8a2d10f130a834f8177",
+                "sha256:7c3dca29c022744e95b547e867cee89f4fce4373f3549ccd8797d8eb52cdb873"
             ],
-            "version": "==0.2.4"
+            "version": "==0.3.0"
         },
         "urllib3": {
             "hashes": [
@@ -234,14 +234,6 @@
             ],
             "index": "pypi",
             "version": "==2.0.15"
-        },
-        "colorama": {
-            "hashes": [
-                "sha256:05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d",
-                "sha256:f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"
-            ],
-            "markers": "sys_platform == 'win32'",
-            "version": "==0.4.1"
         },
         "coverage": {
             "hashes": [
@@ -345,12 +337,12 @@
         },
         "hypothesis": {
             "hashes": [
-                "sha256:139aacadb54c6cd61fd2df68c538f86eb486a3560b026f32f0f736ec3a3f09de",
-                "sha256:ab76c1c0d3d10b96d8cddc8ab99126b8645a7de27c6f4981c5b0779684fec75f",
-                "sha256:c9e310a9908cbc96f3b5cebd04699fa884d88f20a8e80e0df135190b8e26217a"
+                "sha256:5d73252c5dddba45875162f15e473024d154d61af11dafacc3507edefb63c9dc",
+                "sha256:6e679d1dba80b623517948f3d83425e3c96b393e0e7909e4b597cc4f143a8465",
+                "sha256:b6f3d36307ab0ae9739fb80520eb303d8fa7e2b5963cb1979d463f065ef1a87b"
             ],
             "index": "pypi",
-            "version": "==4.9.0"
+            "version": "==4.10.0"
         },
         "idna": {
             "hashes": [
@@ -361,10 +353,10 @@
         },
         "isort": {
             "hashes": [
-                "sha256:38a74a5ccf3a15a7a99f975071164f48d4d10eed4154879009c18e6e8933e5aa",
-                "sha256:abbb2684aa234d5eb8a67ef36d4aa62ea080d46c2eba36ad09e2990ae52e4305"
+                "sha256:18c796c2cd35eb1a1d3f012a214a542790a1aed95e29768bdcb9f2197eccbd0b",
+                "sha256:96151fca2c6e736503981896495d344781b60d18bfda78dc11b290c6125ebdb6"
             ],
-            "version": "==4.3.13"
+            "version": "==4.3.15"
         },
         "junit-xml": {
             "hashes": [
