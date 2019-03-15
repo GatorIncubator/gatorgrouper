@@ -77,8 +77,8 @@ def handle_uploaded_file(csvfile):
         Transform uploded CSV data into list of student responses:
         [["student name", True, False, ...]]
     """
-    # get rid of decode because it's read 
-    f = StringIO(csvfile.read())
+    # get rid of decode because it's read
+    f = StringIO(csvfile.read().decode("utf-8"))
     csvdata = list(csv.reader(f, delimiter=","))
 
     # transform into desired output
