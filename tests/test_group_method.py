@@ -9,11 +9,6 @@ import pytest
 from gatorgrouper.utils import group_creation
 
 
-# TODO: add new tests for random sorting with conflicts
-
-# test case for calculating num of groups based off of group size input
-
-
 def test_group_random1():
     """Testing that the group_random() function creates the
         appropriate number of groups with the appropriate number"""
@@ -140,12 +135,6 @@ def test_hypothesis_group_random(numgrp):
     num_group = numgrp
     returned_groups1 = group_creation.group_random_num_group(responses, num_group)
     assert len(returned_groups1[0]) == len(responses) / num_group
-
-
-# test case for generic random groups with conflicts
-
-# test case to ensure that the random groups with conflicts is not the worst
-# possible groupings possible
 
 
 def test_shuffle():
