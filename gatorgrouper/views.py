@@ -41,6 +41,8 @@ def register(request):
             form.save()
             first_name = form.cleaned_data.get("first_name")
             last_name = form.cleaned_data.get("last_name")
+            # message = "Account created for " + first_name + " " + last_name
+            # messages.success(request, message=message)
             messages.success(request, f"Account created for {first_name} {last_name}")
             return redirect("login")
     else:

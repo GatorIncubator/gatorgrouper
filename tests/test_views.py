@@ -1,5 +1,6 @@
 """Testing views"""
 from django.test import RequestFactory
+from django.contrib.messages.storage.fallback import FallbackStorage
 import pytest
 from mixer.backend.django import mixer
 from gatorgrouper import views, models
@@ -32,17 +33,20 @@ class TestView:
 
     def test_register_method(self):
         """undocumented"""
-        request = self.factory.get(path="/register", REQUEST_METHOD="POST")
-        # request.POST = {
-        #     "email": "testuserl@test.com",
-        #     "first_name": "Spencer",
-        #     "last_name": "Huang",
-        #     "password1": "testpassword1",
-        #     "password2": "testpassword1",
-        # }
-        # messages = FallbackStorage(request)
+        testdata = {
+            "email": "testuserl@test.com",
+            "first_name": "Spencer",
+            "last_name": "Huang",
+            "password1": "testpassword1",
+            "password2": "testpassword1",
+        }
+        request = self.factory.post("/register", data=testdata)
+        setattr(request, 'session', 'ssession')
+        messages = FallbackStorage(request)
+        setattr(request, '_messages', messages)
+        # request = self.factory.post("/register", data=testdata, messages=messages)
         response = views.register(request)
-        assert response.status_code == 200
+        assert response.status_code == 302
 
     def test_uploadcsv(self):
         """undocumented"""
@@ -53,6 +57,9 @@ class TestView:
     def test_uploadcsv_post(self, generate_csv_file):
         """undocumented"""
         request = self.factory.post("/upload_csv", {"file": generate_csv_file})
+        setattr(request, 'session', 'ssession')
+        messages = FallbackStorage(request)
+        setattr(request, '_messages', messages)
         response = views.upload_csv(request)
         assert response.status_code == 200
 
