@@ -9,6 +9,7 @@ pytestmark = pytest.mark.django_db
 
 class TestUrl:
     """undocumented"""
+
     def setup(self):
         """undocumented"""
         # pylint: disable=W0201

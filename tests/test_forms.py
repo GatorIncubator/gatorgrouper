@@ -1,3 +1,5 @@
+"""This tests the forms.py"""
+import pytest
 from gatorgrouper.forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
@@ -5,7 +7,6 @@ from gatorgrouper.forms import (
     CreateGroupForm,
 )
 
-import pytest
 
 pytestmark = pytest.mark.django_db
 

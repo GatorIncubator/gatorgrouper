@@ -47,7 +47,6 @@ if __name__ == "__main__":  # pragma: no cover
         )
 
         # generate the groups and display them
-        # pylint: disable=bad-continuation
         if GG_ARGUMENTS.method == constants.ALGORITHM_ROUND_ROBIN:
             GROUPED_STUDENT_IDENTIFIERS = group_creation.group_rrobin_num_group(
                 SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
