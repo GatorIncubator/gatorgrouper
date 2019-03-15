@@ -184,14 +184,17 @@ a.article-title:hover {
   padding: 5px 5px;
 }
 
-.class-bigbox:nth-child(3n+1) {
+.class-bigbox:nth-child(4n+1) {
     background-color: #ffc107;
 }
-.class-bigbox:nth-child(3n+2) {
+.class-bigbox:nth-child(4n+2) {
     background-color: #dc3545;
 }
-.class-bigbox:nth-child(3n+3) {
+.class-bigbox:nth-child(4n+3) {
     background-color: #007bff;
+}
+.class-bigbox:nth-child(4n+4) {
+    background-color: #47BE2E;
 }
 
 .student-bigbox {
@@ -199,14 +202,17 @@ a.article-title:hover {
   margin: 20px;
   padding: 5px 5px;
 }
-.student-bigbox:nth-child(3n+1) {
+.student-bigbox:nth-child(4n+1) {
     background-color: #ffc107;
 }
-.student-bigbox:nth-child(3n+2) {
+.student-bigbox:nth-child(4n+2) {
     background-color: #dc3545;
 }
-.student-bigbox:nth-child(3n+3) {
+.student-bigbox:nth-child(4n+3) {
     background-color: #007bff;
+}
+.student-bigbox:nth-child(4n+4) {
+    background-color: #47BE2E;
 }
 
 .student-container {
