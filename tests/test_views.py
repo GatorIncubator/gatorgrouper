@@ -1,7 +1,7 @@
 """Testing views"""
 from django.test import RequestFactory
 from django.contrib.messages.storage.fallback import FallbackStorage
-from django.core.files.uploadedfile import SimpleUploadedFile
+# from django.core.files.uploadedfile import SimpleUploadedFile
 import pytest
 from mixer.backend.django import mixer
 from gatorgrouper import views, models
@@ -60,7 +60,8 @@ class TestView:
 
         # with open(generate_csv_file) as f:
         # request = self.factory.post("/upload_csv")
-        # request = self.factory.post("/upload_csv", f=SimpleUploadedFile(f.read(), b"file_content"))
+        # request = self.factory.post("/upload_csv",
+        # f=SimpleUploadedFile(f.read(), b"file_content"))
         f = generate_csv_file.open()
         request = self.factory.post("/upload_csv", {"file": f})
         # request.FILES["file"] = f.read()
