@@ -223,30 +223,34 @@ def add_students(request):
 @login_required
 def create_groups(request):  # pylint: disable=too-many-locals
     """ Finds all the required information, call GatorGrouper with the provided
-       information and displays it to the user and saves it """
+       information and displays it to the user and saves it if clicked 'save' """
     groups = []
     # pylint: disable=too-many-nested-blocks
     # conditional logic for a 'POST' request
     if request.method == "POST":
         formset = GroupForm(request.user, request.POST)
         groupNum = CreateGroupForm(request.POST)
+        # Conditional logic to see if the submitted forms are valid
         if groupNum.is_valid() and formset.is_valid():
             assignment_obj = formset.cleaned_data.get("assignment_id")
             class_id_num = assignment_obj.class_id.class_id
             num_of_groups = groupNum.cleaned_data.get("numgrp")
             student_list_dict = gatherStudents(class_id_num)
             # pylint: disable=unused-variable
-            # Dictionary to hold student object and student names
+            # Dictionary to hold student object and student names and returns
+            # the dictionary
             student_list = []
+            # Finds the student object based on the student name and finds the assignment id
             for name, obj in student_list_dict.items():
                 student_list.append(name)
             groups = group_rrobin_num_group(student_list, num_of_groups)
             # Goes through the submitted group when the 'save' button is in use
             if request.POST["button"] == "save":
                 counter = 1
-                # saving information for student nam
                 for group in groups:
                     group_name = "Group " + str(counter)
+                    # For loop to go through each student in the group and saves
+                    # each student with the required information
                     for student in group:
                         try:
                             s = Grouped_Student(
@@ -254,9 +258,10 @@ def create_groups(request):  # pylint: disable=too-many-locals
                                 student_id=student_list_dict[student],
                                 group_name=group_name,
                             )
+                            # Saving all the above information
                             s.save()
                         # To check if the assignment_id and student_id hold unique
-                        # values
+                        # values. If not, send error message
                         except IntegrityError:
                             messages.error(
                                 request,
@@ -264,7 +269,8 @@ def create_groups(request):  # pylint: disable=too-many-locals
                                 + f"with it.\nPlease Try again",
                             )
                             return redirect("create-groups")
-
+                    # Successful message sent once it puts every student and every
+                    # group inside the database
                     counter += 1
                 messages.success(
                     request,
