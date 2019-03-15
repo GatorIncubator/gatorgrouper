@@ -56,7 +56,8 @@ def register(request):
 # and passes it to profile.html
 @login_required
 def profile(request):
-    """ This is undocumented """
+    """ Loads the user in correspondence through the professor and Returns
+        a list of the classes, assignments, and students related to it """
     current_professor = request.user
     # pylint: disable=no-member
     classes = list(Semester_Class.objects.filter(professor_id=current_professor))
