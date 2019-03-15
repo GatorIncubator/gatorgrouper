@@ -5,8 +5,11 @@ pytestmark = pytest.mark.django_db
 
 
 class TestCustomUserCreationForm:
+    "undocumented"
     # pylint: disable=too-few-public-methods
+    # pylint: disable=R0201
     def test_valid_data(self):
+        """undocumented"""
         form = CustomUserCreationForm({
             "email": "testuserl@test.com",
             "first_name": "Spencer",
@@ -20,6 +23,7 @@ class TestCustomUserCreationForm:
 class TestCustomUserChangeForm:
     """undocumented"""
     # pylint: disable=too-few-public-methods
+    # pylint: disable=R0201
     def test_valid_data(self):
         """undocumented"""
         form = CustomUserChangeForm({
@@ -35,6 +39,7 @@ class TestCustomUserChangeForm:
 class TestUploadCSVForm:
     """undocumented"""
     # pylint: disable=too-few-public-methods
+    # pylint: disable=R0201
     def test_valid_data(self, generate_csv):
         """undocumented"""
         form = UploadCSVForm({
@@ -48,7 +53,8 @@ class TestUploadCSVForm:
 class TestCreateGroupForm:
     """undocumented"""
     # pylint: disable=too-few-public-methods
-    def test_valid_data(self, generate_csv):
+    # pylint: disable=R0201
+    def test_valid_data(self):
         """undocumented"""
         form = CreateGroupForm({
             "numgrp": 3,
