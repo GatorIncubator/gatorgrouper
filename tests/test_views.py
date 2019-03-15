@@ -151,6 +151,21 @@ class TestLoginView():
         response = views.assignments(request)
         assert response.status_code == 200
 
+    def test_assignments_login_post_is_valid(self):
+        """undocumented"""
+        # obj = mixer.blend("gatorgrouper.Assignment", assignment_id=1, assignment_name="Group Project", description="This is an assignment")
+        # class_obj = mixer.blend("gatorgrouper.Semester_Class")
+        # testdata = {
+        #     "assignment_id": obj.assignment_id,
+        #     "class_id": class_obj.class_id,
+        #     "assignment_name": "Group Project",
+        #     "description": "it's lab one"
+        # }
+        # request = self.factory.post('/assignments', data=testdata)
+        # request.user = self.user
+        # response = views.assignments(request)
+        # assert response.status_code == 200
+
     def test_groupresults_views_get(self):
         """undocumented"""
         request = self.factory.get('/viewing-groups')
@@ -161,6 +176,16 @@ class TestLoginView():
     def test_groupresults_views_post(self):
         """undocumented"""
         request = self.factory.post('/viewing-groups')
+        request.user = self.user
+        response = views.groupResult(request)
+        assert response.status_code == 200
+
+    def test_groupresults_views_post_formset(self):
+        """undocumented"""
+        obj = mixer.blend("gatorgrouper.Assignment", assignment_id=1, assignment_name="Group Project", description="This is an assignment")
+        testdata = {"assignment_id": obj.assignment_id}
+
+        request = self.factory.post('/viewing-groups', data=testdata)
         request.user = self.user
         response = views.groupResult(request)
         assert response.status_code == 200
@@ -186,9 +211,9 @@ class TestLoginView():
         response = views.create_groups(request)
         assert response.status_code == 200
 
-    def test_create_groups_get(self):
+    def test_create_groups_post(self):
         """undocumented"""
-        request = self.factory.get('/create-groups')
+        request = self.factory.post('/create-groups')
         request.user = self.user
         response = views.create_groups(request)
         assert response.status_code == 200
