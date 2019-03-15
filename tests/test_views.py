@@ -98,14 +98,24 @@ class TestLoginView:
 
     def test_create_classes_post(self):
         """undocumented"""
-        request = self.factory.post("/classes", data=None)
+        obj = mixer.blend("gatorgrouper.Semester_Class")
+        testdata = {
+            "semester": obj.semester,
+            "department": obj.department,
+            "class_number": obj.class_number,
+            "class_section": obj.class_section,
+        }
+        request = self.factory.post("/classes", data=testdata)
         request.user = self.user
+        setattr(request, 'session', 'ssession')
+        messages = FallbackStorage(request)
+        setattr(request, '_messages', messages)
         response = views.create_classes(request)
         assert response.status_code == 200
 
     def test_create_classes_get(self):
         """undocumented"""
-        request = self.factory.get("/classes", data=None)
+        request = self.factory.get("/classes")
         request.user = self.user
         response = views.create_classes(request)
         assert response.status_code == 200
@@ -126,19 +136,22 @@ class TestLoginView:
 
     def test_assignments_login_post_is_valid(self):
         """undocumented"""
-        # obj = mixer.blend("gatorgrouper.Assignment", assignment_id=1,
-        # assignment_name="Group Project", description="This is an assignment")
-        # class_obj = mixer.blend("gatorgrouper.Semester_Class")
-        # testdata = {
-        #     "assignment_id": obj.assignment_id,
-        #     "class_id": class_obj.class_id,
-        #     "assignment_name": "Group Project",
-        #     "description": "it's lab one"
-        # }
-        # request = self.factory.post('/assignments', data=testdata)
-        # request.user = self.user
-        # response = views.assignments(request)
-        # assert response.status_code == 200
+        obj = mixer.blend("gatorgrouper.Assignment", assignment_id=1, assignment_name="Group Project", description="This is an assignment")
+        class_obj = mixer.blend("gatorgrouper.Semester_Class")
+        testdata = {
+            "assignment_id": obj.assignment_id,
+            "class_id": class_obj.class_id,
+            "assignment_name": "Group Project",
+            "description": "it's lab one"
+        }
+        request = self.factory.post('/assignments', data=testdata)
+        setattr(request, 'session', 'ssession')
+        messages = FallbackStorage(request)
+        setattr(request, '_messages', messages)
+        # response = views.create_classes(request)
+        request.user = self.user
+        response = views.assignments(request)
+        assert response.status_code == 302
 
     def test_groupresults_views_get(self):
         """undocumented"""
