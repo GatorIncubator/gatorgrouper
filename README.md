@@ -372,6 +372,9 @@ type:
 localhost:8000
 ```
 
+### Commands
+
+
 ### Testing Django Framework
 
 In order to run the testing, type in this command in the terminal:
