@@ -23,7 +23,7 @@ class CustomUserChangeForm(UserChangeForm):
 
     # pylint: disable=too-few-public-methods
     class Meta:
-        """ This class is undocumented """
+        """ Overrides the current form by customizing it """
 
         model = get_user_model()
         fields = ("email", "first_name", "last_name")
