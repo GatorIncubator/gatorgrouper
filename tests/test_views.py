@@ -70,9 +70,9 @@ class TestView:
         response = views.upload_csv(request)
         assert response.status_code == 200
 
-    # def test_handle_uploaded_file(self, generate_csv_file):
-    #     responses = views.handle_uploaded_file(generate_csv_file)
-    #     assert responses != [' ']
+    def test_handle_uploaded_file(self, generate_csv_file):
+        responses = views.handle_uploaded_file(generate_csv_file.open())
+        assert responses != [' ']
 
 
 class TestLoginView():
