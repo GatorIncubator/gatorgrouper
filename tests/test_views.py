@@ -37,13 +37,13 @@ class TestView:
         # need to test form.isvalid()
         request = self.factory.get(path='/register', REQUEST_METHOD="POST")
         # request = self.factory.post()
-        request.POST = {
-            "email": "testuserl@test.com",
-            "first_name": "Spencer",
-            "last_name": "Huang",
-            "password1": "testpassword1",
-            "password2": "testpassword1",
-        }
+        # request.POST = {
+        #     "email": "testuserl@test.com",
+        #     "first_name": "Spencer",
+        #     "last_name": "Huang",
+        #     "password1": "testpassword1",
+        #     "password2": "testpassword1",
+        # }
         # messages = FallbackStorage(request)
         response = views.register(request)
         assert response.status_code == 200
@@ -70,9 +70,9 @@ class TestView:
         response = views.upload_csv(request)
         assert response.status_code == 200
 
-    def test_handle_uploaded_file(self, generate_csv_file):
-        responses = views.handle_uploaded_file(generate_csv_file)
-        assert responses != [' ']
+    # def test_handle_uploaded_file(self, generate_csv_file):
+    #     responses = views.handle_uploaded_file(generate_csv_file)
+    #     assert responses != [' ']
 
 
 class TestLoginView():
@@ -83,74 +83,145 @@ class TestLoginView():
         # self.response = self.user.login(username='testuser',
         # password='testpassword')
         # pylint: disable=W0201
-        self.client = Client()
-        # self.factory = RequestFactory()
-        # self.user = models.Professor.objects.create_superuser(email="superuser@user.com", password="super")
+        # self.client = Client()
+        self.factory = RequestFactory()
         # self.client.login(email="superuser@user.com", password="super")
 
     def test_survey_test(self):
         """undocumented"""
         # pylint: disable=W0201
-        self.response = self.client.get('/survey', follow=True)
-        assert self.response.status_code == 200
+        request = self.factory.get('/survey')
+        request.user = self.user
+        response = views.survey(request)
+        # self.response = self.client.get('/survey', follow=True)
+        assert response.status_code == 200
 
     def test_profile_login(self):
         """undocumented"""
         # cover profile
         # pylint: disable=W0201
-        self.response = self.client.get('/profile', follow=True)
-        self.client.login(email="testuser@user.com", password="testuser")
-        # request.user = self.user
-        # response = views.profile(request)
-        assert self.response.status_code == 200
-        data = {
-            "title": "Profile",
-            "all_classes": "classes",
-            "all_assignments": "assignment_list",
-            "all_students": "students"}
-        response = self.client.post('/profile', data=data, follow=True)
+        request = self.factory.get('/profile')
+        # self.response = self.client.get('/profile', follow=True)
+        # self.client.login(email="testuser@user.com", password="testuser")
+        request.user = self.user
+        response = views.profile(request)
+        assert response.status_code == 200
+        # data = {
+        #     "title": "Profile",
+        #     "all_classes": "classes",
+        #     "all_assignments": "assignment_list",
+        #     "all_students": "students"}
+        # response = self.factory.post('/profile', data=data)
+        # assert response.status_code == 200
+
+    def test_create_classes_post(self):
+        """undocumented"""
+        # pylint: disable=W0201
+        request = self.factory.post('/classes',data=None)
+        request.user = self.user
+        # self.response = self.client.get('/classes', follow=True)
+        # self.response.method = "POST"
+        # self.response.POST = {
+        #     "email": "testuserl@test.com",
+        #     "first_name": "Spencer",
+        #     "last_name": "Huang",
+        #     "password1": "testpassword1",
+        #     "password2": "testpassword1",
+        # }
+        response = views.create_classes(request)
         assert response.status_code == 200
 
-    def test_create_classes(self):
+    def test_create_classes_get(self):
         """undocumented"""
         # pylint: disable=W0201
-        self.response = self.client.get('/classes', follow=True)
-        self.response.method = "POST"
-        self.response.POST = {
-            "email": "testuserl@test.com",
-            "first_name": "Spencer",
-            "last_name": "Huang",
-            "password1": "testpassword1",
-            "password2": "testpassword1",
-        }
-        self.client.login(email="testuser@user.com", password="testuser")
-        assert self.response.status_code == 200
+        request = self.factory.get('/classes',data=None)
+        request.user = self.user
+        # self.response = self.client.get('/classes', follow=True)
+        # self.response.method = "POST"
+        # self.response.POST = {
+        #     "email": "testuserl@test.com",
+        #     "first_name": "Spencer",
+        #     "last_name": "Huang",
+        #     "password1": "testpassword1",
+        #     "password2": "testpassword1",
+        # }
+        response = views.create_classes(request)
+        assert response.status_code == 200
 
-    def test_assignments_login(self):
+    def test_assignments_login_get(self):
         """undocumented"""
         # pylint: disable=W0201
-        self.response = self.client.get('/assignments', follow=True)
-        self.client.login(email="testuser@user.com", password="testuser")
-        self.response.method = "POST"
-        assert self.response.status_code == 200
+        request = self.factory.get('/assignments')
+        request.user = self.user
+        # self.response = self.client.get('/assignments', follow=True)
+        # self.client.login(email="testuser@user.com", password="testuser")
+        # self.response.method = "POST"
+        response = views.assignments(request)
+        assert response.status_code == 200
 
-    def test_groupresults_views(self):
+    def test_assignments_login_post(self):
         """undocumented"""
         # pylint: disable=W0201
-        self.response = self.client.get('/viewing-groups', follow=True)
-        self.client.login(email="testuser@user.com", password="testuser")
-        assert self.response.status_code == 200
+        request = self.factory.post('/assignments')
+        request.user = self.user
+        # self.response = self.client.get('/assignments', follow=True)
+        # self.client.login(email="testuser@user.com", password="testuser")
+        # self.response.method = "POST"
+        response = views.assignments(request)
+        assert response.status_code == 200
 
-    def test_add_students(self):
+    def test_groupresults_views_get(self):
         """undocumented"""
         # pylint: disable=W0201
-        self.response = self.client.get('/add-students', follow=True)
-        self.client.login(email="testuser@user.com", password="testuser")
-        assert self.response.status_code == 200
+        request = self.factory.get('/viewing-groups')
+        request.user = self.user
+        # elf.client.login(email="testuser@user.com", password="testuser")
+        response = views.groupResult(request)
+        assert response.status_code == 200
 
-    def test_create_groups(self):
+    def test_groupresults_views_post(self):
         """undocumented"""
         # pylint: disable=W0201
-        self.response = self.client.get('/create-groups', follow=True)
-        self.client.login(email="testuser@user.com", password="testuser")
-        assert self.response.status_code == 200
+        request = self.factory.post('/viewing-groups')
+        request.user = self.user
+        # elf.client.login(email="testuser@user.com", password="testuser")
+        response = views.groupResult(request)
+        assert response.status_code == 200
+
+    def test_add_students_get(self):
+        """undocumented"""
+        # pylint: disable=W0201
+        request = self.factory.get('/add-students')
+        request.user = self.user
+        # self.client.login(email="testuser@user.com", password="testuser")
+        response = views.add_students(request)
+        assert response.status_code == 200
+
+    def test_add_students_post(self):
+        """undocumented"""
+        # pylint: disable=W0201
+        request = self.factory.post('/add-students')
+        request.user = self.user
+        # self.client.login(email="testuser@user.com", password="testuser")
+        response = views.add_students(request)
+        assert response.status_code == 200
+
+    def test_create_groups_get(self):
+        """undocumented"""
+        # pylint: disable=W0201
+        request = self.factory.get('/create-groups')
+        request.user = self.user
+        # self.response = self.client.get('/create-groups', follow=True)
+        # self.client.login(email="testuser@user.com", password="testuser")
+        response = views.create_groups(request)
+        assert response.status_code == 200
+
+    def test_create_groups_get(self):
+        """undocumented"""
+        # pylint: disable=W0201
+        request = self.factory.get('/create-groups')
+        request.user = self.user
+        # self.response = self.client.get('/create-groups', follow=True)
+        # self.client.login(email="testuser@user.com", password="testuser")
+        response = views.create_groups(request)
+        assert response.status_code == 200
