@@ -12,9 +12,10 @@ from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
 from .utils.group_graph import group_graph_partition
-from .utils.group_rrobin import group_rrobin_num_group
+from .utils.group_creation import group_rrobin_num_group
 from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
+from .forms import AssignmentForm, StudentForm, GroupForm
 
 
 def upload_csv(request):
@@ -158,17 +159,16 @@ def create_classes(request):
 @login_required
 def assignments(request):
     """ Create assignments view """
-    AssignmentFormSet = modelform_factory(
-        Assignment, fields=("class_id", "assignment_name", "description")
-    )
     if request.method == "POST":
-        formset = AssignmentFormSet(request.POST)
+        formset = AssignmentForm(request.user, request.POST)
         if formset.is_valid():
-            formset.save()
+            stock = formset.save(commit=False)
+            stock.professor_id = request.user
+            stock.save()
             messages.success(request, f"Assignment Successfully Created")
             return redirect("profile")
     else:
-        formset = AssignmentFormSet()
+        formset = AssignmentForm(request.user)
 
     return render(
         request,
@@ -186,14 +186,11 @@ def survey(request):
 @login_required
 def groupResult(request):
     """ Group result view """
-    GroupedStudentFormSet = modelform_factory(
-        Grouped_Student, fields=("assignment_id",)
-    )
     group_list = []
     groupNames = []
     assignment_obj = None
     if request.method == "POST":
-        formset = GroupedStudentFormSet(request.POST)
+        formset = GroupForm(request.user, request.POST)
         if formset.is_valid():
             assignment_obj = formset.cleaned_data.get("assignment_id")
             group_list = list(
@@ -205,7 +202,7 @@ def groupResult(request):
                 if g.group_name not in groupNames:
                     groupNames.append(g.group_name)
     else:
-        formset = GroupedStudentFormSet()
+        formset = GroupForm(request.user)
 
     return render(
         request,
@@ -223,17 +220,14 @@ def groupResult(request):
 @login_required
 def add_students(request):
     """ Used to display current students in roster and provides option to add students """
-    StudentFormSet = modelform_factory(
-        Student, fields=("class_id", "first_name", "last_name")
-    )
     if request.method == "POST":
-        formset = StudentFormSet(request.POST)
+        formset = StudentForm(request.user, request.POST)
         if formset.is_valid():
             formset.save()
             messages.success(request, f"Student Successfully Created")
             return redirect("add-students")
     else:
-        formset = StudentFormSet()
+        formset = StudentForm(request.user)
     return render(
         request,
         "gatorgrouper/add-students.html",
@@ -243,15 +237,12 @@ def add_students(request):
 
 def create_groups(request):  # pylint: disable=too-many-locals
     """ Created groups using gatorgrouper functions """
-    GroupedStudentFormSet = modelform_factory(
-        Grouped_Student, fields=("assignment_id",)
-    )
     groups = []
     if not request.user.is_authenticated:
         return redirect("upload-csv")
     # pylint: disable=too-many-nested-blocks
     if request.method == "POST":
-        formset = GroupedStudentFormSet(request.POST)
+        formset = GroupForm(request.user, request.POST)
         groupNum = CreateGroupForm(request.POST)
         if groupNum.is_valid() and formset.is_valid():
             assignment_obj = formset.cleaned_data.get("assignment_id")
@@ -291,7 +282,7 @@ def create_groups(request):  # pylint: disable=too-many-locals
                     + f"visit the view groups page",
                 )
     else:
-        formset = GroupedStudentFormSet()
+        formset = GroupForm(request.user)
         groupNum = CreateGroupForm()
     # conflict_list = gatherConflicts(request)
 
