@@ -14,7 +14,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def find_oauth_key():
+def find_oauth_key():  # pylint: disable=R1710
     """
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
     Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
@@ -25,7 +25,7 @@ def find_oauth_key():
     if os.path.isfile(SECRET_KEY_FILEPATH):
         # pylint: disable=import-error
         from secret_key import OAUTH_SECRET_KEY as key
-    return key
+        return key
 
 
 # Quick-start development settings - unsuitable for production
