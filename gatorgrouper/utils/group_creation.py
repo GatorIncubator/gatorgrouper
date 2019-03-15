@@ -7,17 +7,16 @@ from gatorgrouper.utils import group_scoring
 
 
 # pylint: disable=bad-continuation
-def group_random_group_size(responses: str, grpsize: int) -> List[List[str]]:
+def group_random_group_size(responses: str, grpsize: int, conflicts=[("foo", "bar", -1)]) -> List[List[str]]:
     """ Calculate number of groups based on desired students per group """
     # number of groups = number of students / minimum students per group
     numgrp = int(len(responses) / grpsize)
 
-    return group_random_num_group(responses, numgrp)
+    return group_random_num_group(responses, numgrp, conflicts)
 
 
-def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
+def group_random_num_group(responses: str, numgrp: int, conflicts=[("foo", "bar", -1)]) -> List[List[str]]:
     """ group responses using randomization approach """
-
     intensity = 100
     # Intensity is the value that represents the number of attempts made to group
     optimized_groups = list()
@@ -43,10 +42,21 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         for _x in range(0, len(responses) % stunum):
             groups[_x].append(next(iterable))
             stunum = stunum + 1
-
         # scoring and return
-        conflict_scores, conflict_ave = [], 0
-        conflict_scores, conflict_ave = group_scoring.score_groups(groups)
+        conflict_scores = [] # a list of the conflict scores to affect group scores
+        for grp in groups:
+            #iterate through groups
+            for confs in conflicts:
+                #iterate through conflicts given as args
+                if (confs[0] or confs[1]) in grp:
+                    # if either name in the 3-tuple is in the group
+                    conflict_scores.append(confs[2])
+                    # add the conflict to the list of conflict scores
+        conf_ave = 0 # assume no conflicts
+        if conflict_scores:
+            # if there are conflicts, calculate the average
+            conf_ave = sum(conflict_scores) / len(conflict_scores)
+        # calculates average of the conflict scores
         scores, ave = [], 0
         scores, ave = group_scoring.score_groups(groups)
         logging.info("scores: %d", str(scores))
@@ -54,12 +64,10 @@ def group_random_num_group(responses: str, numgrp: int) -> List[List[str]]:
         logging.info("conflict scores : " + str(conflict_scores))
         logging.info("conflict average : " + str(conflict_ave))
         intensity -= 1
-
-        if top_ave > conflict_ave:
-            # TODO: Account for conflict score with average
-            top_ave = conflict_ave
+        ave = ave - conf_ave # subtract conflict average from general average
+        if ave > top_ave:
+            top_ave = ave
             optimized_groups = groups
-
     return optimized_groups
 
 
