@@ -6,15 +6,15 @@
 <div class="class-container">
   {% if all_classes|length > 0 %}
   {% for class in all_classes %}
-  <div class="class-bigbox">
-    <h2>{{ class }}</h2>
+  <div class="class-bigbox row">
+    <h2 class="col-12">{{ class }}</h2>
     <!-- Both Tables  -->
-    <div>
+
       <!-- Start of Class asspect -->
-      <div>
+
         <!-- Start of class table -->
-        <div>
-          <table class="inLineTable">
+        <div class="table-responsive col-6">
+          <table>
             <tr>
               <th>Projects:</th>
             </tr>
@@ -37,15 +37,14 @@
           </table>
         </div>
         <!-- End of Class Table -->
-      </div>
+
       <!-- End of Class asspect -->
 
       <!-- Start of student asspect -->
-      <div>
 
         <!-- Start of Student Table  -->
-        <div>
-          <table class="inLineTable">
+        <div class="table-responsive col">
+          <table>
             <tr>
               <th>Students</th>
             </tr>
@@ -70,10 +69,10 @@
         </div>
         <!-- End of Student Table -->
 
-      </div>
+
       <!-- End of Student asspect -->
 
-    </div>
+
     <!-- End of Both Tables -->
   </div>
   <!-- End of Big Box -->
