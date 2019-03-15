@@ -25,20 +25,50 @@ def run_arguments(GG_ARGUMENTS, preference=None):
         "\n %s", display.create_escaped_string_from_list(SHUFFLED_STUDENT_IDENTIFIERS)
     )
 
-    # generate the groups and display them
-    if GG_ARGUMENTS.method == constants.ALGORITHM_ROUND_ROBIN:
-        GROUPED_STUDENT_IDENTIFIERS = group_creation.group_rrobin_num_group(
-            SHUFFLED_STUDENT_IDENTIFIERS, GG_ARGUMENTS.num_group
-        )
-    elif GG_ARGUMENTS.method == constants.ALGORITHM_GRAPH:
-        GROUPED_STUDENT_IDENTIFIERS = group_graph.group_graph_partition(
-            SHUFFLED_STUDENT_IDENTIFIERS,
-            GG_ARGUMENTS.num_group,
-            preferences=preference,
-            preferences_weight=GG_ARGUMENTS.preferences_weight,
-            preferences_weight_match=GG_ARGUMENTS.preferences_weight_match,
-            objective_weights=GG_ARGUMENTS.objective_weights,
-            objective_measures=GG_ARGUMENTS.objective_measures,
+    GROUPED_STUDENTS = input_interface(
+        students=SHUFFLED_STUDENT_IDENTIFIERS,
+        method=GG_ARGUMENTS.method,
+        num_group=GG_ARGUMENTS.num_group,
+        preferences=preference,
+        preferences_weight=GG_ARGUMENTS.preferences_weight,
+        preferences_weight_match=GG_ARGUMENTS.preferences_weight_match,
+        objective_weights=GG_ARGUMENTS.objective_weights,
+        objective_measures=GG_ARGUMENTS.objective_measures,
+    )
+
+    return GROUPED_STUDENTS
+
+
+def input_interface(
+    students,
+    method=None,
+    num_group=None,
+    preferences=None,
+    preferences_weight=None,
+    preferences_weight_match=None,
+    objective_weights=None,
+    objective_measures=None,
+):
+    """ Run conditional logic statment to ran different methods """
+    students_reshuffle = group_creation.shuffle_students(students)
+    if method == constants.ALGORITHM_ROUND_ROBIN:
+        if (len(students_reshuffle[0])) < 2:  # Note that this only checks the first student
+            grouped_students = group_creation.group_random_num_group(
+                students_reshuffle, num_group
+            )
+        else:
+            grouped_students = group_creation.group_rrobin_num_group(
+                students_reshuffle, num_group
+            )
+    elif method == constants.ALGORITHM_GRAPH:
+        grouped_students = group_graph.group_graph_partition(
+            students_reshuffle,
+            num_group,
+            preferences=preferences,
+            preferences_weight=preferences_weight,
+            preferences_weight_match=preferences_weight_match,
+            objective_weights=objective_weights,
+            objective_measures=objective_measures,
         )
     else:
         GROUPED_STUDENT_IDENTIFIERS = group_creation.group_random_num_group(
