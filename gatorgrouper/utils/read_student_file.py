@@ -1,6 +1,7 @@
 """ Reads CSV data file """
 
 import csv
+import re
 from pathlib import Path
 
 
@@ -31,8 +32,10 @@ def read_csv_data(filepath: str) -> Union[str, List[List[Union[str, bool]]]]:
                     temp.append(True)
                 elif value.lower() == "false":
                     temp.append(False)
-                else:
+                elif re.match(r"^\d+?\.\d+?$", value) or value.isdigit():
                     temp.append(float(value))
+                else:
+                    temp.append(value)
             responses.append(temp)
     else:
         for record in csvdata:
@@ -43,7 +46,9 @@ def read_csv_data(filepath: str) -> Union[str, List[List[Union[str, bool]]]]:
                     temp.append(True)
                 elif value.lower() == "false":
                     temp.append(False)
-                else:
+                elif re.match(r"^\d+?\.\d+?$", value) or value.isdigit():
                     temp.append(float(value))
+                else:
+                    temp.append(value)
             responses.append(temp)
     return responses

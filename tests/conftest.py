@@ -77,6 +77,23 @@ def generate_csv(tmpdir_factory):
 
 
 @pytest.fixture(scope="session")
+def generate_csv_preference(tmpdir_factory):
+    """ Generate a tempory sample csv """
+    fn = tmpdir_factory.mktemp("data").join("csvNgp.csv")
+    headers = ["NAME", "NAME2"]
+    with open(str(fn), "w") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=headers)
+        writer.writeheader()
+        writer.writerow({"NAME": "delgrecoj", "NAME2": "delgrecoj2"})
+        writer.writerow({"NAME": "delgrecoj2", "NAME2": "delgrecoj"})
+        writer.writerow({"NAME": "delgrecoj3", "NAME2": "delgrecoj4"})
+        writer.writerow({"NAME": "delgrecoj4", "NAME2": "delgrecoj3"})
+        writer.writerow({"NAME": "delgrecoj5", "NAME2": "delgrecoj6"})
+        writer.writerow({"NAME": "delgrecoj6", "NAME2": "delgrecoj5"})
+    return str(fn)
+
+
+@pytest.fixture(scope="session")
 def generate_csv_no_header(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
@@ -97,12 +114,19 @@ def generate_csv_no_header(tmpdir_factory):
 def generate_csv_float(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
-    headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
+    headers = ["NAME", "Q1", "Q2", "Q3", "Q4", "Q5"]
     with open(str(fn), "w") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=headers)
         writer.writeheader()
         writer.writerow(
-            {"NAME": "delgrecoj", "Q1": "1.2", "Q2": "1.1", "Q3": "0.9", "Q4": "2.3"}
+            {
+                "NAME": "delgrecoj",
+                "Q1": "1.2",
+                "Q2": "1.1",
+                "Q3": "0.9",
+                "Q4": "2.3",
+                "Q5": "Name",
+            }
         )
     return str(fn)
 
@@ -113,8 +137,8 @@ def generate_csv_float_no_header(tmpdir_factory):
     fn = tmpdir_factory.mktemp("data").join("csvNg1.csv")
     data = [
         # optionally include headers as the first entry
-        ["delgrecoj", "1.2", "0.7", "1.1", "0.2"],
-        ["delgrecoj2", "0.1", "0.5", "0.8", "0.6"],
+        ["delgrecoj", "1.2", "0.7", "1.1", "0.2", "Name"],
+        ["delgrecoj2", "0.1", "0.5", "0.8", "0.6", "Name"],
     ]
     csv_string = ""
     for entry in data:
