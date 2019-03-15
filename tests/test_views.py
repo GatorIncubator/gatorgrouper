@@ -9,61 +9,8 @@ from django.urls import reverse
 from django.contrib.messages.storage.fallback import FallbackStorage
 from mixer.backend.django import mixer
 from django.test.client import Client
-from gatorgrouper.forms import CustomUserCreationForm, CustomUserChangeForm, UploadCSVForm, CreateGroupForm
 
 pytestmark = pytest.mark.django_db
-
-
-class TestCustomUserCreationForm:
-    # pylint: disable=too-few-public-methods
-    def test_valid_data(self):
-        form = CustomUserCreationForm({
-            "email": "testuserl@test.com",
-            "first_name": "Spencer",
-            "last_name": "Huang",
-            "password1": "testpassword1",
-            "password2": "testpassword1",
-        })
-        assert form.is_valid() is True
-
-
-class TestCustomUserChangeForm:
-    """undocumented"""
-    # pylint: disable=too-few-public-methods
-    def test_valid_data(self):
-        """undocumented"""
-        form = CustomUserChangeForm({
-            "email": "testuserl@test.com",
-            "first_name": "Spencer",
-            "last_name": "Huang",
-            "password1": "testpassword1",
-            "password2": "testpassword1",
-        })
-        assert form.is_valid() is True
-
-
-class TestUploadCSVForm:
-    """undocumented"""
-    # pylint: disable=too-few-public-methods
-    def test_valid_data(self, generate_csv):
-        """undocumented"""
-        form = UploadCSVForm({
-            "file": generate_csv,
-            "numgrp": 3,
-        })
-        assert form.fields['file'].label == "Student data CSV file"
-        assert form.fields['numgrp'].label == "Number of groups to create"
-
-
-class TestCreateGroupForm:
-    """undocumented"""
-    # pylint: disable=too-few-public-methods
-    def test_valid_data(self, generate_csv):
-        """undocumented"""
-        form = CreateGroupForm({
-            "numgrp": 3,
-        })
-        assert form.fields['numgrp'].label == "Number of groups to create"
 
 
 class TestView:
@@ -90,13 +37,13 @@ class TestView:
         # need to test form.isvalid()
         request = self.factory.get(path='/register', REQUEST_METHOD="POST")
         # request = self.factory.post()
-        # request.POST = {
-        #     "email": "testuserl@test.com",
-        #     "first_name": "Spencer",
-        #     "last_name": "Huang",
-        #     "password1": "testpassword1",
-        #     "password2": "testpassword1",
-        # }
+        request.POST = {
+            "email": "testuserl@test.com",
+            "first_name": "Spencer",
+            "last_name": "Huang",
+            "password1": "testpassword1",
+            "password2": "testpassword1",
+        }
         # messages = FallbackStorage(request)
         response = views.register(request)
         assert response.status_code == 200

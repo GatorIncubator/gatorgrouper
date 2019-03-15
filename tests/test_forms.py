@@ -1,6 +1,6 @@
 from gatorgrouper.forms import CustomUserCreationForm, CustomUserChangeForm, UploadCSVForm, CreateGroupForm
 
-import pytest 
+import pytest
 pytestmark = pytest.mark.django_db
 
 
