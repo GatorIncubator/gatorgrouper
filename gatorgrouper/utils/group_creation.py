@@ -22,7 +22,7 @@ def group_random_num_group(responses: str, numgrp: int, conflicts=[("foo", "bar"
     # Intensity is the value that represents the number of attempts made to group
     optimized_groups = list()
     # Optimized Groups holds the groups after scoring maximization
-    top_ave = 10000000
+    top_ave = -10000000
     # Top Average is our check to see if the group made is better than the group we have
     while intensity > 0:
         # number of students placed into a group
@@ -59,11 +59,10 @@ def group_random_num_group(responses: str, numgrp: int, conflicts=[("foo", "bar"
             conf_ave = sum(conflict_scores) / len(conflict_scores)
         # calculates average of the conflict scores
         scores, ave = [], 0
-        scores, ave = group_scoring.score_group(groups)
+        scores.append(group_scoring.score_group(groups))
+        ave = sum(scores) / len(scores)
         logging.info("scores: %d", str(scores))
         logging.info("average: %d", ave)
-        logging.info("conflict scores : " + str(conflict_scores))
-        logging.info("conflict average : " + str(conflict_ave))
         intensity -= 1
         ave = ave - conf_ave # subtract conflict average from general average
         if ave > top_ave:
