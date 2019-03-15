@@ -47,27 +47,10 @@ def find_or_create_secret_key():
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
     Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
     """
-    SECRET_KEY_DIR = os.path.dirname(__file__)
-    SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, "secret_key.py")
-    sys.path.insert(1, SECRET_KEY_DIR)
-
-    if os.path.isfile(SECRET_KEY_FILEPATH):
-        # pylint: disable=import-error
-        from secret_key import SECRET_KEY as key
-
-        return key
-    from django.utils.crypto import get_random_string
-
-    chars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)"
-    new_key = get_random_string(50, chars)
-    with open(SECRET_KEY_FILEPATH, "w") as f:
-        f.write(
-            '"""secret_key"""\n'
-            "# Django secret key\n# Do NOT check this into version control.\n\n"
-            'SECRET_KEY = "%s"\n' % new_key
-        )
-    # pylint: disable=import-error
-    from secret_key import SECRET_KEY as key
+    try:
+        key = os.environ["GATOR_GROUPER_KEY"]
+    except KeyError:
+        raise Exception("Couldn't find the secret key")
 
     return key
 
