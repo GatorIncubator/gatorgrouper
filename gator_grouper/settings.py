@@ -89,10 +89,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-# Make this unique, and do not share it with anybody.
-SECRET_KEY = find_or_create_secret_key()
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
