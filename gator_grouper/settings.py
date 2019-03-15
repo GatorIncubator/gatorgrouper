@@ -10,23 +10,22 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import sys
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def find_oauth_key():  # pylint: disable=R1710
+def find_oauth_key():
     """
     Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
     Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
     """
-    SECRET_KEY_DIR = os.path.dirname(__file__)
-    SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, "secret_key.py")
-    sys.path.insert(1, SECRET_KEY_DIR)
-    if os.path.isfile(SECRET_KEY_FILEPATH):
-        # pylint: disable=import-error
-        from secret_key import OAUTH_SECRET_KEY as key
+    try:
+        oauthkey = os.environ["GATOR_GROUPER_OAUTH"]
+    except KeyError:
+        raise Exception("Couldn't find the oauth key")
 
-        return key
+    return oauthkey
 
 
 # Quick-start development settings - unsuitable for production
