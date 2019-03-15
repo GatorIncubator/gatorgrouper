@@ -95,6 +95,7 @@ def handle_uploaded_file(csvfile):
     return responses
 
 
+# Returns the user to the home page
 def home(request):
     """ Homepage view """
 
