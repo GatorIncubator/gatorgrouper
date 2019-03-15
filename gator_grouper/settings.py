@@ -145,7 +145,9 @@ TEMPLATES = [
 WSGI_APPLICATION = "gator_grouper.wsgi.application"
 
 SOCIAL_AUTH_PIPELINE = (
-'social_core.pipeline.social_auth.social_details'
+    'social_core.pipeline.social_auth.social_details'
+    'social_core.pipeline.social_auth.social_user'
+    'social_core.pipeline.social_auth.associate_by_email'
 )
 
 # Database
