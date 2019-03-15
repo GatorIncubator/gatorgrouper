@@ -1,12 +1,13 @@
 """ Parses command-line arguments """
 
+from typing import List
 import argparse
 import logging
 from gatorgrouper.utils import read_student_file
 from gatorgrouper.utils import constants
 
 
-def parse_arguments(args):
+def parse_arguments(args: List[str]) -> argparse.Namespace:
     """ Parses the arguments provided on the command-line """
 
     gg_parser = argparse.ArgumentParser(
