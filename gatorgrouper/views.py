@@ -20,6 +20,7 @@ def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
     if request.method == "POST":
         form = UploadCSVForm(request.POST, request.FILES)
+        # print(request.FILES)
         if form.is_valid():
             responses = handle_uploaded_file(request.FILES["file"])
             numgrp = form.cleaned_data["numgrp"]
@@ -79,7 +80,8 @@ def handle_uploaded_file(csvfile):
         Transform uploded CSV data into list of student responses:
         [["student name", True, False, ...]]
     """
-    # get rid of decode because it's read
+    # get rid of decode because it's already default in python3
+    # f = StringIO(csvfile.read().decode("utf-8"))
     f = StringIO(csvfile.read())
     csvdata = list(csv.reader(f, delimiter=","))
 
