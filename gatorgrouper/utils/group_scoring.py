@@ -34,9 +34,9 @@ def score_groups(
 
 # def score_group_conflicts(student_indentifiers):
 #    """ conflict score single group """
-#    conflict_score = 0
+#    conflict score = 0
 #    for student in student_identifiers:
-#       for conflict
+#
 #    return conflict_score
 
 
@@ -50,4 +50,4 @@ def score_group_conflicts(student_groups):
     conflict_ave = int(ave / len(student_groups))
 
 
-return conflict_scores, conflict_ave
+    return conflict_scores, conflict_ave
