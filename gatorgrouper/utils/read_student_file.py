@@ -1,6 +1,7 @@
 """ Reads CSV data file """
 
 import csv
+import re
 from pathlib import Path
 
 
@@ -24,23 +25,27 @@ def read_csv_data(filepath):
             temp = list()
             temp.append(record[0].replace('"', ""))
             for value in record[1:]:
-                if value == "True":
+                if value.lower() == "true":
                     temp.append(True)
-                elif value == "False":
+                elif value.lower() == "false":
                     temp.append(False)
-                else:
+                elif re.match(r"^\d+?\.\d+?$", value) or value.isdigit():
                     temp.append(float(value))
+                else:
+                    temp.append(value)
             responses.append(temp)
     else:
         for record in csvdata:
             temp = list()
             temp.append(record[0].replace('"', ""))
             for value in record[1:]:
-                if value == "True":
+                if value.lower() == "true":
                     temp.append(True)
-                elif value == "False":
+                elif value.lower() == "false":
                     temp.append(False)
-                else:
+                elif re.match(r"^\d+?\.\d+?$", value) or value.isdigit():
                     temp.append(float(value))
+                else:
+                    temp.append(value)
             responses.append(temp)
     return responses

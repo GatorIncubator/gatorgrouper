@@ -16,7 +16,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css">
 
   <!--CSS for our program-->
-  <link rel="stylesheet" href="{% static "gatorgrouper/css/main.css" %}">
+  <link rel="stylesheet" href="{% static 'gatorgrouper/css/main.css' %}">
+
+  <!-- for favicon-->
+  <link rel="shortcut icon" href="{%static "gatorgrouper/images/favicon.ico" type="image/x-icon"  %}">
 
 
     <meta charset="utf-8">
@@ -31,39 +34,91 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
         <div class="container">
-          <a class="navbar-brand" href="#">
-            <img src="{% static "gatorgrouper/images/gatorgrouper_logo.svg" %}" alt="gatorgrouper_logo" height="120em">
+          <a class="navbar-brand" href="{% url 'Gatorgrouper-home' %}">
+            <img src="{% static 'gatorgrouper/images/gatorgrouper_logo.svg' %}" alt="gatorgrouper_logo" height="120em">
           </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="nav ml-auto">
-        <li class="nav-item">
-            <a class="btn-md btn btn-primary btn-space" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-md btn-social btn-github btn-space" href="{% url 'social:begin' 'github' %}"><span class="fab fa-github img-fluid"></span>Login with GitHub</a>
-        </li>
-        <li class="nav-item">
-           <a class="btn btn-md btn-social btn-google btn-space" href="{% url 'social:begin' 'google-oauth2' %}"> <span class="fab fa-google img-fluid"></span> Log In With Google</a>
-        </li>
+    <div class="collapse navbar-collapse align-middle" id="navbarResponsive">
+      <ul class="nav ml-auto" style="margin-right: 0px">
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="btn btn-md btn-warning btn-space" href="{% url 'profile' %}" style="color: white">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-md btn-danger btn-space" href="{% url 'logout' %}">Log Out</a>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="dropbtn btn-md btn btn-primary btn-space" data-toggle="collapse" data-target="#menu">MENU</button>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="btn btn-md btn-google btn-space" href="{% url 'login' %}">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn-md btn btn-primary btn-space" href="{% url 'Gatorgrouper-home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn-md btn btn-primary btn-space" href="{% url 'register' %}">Register</a>
+            </li>
+        {% endif %}
       </ul>
+      <!-- collapsable list-->
+      <div id="menu" class="collapse btn-group-sm " style="margin-top: 10px;">
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-home' %}">Home</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'create-groups' %}">Group Students</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-assignments' %}">Create an Assignment</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-classes' %}">Add a Class</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-survey' %}">View Survey</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'Gatorgrouper-groups' %}">Viewing Groups</a>
+        <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'add-students' %}">Add a Student</a>
+      </div>
     </div>
+
   </div>
 </nav>
 
     </header>
 
-
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{message}}
+    </div>
+  {% endfor %}
+{% endif %}
 {% block content %}{% endblock %}
 
 
   <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!--bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
   </body>
 </html>
