@@ -96,7 +96,7 @@ def group_rrobin_num_group(responses, numgrps):
     indices = list(range(0, numgrps))
     random.shuffle(indices)
     target_group = itertools.cycle(indices)
-    priorityColumn = random.randint(1, len(responses[0]) - 1)
+    priorityColumn = random.randint(0, len(responses[0]) - 1)
     logging.info("column priority: %d", priorityColumn)
 
     # iterate through the responses and check if the priority column is true
