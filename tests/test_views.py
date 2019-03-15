@@ -74,6 +74,11 @@ class TestView:
         response = views.upload_csv(request)
         assert response.status_code == 200
 
+    def test_parse_uploaded_file(self, generate_csv_file):
+        """undocumented"""
+        responses = views.parse_uploaded_csv(generate_csv_file.open())
+        assert responses != [" "]
+
     # pylint: disable=R0201
     def test_handle_uploaded_file(self, generate_csv_file):
         """undocumented"""

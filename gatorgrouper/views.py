@@ -57,7 +57,8 @@ def parse_uploaded_csv(csvfile, as_dict=False):
         With the as_dict parameter set to True, transforms the CSV data into a dictionary of sets:
         {"student name": {True, False, ...}, ...}
     """
-    f = StringIO(csvfile.read().decode("utf-8"))
+    # remove .decode(utf-8) because it's already default in python3
+    f = StringIO(csvfile.read())
     csvdata = list(csv.reader(f, delimiter=","))
 
     # transform into desired output
