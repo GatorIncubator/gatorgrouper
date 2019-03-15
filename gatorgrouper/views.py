@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import IntegrityError
 
-
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
@@ -134,7 +133,6 @@ def home(request):
 @login_required
 def create_classes(request):
     """ Create classes view """
-
     ClassFormSet = modelform_factory(
         Semester_Class,
         fields=("semester", "department", "class_number", "class_section"),
