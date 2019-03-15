@@ -1,4 +1,4 @@
-""" This is undocumented """
+""" Functions for all the models in Django """
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
@@ -38,7 +38,7 @@ class UserManager(BaseUserManager):
 
 
 class Professor(AbstractUser):
-    """ This is undocumented """
+    """ Model showcasing the Professors """
 
     REQUIRED_FIELDS = ("first_name", "last_name")
     USERNAME_FIELD = "email"
@@ -54,7 +54,7 @@ class Professor(AbstractUser):
 
 
 class Semester_Class(models.Model):
-    """ This is undocumented """
+    """ Model showcasing the list of the semesters followed by the classes """
 
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
     SPRING_2019 = "S19"
@@ -76,7 +76,7 @@ class Semester_Class(models.Model):
 
 
 class Assignment(models.Model):
-    """ This is undocumented """
+    """ Model showcasing the list of assignments and the description """
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
     assignment_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
@@ -88,7 +88,7 @@ class Assignment(models.Model):
 
 
 class Student(models.Model):
-    """ This is undocumented """
+    """ Model showcasing the list of students in the class """
 
     class_id = models.ForeignKey(Semester_Class, on_delete=models.CASCADE)
     student_id = models.AutoField(primary_key=True)
@@ -100,7 +100,7 @@ class Student(models.Model):
 
 
 class Grouped_Student(models.Model):
-    """ This is undocumented """
+    """ Model showcasing the grouped students """
 
     assignment_id = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
@@ -118,7 +118,7 @@ class Grouped_Student(models.Model):
 
 
 class Student_Conflict(models.Model):
-    """ This is undocumented """
+    """ Model with severity ranking for student 1 and student 2 """
 
     ONE = "1"
     TWO = "2"
