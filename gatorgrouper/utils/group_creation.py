@@ -2,6 +2,7 @@
 
 import logging
 import random
+import itertools
 from typing import List, Union
 from gatorgrouper.utils import group_scoring
 
@@ -58,7 +59,7 @@ def group_random_num_group(responses: str, numgrp: int, conflicts=[("foo", "bar"
             conf_ave = sum(conflict_scores) / len(conflict_scores)
         # calculates average of the conflict scores
         scores, ave = [], 0
-        scores, ave = group_scoring.score_groups(groups)
+        scores, ave = group_scoring.score_group(groups)
         logging.info("scores: %d", str(scores))
         logging.info("average: %d", ave)
         logging.info("conflict scores : " + str(conflict_scores))
