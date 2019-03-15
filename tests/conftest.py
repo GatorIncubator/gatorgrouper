@@ -142,7 +142,7 @@ def generate_csv_file(tmpdir_factory):
     """ Generate a tempory sample csv """
     fn = tmpdir_factory.mktemp("data").join("csvNg.csv")
     headers = ["NAME", "Q1", "Q2", "Q3", "Q4"]
-    with open(str(fn), "w") as csvfile:
+    with open(str(fn), "w", encoding='utf-8') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=headers)
         writer.writeheader()
         writer.writerow(
