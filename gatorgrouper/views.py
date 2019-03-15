@@ -1,4 +1,4 @@
-""" This is undocumented """
+""" This document contains all of the views used for our custom user"""
 import csv
 from io import StringIO
 from django.shortcuts import render, redirect
