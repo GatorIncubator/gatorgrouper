@@ -70,12 +70,7 @@ class TestLoginView():
     def setup(self):
         """undocumented"""
         self.user = models.Professor.objects.create_user(email="testuser@user.com", password="testuser")
-        # self.response = self.user.login(username='testuser',
-        # password='testpassword')
-        # pylint: disable=W0201
-        # self.client = Client()
         self.factory = RequestFactory()
-        # self.client.login(email="superuser@user.com", password="super")
 
     def test_survey_test(self):
         """undocumented"""
@@ -91,39 +86,18 @@ class TestLoginView():
         request.user = self.user
         response = views.profile(request)
         assert response.status_code == 200
-        # data = {
-        #     "title": "Profile",
-        #     "all_classes": "classes",
-        #     "all_assignments": "assignment_list",
-        #     "all_students": "students"}
-        # response = self.factory.post('/profile', data=data)
-        # assert response.status_code == 200
 
     def test_create_classes_post(self):
         """undocumented"""
         request = self.factory.post('/classes',data=None)
         request.user = self.user
-        # self.response.POST = {
-        #     "email": "testuserl@test.com",
-        #     "first_name": "Spencer",
-        #     "last_name": "Huang",
-        #     "password1": "testpassword1",
-        #     "password2": "testpassword1",
-        # }
         response = views.create_classes(request)
         assert response.status_code == 200
 
     def test_create_classes_get(self):
         """undocumented"""
-        request = self.factory.get('/classes',data=None)
+        request = self.factory.get('/classes', data=None)
         request.user = self.user
-        # self.response.POST = {
-        #     "email": "testuserl@test.com",
-        #     "first_name": "Spencer",
-        #     "last_name": "Huang",
-        #     "password1": "testpassword1",
-        #     "password2": "testpassword1",
-        # }
         response = views.create_classes(request)
         assert response.status_code == 200
 
