@@ -124,10 +124,6 @@ STATIC_URL = "/static/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-LOGIN_REDIRECT_URL = "Gatorgrouper-home"
-
-LOGIN_URL = "login"
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["GATOR_GROUPER_OAUTH"]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
