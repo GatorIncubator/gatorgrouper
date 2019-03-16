@@ -8,7 +8,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import sys
+
+# import sys
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "gatorgrouper-env.hmvhjscgda.us-east-2.elasticbeanstalk.com",
-    "127.0.0.1",
 ]
 
 # Application definition
