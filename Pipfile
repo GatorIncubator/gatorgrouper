@@ -22,7 +22,7 @@ awsebcli = "*"
 [packages]
 pathlib = "*"
 py = "*"
-django = "==2.1.1"
+django = "==2.1.5"
 networkx = "*"
 social-auth-app-django = "*"
 
