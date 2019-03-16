@@ -41,6 +41,7 @@ class TestCustomUserChangeForm:
                 "email": "testuserl@test.com",
                 "first_name": "Spencer",
                 "last_name": "Huang",
+                "password": "testpassword"
             }
         )
         assert form.is_valid() is True
