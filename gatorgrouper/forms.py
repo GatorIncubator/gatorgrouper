@@ -26,7 +26,7 @@ class CustomUserChangeForm(UserChangeForm):
         """ Overrides the current form by customizing it """
 
         model = get_user_model()
-        fields = ("email", "first_name", "last_name")
+        fields = ("email", "first_name", "last_name", "password")
 
 
 class UploadCSVForm(forms.Form):
