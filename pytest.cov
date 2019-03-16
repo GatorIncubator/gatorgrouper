@@ -1,5 +1,6 @@
 [run]
 # omit the tests for test coverage monitoring
 omit=tests/*, .venv/*
-# all of the modules in gatorgrouper/utils/ and models.py, views.py
-include=gatorgrouper/utils/*.py, gatorgrouper/models.py, gatorgrouper/views.py
+
+# all of the modules in gatorgrouper/utils/ and models.py, views.py, urls.py, forms.py, admin.py
+include=gatorgrouper/utils/*.py, gatorgrouper/models.py, gatorgrouper/views.py, gatorgrouper/urls.py, gatorgrouper/forms.py, gatorgrouper/admin.py,gator_grouper/settings.py
