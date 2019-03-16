@@ -1,15 +1,12 @@
 """This tests the forms.py"""
 import pytest
+from django.contrib.auth import get_user_model
 from gatorgrouper.forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
     UploadCSVForm,
     CreateGroupForm,
 )
-from mixer.backend.django import mixer
-from gatorgrouper import models
-from django.contrib.auth import get_user_model
-
 
 pytestmark = pytest.mark.django_db
 
