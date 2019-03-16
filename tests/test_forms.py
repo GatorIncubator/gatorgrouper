@@ -10,6 +10,7 @@ from gatorgrouper.forms import (
 
 pytestmark = pytest.mark.django_db
 
+
 class TestCustomUserCreationForm:
     "undocumented"
     # pylint: disable=too-few-public-methods
@@ -28,7 +29,6 @@ class TestCustomUserCreationForm:
         assert form.is_valid() is True
 
 
-@pytest.mark.skip(reason="waiting for test case fix")
 class TestCustomUserChangeForm:
     """undocumented"""
 
@@ -41,8 +41,6 @@ class TestCustomUserChangeForm:
                 "email": "testuserl@test.com",
                 "first_name": "Spencer",
                 "last_name": "Huang",
-                "password1": "testpassword1",
-                "password2": "testpassword1",
             }
         )
         assert form.is_valid() is True
