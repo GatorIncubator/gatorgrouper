@@ -41,15 +41,13 @@ class TestCustomUserChangeForm:
         """undocumented"""
         User = get_user_model()
         user = User.objects.create_user(email="normaluser@user.com", first_name="testfirst", last_name="testlast", password="testpassword")
-        form = CustomUserChangeForm(
-            {
-                "email": "normaluser@user.com",
-                "first_name": "testfirst",
-                "last_name": "testlast",
-                "password": "testpassword",
-            }
-            , instance=user
-        )
+        data = {
+            'email': user.email,
+            'first_name': 'testfirst',
+            'last_name': 'testlast',
+            'password': 'testpassword',
+        }
+        form = CustomUserChangeForm(data, instance=user)
         assert form.is_valid() is True
 
 
