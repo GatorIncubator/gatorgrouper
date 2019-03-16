@@ -1,4 +1,6 @@
-""" This is undocumented """
+""" This file is used to display the models in django admin panel that
+    can be customized using this file. It allows the user to manage the
+    content within the site"""
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
