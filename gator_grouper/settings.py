@@ -66,9 +66,10 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 )
 
-ALLOWED_HOSTS = ["http://gatorgrouper-env.vimdyhzfyw.us-east-2.elasticbeanstalk.com/",
-                 "127.0.0.1",
-                 ]
+ALLOWED_HOSTS = [
+    "http://gatorgrouper-env.vimdyhzfyw.us-east-2.elasticbeanstalk.com/",
+    "127.0.0.1",
+]
 
 # Application definition
 
