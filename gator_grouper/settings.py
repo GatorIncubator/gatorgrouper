@@ -16,59 +16,18 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def find_oauth_key():
-    """
-    Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
-    Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
-    """
-    try:
-        oauthkey = os.environ["GATOR_GROUPER_OAUTH"]
-    except KeyError:
-        raise Exception("Couldn't find the oauth key")
-
-    return oauthkey
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = find_oauth_key()
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
-    "453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com"
-)
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "Gatorgrouper-survey"
-LOGOUT_REDIRECT_URL = "Gatorgrouper-home"
-
-
-def find_or_create_secret_key():
-    """
-    Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
-    Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
-    """
-    try:
-        key = os.environ["GATOR_GROUPER_KEY"]
-    except KeyError:
-        raise Exception("Couldn't find the secret key")
-
-    return key
-
-
 # Make this unique, and do not share it with anybody.
-SECRET_KEY = find_or_create_secret_key()
+SECRET_KEY = os.environ["GATOR_GROUPER_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-AUTHENTICATION_BACKENDS = (
-    "social_core.backends.open_id.OpenIdAuth",
-    "social_core.backends.google.GoogleOpenId",
-    "social_core.backends.google.GoogleOAuth2",
-    "django.contrib.auth.backends.ModelBackend",
-)
 
 ALLOWED_HOSTS = [
-    "http://gatorgrouper-env.vimdyhzfyw.us-east-2.elasticbeanstalk.com/",
+    "gatorgrouper-env.hmvhjscgda.us-east-2.elasticbeanstalk.com",
     "127.0.0.1",
 ]
 
@@ -165,6 +124,21 @@ STATIC_URL = "/static/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-LOGIN_REDIRECT_URL = "Gatorgrouper-home"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["GATOR_GROUPER_OAUTH"]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
+    "453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com"
+)
 
 LOGIN_URL = "login"
+
+LOGIN_REDIRECT_URL = "Gatorgrouper-survey"
+
+LOGOUT_REDIRECT_URL = "Gatorgrouper-home"
+
+AUTHENTICATION_BACKENDS = [
+    "social_core.backends.open_id.OpenIdAuth",
+    "social_core.backends.google.GoogleOpenId",
+    "social_core.backends.google.GoogleOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+]
