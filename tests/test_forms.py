@@ -10,6 +10,7 @@ from gatorgrouper.forms import (
 
 pytestmark = pytest.mark.django_db
 
+
 class TestCustomUserCreationForm:
     "undocumented"
     # pylint: disable=too-few-public-methods
