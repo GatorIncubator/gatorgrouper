@@ -43,10 +43,10 @@ class TestCustomUserChangeForm:
         user = User.objects.create_user(email="normaluser@user.com", first_name="testfirst", last_name="testlast", password="testpassword")
         form = CustomUserChangeForm(
             {
-                "email": "normaluser@user.com",
-                "first_name": "testfirst",
-                "last_name": "testlast",
-                "password": "testpassword",
+                'email': 'normaluser@user.com',
+                'first_name': 'testfirst',
+                'last_name': 'testlast',
+                # 'password': 'testpassword',
             }
             , instance=user
         )
