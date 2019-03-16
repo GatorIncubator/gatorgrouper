@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "gatorgrouper-env.hmvhjscgda.us-east-2.elasticbeanstalk.com",
+    "127.0.0.1",
 ]
 
 # Application definition
