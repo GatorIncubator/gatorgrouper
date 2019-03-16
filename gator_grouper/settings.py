@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # Make this unique, and do not share it with anybody.
-SECRET_KEY = ""
+SECRET_KEY = os.environ["GATOR_GROUPER_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -133,7 +133,7 @@ LOGIN_REDIRECT_URL = "Gatorgrouper-home"
 
 LOGIN_URL = "login"
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["GATOR_GROUPER_OAUTH"]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "453514482871-qsirra9cq462b2vhdb14jokvfi917ik0.apps.googleusercontent.com"
 
