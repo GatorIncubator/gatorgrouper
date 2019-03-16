@@ -6,6 +6,9 @@ from gatorgrouper.forms import (
     UploadCSVForm,
     CreateGroupForm,
 )
+from mixer.backend.django import mixer
+from gatorgrouper import models
+from django.contrib.auth import get_user_model
 
 
 pytestmark = pytest.mark.django_db
@@ -36,13 +39,16 @@ class TestCustomUserChangeForm:
     # pylint: disable=R0201
     def test_valid_data(self):
         """undocumented"""
+        User = get_user_model()
+        user = User.objects.create_user(email="normaluser@user.com", first_name="testfirst", last_name="testlast", password="testpassword")
         form = CustomUserChangeForm(
             {
-                "email": "testuserl@test.com",
-                "first_name": "Spencer",
-                "last_name": "Huang",
-                "password": "testpassword"
+                "email": "normaluser@user.com",
+                "first_name": "testfirst",
+                "last_name": "testlast",
+                "password": "testpassword",
             }
+            , instance=user
         )
         assert form.is_valid() is True
 
