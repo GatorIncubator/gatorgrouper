@@ -1,9 +1,5 @@
 """ This is undocumented """
 from django.urls import path
-
-# from django.urls import re_path
-# from django.conf import settings
-# from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -16,5 +12,6 @@ urlpatterns = [
     path("group-result/", views.groupResult, name="Gatorgrouper-groups"),
     path("add-students/", views.add_students, name="add-students"),
     path("create-groups/", views.create_groups, name="create-groups"),
+    path("viewing-groups/", views.groupResult, name="viewing-groups"),
     path("upload-csv/", views.upload_csv, name="upload-csv"),
 ]
