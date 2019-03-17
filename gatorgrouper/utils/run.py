@@ -54,9 +54,8 @@ def input_interface(  # pylint: disable=too-many-arguments
     """ Run conditional logic statment to ran different methods """
     students_reshuffle = group_creation.shuffle_students(students)
     if method == constants.ALGORITHM_ROUND_ROBIN:
-        if (
-            len(students_reshuffle[0]) < 2
-        ):  # Note that this only checks the first student
+        # Note that this only checks the first student
+        if len(students_reshuffle[0]) < 2:
             grouped_students = group_creation.group_random_num_group(
                 students_reshuffle, num_group
             )
