@@ -11,8 +11,8 @@ from django.db import IntegrityError
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
-from .utils.group_graph import group_graph_partition
-from .utils.group_creation import group_rrobin_num_group
+from .utils.run import input_interface
+from .utils import constants
 from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
 from .forms import AssignmentForm, StudentForm, GroupForm
@@ -23,7 +23,6 @@ def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
     if request.method == "POST":
         form = UploadCSVForm(request.POST, request.FILES)
-        # print(request.FILES)
         if form.is_valid():
             responses = parse_uploaded_csv(request.FILES["student_data"])
             if request.FILES.get("student_preferences"):
@@ -35,9 +34,10 @@ def upload_csv(request):
             numgrp = form.cleaned_data["numgrp"]
             preferences_weight = form.cleaned_data["preferences_weight"]
             preferences_weight_match = form.cleaned_data["preferences_weight_match"]
-            groups = group_graph_partition(
+            groups = input_interface(
                 responses,
-                numgrp,
+                method=constants.ALGORITHM_GRAPH,
+                num_group=numgrp,
                 preferences=preferences,
                 preferences_weight=preferences_weight,
                 preferences_weight_match=preferences_weight_match,
@@ -66,7 +66,8 @@ def parse_uploaded_csv(csvfile, as_dict=False):
     responses_dict = {}
     for record in csvdata:
         if as_dict:
-            responses_dict[record[0]] = set()  # Create key in responses dictionary
+            # Create key in responses dictionary
+            responses_dict[record[0]] = set()
         temp = list()
         temp.append(record[0].replace('"', ""))
         for value in record[1:]:
@@ -74,11 +75,12 @@ def parse_uploaded_csv(csvfile, as_dict=False):
                 temp.append(True)
             elif value.lower() == "false":
                 temp.append(False)
-            elif re.match(
-                r"[+-]?([0-9]*[.])?[0-9]+", value  # pylint: disable=bad-continuation
-            ):  # Match a float with regex
+            # pylint: disable=bad-continuation
+            elif re.match(r"[+-]?([0-9]*[.])?[0-9]+", value):
+                # Match a float with regex
                 temp.append(float(value))
-            else:  # Keep the value as a string if no other type matches
+            else:
+                # Keep the value as a string if no other type matches
                 temp.append(value)
             if as_dict:  # Assign the value to the responses set for this row
                 responses_dict[record[0]].add(value)
@@ -187,7 +189,6 @@ def create_classes(request):
         "gatorgrouper/classes.html",
         {"title": "Create Classes", "formset": formset},
     )
-    # return HttpResponse
 
 
 # Allows the user to view the list of assignments
@@ -274,8 +275,9 @@ def add_students(request):
 
 
 # Allows to create a group using the rrobin method
+# pylint: disable=too-many-locals
 @login_required
-def create_groups(request):  # pylint: disable=too-many-locals
+def create_groups(request):
     """ Finds all the required information, call GatorGrouper with the provided
        information and displays it to the user and saves it if clicked 'save' """
     groups = []
@@ -299,8 +301,9 @@ def create_groups(request):  # pylint: disable=too-many-locals
             # Finds the student object based on the student name and finds the assignment id
             for name, obj in student_list_dict.items():
                 student_list.append(name)
-            groups = group_rrobin_num_group(student_list, num_of_groups)
-            # Goes through the submitted group when the 'save' button is in use
+            groups = input_interface(
+                student_list, constants.ALGORITHM_ROUND_ROBIN, num_of_groups
+            )
             if request.POST["button"] == "save":
                 counter = 1
                 for group in groups:
