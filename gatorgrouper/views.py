@@ -7,6 +7,7 @@ from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import IntegrityError
+from django.views.generic import DetailView
 
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
@@ -17,6 +18,8 @@ from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
 from .forms import AssignmentForm, StudentForm, GroupForm
 
+class GroupDetailView(DetailView):
+    model = Grouped_Student
 
 # Collects information from the form and passes it to upload_csv.html
 def upload_csv(request):
