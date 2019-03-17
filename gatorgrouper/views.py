@@ -23,7 +23,6 @@ def upload_csv(request):
     """ POST request for handling CSV upload and grouping students """
     if request.method == "POST":
         form = UploadCSVForm(request.POST, request.FILES)
-        # print(request.FILES)
         if form.is_valid():
             responses = parse_uploaded_csv(request.FILES["student_data"])
             if request.FILES.get("student_preferences"):
@@ -67,7 +66,8 @@ def parse_uploaded_csv(csvfile, as_dict=False):
     responses_dict = {}
     for record in csvdata:
         if as_dict:
-            responses_dict[record[0]] = set()  # Create key in responses dictionary
+            # Create key in responses dictionary
+            responses_dict[record[0]] = set()
         temp = list()
         temp.append(record[0].replace('"', ""))
         for value in record[1:]:
@@ -76,7 +76,9 @@ def parse_uploaded_csv(csvfile, as_dict=False):
             elif value.lower() == "false":
                 temp.append(False)
             elif re.match(
-                r"[+-]?([0-9]*[.])?[0-9]+", value  # pylint: disable=bad-continuation
+                # pylint: disable=bad-continuation
+                r"[+-]?([0-9]*[.])?[0-9]+",
+                value,
             ):  # Match a float with regex
                 temp.append(float(value))
             else:  # Keep the value as a string if no other type matches
@@ -188,7 +190,6 @@ def create_classes(request):
         "gatorgrouper/classes.html",
         {"title": "Create Classes", "formset": formset},
     )
-    # return HttpResponse
 
 
 # Allows the user to view the list of assignments
@@ -275,8 +276,9 @@ def add_students(request):
 
 
 # Allows to create a group using the rrobin method
+# pylint: disable=too-many-locals
 @login_required
-def create_groups(request):  # pylint: disable=too-many-locals
+def create_groups(request):
     """ Finds all the required information, call GatorGrouper with the provided
        information and displays it to the user and saves it if clicked 'save' """
     groups = []

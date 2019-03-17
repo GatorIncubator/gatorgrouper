@@ -39,8 +39,8 @@ def run_arguments(GG_ARGUMENTS, preference=None):
     return GROUPED_STUDENTS
 
 
-# pylint: disable=bad-continuation
-def input_interface(  # pylint: disable=too-many-arguments
+# pylint: disable=bad-continuation,too-many-arguments
+def input_interface(
     students,
     method=None,
     num_group=None,
