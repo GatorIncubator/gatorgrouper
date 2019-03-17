@@ -52,7 +52,9 @@ def input_interface(
     """ Run conditional logic statment to ran different methods """
     students_reshuffle = group_creation.shuffle_students(students)
     if method == constants.ALGORITHM_ROUND_ROBIN:
-        if (len(students_reshuffle[0])) < 2:  # Note that this only checks the first student
+        if (
+            len(students_reshuffle[0]) < 2
+        ):  # Note that this only checks the first student
             grouped_students = group_creation.group_random_num_group(
                 students_reshuffle, num_group
             )
@@ -71,5 +73,7 @@ def input_interface(
             objective_measures=objective_measures,
         )
     else:
-        grouped_students = group_creation.group_random_num_group(students_reshuffle, num_group)
+        grouped_students = group_creation.group_random_num_group(
+            students_reshuffle, num_group
+        )
     return grouped_students

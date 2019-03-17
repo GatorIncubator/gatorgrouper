@@ -11,8 +11,8 @@ from django.db import IntegrityError
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
 from .utils.gatherInfo import gatherStudents
-from .utils.group_graph import group_graph_partition
 from .utils.run import input_interface
+from .utils import constants
 from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
 from .forms import AssignmentForm, StudentForm, GroupForm
@@ -35,8 +35,9 @@ def upload_csv(request):
             numgrp = form.cleaned_data["numgrp"]
             preferences_weight = form.cleaned_data["preferences_weight"]
             preferences_weight_match = form.cleaned_data["preferences_weight_match"]
-            groups = group_graph_partition(
+            groups = input_interface(
                 responses,
+                method=constants.ALGORITHM_GRAPH,
                 numgrp,
                 preferences=preferences,
                 preferences_weight=preferences_weight,
@@ -299,7 +300,7 @@ def create_groups(request):  # pylint: disable=too-many-locals
             # Finds the student object based on the student name and finds the assignment id
             for name, obj in student_list_dict.items():
                 student_list.append(name)
-            groups = input_interface(student_list, "rrobin", num_of_groups)
+            groups = input_interface(student_list, constants.ALGORITHM_ROUND_ROBIN, num_of_groups)
             if request.POST["button"] == "save":
                 counter = 1
                 for group in groups:
