@@ -300,7 +300,9 @@ def create_groups(request):  # pylint: disable=too-many-locals
             # Finds the student object based on the student name and finds the assignment id
             for name, obj in student_list_dict.items():
                 student_list.append(name)
-            groups = input_interface(student_list, constants.ALGORITHM_ROUND_ROBIN, num_of_groups)
+            groups = input_interface(
+                student_list, constants.ALGORITHM_ROUND_ROBIN, num_of_groups
+            )
             if request.POST["button"] == "save":
                 counter = 1
                 for group in groups:

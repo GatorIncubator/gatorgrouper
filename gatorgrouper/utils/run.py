@@ -11,6 +11,7 @@ from gatorgrouper.utils import constants
 
 # pylint: disable=bad-continuation
 
+
 def run_arguments(GG_ARGUMENTS, preference=None):
     """ Run different algorithms with input arguments """
     STUDENT_IDENTIFIERS = remove_absent_students.remove_missing_students(
