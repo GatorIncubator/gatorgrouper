@@ -1,12 +1,12 @@
 """This tests the forms.py"""
 import pytest
+from django.contrib.auth import get_user_model
 from gatorgrouper.forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
     UploadCSVForm,
     CreateGroupForm,
 )
-
 
 pytestmark = pytest.mark.django_db
 
@@ -29,7 +29,6 @@ class TestCustomUserCreationForm:
         assert form.is_valid() is True
 
 
-@pytest.mark.skip(reason="waiting for test case fix")
 class TestCustomUserChangeForm:
     """undocumented"""
 
@@ -37,15 +36,20 @@ class TestCustomUserChangeForm:
     # pylint: disable=R0201
     def test_valid_data(self):
         """undocumented"""
-        form = CustomUserChangeForm(
-            {
-                "email": "testuserl@test.com",
-                "first_name": "Spencer",
-                "last_name": "Huang",
-                "password1": "testpassword1",
-                "password2": "testpassword1",
-            }
+        User = get_user_model()
+        user = User.objects.create_user(
+            email="normaluser@user.com",
+            first_name="testfirst",
+            last_name="testlast",
+            password="testpassword",
         )
+        data = {
+            "email": user.email,
+            "first_name": "testfirst",
+            "last_name": "testlast",
+            "password": "testpassword",
+        }
+        form = CustomUserChangeForm(data, instance=user)
         assert form.is_valid() is True
 
 
