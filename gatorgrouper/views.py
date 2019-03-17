@@ -38,7 +38,7 @@ def upload_csv(request):
             groups = input_interface(
                 responses,
                 method=constants.ALGORITHM_GRAPH,
-                numgrp,
+                num_group=numgrp,
                 preferences=preferences,
                 preferences_weight=preferences_weight,
                 preferences_weight_match=preferences_weight_match,

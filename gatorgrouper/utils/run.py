@@ -9,6 +9,7 @@ from gatorgrouper.utils import group_graph
 from gatorgrouper.utils import display
 from gatorgrouper.utils import constants
 
+# pylint: disable=bad-continuation
 
 def run_arguments(GG_ARGUMENTS, preference=None):
     """ Run different algorithms with input arguments """
