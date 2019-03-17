@@ -39,7 +39,7 @@ def run_arguments(GG_ARGUMENTS, preference=None):
     return GROUPED_STUDENTS
 
 
-def input_interface(
+def input_interface(  # pylint: disable=too-many-arguments
     students,
     method=None,
     num_group=None,
