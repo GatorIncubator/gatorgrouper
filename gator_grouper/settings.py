@@ -132,7 +132,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
 
 LOGIN_URL = "login"
 
-LOGIN_REDIRECT_URL = "Gatorgrouper-survey"
+LOGIN_REDIRECT_URL = "profile"
 
 LOGOUT_REDIRECT_URL = "Gatorgrouper-home"
 
