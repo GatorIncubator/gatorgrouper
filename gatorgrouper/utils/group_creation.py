@@ -51,7 +51,8 @@ def group_random_num_group(
             groups[_x].append(next(iterable))
             stunum = stunum + 1
         # scoring and return
-        conflict_scores = []  # a list of the conflict scores to affect group scores
+        # a list of the conflict scores to affect group scores
+        conflict_scores = []
         for grp in groups:
             # iterate through groups
             for confs in conflicts:
@@ -71,7 +72,8 @@ def group_random_num_group(
         logging.info("scores: %d", str(scores))
         logging.info("average: %d", ave)
         intensity -= 1
-        ave = ave - conf_ave  # subtract conflict average from general average
+        # subtract conflict average from general average
+        ave = ave - conf_ave
         if ave > top_ave:
             top_ave = ave
             optimized_groups = groups
