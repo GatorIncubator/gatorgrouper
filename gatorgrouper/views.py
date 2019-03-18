@@ -18,8 +18,25 @@ from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
 from .forms import AssignmentForm, StudentForm, GroupForm
 
-class GroupDetailView(DetailView):
-    model = Grouped_Student
+class AssignmentView(DetailView):
+    model = Assignment
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        instance = self.object
+        group_list = list(
+            # pylint: disable=no-member
+            Grouped_Student.objects.filter(assignment_id=instance)
+        )
+        groupNames = []
+        for g in group_list:
+            if g.group_name not in groupNames:
+                groupNames.append(g.group_name)
+
+        context['groups'] = group_list
+        context['groupNames'] = groupNames
+
+        return context
 
 # Collects information from the form and passes it to upload_csv.html
 def upload_csv(request):
