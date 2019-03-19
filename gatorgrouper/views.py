@@ -25,6 +25,7 @@ from .forms import AssignmentForm, StudentForm, GroupForm
 class AssignmentView(DetailView):
     """ This view allows there to be a unique page for each assignment
     it passes information to the template to customize each assignment page"""
+
     model = Assignment
 
     def get_context_data(self, **kwargs):
