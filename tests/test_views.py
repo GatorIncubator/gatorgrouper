@@ -181,21 +181,6 @@ class TestLoginView:
 
     def test_groupresults_views_get(self):
         """undocumented"""
-        request = self.factory.get("/viewing-groups")
-        request.user = self.user
-        response = views.groupResult(request)
-        assert response.status_code == 200
-
-
-    def test_groupresults_views_post_formset(self):
-        """undocumented"""
-        obj = mixer.blend(
-            "gatorgrouper.Assignment",
-            assignment_id=1,
-            assignment_name="Group Project",
-            description="This is an assignment",
-        )
-        testdata = {"assignment_id": obj.assignment_id}
 
         request = self.factory.post("/viewing-groups", data=testdata)
         request.user = self.user
