@@ -18,7 +18,7 @@
       {% for assignment in all_assignments %}
       {% if assignment.class_id == class  %}
       <tr>
-        <td><a href="{% url 'Gatorgrouper-groups' %}">{{ assignment.assignment_name }}</a></td>
+        <td><a href="{% url 'assignment-detail' assignment.assignment_id %}">{{ assignment.assignment_name }}</a></td>
       </tr>
 
       {% endif %}
