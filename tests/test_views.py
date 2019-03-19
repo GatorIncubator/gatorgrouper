@@ -186,12 +186,6 @@ class TestLoginView:
         response = views.groupResult(request)
         assert response.status_code == 200
 
-    def test_groupresults_views_post(self):
-        """undocumented"""
-        request = self.factory.post("/viewing-groups")
-        request.user = self.user
-        response = views.groupResult(request)
-        assert response.status_code == 200
 
     def test_groupresults_views_post_formset(self):
         """undocumented"""
