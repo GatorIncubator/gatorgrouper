@@ -240,41 +240,6 @@ def survey(request):
     return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
 
 
-# The function works to display the output of the created group of students
-@login_required
-def groupResult(request):
-    """ Group result view """
-    group_list = []
-    groupNames = []
-    assignment_obj = None
-    if request.method == "POST":
-        formset = GroupForm(request.user, request.POST)
-        if formset.is_valid():
-            assignment_obj = formset.cleaned_data.get("assignment_id")
-            group_list = list(
-                # pylint: disable=no-member
-                Grouped_Student.objects.filter(assignment_id=assignment_obj)
-            )
-            groupNames = []
-            for g in group_list:
-                if g.group_name not in groupNames:
-                    groupNames.append(g.group_name)
-    else:
-        formset = GroupForm(request.user)
-
-    return render(
-        request,
-        "gatorgrouper/viewing-groups.html",
-        {
-            "title": "Group Result",
-            "formset": formset,
-            "groups": group_list,
-            "assignment": assignment_obj,
-            "groupNames": groupNames,
-        },
-    )
-
-
 # Function allows displaying current students and add students based on the request
 @login_required
 def add_students(request):
