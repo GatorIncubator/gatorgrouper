@@ -10,9 +10,15 @@ from gatorgrouper.utils import group_scoring
 # pylint: disable=bad-continuation
 # pylint: disable=dangerous-default-value
 def group_random_group_size(
-    responses: str, grpsize: int, conflicts=[("foo", "bar", -1)]
+    responses: str, grpsize: int, conflicts=[]
 ) -> List[List[str]]:
-    """ Calculate number of groups based on desired students per group """
+    """ 
+    Calculate number of groups based on desired students per group.
+    Conflicts is an optional argument that should list 3-tuples with
+    conflict relations between two students in the format:
+    (str1, str2, int), where str1 and str2 are students and in is a
+    corresponding conflict weight.
+    """
     # number of groups = number of students / minimum students per group
     numgrp = int(len(responses) / grpsize)
 
@@ -22,9 +28,15 @@ def group_random_group_size(
 # pylint: disable=dangerous-default-value
 # pylint: disable=too-many-locals
 def group_random_num_group(
-    responses: str, numgrp: int, conflicts=[("foo", "bar", -1)]
+    responses: str, numgrp: int, conflicts=[]
 ) -> List[List[str]]:
-    """ group responses using randomization approach """
+    """ 
+    Group responses using randomization approach
+    Conflicts is an optional argument that should list 3-tuples with
+    conflict relations between two students in the format:
+    (str1, str2, int), where str1 and str2 are students and in is a
+    corresponding conflict weight.
+    """
     intensity = 100
     # Intensity is the value that represents the number of attempts made to group
     optimized_groups = list()
@@ -52,19 +64,20 @@ def group_random_num_group(
             stunum = stunum + 1
         # scoring and return
         # a list of the conflict scores to affect group scores
-        conflict_scores = []
-        for grp in groups:
-            # iterate through groups
-            for confs in conflicts:
-                # iterate through conflicts given as args
-                if (confs[0] in grp) or (confs[1] in grp):
-                    # if either name in the 3-tuple is in the group
-                    conflict_scores.append(confs[2])
-                    # add the conflict to the list of conflict scores
-        conf_ave = 0  # assume no conflicts
-        if conflict_scores:
-            # if there are conflicts, calculate the average
-            conf_ave = sum(conflict_scores) / len(conflict_scores)
+        if conflicts:
+            conflict_scores = []
+            for grp in groups:
+                # iterate through groups
+                for confs in conflicts:
+                    # iterate through conflicts given as args
+                    if (confs[0] in grp) and (confs[1] in grp):
+                        # if either name in the 3-tuple is in the group
+                        conflict_scores.append(confs[2])
+                        # add the conflict to the list of conflict scores
+            conf_ave = 0  # assume no conflicts
+            if conflict_scores:
+                # if there are conflicts, calculate the average
+                conf_ave = sum(conflict_scores) / len(conflict_scores)
         # calculates average of the conflict scores
         scores, ave = [], 0
         scores.append(group_scoring.score_group(groups))
