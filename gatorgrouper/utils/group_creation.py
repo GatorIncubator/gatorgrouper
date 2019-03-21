@@ -64,20 +64,19 @@ def group_random_num_group(
             stunum = stunum + 1
         # scoring and return
         # a list of the conflict scores to affect group scores
-        if conflicts:
-            conflict_scores = []
-            for grp in groups:
-                # iterate through groups
-                for confs in conflicts:
-                    # iterate through conflicts given as args
-                    if (confs[0] in grp) and (confs[1] in grp):
-                        # if either name in the 3-tuple is in the group
-                        conflict_scores.append(confs[2])
-                        # add the conflict to the list of conflict scores
-            conf_ave = 0  # assume no conflicts
-            if conflict_scores:
-                # if there are conflicts, calculate the average
-                conf_ave = sum(conflict_scores) / len(conflict_scores)
+        conflict_scores = []
+        for grp in groups:
+            # iterate through groups
+            for confs in conflicts:
+                # iterate through conflicts given as args
+                if (confs[0] in grp) and (confs[1] in grp):
+                    # if either name in the 3-tuple is in the group
+                    conflict_scores.append(confs[2])
+                    # add the conflict to the list of conflict scores
+        conf_ave = 0  # assume no conflicts
+        if conflict_scores:
+            # if there are conflicts, calculate the average
+            conf_ave = sum(conflict_scores) / len(conflict_scores)
         # calculates average of the conflict scores
         scores, ave = [], 0
         scores.append(group_scoring.score_group(groups))
