@@ -12,7 +12,7 @@ from gatorgrouper.utils import group_scoring
 def group_random_group_size(
     responses: str, grpsize: int, conflicts=[]
 ) -> List[List[str]]:
-    """ 
+    """
     Calculate number of groups based on desired students per group.
     Conflicts is an optional argument that should list 3-tuples with
     conflict relations between two students in the format:
@@ -30,7 +30,7 @@ def group_random_group_size(
 def group_random_num_group(
     responses: str, numgrp: int, conflicts=[]
 ) -> List[List[str]]:
-    """ 
+    """
     Group responses using randomization approach
     Conflicts is an optional argument that should list 3-tuples with
     conflict relations between two students in the format:
