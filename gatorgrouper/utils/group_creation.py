@@ -10,7 +10,7 @@ from gatorgrouper.utils import group_scoring
 # pylint: disable=bad-continuation
 # pylint: disable=dangerous-default-value
 def group_random_group_size(
-    responses: str, grpsize: int, conflicts=[]
+    responses: str, grpsize: int, conflicts=[("foo", "bar", -1)]
 ) -> List[List[str]]:
     """ Calculate number of groups based on desired students per group """
     # number of groups = number of students / minimum students per group
@@ -22,7 +22,7 @@ def group_random_group_size(
 # pylint: disable=dangerous-default-value
 # pylint: disable=too-many-locals
 def group_random_num_group(
-    responses: str, numgrp: int, conflicts=[]
+    responses: str, numgrp: int, conflicts=[("foo", "bar", -1)]
 ) -> List[List[str]]:
     """ group responses using randomization approach """
     intensity = 100
