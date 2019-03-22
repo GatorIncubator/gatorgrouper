@@ -41,3 +41,10 @@ def test_run_rrobin(generate_csv):
     input_arguments = parse_arguments.parse_arguments(command)
     output = run.run_arguments(input_arguments)
     assert len(output) == 3
+
+
+def test_run_rrobin_to_random():
+    """ Test if the main program can run rrobin then transfer to random """
+    namelist = [["A"], ["B"], ["C"], ["D"]]
+    output = run.input_interface(namelist, "rrobin", 2)
+    assert len(output) == 2
