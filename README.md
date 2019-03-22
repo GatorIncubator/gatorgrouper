@@ -161,11 +161,15 @@ pipenv run python3 gatorgrouper_cli.py --file filepath --method=random
 ```
 
 This will randomly group the list of students you have provided, and is the
-default grouping method used when none is provided. This method of grouping is
-appropriate for cases where the assignment does not require that groups have a
-minimum number of members that have responded as having a skill related to the
-assignment. Consider using this method for assignments like in class exercises,
-small discussion groups, or peer editing.
+default grouping method used when none is provided. Additionally, the random
+grouping method allows for recognition of student conflicts via a numerical,
+lower-is-better representation (e.g a level 1 conflict is for students who
+don't like one another while a level 5 conflict is for students who are legally
+mandated to be separated). The random method will take in that conflict, apply
+it to both students and then group the students, attempting to minimize the
+overall level of conflict within the group through iterating through the
+function an arbitrary amount of times, creating groups with less and less
+conflict.
 
 ### Round-robin Grouping Method
 

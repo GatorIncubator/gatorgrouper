@@ -104,6 +104,86 @@ def test_group_random_extra():
 #     assert len(returned_groups[0]) == size_count
 
 
+def test_group_random_conflict_numgrp():
+    """
+    Test that groups are still created randomly, even when given
+    conflict tuples as input. Note that there is no guarantee that
+    a conflict will be avoided, but rather that it is more likely that
+    the conflict will be avoided than it won't. Perfect group creation
+    with guaranteed conflict avoidance is an NP-Hard problem. To test
+    that conflict management is effective at least most of the time
+    (>90%), groups will be generated multiple times, and results will
+    be collected as a 0 (conflict avoided) or 1 (conflict still present),
+    and the test case will pass as long as more than 90% of the results as
+    a 0 and not a 1.
+    """
+    responses = [
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Dan", False, True, False, True],
+        ["Michael", True, True, False, False],
+    ]
+    num_group = 3
+    # A conflict is added.
+    conflict = ("Nick", "Marvin", 5)
+    results = []
+    # Run 1000 tests for significance
+    for _x in range(0, 1000):
+        returned_groups = group_creation.group_random_num_group(responses, num_group)
+        for grp in returned_groups:
+            # if both members of the conflict relation are in a group, avoidance failed
+            if (conflict[0] in grp) and (conflict[1] in grp):
+                # 1 denotes conflict avoidance failure
+                results.append(1)
+            else:
+                # 0 denotes conflict avoidance failure
+                results.append(0)
+    # calculate the average of the results
+    results_avg = sum(results) / len(results)
+    # assert that the success rate of conflict avoidance is 90% minimum
+    assert results_avg < 0.9
+
+
+def test_group_random_conflict_grpsize():
+    """
+    Test that groups are still created randomly, even when given
+    conflict tuples as input. Note that there is no guarantee that
+    a conflict will be avoided, but rather that it is more likely that
+    the conflict will be avoided than it won't. See docstring comment for
+    test_group_random_conflict_numgrp for details of this testing method,
+    as the process is similar.
+    """
+    responses = [
+        ["Nick", True, False, True, False],
+        ["Marvin", False, False, True, True],
+        ["Evin", True, True, True, False],
+        ["Nikki", True, True, False, False],
+        ["Dan", False, True, False, True],
+        ["Michael", True, True, False, False],
+    ]
+    group_size = 2
+    # A conflict is added.
+    conflict = ("Nick", "Marvin", 5)
+    results = []
+    # Run 1000 tests for significance
+    for _x in range(0, 1000):
+        returned_groups = group_creation.group_random_group_size(responses, group_size)
+        for grp in returned_groups:
+            # if both members of the conflict relation are in a group, avoidance failed
+            if (conflict[0] in grp) and (conflict[1] in grp):
+                # 1 denotes conflict avoidance failure
+                results.append(1)
+            else:
+                # 0 denotes conflict avoidance failure
+                results.append(0)
+    # calculate the average of the results
+    results_avg = sum(results) / len(results)
+    # assert that the success rate of conflict avoidance is 90% minimum
+    assert results_avg < 0.9
+
+
 def test_group_random():
     """Testing the random type of grouping with everyone in an assigned group"""
     responses = [
