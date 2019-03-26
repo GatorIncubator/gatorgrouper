@@ -22,7 +22,9 @@ if __name__ == "__main__":  # pragma: no cover
     if GG_ARGUMENTS.preferences is None:
         preference = None
     else:
-        preference = dict(read_student_file.read_csv_data(GG_ARGUMENTS.preferences))
+        preference = (read_student_file.read_csv_data(GG_ARGUMENTS.preferences))
+        preference = [[entry for entry in row if entry != ''] for row in preference if len(row) > 1]
+        preference = {row[0]: set(row[1:]) for row in preference}
     check_if_arguments_valid = parse_arguments.check_valid(GG_ARGUMENTS, input_list)
     if check_if_arguments_valid is False:
         print("Incorrect command-line arguments.")
