@@ -22,12 +22,13 @@ if __name__ == "__main__":  # pragma: no cover
     if GG_ARGUMENTS.preferences is None:
         preference = None
     else:
-        preference = read_student_file.read_csv_data(GG_ARGUMENTS.preferences)
+        # Filter out empty names and students without preferences from the preferences CSV
         preference = [
             [entry for entry in row if entry != ""]
-            for row in preference
+            for row in read_student_file.read_csv_data(GG_ARGUMENTS.preferences)
             if len(row) > 1
         ]
+        # Associate student with set of preferred students
         preference = {row[0]: set(row[1:]) for row in preference}
     check_if_arguments_valid = parse_arguments.check_valid(GG_ARGUMENTS, input_list)
     if check_if_arguments_valid is False:
