@@ -64,7 +64,6 @@ def compatibility(
     """
     if not len(a) == len(b):
         # Raise an exception notice if student tuples don't match
-        print(a, b)
         raise Exception("Tuples passed to compatibility() must have same size.")
     if objective_weights is None:
         # Return length
