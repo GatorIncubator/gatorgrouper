@@ -179,33 +179,13 @@ class TestLoginView:
         response = views.assignments(request)
         assert response.status_code == 200
 
-    def test_groupresults_views_get(self):
+    def test_assignment_view(self):
         """undocumented"""
-        request = self.factory.get("/viewing-groups")
-        request.user = self.user
-        response = views.groupResult(request)
-        assert response.status_code == 200
 
-    def test_groupresults_views_post(self):
-        """undocumented"""
-        request = self.factory.post("/viewing-groups")
+        mixer.blend("gatorgrouper.Assignment")
+        request = self.factory.get("/assignment/1/")
         request.user = self.user
-        response = views.groupResult(request)
-        assert response.status_code == 200
-
-    def test_groupresults_views_post_formset(self):
-        """undocumented"""
-        obj = mixer.blend(
-            "gatorgrouper.Assignment",
-            assignment_id=1,
-            assignment_name="Group Project",
-            description="This is an assignment",
-        )
-        testdata = {"assignment_id": obj.assignment_id}
-
-        request = self.factory.post("/viewing-groups", data=testdata)
-        request.user = self.user
-        response = views.groupResult(request)
+        response = views.AssignmentView.as_view()(request, pk=1)
         assert response.status_code == 200
 
     def test_add_students_get(self):

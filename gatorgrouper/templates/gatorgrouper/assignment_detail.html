@@ -1,0 +1,41 @@
+{% extends "gatorgrouper/base.html" %}
+{% block content %}
+
+<h2 class="list-group-item-heading">{{object.assignment_name}}</h2>
+<div class="blockquote">
+  {{object.description}}
+</div>
+{% if groups|length > 0 %}
+
+<div class="student-header">
+  <div class="student-container">
+    {% for name in groupNames %}
+    <div class="student-bigbox">
+      <h2>{{ name }}</h2>
+      <div class="students">
+        <table>
+          <tr>
+            <th>Students:</th>
+          </tr>
+          {% for group in groups %}
+          <tr>
+            {% if group.group_name == name %}
+            <td>{{ group.student_id }}</td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  {% else %}
+  <div class="justify-content-*-center border-top">
+    <p >Create a group to view it here...</p>
+    <a class="btn btn-secondary" style="margin-top: 0.5em" href="{% url 'create-groups' %}">Create A Group</a>
+
+  </div>
+  {%endif%}
+</div>
+
+{% endblock %}

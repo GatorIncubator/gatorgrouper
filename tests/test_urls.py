@@ -2,6 +2,7 @@
 from django.urls import reverse
 from django.test.client import Client
 import pytest
+from mixer.backend.django import mixer
 from gatorgrouper import models
 
 pytestmark = pytest.mark.django_db
@@ -56,10 +57,11 @@ class TestUrl:
         assert url == "/survey/"
 
     # pylint: disable=R0201
-    def test_groupresults_url(self):
+    def test_assignmentview_url(self):
         """undocumented"""
-        url = reverse("Gatorgrouper-groups")
-        assert url == "/group-result/"
+        obj = mixer.blend("gatorgrouper.Assignment")
+        url = reverse("assignment-detail", args=(obj.pk,))
+        assert url == "/assignment/1/"
 
     # pylint: disable=R0201
     def test_add_students_url(self):
