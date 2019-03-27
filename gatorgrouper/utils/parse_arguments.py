@@ -90,7 +90,8 @@ def parse_arguments(args: List[str]) -> argparse.Namespace:
     gg_parser.add_argument(
         "--objective-weights",
         help="Objective weights for compatibility input csv file",
-        type=list,
+        type=float,
+        nargs="+",
         default=constants.DEFAULT_OBJECTIVE_WEIGHTS,
         required=False,
     )
@@ -98,7 +99,8 @@ def parse_arguments(args: List[str]) -> argparse.Namespace:
     gg_parser.add_argument(
         "--objective-measures",
         help="Objective measures for compatibility input csv file: sum, avg, max, min, match, diff",
-        type=list,
+        type=str,
+        nargs="+",
         default=constants.DEFAULT_OBJECTIVE_MEASURES,
         required=False,
     )
