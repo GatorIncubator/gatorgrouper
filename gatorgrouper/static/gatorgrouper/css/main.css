@@ -272,12 +272,22 @@ td, th {
   background-color: #bcbcbc;
   height: 30px;
   transition: all 0.3s;
+  padding: 5px
 }
 th {
   font-weight: bold;
 }
 td {
   text-align: center;
+}
+
+.border-top{
+  border-style: solid;
+  border-top: black;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  padding-top: 20px;
 }
 tr:nth-child(even) td { background: #FFFFFF; }
 tr:nth-child(odd) td { background: #EAEAEA; }

@@ -7,6 +7,8 @@ from django.forms import modelform_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import IntegrityError
+from django.views.generic import DetailView
+from django.utils.decorators import method_decorator
 
 from .models import Semester_Class, Student
 from .models import Grouped_Student, Assignment
@@ -16,6 +18,34 @@ from .utils import constants
 from .forms import UploadCSVForm, CreateGroupForm
 from .forms import CustomUserCreationForm
 from .forms import AssignmentForm, StudentForm, GroupForm
+
+
+# pylint: disable=too-many-ancestors
+@method_decorator(login_required, name="dispatch")
+class AssignmentView(DetailView):
+    """ This view allows there to be a unique page for each assignment
+    it passes information to the template to customize each assignment page"""
+
+    model = Assignment
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        instance = self.object
+        group_list = list(
+            # pylint: disable=no-member
+            Grouped_Student.objects.filter(assignment_id=instance).order_by(
+                "group_name"
+            )
+        )
+        groupNames = []
+        for g in group_list:
+            if g.group_name not in groupNames:
+                groupNames.append(g.group_name)
+
+        context["groups"] = group_list
+        context["groupNames"] = groupNames
+
+        return context
 
 
 # Collects information from the form and passes it to upload_csv.html
@@ -218,41 +248,6 @@ def assignments(request):
 def survey(request):
     """ Student's grouping preference? """
     return render(request, "gatorgrouper/survey.html", {"title": "Survey"})
-
-
-# The function works to display the output of the created group of students
-@login_required
-def groupResult(request):
-    """ Group result view """
-    group_list = []
-    groupNames = []
-    assignment_obj = None
-    if request.method == "POST":
-        formset = GroupForm(request.user, request.POST)
-        if formset.is_valid():
-            assignment_obj = formset.cleaned_data.get("assignment_id")
-            group_list = list(
-                # pylint: disable=no-member
-                Grouped_Student.objects.filter(assignment_id=assignment_obj)
-            )
-            groupNames = []
-            for g in group_list:
-                if g.group_name not in groupNames:
-                    groupNames.append(g.group_name)
-    else:
-        formset = GroupForm(request.user)
-
-    return render(
-        request,
-        "gatorgrouper/viewing-groups.html",
-        {
-            "title": "Group Result",
-            "formset": formset,
-            "groups": group_list,
-            "assignment": assignment_obj,
-            "groupNames": groupNames,
-        },
-    )
 
 
 # Function allows displaying current students and add students based on the request
