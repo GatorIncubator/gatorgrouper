@@ -316,9 +316,10 @@ pipenv run python gatorgrouper_cli.py --file filepath --method graph
 --preferences-weight-match PREFERENCES_WEIGHT_MATCH --objective-measures LIST
 --objective-weights LIST
 ```
+
 ### Student Data Files
 
-Gatorgrouper can import student data from a supplied CSV file using the 
+Gatorgrouper can import student data from a supplied CSV file using the
 `--file data.csv` flag. Similarly, data about student's gropuing preferences
 can be imported via `--preferences preferences.csv`.
 
@@ -327,6 +328,7 @@ comma-separated list of data points for that student. For example,
 a survey asking for name, willingness to be a leader, 
 years of programming experience,
 and preferred language might yield the following line in the CSV file:
+
 ```
 Bob,True,1.0,Python
 ```
@@ -334,8 +336,8 @@ Bob,True,1.0,Python
 Supplying these data points allows the user to measure the compatibility
 between pairs of students, which allows for optimization of the grouping.
 When using the Kernighan-Lin Grouping Method, data points can be
-numbers, booleans, or strings representing an individual's data point. 
-Different students' data points can compared to each other using a 
+numbers, booleans, or strings representing an individual's data point.
+Different students' data points can compared to each other using a
 specified _objective measure_, generating a compatibility score for that
 column of the CSV file. The different columns form a weighted sum to assign
 a final compatibility score to each pair of students.
