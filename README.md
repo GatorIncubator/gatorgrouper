@@ -324,8 +324,8 @@ Gatorgrouper can import student data from a supplied CSV file using the
 can be imported via `--preferences preferences.csv`.
 
 The student data file contains one line for each student, along with a
-comma-separated list of data points for that student. For example, 
-a survey asking for name, willingness to be a leader, 
+comma-separated list of data points for that student. For example,
+a survey asking for name, willingness to be a leader,
 years of programming experience,
 and preferred language might yield the following line in the CSV file:
 
@@ -356,10 +356,11 @@ how each column of the data contributes to the overall compatibility score:
 
 If no measures are supplied, `avg` is used by default.
 
-The preferences CSV file is formatted similarly, except all the data points should be
-names of students who the first student in the row would prefer to work with.
-The `--preferences-weight` and `--preferences-weight-match` arguments allow the user
-to control the extent to which these preferences affect compatibility scores.
+The preferences CSV file is formatted similarly, except all the data points
+should be names of students who the first student in the row would prefer to
+work with. The `--preferences-weight` and `--preferences-weight-match` arguments
+allow the user to control the extent to which these preferences affect
+compatibility scores.
 
 ### Full Example
 
