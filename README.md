@@ -323,11 +323,14 @@ Gatorgrouper can import student data from a supplied CSV file using the
 can be imported via `--preferences preferences.csv`.
 
 The student data file contains one line for each student, along with a
-comma-separated list of data points for that student, e.g.:
+comma-separated list of data points for that student. For example, 
+a survey asking for name, willingness to be a leader, 
+years of programming experience,
+and preferred language might yield the following line in the CSV file:
 ```
-Bob,True,1.0,3.2,Python,False
-...
+Bob,True,1.0,Python
 ```
+
 Supplying these data points allows the user to measure the compatibility
 between pairs of students, which allows for optimization of the grouping.
 When using the Kernighan-Lin Grouping Method, data points can be
