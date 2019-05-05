@@ -316,6 +316,45 @@ pipenv run python gatorgrouper_cli.py --file filepath --method graph
 --preferences-weight-match PREFERENCES_WEIGHT_MATCH --objective-measures LIST
 --objective-weights LIST
 ```
+### Student Data Files
+
+Gatorgrouper can import student data from a supplied CSV file using the 
+`--file data.csv` flag. Similarly, data about student's gropuing preferences
+can be imported via `--preferences preferences.csv`.
+
+The student data file contains one line for each student, along with a
+comma-separated list of data points for that student, e.g.:
+```
+Bob,True,1.0,3.2,Python,False
+...
+```
+Supplying these data points allows the user to measure the compatibility
+between pairs of students, which allows for optimization of the grouping.
+When using the Kernighan-Lin Grouping Method, data points can be
+numbers, booleans, or strings representing an individual's data point. 
+Different students' data points can compared to each other using a 
+specified _objective measure_, generating a compatibility score for that
+column of the CSV file. The different columns form a weighted sum to assign
+a final compatibility score to each pair of students.
+By supplying weights via the `--objective-weights` flag, the user can control
+the relative importance of each column in the data.
+
+The following objective measures are available, offering control over
+how each column of the data contributes to the overall compatibility score:
+
+- `avg`: uses the average of the two students' values
+- `min`: the lower of the two values
+- `max`: the higher of the two values
+- `sum`: the sum of the two values
+- `diff`: the difference between the two values
+- `match`: 1 if the two values are equal; 0 otherwise. Useful for strings.
+
+If no measures are supplied, `avg` is used by default.
+
+The preferences CSV file is formatted similarly, except all the data points should be
+names of students who the first student in the row would prefer to work with.
+The `--preferences-weight` and `--preferences-weight-match` arguments allow the user
+to control the extent to which these preferences affect compatibility scores.
 
 ### Full Example
 
