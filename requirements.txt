@@ -1,5 +1,5 @@
 -i https://pypi.org/simple
-certifi==2019.3.9
+certifi==2022.12.7
 chardet==3.0.4
 decorator==4.3.2
 defusedxml==0.5.0 ; python_version >= '3.0'
